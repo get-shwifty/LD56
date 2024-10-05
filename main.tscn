@@ -1,29 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxqu8dcsym3vw"]
+[gd_scene load_steps=5 format=3 uid="uid://bxqu8dcsym3vw"]
 
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player.tscn" id="1_w8u5x"]
 [ext_resource type="PackedScene" uid="uid://dljuk7fm1akkj" path="res://tmp_platform.tscn" id="2_diwen"]
+[ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactive_mushroom.tscn" id="3_afgxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_famdq"]
 size = Vector2(1152, 312)
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_w8u5x")]
-position = Vector2(576, 448)
+[node name="World" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
 position = Vector2(0, 520)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
 position = Vector2(576, 156)
 shape = SubResource("RectangleShape2D_famdq")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("2_diwen")]
+[node name="StaticBody2D2" parent="World" instance=ExtResource("2_diwen")]
 position = Vector2(192, 480)
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("2_diwen")]
+[node name="StaticBody2D3" parent="World" instance=ExtResource("2_diwen")]
 position = Vector2(384, 480)
 
-[node name="StaticBody2D4" parent="." instance=ExtResource("2_diwen")]
+[node name="StaticBody2D4" parent="World" instance=ExtResource("2_diwen")]
 position = Vector2(448, 432)
+
+[node name="ReactiveMushroom" parent="World" instance=ExtResource("3_afgxt")]
+position = Vector2(616, 520)
+
+[node name="Player" parent="." instance=ExtResource("1_w8u5x")]
+position = Vector2(576, 448)

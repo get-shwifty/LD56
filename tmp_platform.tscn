@@ -4,9 +4,14 @@
 size = Vector2(128, 16)
 
 [node name="StaticBody2D2" type="StaticBody2D"]
-position = Vector2(320, 456)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ibnll")
 one_way_collision = true
 debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -64.0
+offset_top = -8.0
+offset_right = 64.0
+offset_bottom = 8.0
