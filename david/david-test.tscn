@@ -9,11 +9,15 @@
 
 [node name="David-test" type="Node2D"]
 
-[node name="Music" type="Sprite2D" parent="."]
+[node name="Music" type="Sprite2D" parent="." node_paths=PackedStringArray("audioA", "audioB", "audioC", "audioD")]
 position = Vector2(585, 499)
 scale = Vector2(0.28, 0.28)
 texture = ExtResource("1_hytns")
 script = ExtResource("2_xj1ui")
+audioA = NodePath("../A")
+audioB = NodePath("../B")
+audioC = NodePath("../C")
+audioD = NodePath("../D")
 
 [node name="A" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_bjsn5")
