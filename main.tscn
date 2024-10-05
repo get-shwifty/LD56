@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxqu8dcsym3vw"]
 
-[ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player.tscn" id="1_w8u5x"]
 [ext_resource type="PackedScene" uid="uid://dljuk7fm1akkj" path="res://tmp_platform.tscn" id="2_diwen"]
-[ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactive_mushroom.tscn" id="3_afgxt"]
+[ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player.tscn" id="2_p0vot"]
+[ext_resource type="PackedScene" uid="uid://uc7dw8mwue3f" path="res://src/stele.tscn" id="3_67h0x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_famdq"]
 size = Vector2(1152, 312)
@@ -28,8 +28,6 @@ position = Vector2(384, 480)
 [node name="StaticBody2D4" parent="World" instance=ExtResource("2_diwen")]
 position = Vector2(448, 432)
 
-[node name="ReactiveMushroom" parent="World" instance=ExtResource("3_afgxt")]
-position = Vector2(616, 520)
+[node name="Player" parent="." instance=ExtResource("2_p0vot")]
 
-[node name="Player" parent="." instance=ExtResource("1_w8u5x")]
-position = Vector2(576, 448)
+[node name="Stele" parent="." instance=ExtResource("3_67h0x")]
