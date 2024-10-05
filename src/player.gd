@@ -14,9 +14,9 @@ const RUN_MAX_ACC := 10000.0
 @export_range(0, 100, 1) var FALL_GRAVITY := 50.0 # 0 = same gravity, 100 = double gravity
 
 ### Jumping
-@export var JUMP_HEIGHT := 70.0 # px
-@export var JUMP_TIME := 0.400 # s
-@export_range(0, 100, 1) var JUMP_CUTOFF := 75.0 # 0 = keep jumping, 100 = abort jumping
+@export var JUMP_HEIGHT := 50.0 # px
+@export var JUMP_TIME := 0.300 # s
+@export_range(0, 100, 1) var JUMP_CUTOFF := 0.0 # 0 = keep jumping, 100 = abort jumping
 
 ### Assists
 @export var JUMP_BUFFER := 0.100 # time during which you can press the jump button before actually touching a floor
