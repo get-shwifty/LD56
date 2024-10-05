@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxqu8dcsym3vw"]
+[gd_scene load_steps=10 format=3 uid="uid://bxqu8dcsym3vw"]
 
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player.tscn" id="1_w8u5x"]
 [ext_resource type="PackedScene" uid="uid://dljuk7fm1akkj" path="res://tmp_platform.tscn" id="2_diwen"]
+[ext_resource type="Script" path="res://david/MusicBox2.gd" id="2_iewwe"]
+[ext_resource type="AudioStream" uid="uid://dwceeded223di" path="res://david/Chant-pignon_1_re.mp3" id="3_gdwf4"]
+[ext_resource type="AudioStream" uid="uid://2tlx58newr1h" path="res://david/Chant-pignon_2_sol.mp3" id="4_jihov"]
+[ext_resource type="AudioStream" uid="uid://3j4iwo4im1ou" path="res://david/Chant-pignon_3_sib.mp3" id="5_vdjen"]
+[ext_resource type="AudioStream" uid="uid://ck5vqjetvs8jy" path="res://david/Chant-pignon_4_re2.mp3" id="6_qpmh3"]
+[ext_resource type="PackedScene" uid="uid://otn30duquw05" path="res://note_player.tscn" id="8_1j5bj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_famdq"]
 size = Vector2(1152, 128)
@@ -10,6 +16,15 @@ size = Vector2(1152, 128)
 
 [node name="Player" parent="." instance=ExtResource("1_w8u5x")]
 position = Vector2(576, 448)
+
+[node name="MusicBox" type="Node2D" parent="Player"]
+position = Vector2(-576, -448)
+script = ExtResource("2_iewwe")
+audioA = ExtResource("3_gdwf4")
+audioB = ExtResource("4_jihov")
+audioC = ExtResource("5_vdjen")
+audioD = ExtResource("6_qpmh3")
+AUDIO_PLAYER = ExtResource("8_1j5bj")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 520)
