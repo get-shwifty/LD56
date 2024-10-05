@@ -6,6 +6,8 @@ extends Node2D
 @export var audioD: Resource = null
 @export var AUDIO_PLAYER: Resource = null
 
+@onready var area = $Area2D
+
 @onready var players = {
 	"A": audioA,
 	"B": audioB,
@@ -13,21 +15,19 @@ extends Node2D
 	"D": audioD
 }
 
-var melodies = {
-	"light": ['A', 'B', 'C', 'D'],
-	"fly": ['C', 'D', 'A'],
-	"damage": ['A', 'C', 'B', 'A', 'D']
-}
+var melodies = Settings.songs
 
 var buffer = []
 var buffer_frame = 0
-var played = []
-
-var buffer_interval = 20 # frames
+var played = ""
+var can_play = true
+var buffer_interval = 10 # frames
 var music_timout = 60 # frames
 var music_frame = 0
 
 func _physics_process(delta):
+	if not can_play:
+		return
 	if Input.is_action_just_pressed("a"):
 		buffer.append("A")
 	if Input.is_action_just_pressed("b"):
@@ -53,7 +53,7 @@ func _physics_process(delta):
 	if len(played):
 		music_frame += 1
 		if music_frame > music_timout:
-			played = []
+			notify_song("")
 	
 	
 func has_buffer():
@@ -69,21 +69,35 @@ func play_buffer():
 	var audio_player = AUDIO_PLAYER.instantiate()
 	audio_player.music = music
 	add_child(audio_player)
-	played.append(note)
+	#played += note
+	notify_song(played + note)
 
 func check_finished_music():
 	for name in melodies.keys():
 		if is_music_finished(melodies[name]):
-			print(name)
-			played = []
+			notify_song_finish(name)
+			can_play = false
+			await get_tree().create_timer(1).timeout
+			can_play = true
+			notify_song("")
 			buffer = []
 			buffer_frame = 0
 			music_frame = 0
 
 func is_music_finished(melodie):
-	if len(melodie) != len(played):
-		return false
-	for i in range(len(melodie)):
-		if melodie[i] != played[i]:
-			return false
-	return true
+	return played == melodie
+	
+func notify_song(list: String):
+	played = list
+	var areas = area.get_overlapping_areas()
+	for a in areas:
+		a.get_parent().on_song(played)
+	
+func notify_song_finish(name: String):
+	var areas = area.get_overlapping_areas()
+	for a in areas:
+		a.get_parent().on_song_finished(name)
+
+
+func _on_area_2d_area_exited(area):
+	area.get_parent().on_exit()
