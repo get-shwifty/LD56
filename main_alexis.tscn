@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxqu8dcsym3vw"]
+
+[ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player.tscn" id="1_w8u5x"]
+[ext_resource type="PackedScene" uid="uid://dljuk7fm1akkj" path="res://tmp_platform.tscn" id="2_diwen"]
+[ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactive_mushroom.tscn" id="3_afgxt"]
+[ext_resource type="Texture2D" uid="uid://c5mwjfbdqq1tj" path="res://assets/mockup.png" id="3_rpaqr"]
+
+[sub_resource type="TileSet" id="TileSet_1wepn"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+
+[node name="Main" type="Node2D"]
+
+[node name="Sky" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.05, 0)
+scroll_offset = Vector2(0, -200)
+repeat_size = Vector2(1200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+position = Vector2(600, 448)
+texture = ExtResource("3_rpaqr")
+region_enabled = true
+region_rect = Rect2(0, 0, 1200, 896)
+
+[node name="Background" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(0, -200)
+repeat_size = Vector2(1200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(600, 448)
+texture = ExtResource("3_rpaqr")
+region_enabled = true
+region_rect = Rect2(0, 904, 1200, 896)
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="World"]
+position = Vector2(600, 384)
+texture = ExtResource("3_rpaqr")
+region_enabled = true
+region_rect = Rect2(0, 1800, 1200, 624)
+
+[node name="Sprite2D2" type="Sprite2D" parent="World"]
+position = Vector2(1800, 384)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_rpaqr")
+region_enabled = true
+region_rect = Rect2(0, 1800, 1200, 624)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+position = Vector2(0, 520)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/StaticBody2D"]
+polygon = PackedVector2Array(0, 64, 288, 72, 336, 64, 416, 64, 464, 56, 832, -64, 872, -48, 912, -32, 1152, 8, 1216, 8, 1288, 0, 1432, -32, 1496, -32, 1560, -64, 1688, -16, 1792, 16, 1792, 16, 1832, 24, 1928, 56, 1952, 56, 1984, 64, 2064, 64, 2112, 72, 2288, 72, 2400, 72, 2400, 176, 0, 176)
+
+[node name="StaticBody2D2" parent="World" instance=ExtResource("2_diwen")]
+position = Vector2(192, 480)
+
+[node name="StaticBody2D3" parent="World" instance=ExtResource("2_diwen")]
+position = Vector2(384, 480)
+
+[node name="StaticBody2D4" parent="World" instance=ExtResource("2_diwen")]
+position = Vector2(448, 432)
+
+[node name="ReactiveMushroom" parent="World" instance=ExtResource("3_afgxt")]
+position = Vector2(616, 520)
+
+[node name="Player" parent="." instance=ExtResource("1_w8u5x")]
+position = Vector2(576, 448)
+floor_snap_length = 10.0
+
+[node name="Foreground" type="Parallax2D" parent="."]
+scroll_scale = Vector2(2, 2)
+repeat_size = Vector2(1200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground"]
+position = Vector2(600, 448)
+texture = ExtResource("3_rpaqr")
+region_enabled = true
+region_rect = Rect2(0, 2632, 1200, 896)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_1wepn")
