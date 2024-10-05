@@ -1,92 +1,33 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxqu8dcsym3vw"]
+[gd_scene load_steps=5 format=3 uid="uid://bxqu8dcsym3vw"]
 
-[ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player.tscn" id="1_w8u5x"]
 [ext_resource type="PackedScene" uid="uid://dljuk7fm1akkj" path="res://tmp_platform.tscn" id="2_diwen"]
-[ext_resource type="Script" path="res://david/MusicBox2.gd" id="2_iewwe"]
-[ext_resource type="AudioStream" uid="uid://dwceeded223di" path="res://david/Chant-pignon_1_re.mp3" id="3_gdwf4"]
-[ext_resource type="AudioStream" uid="uid://2tlx58newr1h" path="res://david/Chant-pignon_2_sol.mp3" id="4_jihov"]
-[ext_resource type="AudioStream" uid="uid://3j4iwo4im1ou" path="res://david/Chant-pignon_3_sib.mp3" id="5_vdjen"]
-[ext_resource type="AudioStream" uid="uid://ck5vqjetvs8jy" path="res://david/Chant-pignon_4_re2.mp3" id="6_qpmh3"]
-[ext_resource type="PackedScene" uid="uid://otn30duquw05" path="res://note_player.tscn" id="8_1j5bj"]
-[ext_resource type="Script" path="res://stele.gd" id="9_dk7yj"]
-[ext_resource type="Texture2D" uid="uid://3j42xgrwf17h" path="res://david/Capture d’écran 2024-10-05 à 21.56.15.png" id="10_ofv05"]
-[ext_resource type="Texture2D" uid="uid://be6q3osg7xh3r" path="res://david/Capture d’écran 2024-10-05 à 21.56.42.png" id="11_333h6"]
-[ext_resource type="Texture2D" uid="uid://bgvfks4dblnyh" path="res://david/Capture d’écran 2024-10-05 à 21.58.22.png" id="12_isimj"]
-[ext_resource type="Texture2D" uid="uid://c8to80yemtmue" path="res://david/Capture d’écran 2024-10-05 à 21.56.55.png" id="13_wkj5k"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7g1ik"]
+[ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player.tscn" id="2_p0vot"]
+[ext_resource type="PackedScene" uid="uid://uc7dw8mwue3f" path="res://src/stele.tscn" id="3_67h0x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_famdq"]
 size = Vector2(1152, 312)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h7w4m"]
-
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_w8u5x")]
-position = Vector2(576, 448)
+[node name="World" type="Node2D" parent="."]
 
-[node name="MusicBox" type="Node2D" parent="Player"]
-position = Vector2(0, -23)
-script = ExtResource("2_iewwe")
-audioA = ExtResource("3_gdwf4")
-audioB = ExtResource("4_jihov")
-audioC = ExtResource("5_vdjen")
-audioD = ExtResource("6_qpmh3")
-AUDIO_PLAYER = ExtResource("8_1j5bj")
-
-[node name="Area2D" type="Area2D" parent="Player/MusicBox"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MusicBox/Area2D"]
-scale = Vector2(5.79999, 5.79999)
-shape = SubResource("CircleShape2D_7g1ik")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
 position = Vector2(0, 520)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
 position = Vector2(576, 156)
 shape = SubResource("RectangleShape2D_famdq")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("2_diwen")]
+[node name="StaticBody2D2" parent="World" instance=ExtResource("2_diwen")]
 position = Vector2(192, 480)
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("2_diwen")]
+[node name="StaticBody2D3" parent="World" instance=ExtResource("2_diwen")]
 position = Vector2(384, 480)
 
-[node name="StaticBody2D4" parent="." instance=ExtResource("2_diwen")]
+[node name="StaticBody2D4" parent="World" instance=ExtResource("2_diwen")]
 position = Vector2(448, 432)
 
-[node name="Stele" type="Node2D" parent="."]
-position = Vector2(960, 458)
-script = ExtResource("9_dk7yj")
+[node name="Player" parent="." instance=ExtResource("2_p0vot")]
 
-[node name="CaptureD’écran2024-10-05À21_56_15" type="Sprite2D" parent="Stele"]
-position = Vector2(14, 9)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("10_ofv05")
-
-[node name="CaptureD’écran2024-10-05À21_56_42" type="Sprite2D" parent="Stele"]
-position = Vector2(36, 9)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("11_333h6")
-
-[node name="CaptureD’écran2024-10-05À21_58_22" type="Sprite2D" parent="Stele"]
-position = Vector2(59, 9)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("12_isimj")
-
-[node name="CaptureD’écran2024-10-05À21_56_55" type="Sprite2D" parent="Stele"]
-position = Vector2(82, 8)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("13_wkj5k")
-
-[node name="Area2D" type="Area2D" parent="Stele"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stele/Area2D"]
-shape = SubResource("CircleShape2D_h7w4m")
-
-[connection signal="area_exited" from="Player/MusicBox/Area2D" to="Player/MusicBox" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="Stele/Area2D" to="Stele" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Stele/Area2D" to="Stele" method="_on_area_2d_area_exited"]
+[node name="Stele" parent="." instance=ExtResource("3_67h0x")]

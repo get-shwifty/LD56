@@ -69,7 +69,6 @@ func play_buffer():
 	var audio_player = AUDIO_PLAYER.instantiate()
 	audio_player.music = music
 	add_child(audio_player)
-	#played += note
 	notify_song(played + note)
 
 func check_finished_music():
