@@ -144,7 +144,7 @@ position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_8oed0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -200)
+position = Vector2(0, -100)
 position_smoothing_enabled = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

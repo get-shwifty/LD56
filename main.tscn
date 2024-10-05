@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dljuk7fm1akkj" path="res://tmp_platform.tscn" id="2_diwen"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_famdq"]
-size = Vector2(1152, 128)
+size = Vector2(1152, 312)
 
 [node name="Main" type="Node2D"]
 
@@ -15,15 +15,15 @@ position = Vector2(576, 448)
 position = Vector2(0, 520)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576, 64)
+position = Vector2(576, 156)
 shape = SubResource("RectangleShape2D_famdq")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("2_diwen")]
-position = Vector2(192, 456)
+position = Vector2(192, 480)
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_diwen")]
-position = Vector2(384, 456)
+position = Vector2(384, 480)
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("2_diwen")]
-position = Vector2(448, 392)
+position = Vector2(448, 432)
