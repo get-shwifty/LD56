@@ -1,13 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://mdcmmncqs1fk"]
+[gd_scene load_steps=8 format=3 uid="uid://mdcmmncqs1fk"]
 
-[ext_resource type="Texture2D" uid="uid://c5mwjfbdqq1tj" path="res://assets/mockup.png" id="1_h31br"]
+[ext_resource type="Texture2D" uid="uid://bhsdhqpwiof45" path="res://assets/decors/arbre.png" id="1_7jvpe"]
+[ext_resource type="Texture2D" uid="uid://ds8rsjdhowpju" path="res://assets/decors/buisson.png" id="2_ycx38"]
+[ext_resource type="Texture2D" uid="uid://8q83t0kysse1" path="res://assets/decors/feuilles.png" id="3_iqb2j"]
+[ext_resource type="Texture2D" uid="uid://hjkvobw4pnjk" path="res://assets/decors/fougeres.png" id="4_5v2pu"]
+[ext_resource type="Texture2D" uid="uid://3868gfwp81ut" path="res://assets/decors/lianes.png" id="5_t7s6p"]
+[ext_resource type="Texture2D" uid="uid://m76fxla1uhx3" path="res://assets/decors/racines.png" id="6_p54ni"]
+[ext_resource type="Texture2D" uid="uid://bvbhirytj8u2i" path="res://assets/decors/souche.png" id="7_43p6x"]
 
 [node name="Foreground" type="Parallax2D"]
 scroll_scale = Vector2(2, 2)
-repeat_size = Vector2(1200, 0)
+repeat_size = Vector2(2500, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(600, 448)
-texture = ExtResource("1_h31br")
-region_enabled = true
-region_rect = Rect2(0, 2632, 1200, 896)
+[node name="Arbre" type="Sprite2D" parent="."]
+position = Vector2(-150, 127)
+texture = ExtResource("1_7jvpe")
+
+[node name="Buisson" type="Sprite2D" parent="."]
+position = Vector2(1530, 929)
+texture = ExtResource("2_ycx38")
+
+[node name="Feuilles" type="Sprite2D" parent="."]
+position = Vector2(495, -617)
+texture = ExtResource("3_iqb2j")
+
+[node name="Fougeres" type="Sprite2D" parent="."]
+position = Vector2(888, 260)
+texture = ExtResource("4_5v2pu")
+
+[node name="Lianes" type="Sprite2D" parent="."]
+position = Vector2(124, -318)
+texture = ExtResource("5_t7s6p")
+
+[node name="Racines" type="Sprite2D" parent="."]
+position = Vector2(511, 1214)
+texture = ExtResource("6_p54ni")
+
+[node name="Souche" type="Sprite2D" parent="."]
+position = Vector2(750, 761)
+texture = ExtResource("7_43p6x")
