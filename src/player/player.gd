@@ -129,6 +129,7 @@ func _physics_process(delta: float) -> void:
 
 func on_land():
 	%AnimatedSprite2D.play("idle")
+	%AnimatedSprite2D2.play("idle")
 	$AnimationPlayer.play("RESET")
 	
 	var factor = clamp(last_fallspeed_in_air / FALL_MAX_SPEED, 0.0, 1.0)
@@ -143,12 +144,14 @@ func on_land():
 
 func on_jump():
 	%AnimatedSprite2D.play("jump")
+	%AnimatedSprite2D2.play("jump")
 	$AnimationPlayer.play("RESET")
 	$AudioJump.play()
 	$AudioRun.stop()
 
 func on_idle():
 	%AnimatedSprite2D.play("idle")
+	%AnimatedSprite2D2.play("idle")
 	$AnimationPlayer.play("RESET")
 	$Visual.skew = 0
 	$AudioRun.stop()
@@ -156,6 +159,8 @@ func on_idle():
 func on_run():
 	%AnimatedSprite2D.play("run")
 	%AnimatedSprite2D.scale.x = sign(velocity.x)
+	%AnimatedSprite2D2.play("run")
+	%AnimatedSprite2D2.scale.x = sign(velocity.x)
 	$AnimationPlayer.play("run")
 	$Visual.skew = -velocity.x / RUN_SPEED * deg_to_rad(1)
 	if not $AudioRun.playing:
@@ -171,3 +176,6 @@ func is_on_ladder():
 	if len(areas):
 		return true
 	return false
+	
+func play_note(note: String):
+	pass

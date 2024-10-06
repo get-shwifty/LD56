@@ -85,7 +85,7 @@ func check_finished_music():
 			music_frame = 0
 
 func is_music_finished(melodie):
-	return played == melodie
+	return played.ends_with(melodie)
 	
 func notify_song(list: String):
 	played = list

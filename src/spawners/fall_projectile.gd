@@ -9,5 +9,5 @@ func _ready():
 
 
 func _on_body_entered(body):
-	print(body)
+	#print(body)
 	queue_free()
