@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://2tlx58newr1h" path="res://david/Chant-pignon_2_sol.mp3" id="3_5ywpc"]
 [ext_resource type="AudioStream" uid="uid://3j4iwo4im1ou" path="res://david/Chant-pignon_3_sib.mp3" id="4_8yv8s"]
 [ext_resource type="AudioStream" uid="uid://ck5vqjetvs8jy" path="res://david/Chant-pignon_4_re2.mp3" id="5_ii4yb"]
-[ext_resource type="PackedScene" uid="uid://otn30duquw05" path="res://src/note_player.tscn" id="6_nyeq5"]
+[ext_resource type="PackedScene" uid="uid://otn30duquw05" path="res://src/player/note_player.tscn" id="6_nyeq5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwsqs"]
 

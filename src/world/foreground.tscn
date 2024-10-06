@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://mdcmmncqs1fk"]
+
+[ext_resource type="Texture2D" uid="uid://c5mwjfbdqq1tj" path="res://assets/mockup.png" id="1_h31br"]
+
+[node name="Foreground" type="Parallax2D"]
+scroll_scale = Vector2(2, 2)
+repeat_size = Vector2(1200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(600, 448)
+texture = ExtResource("1_h31br")
+region_enabled = true
+region_rect = Rect2(0, 2632, 1200, 896)

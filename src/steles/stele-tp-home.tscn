@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk0tl6edk0ikp"]
+
+[ext_resource type="Script" path="res://src/steles/stele_tp.gd" id="1_pvyvw"]
+[ext_resource type="Texture2D" uid="uid://3j42xgrwf17h" path="res://david/Capture d’écran 2024-10-05 à 21.56.15.png" id="2_81tb1"]
+[ext_resource type="Texture2D" uid="uid://c8to80yemtmue" path="res://david/Capture d’écran 2024-10-05 à 21.56.55.png" id="3_rosbp"]
+[ext_resource type="Texture2D" uid="uid://be6q3osg7xh3r" path="res://david/Capture d’écran 2024-10-05 à 21.56.42.png" id="4_ljwsg"]
+[ext_resource type="Texture2D" uid="uid://bgvfks4dblnyh" path="res://david/Capture d’écran 2024-10-05 à 21.58.22.png" id="5_6m0ox"]
+
+[node name="SteleHome" type="Node2D"]
+script = ExtResource("1_pvyvw")
+
+[node name="A" type="Sprite2D" parent="."]
+position = Vector2(14, 10)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_81tb1")
+
+[node name="D" type="Sprite2D" parent="."]
+position = Vector2(27, -20)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_rosbp")
+
+[node name="B" type="Sprite2D" parent="."]
+position = Vector2(54, -24)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_ljwsg")
+
+[node name="C" type="Sprite2D" parent="."]
+position = Vector2(73, 10)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_6m0ox")

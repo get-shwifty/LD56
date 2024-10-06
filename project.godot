@@ -15,14 +15,14 @@ run/main_scene="res://main_david.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[display]
-
-window/stretch/mode="canvas_items"
-
 [autoload]
 
 Settings="*res://scripts/settings.gd"
 Global="*res://scripts/global.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 
