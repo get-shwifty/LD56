@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://map.gd" id="1_3o4ls"]
 [ext_resource type="PackedScene" uid="uid://crgglybn8yjlt" path="res://src/world/background.tscn" id="2_ajlx8"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="2_fksup"]
-[ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_2nev3"]
+[ext_resource type="PackedScene" uid="uid://ouk4rqkp0lpr" path="res://src/world/world_3.tscn" id="4_76213"]
 [ext_resource type="PackedScene" uid="uid://mdcmmncqs1fk" path="res://src/world/foreground.tscn" id="7_wjn0m"]
 
 [node name="Main" type="Node2D"]
@@ -16,7 +16,7 @@ scroll_offset = Vector2(-888, -165)
 [node name="Background" parent="." instance=ExtResource("2_ajlx8")]
 scroll_offset = Vector2(-114, -277)
 
-[node name="World2" parent="." instance=ExtResource("4_2nev3")]
+[node name="World3" parent="." instance=ExtResource("4_76213")]
 
 [node name="Player" parent="." instance=ExtResource("2_fksup")]
 position = Vector2(628, 594)
