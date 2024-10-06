@@ -164,3 +164,4 @@ scale = Vector2(0.25, 0.375)
 texture = ExtResource("1_v8so5")
 
 [node name="MusicBox" parent="." instance=ExtResource("3_wcxlj")]
+position = Vector2(0, -24)
