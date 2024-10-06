@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://7yggfxcfr4b8"]
+[gd_scene load_steps=6 format=3 uid="uid://7yggfxcfr4b8"]
 
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="1_2xqk5"]
 [ext_resource type="PackedScene" uid="uid://crgglybn8yjlt" path="res://src/world/background.tscn" id="2_ajlx8"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="2_fksup"]
 [ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_2nev3"]
 [ext_resource type="PackedScene" uid="uid://mdcmmncqs1fk" path="res://src/world/foreground.tscn" id="7_wjn0m"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lac00"]
-size = Vector2(20, 115)
 
 [node name="Main" type="Node2D"]
 
@@ -21,16 +18,8 @@ scroll_offset = Vector2(-114, -277)
 
 [node name="Player" parent="." instance=ExtResource("2_fksup")]
 position = Vector2(628, 594)
-CAM_LOOKAHEAD = 0.0
+RUN_SPEED = 240.0
+JUMP_HEIGHT = 60.0
 
 [node name="Foreground" parent="." instance=ExtResource("7_wjn0m")]
 scroll_offset = Vector2(3, 231)
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(715, 475)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 86.5)
-shape = SubResource("RectangleShape2D_lac00")
