@@ -23,19 +23,19 @@ var buffer_frame = 0
 var played = ""
 var can_play = true
 var buffer_interval = 10 # frames
-var music_timout = 60 # frames
+var music_timout = 60*3 # frames
 var music_frame = 0
 
 func _physics_process(delta):
 	if not can_play:
 		return
-	if Input.is_action_just_pressed("a"):
+	if Input.is_action_just_pressed("a") or (Input.is_action_pressed("sing") and Input.is_action_just_pressed("left")):
 		buffer.append("A")
-	if Input.is_action_just_pressed("b"):
+	if Input.is_action_just_pressed("b") or (Input.is_action_pressed("sing") and Input.is_action_just_pressed("up")):
 		buffer.append("B")
-	if Input.is_action_just_pressed("c"):
+	if Input.is_action_just_pressed("c") or (Input.is_action_pressed("sing") and Input.is_action_just_pressed("right")):
 		buffer.append("C")
-	if Input.is_action_just_pressed("d"):
+	if Input.is_action_just_pressed("d") or (Input.is_action_pressed("sing") and Input.is_action_just_pressed("down")):
 		buffer.append("D")
 	
 	if has_buffer() and buffer_wait():
@@ -85,7 +85,7 @@ func check_finished_music():
 			music_frame = 0
 
 func is_music_finished(melodie):
-	return played == melodie
+	return played.ends_with(melodie)
 	
 func notify_song(list: String):
 	played = list
