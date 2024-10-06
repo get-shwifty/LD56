@@ -19,6 +19,7 @@ func activate():
 	$Champi.play("on")
 	$Ground/CollisionShape2D.disabled = false
 	$Timer.start()
+	$AudioStreamPlayer2D.play()
 	
 func deactivate():
 	$Champi.play("off")
