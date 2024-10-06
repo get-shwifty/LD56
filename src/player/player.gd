@@ -26,6 +26,8 @@ const RUN_MAX_ACC := 10000.0
 ### Camera
 @export_range(0, 100, 1) var CAM_LOOKAHEAD := 0.0
 
+@onready var NOTE = preload("/Users/david/LD56/src/player/note_particle.tscn")
+
 var was_on_floor := false
 var last_fallspeed_in_air := 0.0
 var coyote_time := 0.0
@@ -178,4 +180,7 @@ func is_on_ladder():
 	return false
 	
 func play_note(note: String):
-	pass
+	var res = NOTE.instantiate()
+	res.note = note
+	res.global_position = %NoteSpawner.global_position
+	Global.projectile_container.add_child(res)

@@ -19,6 +19,11 @@ func on_song(song: String):
 		runes_sprites[i].on()
 	for i in range(index, max_i):
 		runes_sprites[i].off()
+	
+	if index == max_i:
+		$Stelle.open()
+	else:
+		$Stelle.close()
 		
 func on_song_finished(name: String):
 	pass

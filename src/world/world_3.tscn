@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://ouk4rqkp0lpr"]
+[gd_scene load_steps=18 format=4 uid="uid://ouk4rqkp0lpr"]
 
 [ext_resource type="Texture2D" uid="uid://dl28akj35wb2b" path="res://david/second-tileset.png" id="1_g6s2q"]
 [ext_resource type="PackedScene" uid="uid://svgdx0tybiqd" path="res://src/platformes/short.tscn" id="2_v7ivw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dveggny3f5kk5" path="res://src/platformes/short-luciole.tscn" id="4_yqmbh"]
 [ext_resource type="Texture2D" uid="uid://c8mwmksg1jykm" path="res://david/placeholder-tileset-Sheet2.png" id="5_wuf3y"]
 [ext_resource type="PackedScene" uid="uid://8js4uaeh0bsi" path="res://src/steles/stele-tuto-home.tscn" id="6_f4m6l"]
+[ext_resource type="PackedScene" uid="uid://7vfidbeug4m7" path="res://src/steles/stele-tuto-shroom.tscn" id="7_03ynl"]
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="7_gatqw"]
 [ext_resource type="PackedScene" uid="uid://cbqtdmho7rvpe" path="res://src/ladder.tscn" id="8_8ptg7"]
 [ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="9_nd5a8"]
@@ -521,6 +522,9 @@ tile_set = SubResource("TileSet_l3fxt")
 
 [node name="SteleTutoHome" parent="Steles" instance=ExtResource("6_f4m6l")]
 position = Vector2(1014, 869)
+
+[node name="SteleTutoShroom" parent="Steles" instance=ExtResource("7_03ynl")]
+position = Vector2(624, 582)
 
 [node name="champi" type="Node2D" parent="."]
 
