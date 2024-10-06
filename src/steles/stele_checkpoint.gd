@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var action = "mushroom"
+@export var action = "checkpoint"
 
 @onready var runes_sprites = $runes.get_children()
 @onready var song_activation = Settings.songs[action]
@@ -17,13 +17,12 @@ func on_song(song: String):
 			break
 		runes_sprites[i].on()
 		i += 1
-		if i == len(song_activation):
-			$Stelle.open()
 	while i < len(song_activation):
-		$Stelle.close()
 		runes_sprites[i].off()
 		i += 1
 		
 func on_song_finished(name: String):
-	pass
+	if name == action:
+		var player = Global.player
+		player.teleport(global_position)
 		

@@ -1,43 +1,31 @@
 [gd_scene load_steps=5 format=3 uid="uid://bo74cfhrjn5b3"]
 
 [ext_resource type="Script" path="res://src/reactives/reactive_mushroom.gd" id="1_ei4v8"]
-[ext_resource type="Texture2D" uid="uid://dsjm0i3b38fy6" path="res://icon.svg" id="2_82uqi"]
+[ext_resource type="PackedScene" uid="uid://dooukoeo0o7ei" path="res://src/reactives/champi.tscn" id="2_xngt5"]
 [ext_resource type="PackedScene" uid="uid://h1cddxillf0g" path="res://src/reactives/reactive_component.tscn" id="3_2adfg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o05xm"]
-size = Vector2(128, 111.085)
+size = Vector2(27.7778, 58.6669)
 
 [node name="ReactiveMushroom" type="Node2D"]
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_ei4v8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(0, -64)
-texture = ExtResource("2_82uqi")
-
-[node name="Disabled" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(-3.8147e-06, -128)
-scale = Vector2(1.25, 0.25)
-texture = ExtResource("2_82uqi")
-
-[node name="Activated" type="Sprite2D" parent="."]
-position = Vector2(0, -128)
-scale = Vector2(2.16, 0.165337)
-texture = ExtResource("2_82uqi")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Activated"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Activated/StaticBody2D"]
-position = Vector2(7.94728e-07, 3.12439)
-shape = SubResource("RectangleShape2D_o05xm")
-one_way_collision = true
+[node name="Champi" parent="." instance=ExtResource("2_xngt5")]
 
 [node name="ReactiveComponent" parent="." instance=ExtResource("3_2adfg")]
 scale = Vector2(7, 7)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(2.16, 0.165337)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-1.03609e-06, 29.3334)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_o05xm")
+one_way_collision = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

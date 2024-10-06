@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://7yggfxcfr4b8"]
+[gd_scene load_steps=7 format=3 uid="uid://7yggfxcfr4b8"]
 
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="1_2xqk5"]
+[ext_resource type="Script" path="res://map.gd" id="1_3o4ls"]
 [ext_resource type="PackedScene" uid="uid://crgglybn8yjlt" path="res://src/world/background.tscn" id="2_ajlx8"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="2_fksup"]
 [ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_2nev3"]
 [ext_resource type="PackedScene" uid="uid://mdcmmncqs1fk" path="res://src/world/foreground.tscn" id="7_wjn0m"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_3o4ls")
 
 [node name="Sky" parent="." instance=ExtResource("1_2xqk5")]
 scroll_offset = Vector2(-888, -165)
@@ -23,3 +25,5 @@ JUMP_HEIGHT = 60.0
 
 [node name="Foreground" parent="." instance=ExtResource("7_wjn0m")]
 scroll_offset = Vector2(3, 231)
+
+[node name="Projectiles" type="Node2D" parent="."]

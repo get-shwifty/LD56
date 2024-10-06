@@ -1,30 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk0tl6edk0ikp"]
+[gd_scene load_steps=7 format=3 uid="uid://bk0tl6edk0ikp"]
 
 [ext_resource type="Script" path="res://src/steles/stele_tp.gd" id="1_pvyvw"]
-[ext_resource type="Texture2D" uid="uid://3j42xgrwf17h" path="res://david/Capture d’écran 2024-10-05 à 21.56.15.png" id="2_81tb1"]
-[ext_resource type="Texture2D" uid="uid://c8to80yemtmue" path="res://david/Capture d’écran 2024-10-05 à 21.56.55.png" id="3_rosbp"]
-[ext_resource type="Texture2D" uid="uid://be6q3osg7xh3r" path="res://david/Capture d’écran 2024-10-05 à 21.56.42.png" id="4_ljwsg"]
-[ext_resource type="Texture2D" uid="uid://bgvfks4dblnyh" path="res://david/Capture d’écran 2024-10-05 à 21.58.22.png" id="5_6m0ox"]
+[ext_resource type="PackedScene" uid="uid://mfq861qjekus" path="res://src/reactives/tp.tscn" id="2_t8hii"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/left_rune.tscn" id="3_svotn"]
+[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/right_rune.tscn" id="4_k56jb"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/top_rune.tscn" id="5_ahgo5"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/bottom_rune.tscn" id="6_4eedx"]
 
 [node name="SteleHome" type="Node2D"]
 script = ExtResource("1_pvyvw")
 
-[node name="A" type="Sprite2D" parent="."]
-position = Vector2(14, 10)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_81tb1")
+[node name="TP" parent="." instance=ExtResource("2_t8hii")]
+position = Vector2(5, 7)
 
-[node name="D" type="Sprite2D" parent="."]
-position = Vector2(27, -20)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_rosbp")
+[node name="runes" type="Node2D" parent="."]
 
-[node name="B" type="Sprite2D" parent="."]
-position = Vector2(54, -24)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_ljwsg")
+[node name="left-rune" parent="runes" instance=ExtResource("3_svotn")]
+position = Vector2(-29, 11)
 
-[node name="C" type="Sprite2D" parent="."]
-position = Vector2(73, 10)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_6m0ox")
+[node name="right-rune" parent="runes" instance=ExtResource("4_k56jb")]
+position = Vector2(-26, -31)
+
+[node name="top-rune" parent="runes" instance=ExtResource("5_ahgo5")]
+position = Vector2(9, -42)
+
+[node name="bottom-rune" parent="runes" instance=ExtResource("6_4eedx")]
+position = Vector2(37, -10)

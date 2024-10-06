@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb1utdis0nury"]
+
+[ext_resource type="Script" path="res://src/spawners/interval_spawner.gd" id="1_yx030"]
+[ext_resource type="PackedScene" uid="uid://s7o6a1v2l1el" path="res://src/spawners/fall_projectile.tscn" id="2_5j4q1"]
+
+[node name="IntervalSpawner" type="Node2D"]
+script = ExtResource("1_yx030")
+projectile = ExtResource("2_5j4q1")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

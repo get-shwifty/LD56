@@ -16,13 +16,13 @@ func on_song_finished(name: String):
 	
 
 func activate():
-	$Activated.show()
-	$Activated/StaticBody2D/CollisionShape2D.disabled = false
+	$Champi.play("on")
+	$Ground/CollisionShape2D.disabled = false
 	$Timer.start()
 	
 func deactivate():
-	$Activated.hide()
-	$Activated/StaticBody2D/CollisionShape2D.disabled = true
+	$Champi.play("off")
+	$Ground/CollisionShape2D.disabled = true
 
 
 func _on_timer_timeout():

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddlddtndf0an1"]
+
+[ext_resource type="Texture2D" uid="uid://dp87laiciayrf" path="res://david/runes.png" id="1_28qst"]
+[ext_resource type="Script" path="res://src/steles/rune.gd" id="2_42o7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aai77"]
+atlas = ExtResource("1_28qst")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8tvv"]
+atlas = ExtResource("1_28qst")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ft56p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aai77")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8tvv")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="left-rune" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ft56p")
+animation = &"off"
+script = ExtResource("2_42o7i")
