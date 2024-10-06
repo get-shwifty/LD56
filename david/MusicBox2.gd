@@ -29,13 +29,13 @@ var music_frame = 0
 func _physics_process(delta):
 	if not can_play:
 		return
-	if Input.is_action_just_pressed("a"):
+	if Input.is_action_just_pressed("a") or (Input.is_action_pressed("sing") and Input.is_action_just_pressed("left")):
 		buffer.append("A")
-	if Input.is_action_just_pressed("b"):
+	if Input.is_action_just_pressed("b") or (Input.is_action_pressed("sing") and Input.is_action_just_pressed("up")):
 		buffer.append("B")
-	if Input.is_action_just_pressed("c"):
+	if Input.is_action_just_pressed("c") or (Input.is_action_pressed("sing") and Input.is_action_just_pressed("right")):
 		buffer.append("C")
-	if Input.is_action_just_pressed("d"):
+	if Input.is_action_just_pressed("d") or (Input.is_action_pressed("sing") and Input.is_action_just_pressed("down")):
 		buffer.append("D")
 	
 	if has_buffer() and buffer_wait():
