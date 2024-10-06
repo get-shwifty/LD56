@@ -3,5 +3,6 @@ extends Node
 var songs: Dictionary = {
 	"light": "ABCD",
 	"fly": "BBAA",
-	"damage": "CDBA"
+	"damage": "CDBA",
+	"home": "ADBC"
 }

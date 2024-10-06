@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dek60s6gt86gv"]
+
+[ext_resource type="Texture2D" uid="uid://dsjm0i3b38fy6" path="res://icon.svg" id="1_jwuop"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nud0"]
+radius = 57.02
+
+[node name="SteleHomeHint" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-19, -38)
+shape = SubResource("CircleShape2D_5nud0")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.482013, 0.236898, 0.0994174, 1)
+position = Vector2(-1.69407e-21, -18)
+scale = Vector2(0.12, 0.280001)
+texture = ExtResource("1_jwuop")

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 ### Running
 @export var RUN_SPEED := 260.0 # px/s
@@ -30,6 +31,9 @@ var last_fallspeed_in_air := 0.0
 var coyote_time := 0.0
 var jump_buffer := 0.0
 
+func _ready():
+	Global.player = self
+
 func lerp_value(base100, min_value, max_value, power=2, inverted=false) -> float:
 	var value = (base100 / 100.0)
 	if inverted:
@@ -59,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_time -= delta
 	
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("up"):
 		jump_buffer = JUMP_BUFFER
 	else:
 		jump_buffer -= delta
@@ -68,14 +72,14 @@ func _physics_process(delta: float) -> void:
 		jump_buffer = 0
 		velocity.y = -2.0 * JUMP_HEIGHT / JUMP_TIME
 		on_jump()
-	elif Input.is_action_just_released("ui_up") and velocity.y < 0:
+	elif Input.is_action_just_released("up") and velocity.y < 0:
 		velocity.y *= lerp_value(JUMP_CUTOFF, 0.0, 1.0, 1, true)
-	elif is_on_floor() and Input.is_action_pressed("ui_down"):
+	elif is_on_floor() and Input.is_action_pressed("down"):
 		position.y += 1
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("left", "right")
 	if direction:
 		var acceleration_factor = lerp_value(RUN_ACCELERATION, 0.0, RUN_MAX_ACC)
 		
@@ -126,3 +130,8 @@ func on_run():
 	%AnimatedSprite2D.scale.x = sign(velocity.x)
 	$AnimationPlayer.play("run")
 	$Visual.skew = -velocity.x / RUN_SPEED * deg_to_rad(1)
+	
+func teleport(position: Vector2):
+	global_position = position
+	was_on_floor = true
+	velocity = Vector2.ZERO
