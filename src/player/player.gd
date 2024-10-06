@@ -26,7 +26,6 @@ const RUN_MAX_ACC := 10000.0
 ### Camera
 @export_range(0, 100, 1) var CAM_LOOKAHEAD := 0.0
 
-var was_on_floor := false
 var last_fallspeed_in_air := 0.0
 var coyote_time := 0.0
 var jump_buffer := 0.0
@@ -71,7 +70,6 @@ func _physics_process(delta: float) -> void:
 
 	if state == JUMP and is_on_floor():
 		set_state(IDLE)
-	was_on_floor = is_on_floor()
 
 	# Handle jump
 
@@ -84,20 +82,40 @@ func _physics_process(delta: float) -> void:
 		jump_buffer = JUMP_BUFFER
 	else:
 		jump_buffer -= delta
-
-	if jump_buffer > 0 and coyote_time > 0:
-		jump_buffer = 0
-		velocity.y = -2.0 * JUMP_HEIGHT / JUMP_TIME
-		set_state(JUMP)
-	elif can_input and Input.is_action_just_released("up") and velocity.y < 0:
-		velocity.y *= lerp_value(JUMP_CUTOFF, 0.0, 1.0, 1, true)
-	elif can_input and is_on_floor() and Input.is_action_pressed("down"):
-		position.y += 1
+	
+	# rebound
+	
+	if state != JUMP:
+		var rebound_vector = null
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+			if collider is StaticBody2D:
+				if collider.get_collision_layer_value(4):
+					rebound_vector = collision.get_normal()
+					break
+		
+		if rebound_vector:
+			jump_buffer = 0
+			velocity = rebound_vector * 2.0 * JUMP_HEIGHT / JUMP_TIME
+			set_state(JUMP)
+		else:
+			if jump_buffer > 0 and coyote_time > 0:
+				jump_buffer = 0
+				velocity.y = -2.0 * JUMP_HEIGHT / JUMP_TIME
+				set_state(JUMP)
+			elif can_input and Input.is_action_just_released("up") and velocity.y < 0:
+				velocity.y *= lerp_value(JUMP_CUTOFF, 0.0, 1.0, 1, true)
+			elif can_input and is_on_floor() and Input.is_action_pressed("down"):
+				position.y += 1
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right") if can_input else 0.0
 	if direction:
+		%AnimatedSprite2D.scale.x = sign(velocity.x)
+		%AnimatedSprite2D2.scale.x = sign(velocity.x)
+	
 		var acceleration_factor = lerp_value(RUN_ACCELERATION, 0.0, RUN_MAX_ACC)
 		
 		if sign(direction) != sign(velocity.x):
@@ -158,9 +176,7 @@ func on_idle():
 
 func on_run():
 	%AnimatedSprite2D.play("run")
-	%AnimatedSprite2D.scale.x = sign(velocity.x)
 	%AnimatedSprite2D2.play("run")
-	%AnimatedSprite2D2.scale.x = sign(velocity.x)
 	$AnimationPlayer.play("run")
 	$Visual.skew = -velocity.x / RUN_SPEED * deg_to_rad(1)
 	if not $AudioRun.playing:
@@ -168,7 +184,7 @@ func on_run():
 	
 func teleport(position: Vector2):
 	global_position = position
-	was_on_floor = true
+	state = IDLE
 	velocity = Vector2.ZERO
 
 func is_on_ladder():

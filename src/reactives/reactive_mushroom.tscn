@@ -21,10 +21,10 @@ wait_time = 3.0
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, -20)
 scale = Vector2(2.16, 0.165337)
+collision_layer = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(-1.03609e-06, 29.3334)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_o05xm")
 one_way_collision = true
 
