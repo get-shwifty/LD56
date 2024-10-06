@@ -31,8 +31,24 @@ var last_fallspeed_in_air := 0.0
 var coyote_time := 0.0
 var jump_buffer := 0.0
 
+enum { IDLE, RUN, JUMP }
+var state = IDLE
+
 func _ready():
 	Global.player = self
+
+func set_state(new_state):
+	if state == new_state:
+		return
+
+	if state == JUMP and new_state == IDLE:
+		on_land()
+
+	state = new_state
+	match state:
+		IDLE: on_idle()
+		RUN: on_run()
+		JUMP: on_jump()
 
 func lerp_value(base100, min_value, max_value, power=2, inverted=false) -> float:
 	var value = (base100 / 100.0)
@@ -52,8 +68,8 @@ func _physics_process(delta: float) -> void:
 			velocity.y = FALL_MAX_SPEED
 		last_fallspeed_in_air = velocity.y
 
-	if not was_on_floor and is_on_floor():
-		on_land()
+	if state == JUMP and is_on_floor():
+		set_state(IDLE)
 	was_on_floor = is_on_floor()
 
 	# Handle jump
@@ -71,7 +87,7 @@ func _physics_process(delta: float) -> void:
 	if jump_buffer > 0 and coyote_time > 0:
 		jump_buffer = 0
 		velocity.y = -2.0 * JUMP_HEIGHT / JUMP_TIME
-		on_jump()
+		set_state(JUMP)
 	elif Input.is_action_just_released("up") and velocity.y < 0:
 		velocity.y *= lerp_value(JUMP_CUTOFF, 0.0, 1.0, 1, true)
 	elif is_on_floor() and Input.is_action_pressed("down"):
@@ -94,10 +110,12 @@ func _physics_process(delta: float) -> void:
 		if abs(velocity.x) > RUN_SPEED:
 			velocity.x = RUN_SPEED * sign(velocity.x)
 		
-		on_run()
+		if state == IDLE:
+			set_state(RUN)
 	else:
 		velocity.x = move_toward(velocity.x, 0, lerp_value(RUN_DECELERATION, 0.0, RUN_MAX_ACC) * delta)
-		on_idle()
+		if state == RUN:
+			set_state(IDLE)
 		
 	
 	if is_on_ladder() and Input.is_action_pressed("up"):
@@ -127,23 +145,28 @@ func on_land():
 func on_jump():
 	%AnimatedSprite2D.play("jump")
 	$AnimationPlayer.play("RESET")
+	$AudioJump.play()
+	$AudioRun.stop()
 
 func on_idle():
 	%AnimatedSprite2D.play("idle")
 	$AnimationPlayer.play("RESET")
 	$Visual.skew = 0
+	$AudioRun.stop()
 
 func on_run():
 	%AnimatedSprite2D.play("run")
 	%AnimatedSprite2D.scale.x = sign(velocity.x)
 	$AnimationPlayer.play("run")
 	$Visual.skew = -velocity.x / RUN_SPEED * deg_to_rad(1)
+	if not $AudioRun.playing:
+		$AudioRun.play()
 	
 func teleport(position: Vector2):
 	global_position = position
 	was_on_floor = true
 	velocity = Vector2.ZERO
-	
+
 func is_on_ladder():
 	var areas = $LadderDetection.get_overlapping_areas()
 	if len(areas):
