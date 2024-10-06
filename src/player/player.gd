@@ -98,6 +98,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, lerp_value(RUN_DECELERATION, 0.0, RUN_MAX_ACC) * delta)
 		on_idle()
+		
+	
+	if is_on_ladder() and Input.is_action_pressed("up"):
+		velocity.y = -RUN_SPEED
+	elif is_on_ladder() and Input.is_action_pressed("down"):
+		velocity.y = RUN_SPEED
+	elif is_on_ladder():
+		velocity.y = 0
 
 	move_and_slide()
 	$Camera2D.position.x = lerp_value(CAM_LOOKAHEAD, 0.0, velocity.x)
@@ -135,3 +143,9 @@ func teleport(position: Vector2):
 	global_position = position
 	was_on_floor = true
 	velocity = Vector2.ZERO
+	
+func is_on_ladder():
+	var areas = $Area2D.get_overlapping_areas()
+	if len(areas):
+		return true
+	return false

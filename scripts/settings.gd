@@ -5,5 +5,6 @@ var songs: Dictionary = {
 	"fly": "BBAA",
 	"damage": "CDBA",
 	"home": "ADBC",
-	"mushroom": "ACAB"
+	"mushroom": "ACAB",
+	"ladder": "DDD"
 }

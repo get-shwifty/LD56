@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hg8p4"]
 [ext_resource type="Texture2D" uid="uid://dsjm0i3b38fy6" path="res://icon.svg" id="1_v8so5"]
-[ext_resource type="PackedScene" path="res://src/player/music_box.tscn" id="3_wcxlj"]
+[ext_resource type="PackedScene" uid="uid://ddmwd0kfxmq07" path="res://src/player/music_box.tscn" id="3_wcxlj"]
 [ext_resource type="Texture2D" uid="uid://1l12ns1yj41j" path="res://assets/perso.png" id="4_cnnc1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oed0"]
@@ -117,8 +117,8 @@ shape = SubResource("CapsuleShape2D_8oed0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -100)
-process_callback = 0
 zoom = Vector2(2, 2)
+process_callback = 0
 
 [node name="Icon" type="Sprite2D" parent="."]
 visible = false
@@ -126,8 +126,6 @@ position = Vector2(0, -23.2732)
 scale = Vector2(0.25, 0.375)
 texture = ExtResource("1_v8so5")
 vframes = 2
-
-[node name="MusicBox" parent="." instance=ExtResource("3_wcxlj")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
