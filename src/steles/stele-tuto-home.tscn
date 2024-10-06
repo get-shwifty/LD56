@@ -15,13 +15,13 @@ action = "home"
 
 [node name="runes" type="Node2D" parent="."]
 
-[node name="top-rune" parent="runes" instance=ExtResource("3_r3abx")]
-position = Vector2(2, -26)
-
 [node name="left-rune" parent="runes" instance=ExtResource("6_3xrkp")]
-position = Vector2(2, -10)
+position = Vector2(1, -29)
 
 [node name="right-rune" parent="runes" instance=ExtResource("4_6ub1m")]
+position = Vector2(2, -11)
+
+[node name="top-rune" parent="runes" instance=ExtResource("3_r3abx")]
 position = Vector2(2, 8)
 
 [node name="bottom-rune" parent="runes" instance=ExtResource("5_bcn0b")]

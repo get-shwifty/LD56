@@ -23,7 +23,7 @@ var buffer_frame = 0
 var played = ""
 var can_play = true
 var buffer_interval = 10 # frames
-var music_timout = 60 # frames
+var music_timout = 60*3 # frames
 var music_frame = 0
 
 func _physics_process(delta):
