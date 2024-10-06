@@ -1,18 +1,18 @@
-[gd_scene load_steps=17 format=4 uid="uid://f2mbdfdom55u"]
+[gd_scene load_steps=17 format=4 uid="uid://ouk4rqkp0lpr"]
 
-[ext_resource type="Texture2D" uid="uid://c8mwmksg1jykm" path="res://david/placeholder-tileset-Sheet2.png" id="1_u28a4"]
-[ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="2_cilhj"]
-[ext_resource type="Texture2D" uid="uid://dl28akj35wb2b" path="res://david/second-tileset.png" id="2_lqnq0"]
-[ext_resource type="PackedScene" uid="uid://svgdx0tybiqd" path="res://src/platformes/short.tscn" id="2_wp8fk"]
-[ext_resource type="PackedScene" uid="uid://mypoxjhtpm5p" path="res://src/platformes/middle.tscn" id="3_oand2"]
-[ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="4_2qash"]
-[ext_resource type="PackedScene" uid="uid://dveggny3f5kk5" path="res://src/platformes/short-luciole.tscn" id="4_ipd44"]
-[ext_resource type="PackedScene" uid="uid://8js4uaeh0bsi" path="res://src/steles/stele-tuto-home.tscn" id="6_j1pua"]
-[ext_resource type="PackedScene" uid="uid://cbqtdmho7rvpe" path="res://src/ladder.tscn" id="7_hqpe0"]
-[ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="11_w5p44"]
+[ext_resource type="Texture2D" uid="uid://dl28akj35wb2b" path="res://david/second-tileset.png" id="1_g6s2q"]
+[ext_resource type="PackedScene" uid="uid://svgdx0tybiqd" path="res://src/platformes/short.tscn" id="2_v7ivw"]
+[ext_resource type="PackedScene" uid="uid://mypoxjhtpm5p" path="res://src/platformes/middle.tscn" id="3_0g1qm"]
+[ext_resource type="PackedScene" uid="uid://dveggny3f5kk5" path="res://src/platformes/short-luciole.tscn" id="4_yqmbh"]
+[ext_resource type="Texture2D" uid="uid://c8mwmksg1jykm" path="res://david/placeholder-tileset-Sheet2.png" id="5_wuf3y"]
+[ext_resource type="PackedScene" uid="uid://8js4uaeh0bsi" path="res://src/steles/stele-tuto-home.tscn" id="6_f4m6l"]
+[ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="7_gatqw"]
+[ext_resource type="PackedScene" uid="uid://cbqtdmho7rvpe" path="res://src/ladder.tscn" id="8_8ptg7"]
+[ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="9_nd5a8"]
+[ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="10_gh6kn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lcrv6"]
-texture = ExtResource("2_lqnq0")
+texture = ExtResource("1_g6s2q")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -103,12 +103,12 @@ sources/1 = SubResource("TileSetAtlasSource_lcrv6")
 tile_data = PackedInt32Array(65536, 262144, 2, 131072, 262144, 2, 4, 262144, 2, 262148, 262144, 2)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2bfh8"]
-scenes/1/scene = ExtResource("2_wp8fk")
-scenes/2/scene = ExtResource("3_oand2")
-scenes/3/scene = ExtResource("4_ipd44")
+scenes/1/scene = ExtResource("2_v7ivw")
+scenes/2/scene = ExtResource("3_0g1qm")
+scenes/3/scene = ExtResource("4_yqmbh")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i8whn"]
-texture = ExtResource("1_u28a4")
+texture = ExtResource("5_wuf3y")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -519,37 +519,37 @@ tile_set = SubResource("TileSet_l3fxt")
 
 [node name="Steles" type="Node2D" parent="."]
 
-[node name="SteleTutoHome" parent="Steles" instance=ExtResource("6_j1pua")]
+[node name="SteleTutoHome" parent="Steles" instance=ExtResource("6_f4m6l")]
 position = Vector2(1014, 869)
 
 [node name="champi" type="Node2D" parent="."]
 
-[node name="ReactiveMushroom" parent="champi" instance=ExtResource("4_2qash")]
+[node name="ReactiveMushroom" parent="champi" instance=ExtResource("7_gatqw")]
 position = Vector2(1041, 665)
 
-[node name="ReactiveMushroom5" parent="champi" instance=ExtResource("4_2qash")]
+[node name="ReactiveMushroom5" parent="champi" instance=ExtResource("7_gatqw")]
 position = Vector2(1306, 705)
 
-[node name="ReactiveMushroom3" parent="champi" instance=ExtResource("4_2qash")]
+[node name="ReactiveMushroom3" parent="champi" instance=ExtResource("7_gatqw")]
 position = Vector2(1261, 746)
 
-[node name="ReactiveMushroom4" parent="champi" instance=ExtResource("4_2qash")]
+[node name="ReactiveMushroom4" parent="champi" instance=ExtResource("7_gatqw")]
 position = Vector2(1306, 782)
 
-[node name="ReactiveMushroom6" parent="champi" instance=ExtResource("4_2qash")]
+[node name="ReactiveMushroom6" parent="champi" instance=ExtResource("7_gatqw")]
 position = Vector2(1261, 829)
 
 [node name="ladders" type="Node2D" parent="."]
 
-[node name="Ladder" parent="ladders" instance=ExtResource("7_hqpe0")]
+[node name="Ladder" parent="ladders" instance=ExtResource("8_8ptg7")]
 position = Vector2(475, 509)
 
 [node name="Spawners" type="Node2D" parent="."]
 
-[node name="IntervalSpawner" parent="Spawners" instance=ExtResource("11_w5p44")]
+[node name="IntervalSpawner" parent="Spawners" instance=ExtResource("9_nd5a8")]
 position = Vector2(791, 361)
 
 [node name="TP" type="Node2D" parent="."]
 
-[node name="SteleHome" parent="TP" instance=ExtResource("2_cilhj")]
+[node name="SteleHome" parent="TP" instance=ExtResource("10_gh6kn")]
 position = Vector2(774, 583)

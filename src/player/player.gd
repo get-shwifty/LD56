@@ -124,7 +124,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = RUN_SPEED
 	elif is_on_ladder():
 		velocity.y = 0
-
 	move_and_slide()
 	$Camera2D.position.x = lerp_value(CAM_LOOKAHEAD, 0.0, velocity.x)
 
