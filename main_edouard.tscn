@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbpe8rsyq6hyq"]
+
+[ext_resource type="Script" path="res://map.gd" id="1_h41kr"]
+[ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_4bwvj"]
+[ext_resource type="PackedScene" uid="uid://crgglybn8yjlt" path="res://src/world/background.tscn" id="3_i6vfy"]
+[ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_nbj0m"]
+[ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_ww6j6"]
+[ext_resource type="PackedScene" uid="uid://mdcmmncqs1fk" path="res://src/world/foreground.tscn" id="6_k6qh5"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_h41kr")
+
+[node name="Sky" parent="." instance=ExtResource("2_4bwvj")]
+scroll_offset = Vector2(-888, -165)
+
+[node name="Background" parent="." instance=ExtResource("3_i6vfy")]
+scroll_offset = Vector2(-114, -277)
+
+[node name="World2" parent="." instance=ExtResource("4_nbj0m")]
+
+[node name="Player" parent="." instance=ExtResource("5_ww6j6")]
+position = Vector2(628, 594)
+RUN_SPEED = 240.0
+JUMP_HEIGHT = 60.0
+
+[node name="Foreground" parent="." instance=ExtResource("6_k6qh5")]
+scroll_offset = Vector2(3, 231)
+
+[node name="Projectiles" type="Node2D" parent="."]
