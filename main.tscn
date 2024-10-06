@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cytojbecmiun1"]
 
-[ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player.tscn" id="1_w8u5x"]
+[ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="1_w8u5x"]
 [ext_resource type="PackedScene" uid="uid://dljuk7fm1akkj" path="res://tmp_platform.tscn" id="2_diwen"]
-[ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactive_mushroom.tscn" id="3_afgxt"]
+[ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="3_afgxt"]
 [ext_resource type="Texture2D" uid="uid://c5mwjfbdqq1tj" path="res://assets/mockup.png" id="3_rpaqr"]
 
 [sub_resource type="TileSet" id="TileSet_1wepn"]
