@@ -1,141 +1,112 @@
-[gd_scene load_steps=17 format=3 uid="uid://bk1ofwjmh8v4t"]
+[gd_scene load_steps=16 format=3 uid="uid://bk1ofwjmh8v4t"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_hg8p4"]
 [ext_resource type="Texture2D" uid="uid://dsjm0i3b38fy6" path="res://icon.svg" id="1_v8so5"]
-[ext_resource type="PackedScene" uid="uid://ddmwd0kfxmq07" path="res://src/music_box.tscn" id="3_wcxlj"]
+[ext_resource type="PackedScene" path="res://src/music_box.tscn" id="3_wcxlj"]
+[ext_resource type="Texture2D" uid="uid://1l12ns1yj41j" path="res://assets/perso.png" id="4_cnnc1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oed0"]
 radius = 16.0
 height = 48.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hkqre"]
-animation = &"idle"
+[sub_resource type="Animation" id="Animation_vf5hf"]
+resource_name = "run"
+length = 0.166
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.166),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 0)]
+}
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_birgq"]
-animation = &"jump"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l80ns"]
-animation = &"land"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sclcg"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ewqci"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t66v6"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ccqtq"]
-states/Start/position = Vector2(332, 99.875)
-states/idle/node = SubResource("AnimationNodeAnimation_hkqre")
-states/idle/position = Vector2(460.5, 99.75)
-states/jump/node = SubResource("AnimationNodeAnimation_birgq")
-states/jump/position = Vector2(610, 63)
-states/land/node = SubResource("AnimationNodeAnimation_l80ns")
-states/land/position = Vector2(609.25, 149.5)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_sclcg"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_ewqci"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_t66v6")]
-
-[sub_resource type="Animation" id="Animation_xklka"]
+[sub_resource type="Animation" id="Animation_shduq"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:position")
+tracks/0/path = NodePath("Visual:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -24)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.25, 0.375)]
+"values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_f16if"]
-resource_name = "idle"
-length = 0.5
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -24), Vector2(0, -23), Vector2(0, -25)]
-}
-
-[sub_resource type="Animation" id="Animation_xide1"]
-resource_name = "jump"
-length = 0.1332
-step = 0.0333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.1332),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.25, 0.375), Vector2(0.2, 0.4), Vector2(0.25, 0.375)]
-}
-
-[sub_resource type="Animation" id="Animation_s6324"]
-resource_name = "land"
-length = 0.1
-step = 0.0333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0999),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.25, 0.375), Vector2(0.3, 0.3), Vector2(0.25, 0.375)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0999),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -24), Vector2(0, -19), Vector2(0, -24)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fb6d1"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ovwg"]
 _data = {
-"RESET": SubResource("Animation_xklka"),
-"idle": SubResource("Animation_f16if"),
-"jump": SubResource("Animation_xide1"),
-"land": SubResource("Animation_s6324")
+"RESET": SubResource("Animation_shduq"),
+"run": SubResource("Animation_vf5hf")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wui8n"]
+atlas = ExtResource("4_cnnc1")
+region = Rect2(0, 0, 96, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wqkh"]
+atlas = ExtResource("4_cnnc1")
+region = Rect2(96, 0, 96, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vif4"]
+atlas = ExtResource("4_cnnc1")
+region = Rect2(0, 210, 96, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl5c6"]
+atlas = ExtResource("4_cnnc1")
+region = Rect2(96, 210, 96, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51i20"]
+atlas = ExtResource("4_cnnc1")
+region = Rect2(0, 105, 96, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4hsg"]
+atlas = ExtResource("4_cnnc1")
+region = Rect2(96, 105, 96, 105)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2sru1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wui8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wqkh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vif4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl5c6")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51i20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4hsg")
+}],
+"loop": true,
+"name": &"run",
+"speed": 6.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_hg8p4")
@@ -146,21 +117,29 @@ shape = SubResource("CapsuleShape2D_8oed0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -100)
+process_callback = 0
 position_smoothing_enabled = true
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_ccqtq")
-anim_player = NodePath("../AnimationPlayer")
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -23.2732)
+scale = Vector2(0.25, 0.375)
+texture = ExtResource("1_v8so5")
+vframes = 2
+
+[node name="MusicBox" parent="." instance=ExtResource("3_wcxlj")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fb6d1")
+"": SubResource("AnimationLibrary_0ovwg")
 }
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
+unique_name_in_owner = true
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_2sru1")
+animation = &"run"
 autoplay = "idle"
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(0, -24)
-scale = Vector2(0.25, 0.375)
-texture = ExtResource("1_v8so5")
-
-[node name="MusicBox" parent="." instance=ExtResource("3_wcxlj")]
+frame_progress = 0.711301
