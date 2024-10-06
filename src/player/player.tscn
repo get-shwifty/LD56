@@ -145,10 +145,10 @@ frame_progress = 0.711301
 [node name="MusicBox2" parent="." instance=ExtResource("3_wcxlj")]
 position = Vector2(0, -24)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="LadderDetection" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderDetection"]
 position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_8oed0")

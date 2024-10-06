@@ -145,7 +145,7 @@ func teleport(position: Vector2):
 	velocity = Vector2.ZERO
 	
 func is_on_ladder():
-	var areas = $Area2D.get_overlapping_areas()
+	var areas = $LadderDetection.get_overlapping_areas()
 	if len(areas):
 		return true
 	return false
