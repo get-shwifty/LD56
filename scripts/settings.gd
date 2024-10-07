@@ -1,12 +1,12 @@
 extends Node
 
 var songs: Dictionary = {
-	"luciole": "ABCD",
+	"light": "ABD",
 	"fly": "BBAA",
 	"damage": "CDBA",
 	"home": "ACBD",
 	"mushroom": "ACAB",
-	"ladder": "DDD"
+	"ladder": "DDB"
 }
 
 var musics = {

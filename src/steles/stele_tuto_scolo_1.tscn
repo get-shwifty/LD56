@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://1i2htf33r86n"]
+
+[ext_resource type="Script" path="res://src/steles/stele_tuto.gd" id="1_t071e"]
+[ext_resource type="Script" path="res://src/steles/stelle_broken.gd" id="2_dv3pu"]
+[ext_resource type="Texture2D" uid="uid://dnw575mtim1qw" path="res://assets/items.png" id="3_x7vrq"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="4_ckdtn"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_nh7aw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8wx1"]
+atlas = ExtResource("3_x7vrq")
+region = Rect2(0, 320, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7ek2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8wx1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SteleTutoScolo1" type="Node2D"]
+position = Vector2(470, 586)
+script = ExtResource("1_t071e")
+action = "ladder"
+
+[node name="Stelle" type="Node2D" parent="."]
+script = ExtResource("2_dv3pu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stelle"]
+sprite_frames = SubResource("SpriteFrames_m7ek2")
+
+[node name="runes" type="Node2D" parent="."]
+
+[node name="bottom-rune2" parent="runes" instance=ExtResource("4_ckdtn")]
+position = Vector2(-8, 18)
+
+[node name="bottom-rune" parent="runes" instance=ExtResource("4_ckdtn")]
+visible = false
+
+[node name="top-rune" parent="runes" instance=ExtResource("5_nh7aw")]
+visible = false
+position = Vector2(-22, -9)
