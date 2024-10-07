@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://bi4b0hs0ppt1q"]
+
+[ext_resource type="Script" path="res://src/player/walk_particle.gd" id="1_fyrm1"]
+[ext_resource type="Texture2D" uid="uid://blejga1tj530d" path="res://assets/particles.png" id="1_hrfmy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7jhv"]
+atlas = ExtResource("1_hrfmy")
+region = Rect2(0, 0, 9, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm7kj"]
+atlas = ExtResource("1_hrfmy")
+region = Rect2(9, 0, 9, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyo55"]
+atlas = ExtResource("1_hrfmy")
+region = Rect2(18, 0, 9, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6thr"]
+atlas = ExtResource("1_hrfmy")
+region = Rect2(27, 0, 9, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74lvv"]
+atlas = ExtResource("1_hrfmy")
+region = Rect2(36, 0, 9, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4482x"]
+atlas = ExtResource("1_hrfmy")
+region = Rect2(45, 0, 9, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm8rm"]
+atlas = ExtResource("1_hrfmy")
+region = Rect2(54, 0, 9, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3tjy"]
+atlas = ExtResource("1_hrfmy")
+region = Rect2(63, 0, 9, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h70gc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7jhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm7kj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyo55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6thr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74lvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4482x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm8rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3tjy")
+}],
+"loop": false,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="WalkParticle" type="Node2D"]
+script = ExtResource("1_fyrm1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, -6)
+sprite_frames = SubResource("SpriteFrames_h70gc")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
