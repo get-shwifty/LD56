@@ -63,8 +63,8 @@ size = Vector2(121, 10)
 [node name="Short" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(-64, -19)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0)
+position = Vector2(-64, -17)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 2, 0, 3, 0, 0, 0)
 tile_set = SubResource("TileSet_n8ha0")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

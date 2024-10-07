@@ -31,6 +31,7 @@ func open():
 	is_open = true
 	$Scolo/AnimationPlayer.play("down")
 	
+	
 
 
 func _on_timer_timeout():

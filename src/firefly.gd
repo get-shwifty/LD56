@@ -1,8 +1,11 @@
 extends Node2D
 
+@export var target: Node2D = null
+
 @onready var initial_position = global_position
 @onready var MASK = preload("res://src/light_mask.tscn")
 @onready var MASK_BACK = preload("res://src/light_mask_back.tscn")
+
 
 var mask: Node2D = null
 var mask_back: Node2D = null
@@ -18,6 +21,7 @@ func init():
 	Global.grotte_background_container.add_child(mask_back)
 	on()
 	is_init = true
+	$AnimationPlayer.play("move")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +29,7 @@ func _process(delta):
 	init()
 	counter += delta
 	var last_x = global_position.x
-	global_position.x = initial_position.x + cos(counter) * 100
+	global_position = target.global_position
 	var direction = sign(last_x - global_position.x)
 	scale.x = direction
 	mask.global_position = global_position

@@ -11,5 +11,6 @@ var songs: Dictionary = {
 }
 
 var musics = {
-	"shroom": preload("res://sounds/Son-ouverture champignon.mp3")
+	"shroom": preload("res://sounds/Son-ouverture champignon.mp3"),
+	"scolo": preload("res://sounds/son-scolopandre.mp3")
 }
