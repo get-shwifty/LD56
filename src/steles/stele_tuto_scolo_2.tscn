@@ -1,24 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl01ps3sdnw0e"]
+[gd_scene load_steps=9 format=3 uid="uid://bl01ps3sdnw0e"]
 
 [ext_resource type="Script" path="res://src/steles/stele_tuto.gd" id="1_4bsco"]
 [ext_resource type="Script" path="res://src/steles/stelle_broken.gd" id="2_p5wb7"]
-[ext_resource type="Texture2D" uid="uid://dnw575mtim1qw" path="res://assets/items.png" id="3_4h36q"]
+[ext_resource type="Texture2D" uid="uid://2ays7ryglgxu" path="res://assets/broken.png" id="3_6g5ix"]
 [ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="4_t1rmk"]
 [ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_3ctk6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vpkpd"]
-atlas = ExtResource("3_4h36q")
-region = Rect2(0, 400, 80, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_txl8e"]
+atlas = ExtResource("3_6g5ix")
+region = Rect2(0, 420, 94, 51)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2cj5f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_liqp1"]
+atlas = ExtResource("3_6g5ix")
+region = Rect2(326, 420, 94, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_631n7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vpkpd")
+"texture": SubResource("AtlasTexture_txl8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liqp1")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="SteleTutoScolo2" type="Node2D"]
@@ -30,7 +37,8 @@ action = "ladder"
 script = ExtResource("2_p5wb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stelle"]
-sprite_frames = SubResource("SpriteFrames_2cj5f")
+position = Vector2(7, 6)
+sprite_frames = SubResource("SpriteFrames_631n7")
 
 [node name="runes" type="Node2D" parent="."]
 
