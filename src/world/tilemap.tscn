@@ -374,7 +374,7 @@ position = Vector2(4710, 1447)
 position = Vector2(557, 564)
 
 [node name="SteleBoss2" parent="Steles" instance=ExtResource("13_daf8o")]
-position = Vector2(3686, 532)
+position = Vector2(3700, 532)
 
 [node name="SteleBoss3" parent="Steles" instance=ExtResource("14_qa4cb")]
 position = Vector2(2918, -1102)
