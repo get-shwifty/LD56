@@ -50,7 +50,7 @@ func _physics_process(delta):
 		buffer_frame += 1
 		if buffer_frame > buffer_interval:
 			buffer_frame = 0
-	check_finished_music()
+	#check_finished_music()
 	if len(played):
 		music_frame += 1
 		if music_frame > music_timout:
@@ -71,18 +71,20 @@ func play_buffer():
 	audio_player.music = music
 	add_child(audio_player)
 	notify_song(played + note)
+	get_parent().play_note(note)
+	check_finished_music()
 
 func check_finished_music():
 	for name in melodies.keys():
 		if is_music_finished(melodies[name]):
 			notify_song_finish(name)
-			can_play = false
-			await get_tree().create_timer(1).timeout
-			can_play = true
-			notify_song("")
-			buffer = []
-			buffer_frame = 0
-			music_frame = 0
+			#can_play = false
+			#await get_tree().create_timer(1).timeout
+			#can_play = true
+			#notify_song("")
+			#buffer = []
+			#buffer_frame = 0
+			#music_frame = 0
 
 func is_music_finished(melodie):
 	return played.ends_with(melodie)

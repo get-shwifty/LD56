@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 ### Running
-@export var RUN_SPEED := 260.0 # px/s
+@export var RUN_SPEED := 260.0  # px/s
 @export_range(0, 100, 1) var RUN_ACCELERATION := 50.0
 @export_range(0, 100, 1) var RUN_DECELERATION := 50.0
 # 0->49 add more force to change direction
@@ -11,26 +11,28 @@ class_name Player
 const RUN_MAX_ACC := 10000.0
 
 ### Fall
-@export var FALL_MAX_SPEED := 1000.0 # px/s
-@export_range(0, 100, 1) var FALL_GRAVITY := 50.0 # 0 = same gravity, 100 = double gravity
+@export var FALL_MAX_SPEED := 1000.0  # px/s
+@export_range(0, 100, 1) var FALL_GRAVITY := 50.0  # 0 = same gravity, 100 = double gravity
 
 ### Jumping
-@export var JUMP_HEIGHT := 100.0 # px
-@export var JUMP_TIME := 0.300 # s
-@export_range(0, 100, 1) var JUMP_CUTOFF := 0.0 # 0 = keep jumping, 100 = abort jumping
+@export var JUMP_HEIGHT := 100.0  # px
+@export var JUMP_TIME := 0.300  # s
+@export_range(0, 100, 1) var JUMP_CUTOFF := 0.0  # 0 = keep jumping, 100 = abort jumping
 
 ### Assists
-@export var JUMP_BUFFER := 0.100 # time during which you can press the jump button before actually touching a floor
-@export var COYOTE_TIME := 0.100 # time during which you can jump after leaving a floor
+@export var JUMP_BUFFER := 0.100  # time during which you can press the jump button before actually touching a floor
+@export var COYOTE_TIME := 0.100  # time during which you can jump after leaving a floor
 
 ### Camera
 @export_range(0, 100, 1) var CAM_LOOKAHEAD := 0.0
+
+@onready var NOTE = preload("/Users/david/LD56/src/player/note_particle.tscn")
 
 var last_fallspeed_in_air := 0.0
 var coyote_time := 0.0
 var jump_buffer := 0.0
 
-enum { IDLE, RUN, JUMP }
+enum {IDLE, RUN, JUMP}
 var state = IDLE
 
 func _ready():
@@ -49,7 +51,7 @@ func set_state(new_state):
 		RUN: on_run()
 		JUMP: on_jump()
 
-func lerp_value(base100, min_value, max_value, power=2, inverted=false) -> float:
+func lerp_value(base100, min_value, max_value, power = 2, inverted = false) -> float:
 	var value = (base100 / 100.0)
 	if inverted:
 		value = 1.0 - value
@@ -77,14 +79,14 @@ func _physics_process(delta: float) -> void:
 		coyote_time = COYOTE_TIME
 	else:
 		coyote_time -= delta
-	
+
 	if can_input and Input.is_action_just_pressed("up"):
 		jump_buffer = JUMP_BUFFER
 	else:
 		jump_buffer -= delta
-	
+
 	# rebound
-	
+
 	if state != JUMP:
 		var rebound_vector = null
 		for i in get_slide_collision_count():
@@ -94,7 +96,7 @@ func _physics_process(delta: float) -> void:
 				if collider.get_collision_layer_value(4):
 					rebound_vector = collision.get_normal()
 					break
-		
+
 		if rebound_vector:
 			jump_buffer = 0
 			velocity = rebound_vector * 2.0 * JUMP_HEIGHT / JUMP_TIME
@@ -115,28 +117,28 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		%AnimatedSprite2D.scale.x = sign(velocity.x)
 		%AnimatedSprite2D2.scale.x = sign(velocity.x)
-	
+
 		var acceleration_factor = lerp_value(RUN_ACCELERATION, 0.0, RUN_MAX_ACC)
-		
+
 		if sign(direction) != sign(velocity.x):
 			# turn so apply turn speed
 			if RUN_TURN_SPEED > 49.9999:
-				velocity.x *= - (RUN_TURN_SPEED-50.0)/50.0 * 2
+				velocity.x *= - (RUN_TURN_SPEED -50.0) / 50.0 * 2
 			else:
-				acceleration_factor *= lerp_value(RUN_TURN_SPEED*2, 1.0, 2.0)
+				acceleration_factor *= lerp_value(RUN_TURN_SPEED * 2, 1.0, 2.0)
 
 		velocity.x += direction * acceleration_factor * delta
 		if abs(velocity.x) > RUN_SPEED:
 			velocity.x = RUN_SPEED * sign(velocity.x)
-		
+
 		if state == IDLE:
 			set_state(RUN)
 	else:
 		velocity.x = move_toward(velocity.x, 0, lerp_value(RUN_DECELERATION, 0.0, RUN_MAX_ACC) * delta)
 		if state == RUN:
 			set_state(IDLE)
-		
-	
+
+
 	if is_on_ladder():
 		var vertical_direction := Input.get_axis("up", "down") if can_input else 0.0
 		velocity.y = RUN_SPEED * vertical_direction
@@ -149,15 +151,15 @@ func on_land():
 	%AnimatedSprite2D.play("idle")
 	%AnimatedSprite2D2.play("idle")
 	$AnimationPlayer.play("RESET")
-	
+
 	var factor = clamp(last_fallspeed_in_air / FALL_MAX_SPEED, 0.0, 1.0)
 	factor = pow(factor, 1.8)
-	
+
 	var tween = get_tree().create_tween()
-	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0) + Vector2(0.4, -0.4)*factor, 0.050)
+	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0) + Vector2(0.4, -0.4) * factor, 0.050)
 	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0), 0.200)
 	var tween2 = get_tree().create_tween()
-	tween2.tween_property($Visual, "position", Vector2(0.0, 6.0)*factor, 0.050)
+	tween2.tween_property($Visual, "position", Vector2(0.0, 6.0) * factor, 0.050)
 	tween2.tween_property($Visual, "position", Vector2(0.0, 0.0), 0.200)
 
 func on_jump():
@@ -181,7 +183,7 @@ func on_run():
 	$Visual.skew = -velocity.x / RUN_SPEED * deg_to_rad(1)
 	if not $AudioRun.playing:
 		$AudioRun.play()
-	
+
 func teleport(position: Vector2):
 	global_position = position
 	state = IDLE
@@ -192,6 +194,9 @@ func is_on_ladder():
 	if len(areas):
 		return true
 	return false
-	
+
 func play_note(note: String):
-	pass
+	var res = NOTE.instantiate()
+	res.note = note
+	res.global_position = %NoteSpawner.global_position
+	Global.projectile_container.add_child(res)
