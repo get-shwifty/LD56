@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://src/steles/stele_tp.gd" id="1_pvyvw"]
 [ext_resource type="PackedScene" uid="uid://mfq861qjekus" path="res://src/reactives/tp.tscn" id="2_t8hii"]
-[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/left_rune.tscn" id="3_svotn"]
-[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/right_rune.tscn" id="4_k56jb"]
-[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/top_rune.tscn" id="5_ahgo5"]
-[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/bottom_rune.tscn" id="6_4eedx"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="3_svotn"]
+[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="4_k56jb"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_ahgo5"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="6_4eedx"]
 
 [node name="SteleHome" type="Node2D"]
 script = ExtResource("1_pvyvw")

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://src/steles/stele_tuto.gd" id="1_cgx5c"]
 [ext_resource type="PackedScene" uid="uid://bjpe18fjk5vm8" path="res://src/reactives/stelle.tscn" id="2_0ympq"]
-[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/left_rune.tscn" id="3_2xak4"]
-[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/right_rune.tscn" id="4_7ipm2"]
-[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/top_rune.tscn" id="5_8cnc1"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="3_2xak4"]
+[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="4_7ipm2"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_8cnc1"]
 
 [node name="SteleTutoShroom" type="Node2D"]
 script = ExtResource("1_cgx5c")

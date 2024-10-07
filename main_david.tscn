@@ -35,7 +35,7 @@ texture = ExtResource("5_u4skc")
 [node name="World3" parent="." instance=ExtResource("4_76213")]
 
 [node name="Player" parent="." instance=ExtResource("2_fksup")]
-position = Vector2(1300, 792)
+position = Vector2(514, 612)
 RUN_SPEED = 240.0
 JUMP_HEIGHT = 60.0
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://esb88w8fylgw"]
 
 [ext_resource type="Texture2D" uid="uid://dp87laiciayrf" path="res://david/runes.png" id="1_1valq"]
-[ext_resource type="Script" path="res://src/steles/rune.gd" id="2_5ekg8"]
+[ext_resource type="Script" path="res://src/steles/runes/rune.gd" id="2_5ekg8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5s8c"]
 atlas = ExtResource("1_1valq")

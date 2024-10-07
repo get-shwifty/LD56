@@ -1,6 +1,6 @@
 extends Node2D
 
-var song_name = "luciole"
+var song_name = "light"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

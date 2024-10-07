@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxu5tsgi75non"]
+
+[ext_resource type="Script" path="res://src/steles/stele_tuto.gd" id="1_0x6wy"]
+[ext_resource type="Script" path="res://src/steles/stelle_broken.gd" id="2_fxacf"]
+[ext_resource type="Texture2D" uid="uid://dnw575mtim1qw" path="res://assets/items.png" id="3_hpht5"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="4_ybqk4"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_rybf8"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="6_eqaw4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryplv"]
+atlas = ExtResource("3_hpht5")
+region = Rect2(0, 480, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3abwv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryplv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SteleTutoFirefly3" type="Node2D"]
+position = Vector2(387, 498)
+rotation = -2.20703
+script = ExtResource("1_0x6wy")
+action = "light"
+
+[node name="Stelle" type="Node2D" parent="."]
+script = ExtResource("2_fxacf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stelle"]
+sprite_frames = SubResource("SpriteFrames_3abwv")
+
+[node name="runes" type="Node2D" parent="."]
+
+[node name="left-rune" parent="runes" instance=ExtResource("4_ybqk4")]
+visible = false
+
+[node name="top-rune" parent="runes" instance=ExtResource("5_rybf8")]
+visible = false
+
+[node name="bottom-rune" parent="runes" instance=ExtResource("6_eqaw4")]
+position = Vector2(-6, -8)
+rotation = 2.20833
