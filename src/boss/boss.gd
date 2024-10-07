@@ -205,4 +205,6 @@ func _on_stele_birds_on_played() -> void:
 	tween.tween_property($FinalColorRect, "modulate", Color.WHITE, 5.0)
 	$Boss/Left.z_index = 0
 	$Boss/Right.z_index = 0
+	await get_tree().create_timer(5).timeout
+	get_tree().change_scene_to_file("res://src/end_scene.tscn")
 	

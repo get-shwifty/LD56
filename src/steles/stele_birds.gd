@@ -32,6 +32,5 @@ func on_song(song: String):
 		$Stelle.close()
 		
 func on_song_finished(name: String):
-	if name == song_activation:
-		get_tree().change_scene_to_file("res://src/end_scene.tscn")
+	pass
 		
