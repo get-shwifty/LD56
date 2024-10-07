@@ -8,4 +8,4 @@
 [node name="Short" parent="." instance=ExtResource("1_ji3bc")]
 
 [node name="Ladder" parent="." instance=ExtResource("2_34k67")]
-position = Vector2(3, 0)
+position = Vector2(3, -4)
