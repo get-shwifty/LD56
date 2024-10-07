@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cg8tbvh0n15up"]
+[gd_scene load_steps=11 format=3 uid="uid://hqf5si6p24g3"]
 
 [ext_resource type="Script" path="res://src/steles/stele_tuto.gd" id="1_amojj"]
 [ext_resource type="Script" path="res://src/steles/stelle_broken.gd" id="2_ckd0g"]
@@ -33,7 +33,7 @@ animations = [{
 [node name="SteleBoss1" type="Node2D"]
 position = Vector2(389, 587)
 script = ExtResource("1_amojj")
-action = "light"
+action = "boss"
 
 [node name="Stelle" type="Node2D" parent="."]
 script = ExtResource("2_ckd0g")
@@ -45,13 +45,13 @@ sprite_frames = SubResource("SpriteFrames_jyiwr")
 [node name="runes" type="Node2D" parent="."]
 
 [node name="bottom-rune2" parent="runes" instance=ExtResource("6_rjfmw")]
-visible = false
+position = Vector2(-12, 25)
 
 [node name="right-rune3" parent="runes" instance=ExtResource("7_oi2fy")]
-visible = false
+position = Vector2(-13, 6)
 
 [node name="top-rune" parent="runes" instance=ExtResource("5_gwar3")]
-visible = false
+position = Vector2(-14, -15)
 
 [node name="top-rune2" parent="runes" instance=ExtResource("5_gwar3")]
 visible = false
@@ -64,13 +64,17 @@ position = Vector2(-21, 0)
 rotation = -1.59007
 
 [node name="right-rune" parent="runes" instance=ExtResource("7_oi2fy")]
+visible = false
 position = Vector2(-34, 5)
 
 [node name="bottom-rune" parent="runes" instance=ExtResource("6_rjfmw")]
+visible = false
 position = Vector2(12, 2)
 
 [node name="left-rune" parent="runes" instance=ExtResource("4_4eeiw")]
+visible = false
 position = Vector2(-33, 33)
 
 [node name="right-rune2" parent="runes" instance=ExtResource("7_oi2fy")]
+visible = false
 position = Vector2(12, 34)
