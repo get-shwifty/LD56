@@ -30,7 +30,7 @@ func open():
 		return
 	is_open = true
 	$Scolo/AnimationPlayer.play("down")
-	
+	Global.request_music = "scolo"
 	
 
 

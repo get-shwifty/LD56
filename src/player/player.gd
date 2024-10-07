@@ -30,6 +30,10 @@ const RUN_MAX_ACC := 10000.0
 @onready var NOTE = preload("res://src/player/note_particle.tscn")
 @onready var PARTICLE = preload("res://src/player/walk_particle.tscn")
 
+### Teleport
+@export var teleport_time = 1.0
+var is_teleport = false
+
 var counter_frame = 0
 
 var last_fallspeed_in_air := 0.0
@@ -59,6 +63,10 @@ func lerp_value(base100, min_value, max_value, power = 2, inverted = false) -> f
 	return lerp(min_value, max_value, pow(value, power))
 
 func _physics_process(delta: float) -> void:
+	if is_teleport:
+		velocity = Vector2.ZERO
+		return
+	
 	var GRAVITY = 2.0 * JUMP_HEIGHT / (JUMP_TIME * JUMP_TIME)
 	var can_input = not Input.is_action_pressed("sing")
 
@@ -235,6 +243,12 @@ func teleport(position: Vector2):
 	global_position = position
 	state = IDLE
 	velocity = Vector2.ZERO
+	is_teleport = true
+	#Global.play_teleport()
+	hide()
+	await get_tree().create_timer(teleport_time).timeout
+	show()
+	is_teleport = false
 
 func is_on_ladder():
 	var areas = $LadderDetection.get_overlapping_areas()

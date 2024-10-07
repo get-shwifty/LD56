@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bk1ofwjmh8v4t"]
+[gd_scene load_steps=28 format=3 uid="uid://bk1ofwjmh8v4t"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hg8p4"]
 [ext_resource type="Texture2D" uid="uid://b0oiyujd71gpg" path="res://assets/mask_perso.png" id="3_cvfog"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b1xf1pofki0qf" path="res://sounds/Chanterelle_Pas_Marche.mp3" id="7_u0ulh"]
 [ext_resource type="AudioStream" uid="uid://dympbofj5ig8d" path="res://sounds/Son-petite-chute-post-saut.mp3" id="8_7s5qk"]
 [ext_resource type="AudioStream" uid="uid://c210cldakklyu" path="res://sounds/Son-grosse-chute.mp3" id="9_jvxf0"]
+[ext_resource type="Script" path="res://src/player/voices.gd" id="10_50chp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oed0"]
 radius = 8.0
@@ -226,6 +227,12 @@ volume_db = -20.537
 stream = ExtResource("9_jvxf0")
 volume_db = -8.587
 
+[node name="Voices" type="AudioStreamPlayer" parent="."]
+volume_db = -9.734
+script = ExtResource("10_50chp")
+
+[node name="Timer" type="Timer" parent="Voices"]
+
 [node name="MusicDetection" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 64
@@ -233,3 +240,5 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MusicDetection"]
 position = Vector2(0, -21)
 shape = SubResource("CircleShape2D_mek6n")
+
+[connection signal="timeout" from="Voices/Timer" to="Voices" method="_on_timer_timeout"]
