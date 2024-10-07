@@ -18,6 +18,7 @@ const RUN_MAX_ACC := 10000.0
 @export var JUMP_HEIGHT := 70.0  # px
 @export var JUMP_TIME := 0.300  # s
 @export_range(0, 100, 1) var JUMP_CUTOFF := 0.0  # 0 = keep jumping, 100 = abort jumping
+@export var REBOUND_COEFF := 1.2  #
 
 ### Assists
 @export var JUMP_BUFFER := 0.100  # time during which you can press the jump button before actually touching a floor
@@ -100,7 +101,7 @@ func _physics_process(delta: float) -> void:
 
 		if rebound_vector:
 			jump_buffer = 0
-			velocity = rebound_vector * 2.0 * JUMP_HEIGHT / JUMP_TIME
+			velocity = rebound_vector * 2.0 * JUMP_HEIGHT / JUMP_TIME * REBOUND_COEFF
 			set_state(JUMP)
 		else:
 			if jump_buffer > 0 and coyote_time > 0:
