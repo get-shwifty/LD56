@@ -102,14 +102,16 @@ func notify_song(list: String):
 	for a in areas:
 		a.get_parent().on_song(played)
 	for stele in Global.tp_steles:
-		stele.on_song(played)
+		if is_instance_valid(stele):
+			stele.on_song(played)
 	
 func notify_song_finish(name: String):
 	var areas = area.get_overlapping_areas()
 	for a in areas:
 		a.get_parent().on_song_finished(name)
 	for stele in Global.tp_steles:
-		stele.on_song_finished(name)
+		if is_instance_valid(stele):
+			stele.on_song_finished(name)
 
 func _on_area_2d_area_exited(area):
 	area.get_parent().on_exit()
