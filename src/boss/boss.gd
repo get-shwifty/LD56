@@ -165,11 +165,13 @@ func _on_left_kill_body_entered(body: Node2D) -> void:
 	put_player_down()
 	left_time = 100.0
 	right_time = 100.0
+	$Player/Camera2D.shake_on_hit()
 
 func _on_right_kill_body_entered(body: Node2D) -> void:
 	put_player_down()
 	left_time = 100.0
 	right_time = 100.0
+	$Player/Camera2D.shake_on_hit()
 	
 func put_player_down():
 	%Player.set_collision_mask_value(1, false)
