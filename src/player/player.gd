@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var GRAVITY = 2.0 * JUMP_HEIGHT / (JUMP_TIME * JUMP_TIME)
-	var can_input = not Input.is_action_pressed("sing")
+	var can_input = not Input.is_action_pressed("sing") and get_collision_mask_value(1)
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -237,7 +237,7 @@ func on_run():
 	$Visual.skew = -velocity.x / RUN_SPEED * deg_to_rad(1)
 	if not $AudioRun.playing:
 		$AudioRun.play()
-	print(int(global_position.x))
+	#print(int(global_position.x))
 		
 		
 

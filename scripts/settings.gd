@@ -7,7 +7,8 @@ var songs: Dictionary = {
 	"home": "ACBD",
 	"mushroom": "ACAB",
 	"ladder": "DDB",
-	"boss": "DCBBDCDAC"
+	"boss": "DCBBDCDAC",
+	"birds": "ABCBCD"
 }
 
 var musics = {
