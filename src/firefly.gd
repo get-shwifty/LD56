@@ -21,6 +21,7 @@ func init():
 	Global.grotte_background_container.add_child(mask_back)
 	on()
 	is_init = true
+	$AnimationPlayer.play("move")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
