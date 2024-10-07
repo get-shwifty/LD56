@@ -10,7 +10,7 @@ const POING_H1 := -300.0
 const POING_H2 := -400.0
 const POING_H3 := -65.0
 const POINGL_MIN_X := -232.0
-const POINGL_MAX_X := -30.0
+const POINGL_MAX_X := -60.0
 
 const BIRDS_SPEED = 500.0
 
