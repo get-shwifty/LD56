@@ -169,6 +169,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = RUN_SPEED * vertical_direction
 		on_ladder()
 		# TODO lerp
+		if not is_on_floor():
+			velocity.x = 0
 	
 	if velocity.x != 0:
 		counter_frame += 1
