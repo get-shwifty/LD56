@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bttkqnn4pwmyk"]
+[gd_scene load_steps=10 format=3 uid="uid://bttkqnn4pwmyk"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_h41kr"]
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_4bwvj"]
 [ext_resource type="Texture2D" uid="uid://c65x02u77bppw" path="res://assets/arbres2.png" id="3_ildge"]
 [ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_nbj0m"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_ww6j6"]
-[ext_resource type="PackedScene" uid="uid://mdcmmncqs1fk" path="res://src/world/foreground.tscn" id="6_k6qh5"]
+[ext_resource type="Texture2D" uid="uid://bhsdhqpwiof45" path="res://assets/decors/arbre.png" id="6_tocak"]
 [ext_resource type="PackedScene" uid="uid://c2dx3pd52tprs" path="res://start_screen.tscn" id="7_g0u2j"]
+[ext_resource type="Texture2D" uid="uid://3868gfwp81ut" path="res://assets/decors/lianes.png" id="7_vf1yj"]
+[ext_resource type="Texture2D" uid="uid://hjkvobw4pnjk" path="res://assets/decors/fougeres.png" id="8_0vcim"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h41kr")
@@ -30,11 +32,28 @@ texture = ExtResource("3_ildge")
 position = Vector2(603, 592)
 JUMP_HEIGHT = 75.0
 
-[node name="Foreground" parent="." instance=ExtResource("6_k6qh5")]
-visible = false
+[node name="Foreground" type="Parallax2D" parent="."]
 z_index = 110
 z_as_relative = false
+scroll_scale = Vector2(3, 3)
 scroll_offset = Vector2(3, 231)
+
+[node name="Arbre" type="Sprite2D" parent="Foreground"]
+position = Vector2(2034.25, 413.25)
+scale = Vector2(0.686064, 0.749063)
+texture = ExtResource("6_tocak")
+
+[node name="Lianes" type="Sprite2D" parent="Foreground"]
+position = Vector2(3893, -130)
+texture = ExtResource("7_vf1yj")
+
+[node name="Lianes2" type="Sprite2D" parent="Foreground"]
+position = Vector2(2738, 308)
+texture = ExtResource("7_vf1yj")
+
+[node name="Fougeres" type="Sprite2D" parent="Foreground"]
+position = Vector2(1855, 850)
+texture = ExtResource("8_0vcim")
 
 [node name="Projectiles" type="Node2D" parent="."]
 
