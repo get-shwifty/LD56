@@ -115,9 +115,6 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right") if can_input else 0.0
 	if direction:
-		%AnimatedSprite2D.scale.x = sign(velocity.x)
-		%AnimatedSprite2D2.scale.x = sign(velocity.x)
-
 		var acceleration_factor = lerp_value(RUN_ACCELERATION, 0.0, RUN_MAX_ACC)
 
 		if sign(direction) != sign(velocity.x):
@@ -137,6 +134,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, lerp_value(RUN_DECELERATION, 0.0, RUN_MAX_ACC) * delta)
 		if state == RUN:
 			set_state(IDLE)
+			
+	var last_scale = %AnimatedSprite2D.scale.x
+	var new_scale = sign(velocity.x)
+	if new_scale == 0:
+		new_scale = last_scale
+	%AnimatedSprite2D.scale.x = new_scale
+	#%AnimatedSprite2D2.scale.x = new_scale
+	%PlayerMask.scale.x = new_scale
 
 
 	if is_on_ladder():
@@ -151,7 +156,7 @@ func on_land():
 	%AnimatedSprite2D.play("idle")
 	%AnimatedSprite2D2.play("idle")
 	$AnimationPlayer.play("RESET")
-	$AudioLand.play()
+	#$AudioLand.play()
 
 	var factor = clamp(last_fallspeed_in_air / FALL_MAX_SPEED, 0.0, 1.0)
 	factor = pow(factor, 1.8)
