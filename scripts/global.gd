@@ -24,5 +24,7 @@ func _process(delta):
 
 func set_music(music):
 	var map_m = map.get_node("Music")
+	if map_m.stream == music:
+		return
 	map_m.stream = music
 	map_m.play()
