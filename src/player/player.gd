@@ -28,6 +28,9 @@ const RUN_MAX_ACC := 10000.0
 @export_range(0, 100, 1) var CAM_LOOKAHEAD := 0.0
 
 @onready var NOTE = preload("res://src/player/note_particle.tscn")
+@onready var PARTICLE = preload("res://src/player/walk_particle.tscn")
+
+var counter_frame = 0
 
 var last_fallspeed_in_air := 0.0
 var coyote_time := 0.0
@@ -157,7 +160,14 @@ func _physics_process(delta: float) -> void:
 		velocity.y = RUN_SPEED * vertical_direction
 		on_ladder()
 		# TODO lerp
-
+	
+	if velocity.x != 0:
+		counter_frame += 1
+		if counter_frame %  randi_range(10, 20) == 0 and is_on_floor():
+			var particle = PARTICLE.instantiate()
+			particle.global_position = global_position - Vector2(0, 25)
+			Global.projectile_container.add_child(particle)
+	
 	move_and_slide()
 	$Camera2D.position.x = lerp_value(CAM_LOOKAHEAD, 0.0, velocity.x)
 
@@ -216,6 +226,9 @@ func on_run():
 	$Visual.skew = -velocity.x / RUN_SPEED * deg_to_rad(1)
 	if not $AudioRun.playing:
 		$AudioRun.play()
+	print(int(global_position.x))
+		
+		
 
 func teleport(position: Vector2):
 	global_position = position

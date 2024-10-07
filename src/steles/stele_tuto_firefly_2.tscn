@@ -24,7 +24,6 @@ animations = [{
 
 [node name="SteleTutoFirefly2" type="Node2D"]
 position = Vector2(382, 566)
-rotation = -1.84968
 script = ExtResource("1_u3o5u")
 action = "light"
 
