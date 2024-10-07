@@ -31,5 +31,6 @@ one_way_collision = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_728p5")
+volume_db = -15.39
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

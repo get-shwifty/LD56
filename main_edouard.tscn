@@ -24,6 +24,7 @@ RUN_SPEED = 240.0
 JUMP_HEIGHT = 60.0
 
 [node name="Foreground" parent="." instance=ExtResource("6_k6qh5")]
+visible = false
 scroll_offset = Vector2(3, 231)
 
 [node name="Projectiles" type="Node2D" parent="."]
