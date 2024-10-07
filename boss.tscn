@@ -215,17 +215,6 @@ tile_set = ExtResource("1_tog45")
 collision_enabled = false
 navigation_enabled = false
 
-[node name="LevelGrotte" type="TileMapLayer" parent="."]
-position = Vector2(1, 0)
-tile_map_data = PackedByteArray("AAD7//3/AAAAAAAAAQD6////AAAAAAAAAgADAPn/AAAAAAAAAgD///3/AAAAAAAABAA=")
-tile_set = ExtResource("2_dj48j")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Boss/Panier")
-libraries = {
-"": SubResource("AnimationLibrary_jytvn")
-}
-
 [node name="Boss" type="Node2D" parent="."]
 
 [node name="Panier" type="Area2D" parent="Boss"]
@@ -288,6 +277,17 @@ monitorable = false
 position = Vector2(513, 0)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(-154, 64, -162, 79, -159, 100, -147, 118, -121, 148, -87, 167, -42, 179, -11, 181, 14, 177, 33, 176, 51, 179, 65, 180, 75, 175, 86, 166, 93, 149, 101, 136, 100, 119, 94, 107, 84, 109, 81, 122, 79, 139, 70, 153, 47, 156, 27, 157, -4, 156, -32, 156, -70, 148, -90, 137, -120, 108, -131, 82, -136, 61)
+
+[node name="LevelGrotte" type="TileMapLayer" parent="."]
+position = Vector2(1, 0)
+tile_map_data = PackedByteArray("AAD7//3/AAAAAAAAAQD6////AAAAAAAAAgADAPn/AAAAAAAAAgD///3/AAAAAAAABAA=")
+tile_set = ExtResource("2_dj48j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Boss/Panier")
+libraries = {
+"": SubResource("AnimationLibrary_jytvn")
+}
 
 [node name="SteleBirds" parent="." instance=ExtResource("6_t5bgx")]
 unique_name_in_owner = true
