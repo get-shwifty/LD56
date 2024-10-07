@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_nbj0m"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_ww6j6"]
 [ext_resource type="PackedScene" uid="uid://mdcmmncqs1fk" path="res://src/world/foreground.tscn" id="6_k6qh5"]
-[ext_resource type="PackedScene" uid="uid://dr7p07v6latcs" path="res://start_screen.tscn" id="7_g0u2j"]
+[ext_resource type="PackedScene" uid="uid://c2dx3pd52tprs" path="res://start_screen.tscn" id="7_g0u2j"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h41kr")
@@ -27,7 +27,7 @@ texture = ExtResource("3_ildge")
 [node name="World2" parent="." instance=ExtResource("4_nbj0m")]
 
 [node name="Player" parent="." instance=ExtResource("5_ww6j6")]
-position = Vector2(5076, -348)
+position = Vector2(603, 592)
 JUMP_HEIGHT = 75.0
 
 [node name="Foreground" parent="." instance=ExtResource("6_k6qh5")]
