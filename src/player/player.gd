@@ -182,6 +182,7 @@ func _physics_process(delta: float) -> void:
 
 
 func on_ladder():
+	$Camera2D.shake_on_hit()
 	if is_on_floor():
 		return
 	if velocity.y == 0:
