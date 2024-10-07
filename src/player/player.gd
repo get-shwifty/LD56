@@ -100,6 +100,7 @@ func _physics_process(delta: float) -> void:
 			if collider is StaticBody2D:
 				if collider.get_collision_layer_value(4):
 					rebound_vector = collision.get_normal()
+					collider.get_parent().play_boing()
 					break
 
 		if rebound_vector:
