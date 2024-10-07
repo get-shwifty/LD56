@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo74cfhrjn5b3"]
+[gd_scene load_steps=5 format=3 uid="uid://bo74cfhrjn5b3"]
 
 [ext_resource type="Script" path="res://src/reactives/reactive_mushroom.gd" id="1_ei4v8"]
 [ext_resource type="PackedScene" uid="uid://dooukoeo0o7ei" path="res://src/reactives/champi.tscn" id="2_xngt5"]
 [ext_resource type="PackedScene" uid="uid://h1cddxillf0g" path="res://src/reactives/reactive_component.tscn" id="3_2adfg"]
-[ext_resource type="AudioStream" uid="uid://dwq4x3yit2knb" path="res://sounds/Son-ouverture champignon.mp3" id="4_728p5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o05xm"]
 size = Vector2(27.7778, 58.6669)
@@ -23,13 +22,12 @@ wait_time = 3.0
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, -20)
 scale = Vector2(2.16, 0.165337)
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(-1.03609e-06, 29.3334)
 shape = SubResource("RectangleShape2D_o05xm")
 one_way_collision = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_728p5")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

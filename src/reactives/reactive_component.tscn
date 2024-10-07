@@ -7,5 +7,4 @@ radius = 160.0
 [node name="ReactiveComponent" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_2qhhl")

@@ -122,6 +122,8 @@ stream_0/stream = ExtResource("5_cbnvd")
 stream_1/stream = ExtResource("6_0rwb7")
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_hg8p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
