@@ -8,3 +8,7 @@ var songs: Dictionary = {
 	"mushroom": "ACAB",
 	"ladder": "DDD"
 }
+
+var musics = {
+	"shroom": preload("res://sounds/Son-ouverture champignon.mp3")
+}

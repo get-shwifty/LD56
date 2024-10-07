@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bk1ofwjmh8v4t"]
+[gd_scene load_steps=23 format=3 uid="uid://bk1ofwjmh8v4t"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hg8p4"]
 [ext_resource type="Texture2D" uid="uid://b0oiyujd71gpg" path="res://assets/mask_perso.png" id="3_cvfog"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://bh8b4ig1606gi" path="res://sounds/Chanterelle_Saut_1.mp3" id="5_cbnvd"]
 [ext_resource type="AudioStream" uid="uid://b4y6xlwqtcoo1" path="res://sounds/Chanterelle_Saut_2.mp3" id="6_0rwb7"]
 [ext_resource type="AudioStream" uid="uid://b1xf1pofki0qf" path="res://sounds/Chanterelle_Pas_Marche.mp3" id="7_u0ulh"]
+[ext_resource type="AudioStream" uid="uid://dympbofj5ig8d" path="res://sounds/Son-petite-chute-post-saut.mp3" id="8_7s5qk"]
+[ext_resource type="AudioStream" uid="uid://c210cldakklyu" path="res://sounds/Son-grosse-chute.mp3" id="9_jvxf0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oed0"]
 radius = 8.0
@@ -145,26 +147,27 @@ libraries = {
 unique_name_in_owner = true
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_2sru1")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.711301
 
-[node name="NoteSpawner" type="Node2D" parent="Visual"]
+[node name="NoteSpawner" type="Node2D" parent="Visual/AnimatedSprite2D"]
 unique_name_in_owner = true
-position = Vector2(-7, -30)
+position = Vector2(-7, -25)
 
-[node name="MaskPerso" type="Sprite2D" parent="Visual"]
+[node name="PlayerMask" type="Sprite2D" parent="Visual"]
+unique_name_in_owner = true
 clip_children = 1
-position = Vector2(-8, -18)
+z_index = 10
+z_as_relative = false
+position = Vector2(0, -22)
 texture = ExtResource("3_cvfog")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Visual/MaskPerso"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Visual/PlayerMask"]
 unique_name_in_owner = true
-position = Vector2(8, 13)
+position = Vector2(0, 17)
 sprite_frames = SubResource("SpriteFrames_2sru1")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.711301
 
 [node name="MusicBox2" parent="." instance=ExtResource("3_wcxlj")]
 visible = false
@@ -187,3 +190,11 @@ volume_db = -12.523
 stream = ExtResource("7_u0ulh")
 volume_db = -10.8
 parameters/looping = true
+
+[node name="AudioLand" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7s5qk")
+volume_db = -10.8
+
+[node name="AudioLandHigh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_jvxf0")
+volume_db = -10.8
