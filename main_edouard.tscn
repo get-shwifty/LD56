@@ -13,7 +13,7 @@
 script = ExtResource("1_h41kr")
 
 [node name="Sky" parent="." instance=ExtResource("2_4bwvj")]
-scroll_offset = Vector2(-888, -165)
+scroll_offset = Vector2(-881, -337)
 
 [node name="Background" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.3, 0.15)
