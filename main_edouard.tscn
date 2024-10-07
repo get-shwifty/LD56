@@ -20,15 +20,17 @@ scroll_offset = Vector2(-114, -277)
 [node name="World2" parent="." instance=ExtResource("4_nbj0m")]
 
 [node name="Player" parent="." instance=ExtResource("5_ww6j6")]
-position = Vector2(529, 588)
+position = Vector2(5309, 1512)
 JUMP_HEIGHT = 60.0
 
 [node name="Foreground" parent="." instance=ExtResource("6_k6qh5")]
+visible = false
 scroll_offset = Vector2(3, 231)
 
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -9.293
 
 [node name="IntervalSpawner" parent="." instance=ExtResource("7_4mi7q")]
 position = Vector2(629, 201)

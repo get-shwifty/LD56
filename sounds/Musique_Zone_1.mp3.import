@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Musique_Zone_1.mp3-3b318939d3e1c0a3c1e3c6fa15
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

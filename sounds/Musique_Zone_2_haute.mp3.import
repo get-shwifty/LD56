@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Musique_Zone_2_haute.mp3-a76ee1b6d28600439110
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
