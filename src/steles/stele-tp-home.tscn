@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bk0tl6edk0ikp"]
+[gd_scene load_steps=14 format=3 uid="uid://bk0tl6edk0ikp"]
 
 [ext_resource type="Script" path="res://src/steles/stele_tp.gd" id="1_pvyvw"]
 [ext_resource type="PackedScene" uid="uid://mfq861qjekus" path="res://src/reactives/tp.tscn" id="2_t8hii"]
 [ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="3_svotn"]
 [ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="4_k56jb"]
+[ext_resource type="AudioStream" uid="uid://cwnnos4kstgam" path="res://sounds/Bruit_Teleportation.mp3" id="6_cxvft"]
 [ext_resource type="Texture2D" uid="uid://bn2872wt630bj" path="res://assets/tp_anim.png" id="7_6fera"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7y5uf"]
@@ -88,3 +89,6 @@ position = Vector2(13, -43)
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_tg422")
 animation = &"tp"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cxvft")

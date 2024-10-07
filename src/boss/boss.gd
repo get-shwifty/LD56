@@ -37,7 +37,7 @@ func _ready():
 	
 	var tween = get_tree().create_tween()
 	Engine.time_scale = 0.3
-	tween.tween_property(Engine, "time_scale", 0.3, 0.4)
+	tween.tween_property(Engine, "time_scale", 0.3, 0.5)
 	tween.tween_property(Engine, "time_scale", 1.0, 0.2)
 	put_player_down()
 
@@ -57,6 +57,9 @@ func _physics_process(delta: float):
 	var player_position = %Player.position
 	if player_position.y > 50.0:
 		%Player.set_collision_mask_value(1, true)
+	
+	if left_time < 0:
+		return
 	
 	# LEFT
 	
@@ -179,6 +182,8 @@ func put_player_down():
 
 func _on_panier_body_entered(body: Node2D) -> void:
 	current_phase = 2
+	left_time = 100.0
+	right_time = 100.0
 	$AnimationPlayer.play("fall")
 	%SteleBirds.show()
 	Engine.time_scale = 0.3
@@ -186,3 +191,17 @@ func _on_panier_body_entered(body: Node2D) -> void:
 	tween.tween_property(Engine, "time_scale", 0.3, 0.4)
 	tween.tween_property(Engine, "time_scale", 1.0, 0.2)
 	put_player_down()
+
+
+func _on_stele_birds_on_played() -> void:
+	left_time = -100.0
+	right_time = -100.0
+	%Player.set_collision_mask_value(1, false)
+	%Player.is_teleport = true
+	%Player/Visual/AnimatedSprite2D.play("climb")
+	var tween = get_tree().create_tween()
+	tween.tween_property(%Player, "position", Vector2(0.0, -1112.0), 3.0)
+	tween.tween_property($FinalColorRect, "modulate", Color.WHITE, 5.0)
+	$Boss/Left.z_index = 0
+	$Boss/Right.z_index = 0
+	
