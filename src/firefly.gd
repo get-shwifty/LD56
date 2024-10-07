@@ -11,6 +11,7 @@ var mask: Node2D = null
 var mask_back: Node2D = null
 var is_init = false
 var counter = 0.0
+var song_name = "light"
 # Called when the node enters the scene tree for the first time.
 func init():
 	if is_init:
@@ -19,7 +20,7 @@ func init():
 	mask_back = MASK_BACK.instantiate()
 	get_parent().get_parent().get_node("Lights").add_child(mask)
 	Global.grotte_background_container.add_child(mask_back)
-	on()
+	off()
 	is_init = true
 	$AnimationPlayer.play("move")
 
@@ -44,3 +45,14 @@ func off():
 	$AnimatedSprite2D.play("off")
 	mask.off()
 	mask_back.off()
+	
+func on_song(song: String):
+	pass
+		
+func on_song_finished(name: String):
+	if name == song_name:
+		on()
+
+
+func _on_timer_timeout():
+	off()
