@@ -1,9 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmr44vku1ituo"]
+[gd_scene load_steps=10 format=3 uid="uid://bmr44vku1ituo"]
 
 [ext_resource type="Texture2D" uid="uid://cmkxj3btgi2tx" path="res://assets/dark_mask.png" id="1_2stff"]
+[ext_resource type="Script" path="res://src/world/caverne.gd" id="1_524x2"]
 [ext_resource type="PackedScene" uid="uid://bldn5ajfgupxd" path="res://src/light_mask.tscn" id="2_gwxvv"]
+[ext_resource type="Script" path="res://src/light_mask.gd" id="3_368u0"]
+[ext_resource type="Texture2D" uid="uid://cpiqsps2sdxld" path="res://assets/light-mask-Sheet.png" id="4_swjgv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jdlll"]
+blend_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kqot"]
+atlas = ExtResource("4_swjgv")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl6aa"]
+atlas = ExtResource("4_swjgv")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbu2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kqot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl6aa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Caverne" type="Node2D"]
+script = ExtResource("1_524x2")
 
 [node name="grotto" type="CanvasGroup" parent="."]
 z_index = 50
@@ -270,6 +299,25 @@ base_speed = 0.0
 position = Vector2(797, -639)
 scale = Vector2(5, 5)
 base_speed = 0.0
+
+[node name="PlayerFeet" type="Node2D" parent="grotto/Lights"]
+unique_name_in_owner = true
+
+[node name="LightMask" type="Node2D" parent="grotto/Lights/PlayerFeet"]
+position = Vector2(0, -20)
+scale = Vector2(1, 1.5)
+script = ExtResource("3_368u0")
+base_speed = 0.2
+
+[node name="Small" type="AnimatedSprite2D" parent="grotto/Lights/PlayerFeet/LightMask"]
+material = SubResource("CanvasItemMaterial_jdlll")
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_vbu2y")
+
+[node name="Big" type="AnimatedSprite2D" parent="grotto/Lights/PlayerFeet/LightMask"]
+material = SubResource("CanvasItemMaterial_jdlll")
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_vbu2y")
 
 [node name="Fireflies" type="Node2D" parent="grotto"]
 z_index = 101

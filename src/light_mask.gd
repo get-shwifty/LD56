@@ -5,6 +5,7 @@ extends Node2D
 func _ready():
 	$Big.speed_scale = base_speed
 	$Small.speed_scale = base_speed
+	off()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
