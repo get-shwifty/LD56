@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var speed = 200
+@export var sounds: Array[Resource] = []
+
 
 var ignore = false
 
@@ -15,8 +17,19 @@ func _on_body_entered(body):
 		return
 	if body is CharacterBody2D:
 		Global.player.teleport(Global.last_checkpoint.global_position)
-		queue_free()
+		hide()
+		play_sound()
 		return
+	play_sound()
 	ignore = true
 	await get_tree().create_timer(1).timeout
+	hide()
+
+func play_sound():
+	var sound = sounds.pick_random()
+	$AudioStreamPlayer2D.stream = sound
+	$AudioStreamPlayer2D.play()
+
+
+func _on_audio_stream_player_2d_finished():
 	queue_free()
