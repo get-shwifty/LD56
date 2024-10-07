@@ -4,6 +4,7 @@ extends Area2D
 @export var play_over = false
 @export var music: Resource = null
 
+@export var NOTE = preload("res://src/player/note_player.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -15,5 +16,13 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	if music:
-		Global.set_music(music)
+	#print('activate:    ', area)
+	#print('music:     ', self)
+	
+	if play_over:
+		var player = NOTE.instantiate()
+		player.music = music
+		add_child(player)
+		return
+		
+	Global.set_music(music)
