@@ -27,6 +27,8 @@ var music_timout = 60*3 # frames
 var music_frame = 0
 
 func _physics_process(delta):
+	if not Global.started:
+		return
 	if not can_play:
 		return
 	if Input.is_action_just_pressed("a") or (Input.is_action_pressed("sing") and Input.is_action_just_pressed("left")):

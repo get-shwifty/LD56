@@ -4,7 +4,7 @@ var songs: Dictionary = {
 	"light": "ABD",
 	"fly": "BBAA",
 	"damage": "CDBA",
-	"home": "ACBD",
+	"home": "AACCA",
 	"mushroom": "ACAB",
 	"ladder": "DDB",
 	"boss": "DCBBDCDAC",
