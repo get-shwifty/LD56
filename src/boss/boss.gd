@@ -1,5 +1,6 @@
 extends Node2D
 
+const PLAYER_FALL_Y := 50.0
 const ATTACK_LEFT_FOLLOW := 5.0
 const POING_SPEEDX := 50.0
 const POING_SPEEDY := 5.0
@@ -8,39 +9,50 @@ const POING_X1 := -300.0
 const POING_H0 := -300.0
 const POING_H1 := -300.0
 const POING_H2 := -400.0
-const POING_H3 := -65.0
-const POINGL_MIN_X := -232.0
-const POINGL_MAX_X := -60.0
+const POING_H3 := -65.0 - PLAYER_FALL_Y
+const POINGL_MIN_X := -200.0
+const POINGL_MAX_X := -100.0
 
-const BIRDS_SPEED = 500.0
+const BIRDS_SPEED := 500.0
+
+const EASY_MODE := 0.8
 
 var current_phase = 1
 
 enum { FOLLOWING, PREPARING, ATTACKING }
 
-var left_time := -8.0
+var left_time := -8.0 * EASY_MODE
 var left_target_y := POING_H1
 var left_state := FOLLOWING
 
-var right_time := -8.0
+var right_time := -8.0 * EASY_MODE
 var right_target_y := POING_H1
 var right_state := FOLLOWING
 
 func _ready():
-	$Boss.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	$Boss/Left.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	$Boss/Right.modulate = Color(1.0, 1.0, 1.0, 0.0)
 	Global.map = self
 	Global.projectile_container = $Projectiles
+	
+	var tween = get_tree().create_tween()
+	Engine.time_scale = 0.3
+	tween.tween_property(Engine, "time_scale", 0.3, 0.4)
+	tween.tween_property(Engine, "time_scale", 1.0, 0.2)
+	put_player_down()
 
 
 func _physics_process(delta: float):
 	%Birds.progress += BIRDS_SPEED * delta
 	
-	if left_time < 0 and left_time + delta >= 0:
+	if left_time < 0 and left_time + delta * EASY_MODE >= 0:
 		var tween = get_tree().create_tween()
-		tween.tween_property($Boss, "modulate", Color.WHITE, 0.300)
+		tween.tween_property($Boss/Left, "modulate", Color.WHITE, 0.300)
+		var tween2 = get_tree().create_tween()
+		tween2.tween_property($Boss/Right, "modulate", Color.WHITE, 0.300)
 
-	left_time += delta
-	right_time += delta
+	left_time += delta * EASY_MODE
+	right_time += delta * EASY_MODE
 	
 	var player_position = %Player.position
 	if player_position.y > 50.0:
@@ -91,7 +103,7 @@ func _physics_process(delta: float):
 	else:
 		$Boss/Left.position.y = lerp($Boss/Left.position.y, cur_ltarget_y, POING_SPEEDY*delta)
 	
-	shake($Boss/Left, left_time, left_state == PREPARING)
+	shake($Boss/Left, left_time / EASY_MODE, left_state == PREPARING)
 	front($Boss/Left, left_state == PREPARING or left_state == ATTACKING)
 
 	# RIGHT
@@ -139,7 +151,7 @@ func _physics_process(delta: float):
 	else:
 		$Boss/Right.position.y = lerp($Boss/Right.position.y, cur_rtarget_y, POING_SPEEDY*delta)
 	
-	shake($Boss/Right, right_time, right_state == PREPARING)
+	shake($Boss/Right, right_time / EASY_MODE, right_state == PREPARING)
 	front($Boss/Right, right_state == PREPARING or right_state == ATTACKING)
 
 func shake(node: Node2D, time, do_shake):
@@ -151,9 +163,13 @@ func front(node: Node2D, do_front):
 
 func _on_left_kill_body_entered(body: Node2D) -> void:
 	put_player_down()
+	left_time = 100.0
+	right_time = 100.0
 
 func _on_right_kill_body_entered(body: Node2D) -> void:
 	put_player_down()
+	left_time = 100.0
+	right_time = 100.0
 	
 func put_player_down():
 	%Player.set_collision_mask_value(1, false)
@@ -165,6 +181,6 @@ func _on_panier_body_entered(body: Node2D) -> void:
 	%SteleBirds.show()
 	Engine.time_scale = 0.3
 	var tween = get_tree().create_tween()
-	tween.tween_property(Engine, "time_scale", 0.3, 0.6)
+	tween.tween_property(Engine, "time_scale", 0.3, 0.4)
 	tween.tween_property(Engine, "time_scale", 1.0, 0.2)
 	put_player_down()
