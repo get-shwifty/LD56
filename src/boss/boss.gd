@@ -31,7 +31,7 @@ func _ready():
 	Global.projectile_container = $Projectiles
 	
 	for i in range(100):
-		attack_left(phase1, i*10.0 + 3.0)
+		attack_left(phase1, i*5.0 + 3.0)
 
 func _physics_process(delta: float):
 	time += delta
