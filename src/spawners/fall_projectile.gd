@@ -16,7 +16,7 @@ func _on_body_entered(body):
 	if ignore:
 		return
 	if body is CharacterBody2D:
-		Global.player.teleport(Global.last_checkpoint.global_position)
+		Global.player.kill()
 		hide()
 		play_sound()
 		return
