@@ -1,17 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjpe18fjk5vm8"]
+[gd_scene load_steps=9 format=3 uid="uid://bjpe18fjk5vm8"]
 
 [ext_resource type="Script" path="res://src/reactives/stelle.gd" id="1_k3am2"]
 [ext_resource type="Texture2D" uid="uid://dnw575mtim1qw" path="res://assets/items.png" id="1_p1jrc"]
+[ext_resource type="Texture2D" uid="uid://2ays7ryglgxu" path="res://assets/broken.png" id="2_c258b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_77olu"]
-atlas = ExtResource("1_p1jrc")
-region = Rect2(0, 0, 64, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_opthj"]
+atlas = ExtResource("2_c258b")
+region = Rect2(0, 0, 67, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csmqf"]
+atlas = ExtResource("2_c258b")
+region = Rect2(321, 0, 67, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57ckp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_77olu")
+"texture": SubResource("AtlasTexture_opthj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csmqf")
 }],
 "loop": true,
 "name": &"default",
@@ -37,9 +45,9 @@ animations = [{
 script = ExtResource("1_k3am2")
 
 [node name="Stelle" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_57ckp")
 
 [node name="StelleLumiere" type="AnimatedSprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.196078)
 sprite_frames = SubResource("SpriteFrames_30nrd")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://bk1ofwjmh8v4t"]
+[gd_scene load_steps=28 format=3 uid="uid://bk1ofwjmh8v4t"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hg8p4"]
-[ext_resource type="Texture2D" uid="uid://ly76o7ctyk1v" path="res://assets/perso_grimpe.png" id="2_ieaxc"]
 [ext_resource type="Texture2D" uid="uid://b0oiyujd71gpg" path="res://assets/mask_perso.png" id="3_cvfog"]
 [ext_resource type="PackedScene" uid="uid://ddmwd0kfxmq07" path="res://src/player/music_box.tscn" id="3_wcxlj"]
 [ext_resource type="Texture2D" uid="uid://1l12ns1yj41j" path="res://assets/perso.png" id="4_cnnc1"]
@@ -10,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b1xf1pofki0qf" path="res://sounds/Chanterelle_Pas_Marche.mp3" id="7_u0ulh"]
 [ext_resource type="AudioStream" uid="uid://dympbofj5ig8d" path="res://sounds/Son-petite-chute-post-saut.mp3" id="8_7s5qk"]
 [ext_resource type="AudioStream" uid="uid://c210cldakklyu" path="res://sounds/Son-grosse-chute.mp3" id="9_jvxf0"]
+[ext_resource type="Script" path="res://src/player/voices.gd" id="10_50chp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oed0"]
 radius = 8.0
@@ -54,17 +54,17 @@ _data = {
 "run": SubResource("Animation_vf5hf")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_506eh"]
-atlas = ExtResource("2_ieaxc")
-region = Rect2(8, 0, 31, 44)
+[sub_resource type="AtlasTexture" id="AtlasTexture_knvwl"]
+atlas = ExtResource("4_cnnc1")
+region = Rect2(0, 315, 96, 105)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k42su"]
-atlas = ExtResource("2_ieaxc")
-region = Rect2(39, 0, 31, 44)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nkin"]
+atlas = ExtResource("4_cnnc1")
+region = Rect2(96, 315, 96, 105)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gs06h"]
-atlas = ExtResource("2_ieaxc")
-region = Rect2(70, 0, 31, 44)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rffjw"]
+atlas = ExtResource("4_cnnc1")
+region = Rect2(192, 315, 96, 105)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wui8n"]
 atlas = ExtResource("4_cnnc1")
@@ -94,13 +94,13 @@ region = Rect2(96, 105, 96, 105)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_506eh")
+"texture": SubResource("AtlasTexture_knvwl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k42su")
+"texture": SubResource("AtlasTexture_1nkin")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gs06h")
+"texture": SubResource("AtlasTexture_rffjw")
 }],
 "loop": true,
 "name": &"climb",
@@ -141,7 +141,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbkfd"]
-radius = 16.0
+radius = 7.0
 height = 48.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y1m0c"]
@@ -149,6 +149,8 @@ playback_mode = 1
 streams_count = 2
 stream_0/stream = ExtResource("5_cbnvd")
 stream_1/stream = ExtResource("6_0rwb7")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mek6n"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 129
@@ -160,8 +162,8 @@ position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_8oed0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -100)
-zoom = Vector2(2, 2)
+position = Vector2(0, -50)
+zoom = Vector2(1.5, 1.5)
 process_callback = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -202,12 +204,11 @@ visible = false
 position = Vector2(0, -24)
 
 [node name="LadderDetection" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderDetection"]
-position = Vector2(0, -24)
+position = Vector2(-1, -23)
 shape = SubResource("CapsuleShape2D_vbkfd")
 
 [node name="AudioJump" type="AudioStreamPlayer" parent="."]
@@ -226,3 +227,19 @@ volume_db = -20.537
 [node name="AudioLandHigh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_jvxf0")
 volume_db = -8.587
+
+[node name="Voices" type="AudioStreamPlayer" parent="."]
+volume_db = -9.734
+script = ExtResource("10_50chp")
+
+[node name="Timer" type="Timer" parent="Voices"]
+
+[node name="MusicDetection" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusicDetection"]
+position = Vector2(0, -21)
+shape = SubResource("CircleShape2D_mek6n")
+
+[connection signal="timeout" from="Voices/Timer" to="Voices" method="_on_timer_timeout"]

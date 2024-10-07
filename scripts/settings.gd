@@ -6,9 +6,12 @@ var songs: Dictionary = {
 	"damage": "CDBA",
 	"home": "ACBD",
 	"mushroom": "ACAB",
-	"ladder": "DDB"
+	"ladder": "DDB",
+	"boss": "DCBBDCDAC"
 }
 
 var musics = {
-	"shroom": preload("res://sounds/Son-ouverture champignon.mp3")
+	"shroom": preload("res://sounds/Son-ouverture champignon.mp3"),
+	"scolo": preload("res://sounds/son-scolopandre.mp3"),
+	"teleport": preload("res://sounds/Musique-Teleportation.mp3")
 }

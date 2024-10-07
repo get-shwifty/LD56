@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo74cfhrjn5b3"]
+[gd_scene load_steps=8 format=3 uid="uid://bo74cfhrjn5b3"]
 
 [ext_resource type="Script" path="res://src/reactives/reactive_mushroom.gd" id="1_ei4v8"]
 [ext_resource type="PackedScene" uid="uid://dooukoeo0o7ei" path="res://src/reactives/champi.tscn" id="2_xngt5"]
 [ext_resource type="PackedScene" uid="uid://h1cddxillf0g" path="res://src/reactives/reactive_component.tscn" id="3_2adfg"]
 [ext_resource type="AudioStream" uid="uid://dwq4x3yit2knb" path="res://sounds/Son-ouverture champignon.mp3" id="4_728p5"]
+[ext_resource type="AudioStream" uid="uid://djmodvmjmp5a3" path="res://sounds/Son-rebond-champignon-3.mp3" id="5_xbn0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o05xm"]
 size = Vector2(27.7778, 58.6669)
+
+[sub_resource type="Curve" id="Curve_bao0t"]
+_data = [Vector2(0.015625, 0.923077), 0.0, 0.0, 0, 0, Vector2(1, 0.153846), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="ReactiveMushroom" type="Node2D"]
 position = Vector2(-1, -25)
@@ -35,4 +40,33 @@ one_way_collision = true
 stream = ExtResource("4_728p5")
 volume_db = -15.39
 
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -9)
+emitting = false
+amount = 30
+lifetime = 0.6
+one_shot = true
+speed_scale = 0.5
+explosiveness = 1.0
+randomness = 0.51
+lifetime_randomness = 0.71
+emission_shape = 3
+emission_rect_extents = Vector2(25, 1)
+direction = Vector2(0, 1)
+spread = 9.76
+gravity = Vector2(0, 20)
+initial_velocity_max = 245.29
+angular_velocity_min = -8.0
+angular_velocity_max = 1.3
+radial_accel_max = 26.42
+scale_amount_min = 1.5
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_bao0t")
+color = Color(0, 1, 1, 1)
+hue_variation_max = 1.0
+
+[node name="BoingPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xbn0n")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="tree_entered" from="Ground/CollisionShape2D" to="." method="_on_collision_shape_2d_tree_entered"]

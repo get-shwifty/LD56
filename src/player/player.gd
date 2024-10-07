@@ -28,6 +28,13 @@ const RUN_MAX_ACC := 10000.0
 @export_range(0, 100, 1) var CAM_LOOKAHEAD := 0.0
 
 @onready var NOTE = preload("res://src/player/note_particle.tscn")
+@onready var PARTICLE = preload("res://src/player/walk_particle.tscn")
+
+### Teleport
+@export var teleport_time = 1.0
+var is_teleport = false
+
+var counter_frame = 0
 
 var last_fallspeed_in_air := 0.0
 var coyote_time := 0.0
@@ -56,6 +63,10 @@ func lerp_value(base100, min_value, max_value, power = 2, inverted = false) -> f
 	return lerp(min_value, max_value, pow(value, power))
 
 func _physics_process(delta: float) -> void:
+	if is_teleport:
+		velocity = Vector2.ZERO
+		return
+	
 	var GRAVITY = 2.0 * JUMP_HEIGHT / (JUMP_TIME * JUMP_TIME)
 	var can_input = not Input.is_action_pressed("sing") and %Player.get_collision_mask_value(1)
 
@@ -97,6 +108,7 @@ func _physics_process(delta: float) -> void:
 			if collider is StaticBody2D:
 				if collider.get_collision_layer_value(4):
 					rebound_vector = collision.get_normal()
+					collider.get_parent().play_boing()
 					break
 
 		if rebound_vector:
@@ -139,6 +151,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, lerp_value(RUN_DECELERATION, 0.0, RUN_MAX_ACC) * delta)
 		if state == RUN:
 			set_state(IDLE)
+			
+	var last_scale = %AnimatedSprite2D.scale.x
+	var new_scale = sign(velocity.x)
+	if new_scale == 0:
+		new_scale = last_scale
+	%AnimatedSprite2D.scale.x = new_scale
+	%PlayerMask.scale.x = new_scale
 
 
 	if is_on_ladder():
@@ -148,10 +167,31 @@ func _physics_process(delta: float) -> void:
 		elif vertical_direction > 0:
 			vertical_direction *= 1.2
 		velocity.y = RUN_SPEED * vertical_direction
+		on_ladder()
 		# TODO lerp
-
+	
+	if velocity.x != 0:
+		counter_frame += 1
+		if counter_frame %  randi_range(10, 20) == 0 and is_on_floor():
+			var particle = PARTICLE.instantiate()
+			particle.global_position = global_position - Vector2(0, 25)
+			Global.projectile_container.add_child(particle)
+	
 	move_and_slide()
 	$Camera2D.position.x = lerp_value(CAM_LOOKAHEAD, 0.0, velocity.x)
+
+
+func on_ladder():
+	if is_on_floor():
+		return
+	if velocity.y == 0:
+		%AnimatedSprite2D.play("climb")
+		%AnimatedSprite2D2.play("climb")
+		%AnimatedSprite2D.stop()
+		%AnimatedSprite2D2.stop()
+	else:
+		%AnimatedSprite2D.play("climb")
+		%AnimatedSprite2D2.play("climb")
 
 func on_land(fallspeed):
 	%AnimatedSprite2D.play("idle")
@@ -162,11 +202,11 @@ func on_land(fallspeed):
 	var factor = clamp(fallspeed / FALL_MAX_SPEED, 0.0, 1.0)
 	factor = pow(factor, 1.8)
 
-	if fallspeed < FALL_MAX_SPEED:
-		$AudioLand.play()
-	else:
-		$AudioLandHigh.play()
-
+	#if fallspeed < FALL_MAX_SPEED:
+		#$AudioLand.play()
+	#else:
+		#$AudioLandHigh.play()
+	$AudioLand.play()
 	var tween = get_tree().create_tween()
 	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0) + Vector2(0.4, -0.4) * factor, 0.050)
 	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0), 0.200)
@@ -195,11 +235,20 @@ func on_run():
 	$Visual.skew = -velocity.x / RUN_SPEED * deg_to_rad(1)
 	if not $AudioRun.playing:
 		$AudioRun.play()
+	print(int(global_position.x))
+		
+		
 
 func teleport(position: Vector2):
 	global_position = position
 	state = IDLE
 	velocity = Vector2.ZERO
+	is_teleport = true
+	#Global.play_teleport()
+	hide()
+	await get_tree().create_timer(teleport_time).timeout
+	show()
+	is_teleport = false
 
 func is_on_ladder():
 	var areas = $LadderDetection.get_overlapping_areas()
