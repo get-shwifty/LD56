@@ -28,3 +28,10 @@ func set_music(music):
 		return
 	map_m.stream = music
 	map_m.play()
+	
+#func play_teleport(timeout):
+	#var map_m: AudioStreamPlayer = map.get_node("Music")
+	#map_m.stop()
+	#request_music = "teleport"
+	#await get_tree().create_timer(timeout).timeout
+	#map_m.play()

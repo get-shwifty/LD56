@@ -1,21 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://mfq861qjekus"]
+[gd_scene load_steps=5 format=3 uid="uid://mfq861qjekus"]
 
-[ext_resource type="Texture2D" uid="uid://dnw575mtim1qw" path="res://assets/items.png" id="1_b0qlw"]
+[ext_resource type="Texture2D" uid="uid://2ays7ryglgxu" path="res://assets/broken.png" id="1_6hco7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6exl7"]
-atlas = ExtResource("1_b0qlw")
-region = Rect2(0, 128, 106, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bltfc"]
+atlas = ExtResource("1_6hco7")
+region = Rect2(0, 120, 96, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6y66"]
+atlas = ExtResource("1_6hco7")
+region = Rect2(320, 120, 96, 120)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3p8vc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6exl7")
+"texture": SubResource("AtlasTexture_bltfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6y66")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="TP" type="AnimatedSprite2D"]
+position = Vector2(2, -24)
 sprite_frames = SubResource("SpriteFrames_3p8vc")
+autoplay = "default"
