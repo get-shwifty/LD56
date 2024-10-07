@@ -140,17 +140,30 @@ func _physics_process(delta: float) -> void:
 	if new_scale == 0:
 		new_scale = last_scale
 	%AnimatedSprite2D.scale.x = new_scale
-	#%AnimatedSprite2D2.scale.x = new_scale
 	%PlayerMask.scale.x = new_scale
 
 
 	if is_on_ladder():
 		var vertical_direction := Input.get_axis("up", "down") if can_input else 0.0
 		velocity.y = RUN_SPEED * vertical_direction
+		on_ladder()
 		# TODO lerp
 
 	move_and_slide()
 	$Camera2D.position.x = lerp_value(CAM_LOOKAHEAD, 0.0, velocity.x)
+
+
+func on_ladder():
+	if is_on_floor():
+		return
+	if velocity.y == 0:
+		%AnimatedSprite2D.play("climb")
+		%AnimatedSprite2D2.play("climb")
+		%AnimatedSprite2D.stop()
+		%AnimatedSprite2D2.stop()
+	else:
+		%AnimatedSprite2D.play("climb")
+		%AnimatedSprite2D2.play("climb")
 
 func on_land():
 	%AnimatedSprite2D.play("idle")
