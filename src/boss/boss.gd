@@ -12,15 +12,17 @@ const POING_H3 := -65.0
 const POINGL_MIN_X := -232.0
 const POINGL_MAX_X := -30.0
 
+const BIRDS_SPEED = 500.0
+
 var current_phase = 1
 
 enum { FOLLOWING, PREPARING, ATTACKING }
 
-var left_time := -2.0
+var left_time := -8.0
 var left_target_y := POING_H1
 var left_state := FOLLOWING
 
-var right_time := -2.0
+var right_time := -8.0
 var right_target_y := POING_H1
 var right_state := FOLLOWING
 
@@ -31,6 +33,8 @@ func _ready():
 
 
 func _physics_process(delta: float):
+	%Birds.progress += BIRDS_SPEED * delta
+	
 	if left_time < 0 and left_time + delta >= 0:
 		var tween = get_tree().create_tween()
 		tween.tween_property($Boss, "modulate", Color.WHITE, 0.300)
