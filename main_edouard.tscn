@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bttkqnn4pwmyk"]
+[gd_scene load_steps=9 format=3 uid="uid://bttkqnn4pwmyk"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_h41kr"]
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_4bwvj"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_nbj0m"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_ww6j6"]
 [ext_resource type="Texture2D" uid="uid://bhsdhqpwiof45" path="res://assets/decors/arbre.png" id="6_tocak"]
-[ext_resource type="PackedScene" uid="uid://c2dx3pd52tprs" path="res://start_screen.tscn" id="7_g0u2j"]
 [ext_resource type="Texture2D" uid="uid://3868gfwp81ut" path="res://assets/decors/lianes.png" id="7_vf1yj"]
 [ext_resource type="Texture2D" uid="uid://hjkvobw4pnjk" path="res://assets/decors/fougeres.png" id="8_0vcim"]
 
@@ -14,7 +13,7 @@
 script = ExtResource("1_h41kr")
 
 [node name="Sky" parent="." instance=ExtResource("2_4bwvj")]
-scroll_offset = Vector2(-888, -165)
+scroll_offset = Vector2(-881, -337)
 
 [node name="Background" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.3, 0.15)
