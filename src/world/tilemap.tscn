@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://f2mbdfdom55u"]
+[gd_scene load_steps=16 format=4 uid="uid://f2mbdfdom55u"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_atmrp"]
 [ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="2_cilhj"]
@@ -8,14 +8,29 @@
 [ext_resource type="PackedScene" uid="uid://baab5ejfhpuid" path="res://src/world/music_activation.tscn" id="7_sdb5r"]
 [ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="11_w5p44"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxag6"]
+size = Vector2(719, 664)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwjjf"]
 size = Vector2(6541, 2627.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yolex"]
+size = Vector2(4317.5, 2096)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooe60"]
+size = Vector2(4317.5, 2919)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_7wqvg"]
 points = PackedVector2Array(0, 150, 0, 2000, 5000, 2000, 5000, -800, 3000, -680, 1500, -700, 1200, -300, 500, -350, 230, -200, 230, 150)
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ydmgb"]
-points = PackedVector2Array(0, 150, 0, 3000, 3150, 3000, 3150, 2000, 3300, 1600, 4400, 1600, 4800, 1250, 7800, 1250, 7800, 550, 681, 537, 680, -200, 230, -300)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7wly"]
+size = Vector2(6910, 590)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_poqlh"]
+size = Vector2(807, 3217)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtso"]
+size = Vector2(3286, 1726)
 
 [node name="World2" type="Node2D"]
 position = Vector2(-60, 4)
@@ -79,19 +94,31 @@ position = Vector2(1311, 385)
 
 [node name="ZoneActivation" type="Node2D" parent="Musique"]
 
-[node name="Area2D" parent="Musique/ZoneActivation" instance=ExtResource("7_sdb5r")]
-script = null
+[node name="DecouverteStelle" parent="Musique/ZoneActivation" instance=ExtResource("7_sdb5r")]
 
-[node name="Area2D2" type="Area2D" parent="Musique/ZoneActivation"]
-position = Vector2(228, -361)
-collision_layer = 64
-collision_mask = 64
+[node name="decouverte_Stele (pas jouer en boucle)" type="CollisionShape2D" parent="Musique/ZoneActivation/DecouverteStelle"]
+position = Vector2(1671, 1099)
+shape = SubResource("RectangleShape2D_cxag6")
 
-[node name="CollisionShape2D-musique-zone2-haut" type="CollisionShape2D" parent="Musique/ZoneActivation/Area2D2"]
-position = Vector2(3575.5, -1732.75)
+[node name="Zone2Haut" parent="Musique/ZoneActivation" instance=ExtResource("7_sdb5r")]
+position = Vector2(3819, -2111)
+
+[node name="CollisionShape2D-musique-zone2-haut" type="CollisionShape2D" parent="Musique/ZoneActivation/Zone2Haut"]
 shape = SubResource("RectangleShape2D_gwjjf")
 
+[node name="Zone3Fond" parent="Musique/ZoneActivation" instance=ExtResource("7_sdb5r")]
+position = Vector2(5146, 1292)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Musique/ZoneActivation/Zone3Fond"]
+position = Vector2(258, 373)
+shape = SubResource("RectangleShape2D_yolex")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Musique/ZoneActivation/Zone3Fond"]
+position = Vector2(1784, 317.5)
+shape = SubResource("RectangleShape2D_ooe60")
+
 [node name="Area2D3" type="Area2D" parent="Musique/ZoneActivation"]
+visible = false
 position = Vector2(228, -361)
 collision_layer = 64
 collision_mask = 64
@@ -101,12 +128,17 @@ position = Vector2(2856, 986)
 shape = SubResource("ConvexPolygonShape2D_7wqvg")
 one_way_collision_margin = 0.0
 
-[node name="Area2D4" type="Area2D" parent="Musique/ZoneActivation"]
-position = Vector2(228, -361)
-collision_layer = 64
-collision_mask = 64
+[node name="Zone1Milieu" parent="Musique/ZoneActivation" instance=ExtResource("7_sdb5r")]
+position = Vector2(1844, -119)
 
-[node name="CollisionShape2D-Musique-zone-3-fond" type="CollisionShape2D" parent="Musique/ZoneActivation/Area2D4"]
-position = Vector2(-374, -957)
-shape = SubResource("ConvexPolygonShape2D_ydmgb")
-one_way_collision_margin = 0.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Musique/ZoneActivation/Zone1Milieu"]
+position = Vector2(1732, -299)
+shape = SubResource("RectangleShape2D_y7wly")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Musique/ZoneActivation/Zone1Milieu"]
+position = Vector2(-1764.5, -147.5)
+shape = SubResource("RectangleShape2D_poqlh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Musique/ZoneActivation/Zone1Milieu"]
+position = Vector2(-695, 667)
+shape = SubResource("RectangleShape2D_mgtso")

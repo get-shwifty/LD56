@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var play_once = false
+@export var play_over = false
 @export var music: Resource = null
 
 # Called when the node enters the scene tree for the first time.

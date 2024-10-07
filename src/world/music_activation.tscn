@@ -1,17 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://baab5ejfhpuid"]
+[gd_scene load_steps=2 format=3 uid="uid://baab5ejfhpuid"]
 
 [ext_resource type="Script" path="res://src/world/MusicActivation.gd" id="1_0l3xn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxag6"]
-size = Vector2(719, 664)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("1_0l3xn")
-
-[node name="decouverte_Stele (pas jouer en boucle)" type="CollisionShape2D" parent="."]
-position = Vector2(1687.5, 1104)
-shape = SubResource("RectangleShape2D_cxag6")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
