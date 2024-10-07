@@ -27,3 +27,5 @@ visible = false
 scroll_offset = Vector2(3, 231)
 
 [node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]

@@ -193,11 +193,11 @@ func on_land(fallspeed):
 	var factor = clamp(fallspeed / FALL_MAX_SPEED, 0.0, 1.0)
 	factor = pow(factor, 1.8)
 
-	if fallspeed < FALL_MAX_SPEED:
-		$AudioLand.play()
-	else:
-		$AudioLandHigh.play()
-
+	#if fallspeed < FALL_MAX_SPEED:
+		#$AudioLand.play()
+	#else:
+		#$AudioLandHigh.play()
+	$AudioLand.play()
 	var tween = get_tree().create_tween()
 	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0) + Vector2(0.4, -0.4) * factor, 0.050)
 	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0), 0.200)

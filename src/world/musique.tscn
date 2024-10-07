@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0bdo8qbdiw27"]
+
+[ext_resource type="PackedScene" uid="uid://baab5ejfhpuid" path="res://src/world/music_activation.tscn" id="1_2jf1n"]
+[ext_resource type="AudioStream" uid="uid://bogwqdxdntifa" path="res://sounds/decouverte_Stele.mp3" id="2_t8uxc"]
+[ext_resource type="AudioStream" uid="uid://djoyyu58cb2ct" path="res://sounds/Musique_Zone_2_haute.mp3" id="3_yowcy"]
+[ext_resource type="AudioStream" uid="uid://37gas4ft4llo" path="res://sounds/Musique_Zone_3-Basse.mp3" id="4_xfpo1"]
+[ext_resource type="AudioStream" uid="uid://c73sk8frapdnm" path="res://sounds/Musique_Zone_1.mp3" id="5_lovna"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxag6"]
+size = Vector2(719, 664)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwjjf"]
+size = Vector2(6541, 2627.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yolex"]
+size = Vector2(4187.75, 2275)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooe60"]
+size = Vector2(4317.5, 2919)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7wly"]
+size = Vector2(6910, 590)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_poqlh"]
+size = Vector2(807, 3217)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtso"]
+size = Vector2(3286, 1726)
+
+[node name="Musique" type="Node2D"]
+
+[node name="ZoneActivation" type="Node2D" parent="."]
+
+[node name="DecouverteStelle" parent="ZoneActivation" instance=ExtResource("1_2jf1n")]
+position = Vector2(1647, 1140)
+play_once = true
+play_over = true
+music = ExtResource("2_t8uxc")
+
+[node name="decouverte_Stele (pas jouer en boucle)" type="CollisionShape2D" parent="ZoneActivation/DecouverteStelle"]
+shape = SubResource("RectangleShape2D_cxag6")
+
+[node name="Zone2Haut" parent="ZoneActivation" instance=ExtResource("1_2jf1n")]
+position = Vector2(3819, -2111)
+music = ExtResource("3_yowcy")
+
+[node name="CollisionShape2D-musique-zone2-haut" type="CollisionShape2D" parent="ZoneActivation/Zone2Haut"]
+shape = SubResource("RectangleShape2D_gwjjf")
+
+[node name="Zone3Fond" parent="ZoneActivation" instance=ExtResource("1_2jf1n")]
+position = Vector2(5146, 1292)
+music = ExtResource("4_xfpo1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneActivation/Zone3Fond"]
+position = Vector2(322.875, 283.5)
+shape = SubResource("RectangleShape2D_yolex")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ZoneActivation/Zone3Fond"]
+position = Vector2(1784, 317.5)
+shape = SubResource("RectangleShape2D_ooe60")
+
+[node name="Zone1Milieu" parent="ZoneActivation" instance=ExtResource("1_2jf1n")]
+position = Vector2(1844, -119)
+music = ExtResource("5_lovna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneActivation/Zone1Milieu"]
+position = Vector2(1732, -299)
+shape = SubResource("RectangleShape2D_y7wly")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ZoneActivation/Zone1Milieu"]
+position = Vector2(-1764.5, -147.5)
+shape = SubResource("RectangleShape2D_poqlh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ZoneActivation/Zone1Milieu"]
+position = Vector2(-695, 667)
+shape = SubResource("RectangleShape2D_mgtso")
