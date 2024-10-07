@@ -16,19 +16,19 @@ action = "birds"
 [node name="runes" type="Node2D" parent="."]
 
 [node name="left-rune" parent="runes" instance=ExtResource("3_wow5n")]
-position = Vector2(1, -28)
+position = Vector2(0, 26)
 
 [node name="top-rune" parent="runes" instance=ExtResource("5_hyrlg")]
-position = Vector2(-8, -9)
+position = Vector2(-8, 9)
 
 [node name="right-rune" parent="runes" instance=ExtResource("4_0kaq3")]
-position = Vector2(10, -9)
+position = Vector2(10, 10)
 
 [node name="top-rune2" parent="runes" instance=ExtResource("5_hyrlg")]
-position = Vector2(-9, 10)
+position = Vector2(-8, -12)
 
 [node name="right-rune2" parent="runes" instance=ExtResource("4_0kaq3")]
-position = Vector2(9, 10)
+position = Vector2(10, -12)
 
 [node name="bottom-rune" parent="runes" instance=ExtResource("6_t0gsf")]
-position = Vector2(1, 26)
+position = Vector2(2, -31)

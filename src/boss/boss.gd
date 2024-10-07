@@ -199,6 +199,7 @@ func _on_stele_birds_on_played() -> void:
 	%Player.set_collision_mask_value(1, false)
 	%Player.is_teleport = true
 	%Player/Visual/AnimatedSprite2D.play("climb")
+	%Player/Visual/PlayerMask.hide()
 	var tween = get_tree().create_tween()
 	tween.tween_property(%Player, "position", Vector2(0.0, -1112.0), 3.0)
 	tween.tween_property($FinalColorRect, "modulate", Color.WHITE, 5.0)
