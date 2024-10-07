@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://f2mbdfdom55u"]
+[gd_scene load_steps=64 format=4 uid="uid://f2mbdfdom55u"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_atmrp"]
 [ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="2_cilhj"]
@@ -21,9 +21,29 @@
 [ext_resource type="PackedScene" uid="uid://d0bdo8qbdiw27" path="res://src/world/musique.tscn" id="14_bdwpx"]
 [ext_resource type="PackedScene" uid="uid://dtwqrpdd6lxe8" path="res://src/steles/stele_boss_3.tscn" id="14_qa4cb"]
 [ext_resource type="Script" path="res://src/world/FireflySpawner.gd" id="16_6qmpb"]
-[ext_resource type="PackedScene" uid="uid://bmr44vku1ituo" path="res://src/world/caverne.tscn" id="16_bx3fe"]
 [ext_resource type="Script" path="res://src/world/before_cones.gd" id="21_fywmg"]
+[ext_resource type="Script" path="res://src/world/caverne.gd" id="22_7i4wm"]
 [ext_resource type="Texture2D" uid="uid://bneutrfeuk6s7" path="res://assets/tuto.png" id="22_rct33"]
+[ext_resource type="Script" path="res://src/light_mask.gd" id="24_ixcjc"]
+[ext_resource type="Texture2D" uid="uid://cpiqsps2sdxld" path="res://assets/light-mask-Sheet.png" id="25_k1jdt"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jlxb8"]
+blend_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glkpy"]
+atlas = ExtResource("25_k1jdt")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04xjt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glkpy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Curve2D" id="Curve2D_6u0ky"]
 _data = {
@@ -90,6 +110,12 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -1802, 2480, 0, 0, 0, 0, -1785, 2486, 0, 0, 0, 0, -1776, 2488, 0, 0, 0, 0, -1752, 2486, 0, 0, 0, 0, -1724.44, 2489.2, 0, 0, 0, 0, -1665, 2473, 0, 0, 0, 0, -1638.88, 2465.16, 0, 0, 0, 0, -1618, 2462, 0, 0, 0, 0, -1597, 2460, 0, 0, 0, 0, -1575, 2439, 0, 0, 0, 0, -1589, 2419, 0, 0, 0, 0, -1597, 2414, 0, 0, 0, 0, -1591, 2402, 0, 0, 0, 0, -1586, 2391, 0, 0, 0, 0, -1599, 2383, 0, 0, 0, 0, -1585, 2367, 0, 0, 0, 0, -1581, 2351, 0, 0, 0, 0, -1587, 2335, 0, 0, 0, 0, -1614, 2326, 0, 0, 0, 0, -1642, 2334, 0, 0, 0, 0, -1649, 2348, 0, 0, 0, 0, -1652, 2371, 0, 0, 0, 0, -1649, 2399, 0, 0, 0, 0, -1660, 2419, 0, 0, 0, 0, -1667, 2425, 0, 0, 0, 0, -1686, 2420, 0, 0, 0, 0, -1683, 2430, 0, 0, 0, 0, -1686, 2439, 0, 0, 0, 0, -1710, 2445, 0, 0, 0, 0, -1731, 2445, 0, 0, 0, 0, -1751, 2453, 0, 0, 0, 0, -1768, 2456, 0, 0, 0, 0, -1782, 2460, 0, 0, 0, 0, -1795, 2464, 0, 0, 0, 0, -1802, 2465, 0, 0, 0, 0, -1801, 2480)
 }
 point_count = 36
+
+[sub_resource type="Curve2D" id="Curve2D_j6fb5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1725, 2347, 0, 0, 0, 0, -1593, 2403, 0, 0, 0, 0, -1551, 2452, 0, 0, 0, 0, -1643, 2450, 0, 0, 0, 0, -1710, 2420, 0, 0, 0, 0, -1774, 2404, 0, 0, 0, 0, -1826, 2363, 0, 0, 0, 0, -1726, 2346)
+}
+point_count = 8
 
 [sub_resource type="Curve2D" id="Curve2D_51ja4"]
 _data = {
@@ -163,6 +189,49 @@ _data = {
 }
 point_count = 25
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0l5ww"]
+blend_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydit7"]
+atlas = ExtResource("25_k1jdt")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jescd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydit7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jdlll"]
+blend_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kqot"]
+atlas = ExtResource("25_k1jdt")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl6aa"]
+atlas = ExtResource("25_k1jdt")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbu2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kqot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl6aa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxal0"]
 size = Vector2(182, 498)
 
@@ -194,8 +263,8 @@ script = ExtResource("2_u37ep")
 [node name="Back" type="Node2D" parent="CaverneBack"]
 
 [node name="Grotto-interior" type="Sprite2D" parent="CaverneBack/Back"]
-position = Vector2(6265, -421.75)
-scale = Vector2(44.875, 21.0156)
+position = Vector2(6194, -421.75)
+scale = Vector2(49.3125, 21.0156)
 texture = ExtResource("3_djlah")
 
 [node name="Grotto-interior2" type="Sprite2D" parent="CaverneBack/Back"]
@@ -213,8 +282,8 @@ texture = ExtResource("3_djlah")
 [node name="Drakl" type="Node2D" parent="CaverneBack/GrotteBackground"]
 
 [node name="DarkMask" type="Sprite2D" parent="CaverneBack/GrotteBackground/Drakl"]
-position = Vector2(6350, -442)
-scale = Vector2(30.4062, 19.9687)
+position = Vector2(6081.75, -442)
+scale = Vector2(47.1719, 19.9687)
 texture = ExtResource("4_xh8gx")
 
 [node name="DarkMask4" type="Sprite2D" parent="CaverneBack/GrotteBackground/Drakl"]
@@ -227,12 +296,27 @@ position = Vector2(6051.25, 1810)
 scale = Vector2(131.172, 72.3125)
 texture = ExtResource("4_xh8gx")
 
+[node name="DarkMask5" type="Sprite2D" parent="CaverneBack/GrotteBackground/Drakl"]
+position = Vector2(5923, 2751)
+scale = Vector2(131.172, 72.3125)
+texture = ExtResource("4_xh8gx")
+
 [node name="DarkMask2" type="Sprite2D" parent="CaverneBack/GrotteBackground/Drakl"]
 position = Vector2(6513, -621)
 scale = Vector2(62.1875, 36.1875)
 texture = ExtResource("4_xh8gx")
 
 [node name="Mask" type="Node2D" parent="CaverneBack/GrotteBackground"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CaverneBack/GrotteBackground/Mask"]
+material = SubResource("CanvasItemMaterial_jlxb8")
+position = Vector2(5319, -290)
+sprite_frames = SubResource("SpriteFrames_04xjt")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CaverneBack/GrotteBackground/Mask"]
+material = SubResource("CanvasItemMaterial_jlxb8")
+position = Vector2(5348, -381)
+sprite_frames = SubResource("SpriteFrames_04xjt")
 
 [node name="champi" type="Node2D" parent="."]
 
@@ -486,8 +570,8 @@ position = Vector2(2050, 32)
 curve = SubResource("Curve2D_5fjdi")
 
 [node name="Path2D16" type="Path2D" parent="Paths"]
-position = Vector2(2053, -182)
-curve = SubResource("Curve2D_5fjdi")
+position = Vector2(2051, -180)
+curve = SubResource("Curve2D_j6fb5")
 
 [node name="Path2D13" type="Path2D" parent="Paths"]
 position = Vector2(338, 91)
@@ -549,8 +633,143 @@ curve = SubResource("Curve2D_rou6l")
 position = Vector2(703, -483)
 curve = SubResource("Curve2D_qlstb")
 
-[node name="Caverne" parent="." instance=ExtResource("16_bx3fe")]
+[node name="Caverne" type="Node2D" parent="."]
+script = ExtResource("22_7i4wm")
+
+[node name="grotto" type="CanvasGroup" parent="Caverne"]
+z_index = 50
+z_as_relative = false
+position = Vector2(6052, -309)
+
+[node name="Dark" type="Node2D" parent="Caverne/grotto"]
+
+[node name="DarkMask" type="Sprite2D" parent="Caverne/grotto/Dark"]
+position = Vector2(383.5, -107.625)
+scale = Vector2(16.9062, 21.1484)
+texture = ExtResource("4_xh8gx")
+
+[node name="DarkMask6" type="Sprite2D" parent="Caverne/grotto/Dark"]
+position = Vector2(383.5, -107.625)
+scale = Vector2(16.9062, 21.1484)
+texture = ExtResource("4_xh8gx")
+
+[node name="DarkMask3" type="Sprite2D" parent="Caverne/grotto/Dark"]
+position = Vector2(-844, 2327.19)
+scale = Vector2(81.25, 16.3242)
+texture = ExtResource("4_xh8gx")
+
+[node name="DarkMask4" type="Sprite2D" parent="Caverne/grotto/Dark"]
+position = Vector2(-336.749, 2101.5)
+scale = Vector2(111.922, 38.9062)
+texture = ExtResource("4_xh8gx")
+
+[node name="DarkMask8" type="Sprite2D" parent="Caverne/grotto/Dark"]
+position = Vector2(-426.563, 1240)
+scale = Vector2(45.9023, 38.9062)
+texture = ExtResource("4_xh8gx")
+
+[node name="DarkMask5" type="Sprite2D" parent="Caverne/grotto/Dark"]
+position = Vector2(309.438, 2316.64)
+scale = Vector2(19.5352, 11.0398)
+texture = ExtResource("4_xh8gx")
+
+[node name="DarkMask2" type="Sprite2D" parent="Caverne/grotto/Dark"]
+position = Vector2(536, -430.125)
+scale = Vector2(65.3125, 41.3047)
+texture = ExtResource("4_xh8gx")
+
+[node name="DarkMask7" type="Sprite2D" parent="Caverne/grotto/Dark"]
 visible = false
+position = Vector2(495.75, 1132.81)
+scale = Vector2(29.8281, 91.3867)
+texture = ExtResource("4_xh8gx")
+
+[node name="Lights" type="Node2D" parent="Caverne/grotto"]
+
+[node name="Always" type="Node2D" parent="Caverne/grotto/Lights"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-2139, 2611)
+scale = Vector2(2.35938, 2.59375)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-2199, 2497)
+scale = Vector2(2.35938, 2.59375)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-2235, 2081)
+scale = Vector2(2.35938, 2.59375)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-2126, 1932)
+scale = Vector2(2.35938, 2.59375)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-542, -55)
+scale = Vector2(1.80469, 1.94531)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-485, -199)
+scale = Vector2(1.80469, 1.94531)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-479, -377)
+scale = Vector2(1.80469, 1.94531)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-522, 289)
+scale = Vector2(1.80469, 1.94531)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-2074, 1710)
+scale = Vector2(2.35938, 2.59375)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/Always"]
+material = SubResource("CanvasItemMaterial_0l5ww")
+position = Vector2(-2021, 1538)
+scale = Vector2(2.35938, 2.59375)
+sprite_frames = SubResource("SpriteFrames_jescd")
+
+[node name="PlayerFeet" type="Node2D" parent="Caverne/grotto/Lights"]
+unique_name_in_owner = true
+
+[node name="LightMask" type="Node2D" parent="Caverne/grotto/Lights/PlayerFeet"]
+position = Vector2(0, -20)
+scale = Vector2(1, 1.5)
+script = ExtResource("24_ixcjc")
+base_speed = 0.2
+
+[node name="Small" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/PlayerFeet/LightMask"]
+material = SubResource("CanvasItemMaterial_jdlll")
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_vbu2y")
+
+[node name="Big" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/PlayerFeet/LightMask"]
+material = SubResource("CanvasItemMaterial_jdlll")
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_vbu2y")
+
+[node name="Fireflies" type="Node2D" parent="Caverne/grotto"]
+z_index = 101
+z_as_relative = false
 
 [node name="PlayerSpawns" type="Node2D" parent="."]
 
