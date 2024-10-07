@@ -57,7 +57,7 @@ func lerp_value(base100, min_value, max_value, power = 2, inverted = false) -> f
 
 func _physics_process(delta: float) -> void:
 	var GRAVITY = 2.0 * JUMP_HEIGHT / (JUMP_TIME * JUMP_TIME)
-	var can_input = not Input.is_action_pressed("sing")
+	var can_input = not Input.is_action_pressed("sing") and %Player.get_collision_mask_value(1)
 
 	# Add the gravity.
 	if not is_on_floor():
