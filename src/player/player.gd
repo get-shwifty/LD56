@@ -26,7 +26,7 @@ const RUN_MAX_ACC := 10000.0
 ### Camera
 @export_range(0, 100, 1) var CAM_LOOKAHEAD := 0.0
 
-@onready var NOTE = preload("/Users/david/LD56/src/player/note_particle.tscn")
+@onready var NOTE = preload("res://src/player/note_particle.tscn")
 
 var last_fallspeed_in_air := 0.0
 var coyote_time := 0.0

@@ -12,7 +12,7 @@ var request_music = null
 
 
 
-var PLAYER = preload("/Users/david/LD56/src/player/note_player.tscn")
+var PLAYER = preload("res://src/player/note_player.tscn")
 
 func _process(delta):
 	if request_music:
