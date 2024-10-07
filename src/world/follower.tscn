@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://3e7g0ldx3ttg"]
+
+[ext_resource type="Script" path="res://src/world/follower.gd" id="1_mk73v"]
+
+[node name="Follower" type="PathFollow2D"]
+position = Vector2(3376, 1890)
+rotation = 0.397874
+script = ExtResource("1_mk73v")
+
+[node name="Node2D" type="Node2D" parent="."]
