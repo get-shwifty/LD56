@@ -28,4 +28,9 @@ func on_song_finished(name: String):
 		var player = Global.player
 		player.teleport(global_position)
 		Global.last_checkpoint = self
+		$AnimatedSprite2D.play("tp")
+		$AnimatedSprite2D.show()
+		await $AnimatedSprite2D.animation_finished
+		print('finished')
+		$AnimatedSprite2D.hide()
 		

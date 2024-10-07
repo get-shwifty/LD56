@@ -31,7 +31,7 @@ const RUN_MAX_ACC := 10000.0
 @onready var PARTICLE = preload("res://src/player/walk_particle.tscn")
 
 ### Teleport
-@export var teleport_time = 1.0
+@export var teleport_time = 0.8
 var is_teleport = false
 
 var counter_frame = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk0tl6edk0ikp"]
+[gd_scene load_steps=15 format=3 uid="uid://bk0tl6edk0ikp"]
 
 [ext_resource type="Script" path="res://src/steles/stele_tp.gd" id="1_pvyvw"]
 [ext_resource type="PackedScene" uid="uid://mfq861qjekus" path="res://src/reactives/tp.tscn" id="2_t8hii"]
@@ -6,6 +6,62 @@
 [ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="4_k56jb"]
 [ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_ahgo5"]
 [ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="6_4eedx"]
+[ext_resource type="Texture2D" uid="uid://bn2872wt630bj" path="res://assets/tp_anim.png" id="7_6fera"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y5uf"]
+atlas = ExtResource("7_6fera")
+region = Rect2(0, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4v1g"]
+atlas = ExtResource("7_6fera")
+region = Rect2(123, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ga8x"]
+atlas = ExtResource("7_6fera")
+region = Rect2(246, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmegy"]
+atlas = ExtResource("7_6fera")
+region = Rect2(369, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg854"]
+atlas = ExtResource("7_6fera")
+region = Rect2(492, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uab0d"]
+atlas = ExtResource("7_6fera")
+region = Rect2(615, 0, 123, 123)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tg422"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y5uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4v1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ga8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmegy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg854")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uab0d")
+}],
+"loop": false,
+"name": &"tp",
+"speed": 8.0
+}]
 
 [node name="SteleHome" type="Node2D"]
 script = ExtResource("1_pvyvw")
@@ -26,3 +82,8 @@ position = Vector2(9, -42)
 
 [node name="bottom-rune" parent="runes" instance=ExtResource("6_4eedx")]
 position = Vector2(25, -36)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_tg422")
+animation = &"tp"
