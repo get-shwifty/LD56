@@ -235,7 +235,7 @@ func on_run():
 	$Visual.skew = -velocity.x / RUN_SPEED * deg_to_rad(1)
 	if not $AudioRun.playing:
 		$AudioRun.play()
-	print(int(global_position.x))
+	#print(int(global_position.x))
 		
 		
 

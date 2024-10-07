@@ -10,7 +10,7 @@ const POING_H1 := -300.0
 const POING_H2 := -400.0
 const POING_H3 := -65.0
 const POINGL_MIN_X := -232.0
-const POINGL_MAX_X := -60.0
+const POINGL_MAX_X := -30.0
 
 var current_phase = 1
 
@@ -39,7 +39,7 @@ func _physics_process(delta: float):
 	right_time += delta
 	
 	var player_position = %Player.position
-	if player_position.y > 20.0:
+	if player_position.y > 50.0:
 		%Player.set_collision_mask_value(1, true)
 	
 	# LEFT
@@ -58,6 +58,7 @@ func _physics_process(delta: float):
 				left_state = FOLLOWING
 				left_time = 0.0
 				$Boss/Left/Overlaypoing.hide()
+				$Boss/Left/Kill.set_collision_mask_value(8, false)
 	
 	var left_target_follow = left_state != ATTACKING
 	
@@ -105,6 +106,7 @@ func _physics_process(delta: float):
 				right_state = FOLLOWING
 				right_time = 0.0
 				$Boss/Right/Overlaypoing.hide()
+				$Boss/Right/Kill.set_collision_mask_value(8, false)
 	
 	var right_target_follow = right_state != ATTACKING
 	
@@ -155,4 +157,10 @@ func put_player_down():
 
 func _on_panier_body_entered(body: Node2D) -> void:
 	current_phase = 2
-	$Boss/AnimationPlayer.play("fall")
+	$AnimationPlayer.play("fall")
+	%SteleBirds.show()
+	Engine.time_scale = 0.3
+	var tween = get_tree().create_tween()
+	tween.tween_property(Engine, "time_scale", 0.3, 0.6)
+	tween.tween_property(Engine, "time_scale", 1.0, 0.2)
+	put_player_down()
