@@ -11,18 +11,18 @@
 script = ExtResource("1_pvyvw")
 
 [node name="TP" parent="." instance=ExtResource("2_t8hii")]
-position = Vector2(5, 7)
+position = Vector2(0, -6)
 
 [node name="runes" type="Node2D" parent="."]
 
 [node name="left-rune" parent="runes" instance=ExtResource("3_svotn")]
-position = Vector2(-29, 11)
+position = Vector2(-26, -34)
 
 [node name="right-rune" parent="runes" instance=ExtResource("4_k56jb")]
-position = Vector2(-26, -31)
+position = Vector2(-11, -42)
 
 [node name="top-rune" parent="runes" instance=ExtResource("5_ahgo5")]
 position = Vector2(9, -42)
 
 [node name="bottom-rune" parent="runes" instance=ExtResource("6_4eedx")]
-position = Vector2(37, -10)
+position = Vector2(25, -36)

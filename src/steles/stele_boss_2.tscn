@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://cdpwfohh1kgmw"]
+
+[ext_resource type="Script" path="res://src/steles/stele_tuto.gd" id="1_donev"]
+[ext_resource type="Script" path="res://src/steles/stelle_broken.gd" id="2_fgph2"]
+[ext_resource type="Texture2D" uid="uid://2ays7ryglgxu" path="res://assets/broken.png" id="3_3dyti"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="4_0b4ep"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_tsua0"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="6_xqfn4"]
+[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="7_fan7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pmnm"]
+atlas = ExtResource("3_3dyti")
+region = Rect2(0, 669, 162, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lus27"]
+atlas = ExtResource("3_3dyti")
+region = Rect2(319, 669, 162, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyiwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pmnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lus27")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="SteleBoss2" type="Node2D"]
+position = Vector2(389, 587)
+script = ExtResource("1_donev")
+action = "light"
+
+[node name="Stelle" type="Node2D" parent="."]
+script = ExtResource("2_fgph2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stelle"]
+position = Vector2(-1, 7)
+sprite_frames = SubResource("SpriteFrames_jyiwr")
+
+[node name="runes" type="Node2D" parent="."]
+
+[node name="bottom-rune2" parent="runes" instance=ExtResource("6_xqfn4")]
+visible = false
+
+[node name="right-rune3" parent="runes" instance=ExtResource("7_fan7i")]
+visible = false
+
+[node name="top-rune" parent="runes" instance=ExtResource("5_tsua0")]
+visible = false
+
+[node name="top-rune2" parent="runes" instance=ExtResource("5_tsua0")]
+position = Vector2(-5, 33)
+rotation = -1.56069
+
+[node name="bottom-rune3" parent="runes" instance=ExtResource("6_xqfn4")]
+position = Vector2(-21, 0)
+rotation = -1.59007
+
+[node name="right-rune" parent="runes" instance=ExtResource("7_fan7i")]
+visible = false
+position = Vector2(-34, 5)
+
+[node name="bottom-rune" parent="runes" instance=ExtResource("6_xqfn4")]
+visible = false
+position = Vector2(12, 2)
+
+[node name="left-rune" parent="runes" instance=ExtResource("4_0b4ep")]
+visible = false
+position = Vector2(-33, 33)
+
+[node name="right-rune2" parent="runes" instance=ExtResource("7_fan7i")]
+visible = false
+position = Vector2(12, 34)
