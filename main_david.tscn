@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://7yggfxcfr4b8"]
+[gd_scene load_steps=9 format=3 uid="uid://7yggfxcfr4b8"]
 
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="1_2xqk5"]
 [ext_resource type="Script" path="res://map.gd" id="1_3o4ls"]
 [ext_resource type="PackedScene" uid="uid://crgglybn8yjlt" path="res://src/world/background.tscn" id="2_ajlx8"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="2_fksup"]
 [ext_resource type="PackedScene" uid="uid://ouk4rqkp0lpr" path="res://src/world/world_3.tscn" id="4_76213"]
+[ext_resource type="Texture2D" uid="uid://ccrbpmrdi3dg6" path="res://assets/grotto-interior.png" id="4_rp468"]
+[ext_resource type="Texture2D" uid="uid://cmkxj3btgi2tx" path="res://assets/dark_mask.png" id="5_u4skc"]
 [ext_resource type="PackedScene" uid="uid://mdcmmncqs1fk" path="res://src/world/foreground.tscn" id="7_wjn0m"]
 
 [node name="Main" type="Node2D"]
@@ -16,14 +18,29 @@ scroll_offset = Vector2(-888, -165)
 [node name="Background" parent="." instance=ExtResource("2_ajlx8")]
 scroll_offset = Vector2(-114, -277)
 
+[node name="Grotto-interior" type="Sprite2D" parent="."]
+position = Vector2(1287, 703)
+scale = Vector2(24.2188, 11.2188)
+texture = ExtResource("4_rp468")
+
+[node name="GrotteBackground" type="CanvasGroup" parent="."]
+
+[node name="DarkMask" type="Sprite2D" parent="GrotteBackground"]
+position = Vector2(1516.5, 824.5)
+scale = Vector2(30.4062, 19.9687)
+texture = ExtResource("5_u4skc")
+
+[node name="Mask" type="Node2D" parent="GrotteBackground"]
+
 [node name="World3" parent="." instance=ExtResource("4_76213")]
 
 [node name="Player" parent="." instance=ExtResource("2_fksup")]
-position = Vector2(628, 594)
+position = Vector2(1300, 792)
 RUN_SPEED = 240.0
 JUMP_HEIGHT = 60.0
 
 [node name="Foreground" parent="." instance=ExtResource("7_wjn0m")]
+visible = false
 scroll_offset = Vector2(3, 231)
 
 [node name="Projectiles" type="Node2D" parent="."]
