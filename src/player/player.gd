@@ -18,7 +18,7 @@ const RUN_MAX_ACC := 10000.0
 @export var JUMP_HEIGHT := 70.0  # px
 @export var JUMP_TIME := 0.300  # s
 @export_range(0, 100, 1) var JUMP_CUTOFF := 0.0  # 0 = keep jumping, 100 = abort jumping
-@export var REBOUND_COEFF := 1.25  #
+@export var REBOUND_COEFF := 1.2  #
 
 ### Assists
 @export var JUMP_BUFFER := 0.100  # time during which you can press the jump button before actually touching a floor
