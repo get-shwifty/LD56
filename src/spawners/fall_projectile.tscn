@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://s7o6a1v2l1el"]
+[gd_scene load_steps=8 format=3 uid="uid://s7o6a1v2l1el"]
 
 [ext_resource type="Script" path="res://src/spawners/fall_projectile.gd" id="1_tgfus"]
+[ext_resource type="AudioStream" uid="uid://22dvh5kel4yl" path="res://sounds/Son-gland-chute-sol-1.mp3" id="2_8uf87"]
 [ext_resource type="Texture2D" uid="uid://0iqb64b5i4p2" path="res://assets/pinecone.png" id="2_ib5ci"]
+[ext_resource type="AudioStream" uid="uid://cbdp1pdre1n4a" path="res://sounds/Son-gland-chute-sol-2.mp3" id="3_vgmyj"]
+[ext_resource type="AudioStream" uid="uid://ddufb4178nsmv" path="res://sounds/Son-gland-chute-sol-3.mp3" id="4_u7htw"]
+[ext_resource type="AudioStream" uid="uid://cxm2m5ydpas6s" path="res://sounds/Son-gland-chute-sol-4.mp3" id="5_s4pab"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aq7i8"]
 radius = 9.0
@@ -11,6 +15,7 @@ collision_layer = 0
 contact_monitor = true
 max_contacts_reported = 2
 script = ExtResource("1_tgfus")
+sounds = Array[Resource]([ExtResource("2_8uf87"), ExtResource("3_vgmyj"), ExtResource("4_u7htw"), ExtResource("5_s4pab")])
 
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("2_ib5ci")
@@ -18,4 +23,7 @@ texture = ExtResource("2_ib5ci")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_aq7i8")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bttkqnn4pwmyk"]
+[gd_scene load_steps=8 format=3 uid="uid://bttkqnn4pwmyk"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_h41kr"]
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_4bwvj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_nbj0m"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_ww6j6"]
 [ext_resource type="PackedScene" uid="uid://mdcmmncqs1fk" path="res://src/world/foreground.tscn" id="6_k6qh5"]
+[ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="7_4mi7q"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h41kr")
@@ -19,7 +20,7 @@ scroll_offset = Vector2(-114, -277)
 [node name="World2" parent="." instance=ExtResource("4_nbj0m")]
 
 [node name="Player" parent="." instance=ExtResource("5_ww6j6")]
-position = Vector2(2967, 181)
+position = Vector2(529, 588)
 JUMP_HEIGHT = 60.0
 
 [node name="Foreground" parent="." instance=ExtResource("6_k6qh5")]
@@ -29,3 +30,12 @@ scroll_offset = Vector2(3, 231)
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="IntervalSpawner" parent="." instance=ExtResource("7_4mi7q")]
+position = Vector2(629, 201)
+
+[node name="IntervalSpawner2" parent="." instance=ExtResource("7_4mi7q")]
+position = Vector2(687, 201)
+
+[node name="IntervalSpawner3" parent="." instance=ExtResource("7_4mi7q")]
+position = Vector2(764, 204)
