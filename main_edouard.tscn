@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bttkqnn4pwmyk"]
+[gd_scene load_steps=7 format=3 uid="uid://bttkqnn4pwmyk"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_h41kr"]
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_4bwvj"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_nbj0m"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_ww6j6"]
 [ext_resource type="PackedScene" uid="uid://mdcmmncqs1fk" path="res://src/world/foreground.tscn" id="6_k6qh5"]
-[ext_resource type="PackedScene" uid="uid://dr7p07v6latcs" path="res://start_screen.tscn" id="7_g0u2j"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h41kr")
@@ -33,5 +32,3 @@ scroll_offset = Vector2(3, 231)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 volume_db = -9.293
-
-[node name="CanvasLayer" parent="." instance=ExtResource("7_g0u2j")]

@@ -9,7 +9,7 @@ var last_checkpoint = null
 
 
 var request_music = null
-var started = false
+var started = true
 
 
 var PLAYER = preload("res://src/player/note_player.tscn")
