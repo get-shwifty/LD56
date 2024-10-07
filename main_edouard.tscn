@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbpe8rsyq6hyq"]
+[gd_scene load_steps=7 format=3 uid="uid://bttkqnn4pwmyk"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_h41kr"]
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_4bwvj"]
