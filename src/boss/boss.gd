@@ -8,7 +8,8 @@ const POING_H0 := -300.0
 const POING_H1 := -300.0
 const POING_H2 := -400.0
 const POING_H3 := -50.0
-const POINGL_MAX_X := -70.0
+const POINGL_MIN_X := -232.0
+const POINGL_MAX_X := -60.0
 
 var phase1 = [
 	[0.0, "follow_left"],
@@ -25,6 +26,7 @@ enum { IDLE, FOLLOWING, PREPARING, ATTACKING }
 var left_state := IDLE
 
 func _ready():
+	$Boss.modulate = Color(1.0, 1.0, 1.0, 0.0)
 	Global.map = self
 	Global.projectile_container = $Projectiles
 	
@@ -33,6 +35,9 @@ func _ready():
 
 func _physics_process(delta: float):
 	time += delta
+	if time > 8.0 and $Boss.modulate.a == 0.0:
+		var tween = get_tree().create_tween()
+		tween.tween_property($Boss, "modulate", Color.WHITE, 0.300)
 
 	while not phase1.is_empty() and time >= phase1[0][0]:
 		var action = phase1.pop_front()
@@ -43,7 +48,7 @@ func _physics_process(delta: float):
 	var left_target_follow = left_state != ATTACKING
 	
 	if left_target_follow:
-		var target_x = clamp(player_position.x, -500.0, POINGL_MAX_X) # if left_target_follow else POING_X1
+		var target_x = clamp(player_position.x, POINGL_MIN_X, POINGL_MAX_X)
 		var diff_x = target_x - $Boss/Left.position.x
 		$Boss/Left.position.x += clamp(diff_x, -POING_SPEEDX*delta, +POING_SPEEDX*delta)
 	
