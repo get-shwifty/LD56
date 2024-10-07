@@ -28,6 +28,7 @@ func on_song_finished(name: String):
 	if name == action:
 		var player = Global.player
 		player.teleport(global_position)
+		$AudioStreamPlayer.play()
 		Global.last_checkpoint = self
 		$AnimatedSprite2D.play("tp")
 		$AnimatedSprite2D.show()

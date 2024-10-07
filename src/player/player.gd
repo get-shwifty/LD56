@@ -63,6 +63,8 @@ func lerp_value(base100, min_value, max_value, power = 2, inverted = false) -> f
 	return lerp(min_value, max_value, pow(value, power))
 
 func _physics_process(delta: float) -> void:
+	if not Global.started:
+		return
 	if is_teleport:
 		velocity = Vector2.ZERO
 		return
