@@ -21,4 +21,8 @@ func _process(delta):
 		music_player.music = stream
 		player.add_child(music_player)
 		request_music = null
-		
+
+func set_music(music):
+	var map_m = map.get_node("Music")
+	map_m.stream = music
+	map_m.play()
