@@ -33,14 +33,19 @@ position = Vector2(6350, -442)
 scale = Vector2(30.4062, 19.9687)
 texture = ExtResource("2_tr2wm")
 
+[node name="DarkMask4" type="Sprite2D" parent="GrotteBackground/Drakl"]
+position = Vector2(6740.5, 406.25)
+scale = Vector2(16.9687, 72.2969)
+texture = ExtResource("2_tr2wm")
+
 [node name="DarkMask3" type="Sprite2D" parent="GrotteBackground/Drakl"]
-position = Vector2(5701.25, 1787.25)
-scale = Vector2(109.297, 34.0469)
+position = Vector2(6051.25, 1810)
+scale = Vector2(131.172, 72.3125)
 texture = ExtResource("2_tr2wm")
 
 [node name="DarkMask2" type="Sprite2D" parent="GrotteBackground/Drakl"]
-position = Vector2(6164.5, -398)
-scale = Vector2(40.4063, 22.25)
+position = Vector2(6513, -621)
+scale = Vector2(62.1875, 36.1875)
 texture = ExtResource("2_tr2wm")
 
 [node name="Mask" type="Node2D" parent="GrotteBackground"]
