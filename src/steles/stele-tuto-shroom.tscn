@@ -14,13 +14,13 @@ script = ExtResource("1_cgx5c")
 [node name="runes" type="Node2D" parent="."]
 
 [node name="left-rune" parent="runes" instance=ExtResource("3_2xak4")]
-position = Vector2(1, -29)
+position = Vector2(0, 26)
 
 [node name="right-rune" parent="runes" instance=ExtResource("4_7ipm2")]
-position = Vector2(2, -11)
+position = Vector2(0, 9)
 
 [node name="left-rune2" parent="runes" instance=ExtResource("3_2xak4")]
-position = Vector2(1, 8)
+position = Vector2(0, -11)
 
 [node name="top-rune" parent="runes" instance=ExtResource("5_8cnc1")]
-position = Vector2(2, 27)
+position = Vector2(0, -30)

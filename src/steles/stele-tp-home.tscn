@@ -1,11 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bk0tl6edk0ikp"]
+[gd_scene load_steps=13 format=3 uid="uid://bk0tl6edk0ikp"]
 
 [ext_resource type="Script" path="res://src/steles/stele_tp.gd" id="1_pvyvw"]
 [ext_resource type="PackedScene" uid="uid://mfq861qjekus" path="res://src/reactives/tp.tscn" id="2_t8hii"]
 [ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="3_svotn"]
 [ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="4_k56jb"]
-[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_ahgo5"]
-[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="6_4eedx"]
 [ext_resource type="Texture2D" uid="uid://bn2872wt630bj" path="res://assets/tp_anim.png" id="7_6fera"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7y5uf"]
@@ -72,16 +70,19 @@ position = Vector2(0, -6)
 [node name="runes" type="Node2D" parent="."]
 
 [node name="left-rune" parent="runes" instance=ExtResource("3_svotn")]
-position = Vector2(-26, -34)
+position = Vector2(-27, 9)
+
+[node name="left-rune2" parent="runes" instance=ExtResource("3_svotn")]
+position = Vector2(-36, -16)
 
 [node name="right-rune" parent="runes" instance=ExtResource("4_k56jb")]
-position = Vector2(-11, -42)
+position = Vector2(-27, -34)
 
-[node name="top-rune" parent="runes" instance=ExtResource("5_ahgo5")]
-position = Vector2(9, -42)
+[node name="right-rune2" parent="runes" instance=ExtResource("4_k56jb")]
+position = Vector2(-6, -43)
 
-[node name="bottom-rune" parent="runes" instance=ExtResource("6_4eedx")]
-position = Vector2(25, -36)
+[node name="left-rune3" parent="runes" instance=ExtResource("3_svotn")]
+position = Vector2(13, -43)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)

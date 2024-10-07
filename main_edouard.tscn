@@ -20,7 +20,7 @@ scroll_offset = Vector2(-114, -277)
 [node name="World2" parent="." instance=ExtResource("4_nbj0m")]
 
 [node name="Player" parent="." instance=ExtResource("5_ww6j6")]
-position = Vector2(644, 567)
+position = Vector2(676, 620)
 JUMP_HEIGHT = 75.0
 
 [node name="Foreground" parent="." instance=ExtResource("6_k6qh5")]
