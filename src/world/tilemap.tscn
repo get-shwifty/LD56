@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://f2mbdfdom55u"]
+[gd_scene load_steps=24 format=4 uid="uid://f2mbdfdom55u"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_atmrp"]
 [ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="2_cilhj"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://clm8v5638tujb" path="res://src/steles/stele_tuto_scolo_3.tscn" id="10_qy771"]
 [ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="11_w5p44"]
 [ext_resource type="PackedScene" uid="uid://d0bdo8qbdiw27" path="res://src/world/musique.tscn" id="14_bdwpx"]
+[ext_resource type="Script" path="res://src/world/FireflySpawner.gd" id="16_6qmpb"]
 [ext_resource type="PackedScene" uid="uid://bmr44vku1ituo" path="res://src/world/caverne.tscn" id="16_bx3fe"]
 
 [sub_resource type="Curve2D" id="Curve2D_6u0ky"]
@@ -141,6 +142,7 @@ visible = false
 
 [node name="Paths" type="Node2D" parent="."]
 position = Vector2(6365, -466)
+script = ExtResource("16_6qmpb")
 
 [node name="Path2D" type="Path2D" parent="Paths"]
 position = Vector2(-5722, 553)
