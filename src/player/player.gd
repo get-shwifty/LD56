@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 ### Running
-@export var RUN_SPEED := 240.0  # px/s
+@export var RUN_SPEED := 260.0  # px/s
 @export_range(0, 100, 1) var RUN_ACCELERATION := 50.0
 @export_range(0, 100, 1) var RUN_DECELERATION := 50.0
 # 0->49 add more force to change direction
@@ -11,11 +11,11 @@ class_name Player
 const RUN_MAX_ACC := 10000.0
 
 ### Fall
-@export var FALL_MAX_SPEED := 600.0  # px/s
+@export var FALL_MAX_SPEED := 1000.0  # px/s
 @export_range(0, 100, 1) var FALL_GRAVITY := 50.0  # 0 = same gravity, 100 = double gravity
 
 ### Jumping
-@export var JUMP_HEIGHT := 70.0  # px
+@export var JUMP_HEIGHT := 100.0  # px
 @export var JUMP_TIME := 0.300  # s
 @export_range(0, 100, 1) var JUMP_CUTOFF := 0.0  # 0 = keep jumping, 100 = abort jumping
 
@@ -42,6 +42,9 @@ func set_state(new_state):
 	if state == new_state:
 		return
 
+	if state == JUMP and new_state == IDLE:
+		on_land()
+
 	state = new_state
 	match state:
 		IDLE: on_idle()
@@ -66,13 +69,9 @@ func _physics_process(delta: float) -> void:
 		if velocity.y > FALL_MAX_SPEED:
 			velocity.y = FALL_MAX_SPEED
 		last_fallspeed_in_air = velocity.y
-	else:
-		if state == JUMP:
-			set_state(IDLE)
 
-		if last_fallspeed_in_air > 0:
-			on_land(last_fallspeed_in_air)
-			last_fallspeed_in_air = 0
+	if state == JUMP and is_on_floor():
+		set_state(IDLE)
 
 	# Handle jump
 
@@ -116,9 +115,6 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right") if can_input else 0.0
 	if direction:
-		%AnimatedSprite2D.scale.x = sign(direction)
-		%PlayerMask.scale.x = sign(direction)
-
 		var acceleration_factor = lerp_value(RUN_ACCELERATION, 0.0, RUN_MAX_ACC)
 
 		if sign(direction) != sign(velocity.x):
@@ -138,6 +134,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, lerp_value(RUN_DECELERATION, 0.0, RUN_MAX_ACC) * delta)
 		if state == RUN:
 			set_state(IDLE)
+			
+	var last_scale = %AnimatedSprite2D.scale.x
+	var new_scale = sign(velocity.x)
+	if new_scale == 0:
+		new_scale = last_scale
+	%AnimatedSprite2D.scale.x = new_scale
+	#%AnimatedSprite2D2.scale.x = new_scale
+	%PlayerMask.scale.x = new_scale
 
 
 	if is_on_ladder():
@@ -148,20 +152,20 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	$Camera2D.position.x = lerp_value(CAM_LOOKAHEAD, 0.0, velocity.x)
 
-func on_land(fallspeed):
+func on_land():
 	%AnimatedSprite2D.play("idle")
 	%AnimatedSprite2D2.play("idle")
 	$AnimationPlayer.play("RESET")
 	#$AudioLand.play()
 
-	var factor = clamp(fallspeed / FALL_MAX_SPEED, 0.0, 1.0)
+	var factor = clamp(last_fallspeed_in_air / FALL_MAX_SPEED, 0.0, 1.0)
 	factor = pow(factor, 1.8)
 
-	if fallspeed < FALL_MAX_SPEED:
+	if last_fallspeed_in_air < FALL_MAX_SPEED:
 		$AudioLand.play()
 	else:
 		$AudioLandHigh.play()
-
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0) + Vector2(0.4, -0.4) * factor, 0.050)
 	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0), 0.200)
