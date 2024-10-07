@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://f2mbdfdom55u"]
+[gd_scene load_steps=17 format=4 uid="uid://f2mbdfdom55u"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_atmrp"]
 [ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="2_cilhj"]
@@ -31,6 +31,12 @@ size = Vector2(807, 3217)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtso"]
 size = Vector2(3286, 1726)
+
+[sub_resource type="Curve2D" id="Curve2D_6u0ky"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3428, 1931, 0, 0, 0, 0, 4705, 1968, 0, 0, 0, 0, 4852, 1755, 0, 0, 0, 0, 5151, 1637, 0, 0, 0, 0, 5266, 1970, 0, 0, 0, 0, 5523, 1938, 0, 0, 0, 0, 5589, 1782, 0, 0, 0, 0, 5812, 1845, 0, 0, 0, 0, 5894, 1938, 0, 0, 0, 0, 6043, 1938, 0, 0, 0, 0, 6138, 1913, 0, 0, 0, 0, 4914, 1408, 0, 0, 0, 0, 3485, 1720, 0, 0, 0, 0, 3925, 1808, 0, 0, 0, 0, 4431, 1729, 0, 0, 0, 0, 4519, 1755, 0, 0, 0, 0, 4096, 1874, 0, 0, 0, 0, 3507, 1869, 0, 0, 0, 0, 3432, 1931)
+}
+point_count = 19
 
 [node name="World2" type="Node2D"]
 position = Vector2(-60, 4)
@@ -91,6 +97,7 @@ position = Vector2(791, 361)
 position = Vector2(1311, 385)
 
 [node name="Musique" type="Node2D" parent="."]
+visible = false
 
 [node name="ZoneActivation" type="Node2D" parent="Musique"]
 
@@ -118,7 +125,6 @@ position = Vector2(1784, 317.5)
 shape = SubResource("RectangleShape2D_ooe60")
 
 [node name="Area2D3" type="Area2D" parent="Musique/ZoneActivation"]
-visible = false
 position = Vector2(228, -361)
 collision_layer = 64
 collision_mask = 64
@@ -142,3 +148,8 @@ shape = SubResource("RectangleShape2D_poqlh")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Musique/ZoneActivation/Zone1Milieu"]
 position = Vector2(-695, 667)
 shape = SubResource("RectangleShape2D_mgtso")
+
+[node name="Paths" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_6u0ky")
