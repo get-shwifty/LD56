@@ -1,13 +1,14 @@
 extends Node2D
 
 @export var action = "home"
-@export var default_checkpoint = false
+@export var default_checkpoint = true
 
 @onready var runes_sprites = $runes.get_children()
 @onready var song_activation = Settings.songs[action]
 
 func _ready():
 	Global.tp_steles.append(self)
+	$AnimatedSprite2D.hide()
 	if default_checkpoint:
 		Global.last_checkpoint = self
 

@@ -20,11 +20,13 @@ scroll_offset = Vector2(-114, -277)
 [node name="World2" parent="." instance=ExtResource("4_nbj0m")]
 
 [node name="Player" parent="." instance=ExtResource("5_ww6j6")]
-position = Vector2(529, 588)
-JUMP_HEIGHT = 60.0
+position = Vector2(504, 498)
+JUMP_HEIGHT = 75.0
 
 [node name="Foreground" parent="." instance=ExtResource("6_k6qh5")]
 visible = false
+z_index = 110
+z_as_relative = false
 scroll_offset = Vector2(3, 231)
 
 [node name="Projectiles" type="Node2D" parent="."]
@@ -39,3 +41,5 @@ position = Vector2(687, 201)
 
 [node name="IntervalSpawner3" parent="." instance=ExtResource("7_4mi7q")]
 position = Vector2(764, 204)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
