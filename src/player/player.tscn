@@ -147,28 +147,27 @@ libraries = {
 unique_name_in_owner = true
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_2sru1")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.711301
 
 [node name="NoteSpawner" type="Node2D" parent="Visual/AnimatedSprite2D"]
 unique_name_in_owner = true
 position = Vector2(-7, -25)
 
-[node name="MaskPerso" type="Sprite2D" parent="Visual"]
+[node name="PlayerMask" type="Sprite2D" parent="Visual"]
+unique_name_in_owner = true
 clip_children = 1
 z_index = 10
 z_as_relative = false
-position = Vector2(-8, -18)
+position = Vector2(0, -22)
 texture = ExtResource("3_cvfog")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Visual/MaskPerso"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Visual/PlayerMask"]
 unique_name_in_owner = true
-position = Vector2(8, 13)
+position = Vector2(0, 17)
 sprite_frames = SubResource("SpriteFrames_2sru1")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.711301
 
 [node name="MusicBox2" parent="." instance=ExtResource("3_wcxlj")]
 visible = false
