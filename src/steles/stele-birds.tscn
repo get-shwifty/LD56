@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cb03tjp2vfq2a"]
 
-[ext_resource type="Script" path="res://src/steles/stele_tuto.gd" id="1_itnym"]
+[ext_resource type="Script" path="res://src/steles/stele_birds.gd" id="1_6v233"]
 [ext_resource type="PackedScene" uid="uid://bjpe18fjk5vm8" path="res://src/reactives/stelle.tscn" id="2_a1abr"]
 [ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="3_wow5n"]
 [ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="4_0kaq3"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="6_t0gsf"]
 
 [node name="SteleBirds" type="Node2D"]
-script = ExtResource("1_itnym")
+script = ExtResource("1_6v233")
 action = "birds"
 
 [node name="Stelle" parent="." instance=ExtResource("2_a1abr")]

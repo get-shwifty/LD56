@@ -160,7 +160,7 @@ func _physics_process(delta: float) -> void:
 	%PlayerMask.scale.x = new_scale
 
 
-	if is_on_ladder():
+	if is_on_ladder() and get_collision_mask_value(1):
 		var vertical_direction := Input.get_axis("up", "down") if can_input else 0.0
 		if vertical_direction < 0:
 			vertical_direction *= 0.6
