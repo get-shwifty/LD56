@@ -133,9 +133,15 @@ func on_land():
 	%AnimatedSprite2D.play("idle")
 	%AnimatedSprite2D2.play("idle")
 	$AnimationPlayer.play("RESET")
+	$AudioLand.play()
 	
 	var factor = clamp(last_fallspeed_in_air / FALL_MAX_SPEED, 0.0, 1.0)
 	factor = pow(factor, 1.8)
+	
+	if last_fallspeed_in_air < FALL_MAX_SPEED:
+		$AudioLand.play()
+	else:
+		$AudioLandHigh.play()
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property($Visual, "scale", Vector2(1.0, 1.0) + Vector2(0.4, -0.4)*factor, 0.050)
