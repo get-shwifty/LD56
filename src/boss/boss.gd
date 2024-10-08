@@ -206,3 +206,9 @@ func _on_stele_birds_on_played() -> void:
 	$Boss/Left.z_index = 0
 	$Boss/Right.z_index = 0
 	
+
+
+func _on_show_shroom_body_entered(body: Node2D) -> void:
+	if current_phase == 2:
+		var tween = get_tree().create_tween()
+		tween.tween_property($Memory/SteleBirds, "modulate", Color.WHITE, 0.500)

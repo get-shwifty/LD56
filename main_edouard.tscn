@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_nbj0m"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_ww6j6"]
 [ext_resource type="Texture2D" uid="uid://bhsdhqpwiof45" path="res://assets/decors/arbre.png" id="6_tocak"]
-[ext_resource type="PackedScene" uid="uid://c2dx3pd52tprs" path="res://start_screen.tscn" id="7_g0u2j"]
 [ext_resource type="Texture2D" uid="uid://3868gfwp81ut" path="res://assets/decors/lianes.png" id="7_vf1yj"]
 [ext_resource type="Texture2D" uid="uid://hjkvobw4pnjk" path="res://assets/decors/fougeres.png" id="8_0vcim"]
+[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="9_i8hhr"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h41kr")
@@ -59,3 +59,5 @@ texture = ExtResource("8_0vcim")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 volume_db = -9.293
+
+[node name="Memory" parent="." instance=ExtResource("9_i8hhr")]

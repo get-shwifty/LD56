@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://f2mbdfdom55u"]
+[gd_scene load_steps=68 format=4 uid="uid://f2mbdfdom55u"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_atmrp"]
 [ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="2_cilhj"]
@@ -12,14 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://8js4uaeh0bsi" path="res://src/steles/stele-tuto-home.tscn" id="6_j1pua"]
 [ext_resource type="PackedScene" uid="uid://c4n8iclhqygp0" path="res://src/steles/stele_tuto_firefly_2.tscn" id="6_v16nc"]
 [ext_resource type="PackedScene" uid="uid://bxu5tsgi75non" path="res://src/steles/stele_tuto_firefly_3.tscn" id="7_05tlr"]
+[ext_resource type="Script" path="res://src/world/steles.gd" id="7_s56vt"]
 [ext_resource type="PackedScene" uid="uid://1i2htf33r86n" path="res://src/steles/stele_tuto_scolo_1.tscn" id="8_4bpwk"]
 [ext_resource type="PackedScene" uid="uid://bl01ps3sdnw0e" path="res://src/steles/stele_tuto_scolo_2.tscn" id="9_h2qxk"]
 [ext_resource type="PackedScene" uid="uid://clm8v5638tujb" path="res://src/steles/stele_tuto_scolo_3.tscn" id="10_qy771"]
 [ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="11_w5p44"]
-[ext_resource type="PackedScene" uid="uid://hqf5si6p24g3" path="res://src/steles/stele_boss_1.tscn" id="12_5dm10"]
-[ext_resource type="PackedScene" uid="uid://bxng1h6hvcmin" path="res://src/steles/stele_boss_2.tscn" id="13_daf8o"]
+[ext_resource type="PackedScene" uid="uid://cg8tbvh0n15up" path="res://src/steles/stele_boss_1.tscn" id="12_5dm10"]
+[ext_resource type="PackedScene" uid="uid://cdpwfohh1kgmw" path="res://src/steles/stele_boss_2.tscn" id="13_daf8o"]
 [ext_resource type="PackedScene" uid="uid://d0bdo8qbdiw27" path="res://src/world/musique.tscn" id="14_bdwpx"]
-[ext_resource type="PackedScene" uid="uid://c4btprm3dqb5p" path="res://src/steles/stele_boss_3.tscn" id="14_qa4cb"]
+[ext_resource type="PackedScene" uid="uid://dtwqrpdd6lxe8" path="res://src/steles/stele_boss_3.tscn" id="14_qa4cb"]
 [ext_resource type="Script" path="res://src/world/FireflySpawner.gd" id="16_6qmpb"]
 [ext_resource type="Script" path="res://src/world/before_cones.gd" id="21_fywmg"]
 [ext_resource type="Script" path="res://src/world/caverne.gd" id="22_7i4wm"]
@@ -44,6 +45,15 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_joug0"]
+radius = 77.0584
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tx3ga"]
+radius = 77.0584
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrecf"]
+radius = 77.0584
 
 [sub_resource type="Curve2D" id="Curve2D_6u0ky"]
 _data = {
@@ -345,6 +355,7 @@ position = Vector2(3963, -131)
 position = Vector2(3842, -171)
 
 [node name="Steles" type="Node2D" parent="."]
+script = ExtResource("7_s56vt")
 
 [node name="SteleTutoHome" parent="Steles" instance=ExtResource("6_j1pua")]
 position = Vector2(1652, 1321)
@@ -365,10 +376,10 @@ position = Vector2(5478, -217)
 position = Vector2(3326, 2184)
 
 [node name="SteleTutoScolo2" parent="Steles" instance=ExtResource("9_h2qxk")]
-position = Vector2(5413, 1524)
+position = Vector2(4690, 1427)
 
 [node name="SteleTutoScolo3" parent="Steles" instance=ExtResource("10_qy771")]
-position = Vector2(4710, 1447)
+position = Vector2(5454, 1541)
 
 [node name="SteleBoss1" parent="Steles" instance=ExtResource("12_5dm10")]
 position = Vector2(557, 564)
@@ -378,6 +389,86 @@ position = Vector2(3700, 532)
 
 [node name="SteleBoss3" parent="Steles" instance=ExtResource("14_qa4cb")]
 position = Vector2(2918, -1102)
+
+[node name="ShowShroom" type="Area2D" parent="Steles"]
+position = Vector2(1756, 464)
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steles/ShowShroom"]
+position = Vector2(39, -16)
+shape = SubResource("CircleShape2D_joug0")
+
+[node name="ShowFirefly" type="Area2D" parent="Steles"]
+position = Vector2(5813, -227)
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steles/ShowFirefly"]
+position = Vector2(39, -16)
+shape = SubResource("CircleShape2D_tx3ga")
+
+[node name="ShowScolo3" type="Area2D" parent="Steles"]
+position = Vector2(5404, 1512)
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steles/ShowScolo3"]
+position = Vector2(39, -16)
+shape = SubResource("CircleShape2D_xrecf")
+
+[node name="ShowScolo2" type="Area2D" parent="Steles"]
+position = Vector2(4632, 1425)
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steles/ShowScolo2"]
+position = Vector2(39, -16)
+shape = SubResource("CircleShape2D_xrecf")
+
+[node name="ShowScolo1" type="Area2D" parent="Steles"]
+position = Vector2(3276, 2214)
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steles/ShowScolo1"]
+position = Vector2(39, -16)
+shape = SubResource("CircleShape2D_xrecf")
+
+[node name="ShowBoss1" type="Area2D" parent="Steles"]
+position = Vector2(506, 587)
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steles/ShowBoss1"]
+position = Vector2(39, -16)
+shape = SubResource("CircleShape2D_xrecf")
+
+[node name="ShowBoss2" type="Area2D" parent="Steles"]
+position = Vector2(3654, 555)
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steles/ShowBoss2"]
+position = Vector2(39, -16)
+shape = SubResource("CircleShape2D_xrecf")
+
+[node name="ShowBoss3" type="Area2D" parent="Steles"]
+position = Vector2(2867, -1073)
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Steles/ShowBoss3"]
+position = Vector2(39, -16)
+shape = SubResource("CircleShape2D_xrecf")
 
 [node name="Base" type="TileMapLayer" parent="."]
 position = Vector2(0, -1)
@@ -654,6 +745,7 @@ position = Vector2(703, -483)
 curve = SubResource("Curve2D_qlstb")
 
 [node name="Caverne" type="Node2D" parent="."]
+visible = false
 script = ExtResource("22_7i4wm")
 
 [node name="grotto" type="CanvasGroup" parent="Caverne"]
@@ -808,4 +900,12 @@ shape = SubResource("RectangleShape2D_sxal0")
 position = Vector2(1652, 1429)
 sprite_frames = SubResource("SpriteFrames_vmf0i")
 
+[connection signal="body_entered" from="Steles/ShowShroom" to="Steles" method="_on_show_shroom_body_entered"]
+[connection signal="body_entered" from="Steles/ShowFirefly" to="Steles" method="_on_show_firefly_body_entered"]
+[connection signal="body_entered" from="Steles/ShowScolo3" to="Steles" method="_on_show_scolo_3_body_entered"]
+[connection signal="body_entered" from="Steles/ShowScolo2" to="Steles" method="_on_show_scolo_2_body_entered"]
+[connection signal="body_entered" from="Steles/ShowScolo1" to="Steles" method="_on_show_scolo_1_body_entered"]
+[connection signal="body_entered" from="Steles/ShowBoss1" to="Steles" method="_on_show_boss_1_body_entered"]
+[connection signal="body_entered" from="Steles/ShowBoss2" to="Steles" method="_on_show_boss_2_body_entered"]
+[connection signal="body_entered" from="Steles/ShowBoss3" to="Steles" method="_on_show_boss_3_body_entered"]
 [connection signal="body_entered" from="PlayerSpawns/BeforeCones/Area2D" to="PlayerSpawns/BeforeCones" method="_on_area_2d_body_entered"]

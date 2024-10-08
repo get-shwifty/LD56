@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://cuixxpx7r16rx"]
+
+[ext_resource type="PackedScene" uid="uid://7vfidbeug4m7" path="res://src/steles/stele-tuto-shroom.tscn" id="1_ydbvd"]
+[ext_resource type="PackedScene" uid="uid://bxu5tsgi75non" path="res://src/steles/stele_tuto_firefly_3.tscn" id="2_xs26p"]
+[ext_resource type="PackedScene" uid="uid://c4n8iclhqygp0" path="res://src/steles/stele_tuto_firefly_2.tscn" id="3_p4xgu"]
+[ext_resource type="PackedScene" uid="uid://yv56r4r7yx05" path="res://src/steles/stele_tuto_firefly_1.tscn" id="4_hh0eu"]
+[ext_resource type="PackedScene" uid="uid://1i2htf33r86n" path="res://src/steles/stele_tuto_scolo_1.tscn" id="5_h2ofi"]
+[ext_resource type="PackedScene" uid="uid://bl01ps3sdnw0e" path="res://src/steles/stele_tuto_scolo_2.tscn" id="6_hr75n"]
+[ext_resource type="PackedScene" uid="uid://clm8v5638tujb" path="res://src/steles/stele_tuto_scolo_3.tscn" id="7_m4s2e"]
+[ext_resource type="PackedScene" uid="uid://cg8tbvh0n15up" path="res://src/steles/stele_boss_1.tscn" id="8_ovn7a"]
+[ext_resource type="PackedScene" uid="uid://cdpwfohh1kgmw" path="res://src/steles/stele_boss_2.tscn" id="9_2db1p"]
+[ext_resource type="PackedScene" uid="uid://dtwqrpdd6lxe8" path="res://src/steles/stele_boss_3.tscn" id="10_7ph3r"]
+[ext_resource type="PackedScene" uid="uid://cb03tjp2vfq2a" path="res://src/steles/stele-birds.tscn" id="11_5nx3k"]
+
+[node name="Memory" type="CanvasLayer"]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="SteleTutoShroom" parent="." instance=ExtResource("1_ydbvd")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(316, 1249)
+
+[node name="SteleTutoFirefly3" parent="." instance=ExtResource("2_xs26p")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(255, 1168)
+rotation = -2.0944
+
+[node name="SteleTutoFirefly2" parent="." instance=ExtResource("3_p4xgu")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(243, 1233)
+rotation = -1.5708
+
+[node name="SteleTutoFirefly1" parent="." instance=ExtResource("4_hh0eu")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(255, 1249)
+
+[node name="SteleTutoScolo1" parent="." instance=ExtResource("5_h2ofi")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(182, 1248)
+
+[node name="SteleTutoScolo2" parent="." instance=ExtResource("6_hr75n")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(172, 1228)
+rotation = -1.8326
+
+[node name="SteleTutoScolo3" parent="." instance=ExtResource("7_m4s2e")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(172, 1161)
+rotation = -2.35619
+
+[node name="SteleBoss1" parent="." instance=ExtResource("8_ovn7a")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(86, 1232)
+
+[node name="SteleBoss2" parent="." instance=ExtResource("9_2db1p")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(78, 1141)
+rotation = 1.5708
+
+[node name="SteleBoss3" parent="." instance=ExtResource("10_7ph3r")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(78, 1030)
+rotation = 1.5708
+
+[node name="SteleBirds" parent="." instance=ExtResource("11_5nx3k")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(34, 1244)
