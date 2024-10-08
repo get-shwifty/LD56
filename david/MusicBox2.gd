@@ -26,6 +26,8 @@ var buffer_interval = 10 # frames
 var music_timout = 60*3 # frames
 var music_frame = 0
 
+var ignore_boss_music = false
+
 func _physics_process(delta):
 	if not Global.started:
 		return
@@ -80,6 +82,9 @@ func check_finished_music():
 	for name in melodies.keys():
 		if is_music_finished(melodies[name]):
 			notify_song_finish(name)
+			if name == "boss" and not ignore_boss_music:
+				ignore_boss_music = true
+				get_tree().change_scene_to_file("res://boss.tscn")
 			#can_play = false
 			#await get_tree().create_timer(1).timeout
 			#can_play = true
@@ -97,14 +102,16 @@ func notify_song(list: String):
 	for a in areas:
 		a.get_parent().on_song(played)
 	for stele in Global.tp_steles:
-		stele.on_song(played)
+		if is_instance_valid(stele):
+			stele.on_song(played)
 	
 func notify_song_finish(name: String):
 	var areas = area.get_overlapping_areas()
 	for a in areas:
 		a.get_parent().on_song_finished(name)
 	for stele in Global.tp_steles:
-		stele.on_song_finished(name)
+		if is_instance_valid(stele):
+			stele.on_song_finished(name)
 
 func _on_area_2d_area_exited(area):
 	area.get_parent().on_exit()

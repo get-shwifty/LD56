@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bttkqnn4pwmyk"]
+[gd_scene load_steps=12 format=3 uid="uid://bttkqnn4pwmyk"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_h41kr"]
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_4bwvj"]
@@ -9,12 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://3868gfwp81ut" path="res://assets/decors/lianes.png" id="7_vf1yj"]
 [ext_resource type="Texture2D" uid="uid://hjkvobw4pnjk" path="res://assets/decors/fougeres.png" id="8_0vcim"]
 [ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="9_i8hhr"]
+[ext_resource type="AudioStream" uid="uid://c73sk8frapdnm" path="res://sounds/Musique_Zone_1.mp3" id="9_ovkpl"]
+[ext_resource type="PackedScene" uid="uid://c2dx3pd52tprs" path="res://start_screen.tscn" id="10_vctml"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h41kr")
 
 [node name="Sky" parent="." instance=ExtResource("2_4bwvj")]
-scroll_offset = Vector2(-888, -165)
+scroll_offset = Vector2(-881, -337)
 
 [node name="Background" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.3, 0.15)
@@ -58,6 +60,8 @@ texture = ExtResource("8_0vcim")
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ovkpl")
 volume_db = -9.293
 
 [node name="Memory" parent="." instance=ExtResource("9_i8hhr")]
+[node name="CanvasLayer" parent="." instance=ExtResource("10_vctml")]
