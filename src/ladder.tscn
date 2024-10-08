@@ -11,22 +11,22 @@ size = Vector2(24, 146.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_n30cl"]
 radius = 218.98
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bqbgj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuvdu"]
 atlas = ExtResource("3_ty6wx")
-region = Rect2(0, 0, 53, 160)
+region = Rect2(0, 0, 63, 162)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yj3oi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7sxc"]
 atlas = ExtResource("3_ty6wx")
-region = Rect2(53, 0, 53, 160)
+region = Rect2(63, 0, 63, 162)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w7722"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bqbgj")
+"texture": SubResource("AtlasTexture_nuvdu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yj3oi")
+"texture": SubResource("AtlasTexture_k7sxc")
 }],
 "loop": true,
 "name": &"default",
