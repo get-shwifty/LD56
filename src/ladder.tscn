@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dtboxi3x4ar0" path="res://assets/scolopendre.png" id="3_ty6wx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lac00"]
+resource_local_to_scene = true
 size = Vector2(24, 146.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n30cl"]
