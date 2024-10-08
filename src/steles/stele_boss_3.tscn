@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4btprm3dqb5p"]
+[gd_scene load_steps=11 format=3 uid="uid://dtwqrpdd6lxe8"]
 
 [ext_resource type="Script" path="res://src/steles/stele_tuto.gd" id="1_bt1p3"]
 [ext_resource type="Script" path="res://src/steles/stelle_broken.gd" id="2_tnj63"]
@@ -75,9 +75,12 @@ position = Vector2(-34, 5)
 
 [node name="bottom-rune" parent="runes" instance=ExtResource("6_0ohi3")]
 position = Vector2(0, 12)
+rotation = -1.5708
 
 [node name="left-rune" parent="runes" instance=ExtResource("4_c4uhk")]
 position = Vector2(-24, 13)
+rotation = -1.5708
 
 [node name="right-rune2" parent="runes" instance=ExtResource("7_8e8s4")]
 position = Vector2(-46, 15)
+rotation = -1.5708
