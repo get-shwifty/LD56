@@ -92,6 +92,8 @@ func check_finished_music():
 			#buffer = []
 			#buffer_frame = 0
 			#music_frame = 0
+			if name == "birds":
+				$"../AnimationPlayerPoison".play("play")
 
 func is_music_finished(melodie):
 	return played.ends_with(melodie)
