@@ -338,6 +338,8 @@ sprite_frames = SubResource("SpriteFrames_w7722")
 speed_scale = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Scolo"]
+deterministic = true
+callback_mode_process = 0
 libraries = {
 "": SubResource("AnimationLibrary_txtrj")
 }

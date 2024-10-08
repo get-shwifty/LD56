@@ -32,5 +32,5 @@ animations = [{
 
 [node name="left-rune" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ft56p")
-animation = &"off"
+animation = &"on"
 script = ExtResource("2_42o7i")

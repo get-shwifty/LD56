@@ -9,6 +9,11 @@ func _ready():
 	$Scolo/AnimatedSprite2D.play("default")
 	$Scolo/AnimationPlayer.play("RESET")
 	$Scolo/AnimatedSprite2D.speed_scale = 0
+	
+	var shape = RectangleShape2D.new()
+	var old_shape = $LadderArea/CollisionShape2D.shape
+	shape.size = old_shape.size
+	$LadderArea/CollisionShape2D.shape = shape
 
 func on_song(song: String):
 	pass
