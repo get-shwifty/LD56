@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bk1ofwjmh8v4t"]
+[gd_scene load_steps=36 format=3 uid="uid://bk1ofwjmh8v4t"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hg8p4"]
 [ext_resource type="Script" path="res://src/camera.gd" id="2_q861p"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://c210cldakklyu" path="res://sounds/Son-grosse-chute.mp3" id="9_jvxf0"]
 [ext_resource type="Script" path="res://src/player/voices.gd" id="10_50chp"]
 [ext_resource type="Texture2D" uid="uid://ockavvjtwdln" path="res://assets/poison.png" id="12_t12qp"]
+[ext_resource type="Texture2D" uid="uid://b5ma5vd3rnmk7" path="res://assets/vignette.png" id="13_bue0s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oed0"]
 radius = 8.0
@@ -386,5 +387,11 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(-35, -93)
 texture = ExtResource("12_t12qp")
 hframes = 4
+
+[node name="Vignette" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.776471)
+position = Vector2(1, -50)
+scale = Vector2(0.642074, 0.655752)
+texture = ExtResource("13_bue0s")
 
 [connection signal="timeout" from="Voices/Timer" to="Voices" method="_on_timer_timeout"]
