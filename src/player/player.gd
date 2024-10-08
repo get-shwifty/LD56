@@ -165,10 +165,10 @@ func _physics_process(delta: float) -> void:
 	if is_on_ladder():
 		var vertical_direction := Input.get_axis("up", "down") if can_input else 0.0
 		if vertical_direction < 0:
-			vertical_direction *= 0.8
+			vertical_direction *= 0.6
 		elif vertical_direction > 0:
 			vertical_direction *= 1.5
-		print(vertical_direction)
+		#print(vertical_direction)
 		velocity.y = RUN_SPEED * vertical_direction
 		on_ladder()
 		# TODO lerp
@@ -261,11 +261,8 @@ func teleport(position: Vector2):
 
 func is_on_ladder():
 	var areas = $LadderDetection.get_overlapping_areas()
-	print(areas)
 	if len(areas):
-		print('is_on_ladder')
 		return true
-	print('is_not')
 	return false
 
 func play_note(note: String):
