@@ -11,9 +11,6 @@ func _ready():
 	Global.tp_steles.append(self)
 
 func on_song(song: String):
-	if (Global.player.global_position - global_position).length() > 100.0:
-		return
-
 	var max_i = len(song_activation)
 	var index = max_i
 	while index > 0:

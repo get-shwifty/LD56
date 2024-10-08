@@ -113,7 +113,7 @@ func _physics_process(delta: float):
 	
 	match right_state:
 		FOLLOWING:
-			if right_time > 6.25:
+			if right_time > 5.75:
 				right_state = PREPARING
 		PREPARING:
 			if right_time > 7.75:
@@ -194,19 +194,21 @@ func _on_panier_body_entered(body: Node2D) -> void:
 
 
 func _on_stele_birds_on_played() -> void:
-	left_time = -100.0
-	right_time = -100.0
-	%Player.set_collision_mask_value(1, false)
-	%Player.is_teleport = true
-	%Player/Visual/AnimatedSprite2D.play("climb")
-	%Player/Visual/PlayerMask.hide()
-	var tween = get_tree().create_tween()
-	tween.tween_property(%Player, "position", Vector2(0.0, -1112.0), 3.0)
-	tween.tween_property($FinalColorRect, "modulate", Color.WHITE, 5.0)
-	$Boss/Left.z_index = 0
-	$Boss/Right.z_index = 0
-	await get_tree().create_timer(5).timeout
-	get_tree().change_scene_to_file("res://src/end_scene.tscn")
+	if %Player.position.y < -1050:
+		left_time = -100.0
+		right_time = -100.0
+		%Player.set_collision_mask_value(1, false)
+		%Player.is_teleport = true
+		%Player/Visual/AnimatedSprite2D.play("climb")
+		%Player/Visual/PlayerMask.hide()
+		var tween = get_tree().create_tween()
+		tween.tween_property(%Player, "position", Vector2(0.0, -1112.0), 3.0)
+		tween.tween_property($FinalColorRect, "modulate", Color.WHITE, 5.0)
+		$Boss/Left.z_index = 0
+		$Boss/Right.z_index = 0
+		await get_tree().create_timer(8.0).timeout
+		get_tree().change_scene_to_file("res://src/end_scene.tscn")
+		$Memory.hide()
 	
 
 
