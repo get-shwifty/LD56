@@ -213,7 +213,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbkfd"]
 radius = 7.0
-height = 50.0
+height = 38.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y1m0c"]
 playback_mode = 1
