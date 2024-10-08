@@ -162,16 +162,21 @@ func _physics_process(delta: float) -> void:
 	%PlayerMask.scale.x = new_scale
 
 
-	if is_on_ladder() and get_collision_mask_value(1):
+	if is_on_ladder():
 		var vertical_direction := Input.get_axis("up", "down") if can_input else 0.0
 		if vertical_direction < 0:
-			vertical_direction *= 0.6
+			vertical_direction *= 0.8
 		elif vertical_direction > 0:
-			vertical_direction *= 1.2
+			vertical_direction *= 1.5
+		print(vertical_direction)
 		velocity.y = RUN_SPEED * vertical_direction
 		on_ladder()
 		# TODO lerp
-		if not is_on_floor():
+		if vertical_direction < 0:
+			var cols = $LadderDetection.get_overlapping_areas()
+			if len(cols):
+				var target_x = cols[0].global_position.x + 1
+				global_position.x = target_x
 			velocity.x = 0
 	
 	if velocity.x != 0:
@@ -256,8 +261,11 @@ func teleport(position: Vector2):
 
 func is_on_ladder():
 	var areas = $LadderDetection.get_overlapping_areas()
+	print(areas)
 	if len(areas):
+		print('is_on_ladder')
 		return true
+	print('is_not')
 	return false
 
 func play_note(note: String):
