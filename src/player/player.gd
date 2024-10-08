@@ -261,8 +261,11 @@ func teleport(position: Vector2):
 
 func is_on_ladder():
 	var areas = $LadderDetection.get_overlapping_areas()
+	print(areas)
 	if len(areas):
+		print('is_on_ladder')
 		return true
+	print('is_not')
 	return false
 
 func play_note(note: String):
