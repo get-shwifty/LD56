@@ -513,9 +513,6 @@ modulate = Color(1, 1, 1, 1)
 visible = false
 modulate = Color(1, 1, 1, 1)
 
-[node name="SteleBirds" parent="Memory" index="10"]
-visible = true
-
 [connection signal="body_entered" from="Boss/Panier" to="." method="_on_panier_body_entered"]
 [connection signal="body_entered" from="Boss/Left/Kill" to="." method="_on_left_kill_body_entered"]
 [connection signal="body_entered" from="Boss/Right/Kill" to="." method="_on_right_kill_body_entered"]

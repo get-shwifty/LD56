@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://3868gfwp81ut" path="res://assets/decors/lianes.png" id="7_vf1yj"]
 [ext_resource type="Texture2D" uid="uid://hjkvobw4pnjk" path="res://assets/decors/fougeres.png" id="8_0vcim"]
 [ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="9_i8hhr"]
-[ext_resource type="AudioStream" uid="uid://c73sk8frapdnm" path="res://sounds/Musique_Zone_1.mp3" id="9_ovkpl"]
+[ext_resource type="AudioStream" uid="uid://dwln4pq3vaog7" path="res://sounds/Musique_Zone_1.mp3" id="9_ovkpl"]
 [ext_resource type="PackedScene" uid="uid://c2dx3pd52tprs" path="res://start_screen.tscn" id="10_vctml"]
 
 [node name="Main" type="Node2D"]
