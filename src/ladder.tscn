@@ -322,7 +322,7 @@ position = Vector2(1, 64)
 shape = SubResource("CircleShape2D_n30cl")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 
 [node name="Scolo" type="Sprite2D" parent="."]
 clip_children = 1
