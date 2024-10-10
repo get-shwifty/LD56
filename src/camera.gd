@@ -1,24 +1,21 @@
 extends Camera2D
 class_name GameCamera
 
+@export var SHOOT_DECAY_RATE:float = 3.0
+@export var SHOOT_STRENGHT:int = 20
+
+@export var HIT_STRENGTH:float = 4.0
+@export var HIT_DECAY_RATE:float = 5.0
 var shake_strength:float = 0.0
 
 
 var hit_shake: bool = false
 var shoot_shake: bool = false
 
-@export var SHOOT_DECAY_RATE:float = 3.0
-@export var SHOOT_STRENGHT:int = 20
-
-@export var HIT_STRENGTH:float = 4.0
-@export var HIT_DECAY_RATE:float = 5.0
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-	#GameManager.camera = self
-
-
+	
 func shake_on_shoot(direction: Vector2):
 	offset = direction * SHOOT_STRENGHT
 	shoot_shake = true

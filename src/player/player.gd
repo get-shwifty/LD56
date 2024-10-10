@@ -187,7 +187,6 @@ func _physics_process(delta: float) -> void:
 			Global.projectile_container.add_child(particle)
 	
 	move_and_slide()
-	$Camera2D.position.x = lerp_value(CAM_LOOKAHEAD, 0.0, velocity.x)
 
 
 func on_ladder():
