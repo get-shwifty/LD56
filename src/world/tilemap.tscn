@@ -25,7 +25,7 @@
 [ext_resource type="Script" path="res://src/world/before_cones.gd" id="21_fywmg"]
 [ext_resource type="Script" path="res://src/world/caverne.gd" id="22_7i4wm"]
 [ext_resource type="Texture2D" uid="uid://bneutrfeuk6s7" path="res://assets/tuto.png" id="22_rct33"]
-[ext_resource type="Script" path="res://src/light_mask.gd" id="24_ixcjc"]
+[ext_resource type="Script" path="res://src/world/cave/light_mask.gd" id="24_ixcjc"]
 [ext_resource type="Texture2D" uid="uid://cpiqsps2sdxld" path="res://assets/light-mask-Sheet.png" id="25_k1jdt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jlxb8"]

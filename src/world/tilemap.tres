@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dveggny3f5kk5" path="res://src/platformes/short-luciole.tscn" id="3_mpx4p"]
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="4_i5vq4"]
 [ext_resource type="Texture2D" uid="uid://c8mwmksg1jykm" path="res://david/placeholder-tileset-Sheet2.png" id="5_g73og"]
-[ext_resource type="PackedScene" uid="uid://bx7xlj5ww6a0y" path="res://src/platform-scolo.tscn" id="5_sjqrx"]
+[ext_resource type="PackedScene" uid="uid://bx7xlj5ww6a0y" path="res://src/reactives/platform-scolo.tscn" id="5_sjqrx"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_5hcbl"]
 tile_data = PackedInt32Array(65536, 262144, 2, 131072, 262144, 2, 4, 262144, 2, 262148, 262144, 2)

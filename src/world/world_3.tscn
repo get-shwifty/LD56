@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://7vfidbeug4m7" path="res://src/steles/stele-tuto-shroom.tscn" id="7_03ynl"]
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="7_gatqw"]
 [ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="9_nd5a8"]
-[ext_resource type="PackedScene" uid="uid://bx7xlj5ww6a0y" path="res://src/platform-scolo.tscn" id="10_f2lmv"]
+[ext_resource type="PackedScene" uid="uid://bx7xlj5ww6a0y" path="res://src/reactives/platform-scolo.tscn" id="10_f2lmv"]
 [ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="10_gh6kn"]
-[ext_resource type="PackedScene" uid="uid://m4ann7nor78n" path="res://src/grotto.tscn" id="12_o1xiy"]
+[ext_resource type="PackedScene" uid="uid://m4ann7nor78n" path="res://src/world/cave/grotto.tscn" id="12_o1xiy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lcrv6"]
 texture = ExtResource("1_g6s2q")

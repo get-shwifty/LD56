@@ -3,8 +3,8 @@ extends Node2D
 @export var target: Node2D = null
 
 @onready var initial_position = global_position
-@onready var MASK = preload("res://src/light_mask.tscn")
-@onready var MASK_BACK = preload("res://src/light_mask_back.tscn")
+@onready var MASK = preload("res://src/world/cave/light_mask.tscn")
+@onready var MASK_BACK = preload("res://src/world/cave/light_mask_back.tscn")
 
 
 var mask: Node2D = null

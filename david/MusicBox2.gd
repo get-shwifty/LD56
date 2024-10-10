@@ -84,14 +84,7 @@ func check_finished_music():
 			notify_song_finish(name)
 			if name == "boss" and not ignore_boss_music:
 				ignore_boss_music = true
-				get_tree().change_scene_to_file("res://boss.tscn")
-			#can_play = false
-			#await get_tree().create_timer(1).timeout
-			#can_play = true
-			#notify_song("")
-			#buffer = []
-			#buffer_frame = 0
-			#music_frame = 0
+				get_tree().change_scene_to_file("res://scenes/boss.tscn")
 			if name == "birds":
 				$"../AnimationPlayerPoison".play("play")
 

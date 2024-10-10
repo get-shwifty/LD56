@@ -208,7 +208,7 @@ func _on_stele_birds_on_played() -> void:
 		$Boss/Right.z_index = 0
 		$Memory.hide()
 		await get_tree().create_timer(8.0).timeout
-		get_tree().change_scene_to_file("res://src/end_scene.tscn")
+		get_tree().change_scene_to_file("res://scenes/end_scene.tscn")
 	
 
 

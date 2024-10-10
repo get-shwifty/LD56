@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx7xlj5ww6a0y"]
 
 [ext_resource type="PackedScene" uid="uid://svgdx0tybiqd" path="res://src/platformes/short.tscn" id="1_ji3bc"]
-[ext_resource type="PackedScene" uid="uid://cbqtdmho7rvpe" path="res://src/ladder.tscn" id="2_34k67"]
+[ext_resource type="PackedScene" uid="uid://cbqtdmho7rvpe" path="res://src/reactives/ladder.tscn" id="2_34k67"]
 
 [node name="Platform-scolo" type="Node2D"]
 

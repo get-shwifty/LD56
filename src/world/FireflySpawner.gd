@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var FOLLOWER = preload("res://src/world/follower.tscn")
-@onready var FIREFLY = preload("res://src/firefly.tscn")
+@onready var FIREFLY = preload("res://src/reactives/firefly.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

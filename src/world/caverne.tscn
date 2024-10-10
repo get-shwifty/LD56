@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cmkxj3btgi2tx" path="res://assets/dark_mask.png" id="1_2stff"]
 [ext_resource type="Script" path="res://src/world/caverne.gd" id="1_524x2"]
-[ext_resource type="PackedScene" uid="uid://bldn5ajfgupxd" path="res://src/light_mask.tscn" id="2_gwxvv"]
-[ext_resource type="Script" path="res://src/light_mask.gd" id="3_368u0"]
+[ext_resource type="PackedScene" uid="uid://bldn5ajfgupxd" path="res://src/world/cave/light_mask.tscn" id="2_gwxvv"]
+[ext_resource type="Script" path="res://src/world/cave/light_mask.gd" id="3_368u0"]
 [ext_resource type="Texture2D" uid="uid://cpiqsps2sdxld" path="res://assets/light-mask-Sheet.png" id="4_swjgv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jdlll"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bldn5ajfgupxd"]
 
-[ext_resource type="Script" path="res://src/light_mask.gd" id="1_8scow"]
+[ext_resource type="Script" path="res://src/world/cave/light_mask.gd" id="1_8scow"]
 [ext_resource type="Texture2D" uid="uid://cpiqsps2sdxld" path="res://assets/light-mask-Sheet.png" id="1_73uce"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jdlll"]
