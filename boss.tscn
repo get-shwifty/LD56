@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://gr3aa53p0v2d"]
+[gd_scene load_steps=21 format=4 uid="uid://gr3aa53p0v2d"]
 
 [ext_resource type="Script" path="res://src/boss/boss.gd" id="1_lig1j"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="1_mxxpk"]
@@ -10,8 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dt7eeekf6f2y2" path="res://assets/boss/poing.png" id="6_wpqtm"]
 [ext_resource type="Texture2D" uid="uid://b25h1enov2cjr" path="res://assets/boss/tete.png" id="7_4vsno"]
 [ext_resource type="Texture2D" uid="uid://bwok552t6wgoe" path="res://assets/boss/overlaypoing.png" id="7_j1ifd"]
-[ext_resource type="AudioStream" uid="uid://dlapen7e1c75s" path="res://sounds/Musique_Boss.mp3" id="10_ashse"]
+[ext_resource type="AudioStream" uid="uid://dfymylj1fdja7" path="res://sounds/Musique-Boss-P1.mp3" id="11_0c30r"]
 [ext_resource type="PackedScene" uid="uid://mypoxjhtpm5p" path="res://src/platformes/middle.tscn" id="11_rj7og"]
+[ext_resource type="Script" path="res://audio_stream_player.gd" id="12_6150c"]
 [ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="14_i6dih"]
 [ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="14_j1bmo"]
 
@@ -311,9 +312,10 @@ navigation_enabled = false
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_ashse")
+stream = ExtResource("11_0c30r")
 volume_db = -13.0
 autoplay = true
+script = ExtResource("12_6150c")
 
 [node name="Path2D" type="Path2D" parent="."]
 visible = false
@@ -517,6 +519,7 @@ modulate = Color(1, 1, 1, 1)
 [connection signal="body_entered" from="Boss/Left/Kill" to="." method="_on_left_kill_body_entered"]
 [connection signal="body_entered" from="Boss/Right/Kill" to="." method="_on_right_kill_body_entered"]
 [connection signal="on_played" from="SteleBirds" to="." method="_on_stele_birds_on_played"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
 [connection signal="body_entered" from="ShowShroom" to="." method="_on_show_shroom_body_entered"]
 
 [editable path="Player"]
