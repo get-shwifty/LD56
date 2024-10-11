@@ -16,3 +16,4 @@ func _on_finished():
 	if stream != boss_loop:
 		boss_loop.loop = true
 		stream = boss_loop
+		playing = true
