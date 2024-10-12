@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://m4ann7nor78n"]
+[gd_scene load_steps=2 format=3 uid="uid://m4ann7nor78n"]
 
 [ext_resource type="Texture2D" uid="uid://cmkxj3btgi2tx" path="res://assets/dark_mask.png" id="1_vr2rf"]
-[ext_resource type="PackedScene" uid="uid://cqh2ly05w1x4b" path="res://src/reactives/firefly.tscn" id="3_yfm3l"]
 
 [node name="grotto" type="CanvasGroup"]
 z_index = 50
@@ -18,12 +17,3 @@ texture = ExtResource("1_vr2rf")
 [node name="Fireflies" type="Node2D" parent="."]
 z_index = 101
 z_as_relative = false
-
-[node name="Firefly" parent="Fireflies" instance=ExtResource("3_yfm3l")]
-position = Vector2(526, 587)
-
-[node name="Firefly2" parent="Fireflies" instance=ExtResource("3_yfm3l")]
-position = Vector2(584, 553)
-
-[node name="Firefly3" parent="Fireflies" instance=ExtResource("3_yfm3l")]
-position = Vector2(559, 579)

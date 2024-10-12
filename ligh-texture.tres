@@ -1,0 +1,8 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://nhpkslgvv8rk"]
+
+[ext_resource type="Gradient" uid="uid://28wy6cbekr7t" path="res://src/world/grotte-david/gradient_white_full.tres" id="1_xd2in"]
+
+[resource]
+gradient = ExtResource("1_xd2in")
+fill = 1
+fill_from = Vector2(0.5, 0.5)

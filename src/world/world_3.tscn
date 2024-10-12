@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://ouk4rqkp0lpr"]
+[gd_scene load_steps=18 format=4 uid="uid://ouk4rqkp0lpr"]
 
 [ext_resource type="Texture2D" uid="uid://dl28akj35wb2b" path="res://david/second-tileset.png" id="1_g6s2q"]
 [ext_resource type="PackedScene" uid="uid://svgdx0tybiqd" path="res://src/platformes/short.tscn" id="2_v7ivw"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://7vfidbeug4m7" path="res://src/steles/stele-tuto-shroom.tscn" id="7_03ynl"]
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="7_gatqw"]
 [ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="9_nd5a8"]
-[ext_resource type="PackedScene" uid="uid://bx7xlj5ww6a0y" path="res://src/reactives/platform-scolo.tscn" id="10_f2lmv"]
 [ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="10_gh6kn"]
 [ext_resource type="PackedScene" uid="uid://m4ann7nor78n" path="res://src/world/cave/grotto.tscn" id="12_o1xiy"]
 
@@ -550,9 +549,6 @@ position = Vector2(1306, 782)
 position = Vector2(1261, 829)
 
 [node name="ladders" type="Node2D" parent="."]
-
-[node name="Platform-scolo" parent="ladders" instance=ExtResource("10_f2lmv")]
-position = Vector2(554, 466)
 
 [node name="Spawners" type="Node2D" parent="."]
 

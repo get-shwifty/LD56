@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cdw1hvex8r88v"]
+
+[ext_resource type="Shader" path="res://test-tmp.gdshader" id="1_ccd85"]
+[ext_resource type="Texture2D" uid="uid://o8w8xks0fgpk" path="res://light-gradient.tres" id="2_lijdj"]
+
+[resource]
+shader = ExtResource("1_ccd85")
+shader_parameter/light_color = Vector3(0, 255, 0)
+shader_parameter/brightness = 1.0
+shader_parameter/attenuation_strength = 0.8
+shader_parameter/intensity = 1.0
+shader_parameter/max_brightness = 1.0
+shader_parameter/light_texture = ExtResource("2_lijdj")

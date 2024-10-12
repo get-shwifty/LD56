@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://lc5mdsu0cggq"]
+
+[ext_resource type="Texture2D" uid="uid://bompojcp7qix5" path="res://assets/white.png" id="1_wx7yn"]
+[ext_resource type="Material" uid="uid://cdw1hvex8r88v" path="res://custom-light-material.tres" id="2_rlgh4"]
+[ext_resource type="Texture2D" uid="uid://dsjm0i3b38fy6" path="res://icon.svg" id="3_rnmsh"]
+[ext_resource type="Texture2D" uid="uid://nhpkslgvv8rk" path="res://ligh-texture.tres" id="4_otyp2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8d3ft"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f6p42"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Black" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(571.5, 324)
+scale = Vector2(17.5079, 3.80247)
+texture = ExtResource("1_wx7yn")
+
+[node name="Blue" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 1, 1)
+position = Vector2(543, 289)
+scale = Vector2(15.0317, 3.10494)
+texture = ExtResource("1_wx7yn")
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_8d3ft")
+position = Vector2(347, 327)
+scale = Vector2(4.57812, 5)
+texture = ExtResource("3_rnmsh")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_f6p42")
+position = Vector2(939, 333)
+scale = Vector2(4.57812, 5)
+texture = ExtResource("3_rnmsh")
+
+[node name="CustomLight" type="Sprite2D" parent="."]
+material = ExtResource("2_rlgh4")
+position = Vector2(241, 367)
+scale = Vector2(1.54762, 0.58642)
+texture = ExtResource("1_wx7yn")
+
+[node name="CustomLight2" type="Sprite2D" parent="."]
+material = ExtResource("2_rlgh4")
+position = Vector2(201, 365)
+scale = Vector2(1.54762, 0.58642)
+texture = ExtResource("1_wx7yn")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D"]
+position = Vector2(452, 233)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D7" type="PointLight2D" parent="Node2D"]
+position = Vector2(187, 315)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D8" type="PointLight2D" parent="Node2D"]
+position = Vector2(449, 148)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Node2D"]
+position = Vector2(198, 219)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Node2D"]
+position = Vector2(251, 356)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Node2D"]
+position = Vector2(201, 383)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D5" type="PointLight2D" parent="Node2D"]
+position = Vector2(366, 150)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D6" type="PointLight2D" parent="Node2D"]
+position = Vector2(363, 222)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D21" type="PointLight2D" parent="Node2D"]
+position = Vector2(1008, 150)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D22" type="PointLight2D" parent="Node2D"]
+position = Vector2(1005, 222)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D23" type="PointLight2D" parent="Node2D"]
+position = Vector2(1008, 308)
+blend_mode = 2
+texture = ExtResource("4_otyp2")
+
+[node name="PointLight2D24" type="PointLight2D" parent="Node2D"]
+position = Vector2(1008, 386)
+blend_mode = 2
+texture = ExtResource("4_otyp2")

@@ -187,6 +187,8 @@ func _physics_process(delta: float) -> void:
 			Global.projectile_container.add_child(particle)
 	
 	move_and_slide()
+	#global_position.x = round(global_position.x)
+	#global_position.y = round(global_position.y)
 
 
 func on_ladder():

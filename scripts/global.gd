@@ -12,8 +12,14 @@ var request_music = null
 var started = true
 var memory = null
 
-
 var PLAYER = preload("res://src/player/note_player.tscn")
+
+
+func _ready():
+	await get_tree().physics_frame
+	var container = Node2D.new()
+	get_tree().root.add_child(container)
+	projectile_container = container
 
 func _process(delta):
 	if request_music:
