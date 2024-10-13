@@ -7,7 +7,7 @@
 shader = ExtResource("1_ccd85")
 shader_parameter/light_color = Vector3(0, 255, 0)
 shader_parameter/brightness = 1.0
-shader_parameter/attenuation_strength = 0.8
-shader_parameter/intensity = 1.0
+shader_parameter/attenuation_strength = 0.7
+shader_parameter/intensity = 2.0
 shader_parameter/max_brightness = 1.0
 shader_parameter/light_texture = ExtResource("2_lijdj")

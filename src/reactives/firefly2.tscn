@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjd7l6c2m6h1r"]
+[gd_scene load_steps=16 format=3 uid="uid://cjd7l6c2m6h1r"]
 
 [ext_resource type="Script" path="res://src/reactives/firefly2.gd" id="1_35m0p"]
 [ext_resource type="Texture2D" uid="uid://nhpkslgvv8rk" path="res://ligh-texture.tres" id="2_vej4u"]
 [ext_resource type="Script" path="res://src/world/grotte-david/ligh-gradient-flicker.gd" id="3_ue81t"]
 [ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="4_mh7b5"]
+[ext_resource type="Material" uid="uid://cdw1hvex8r88v" path="res://custom-light-material.tres" id="5_ondym"]
+[ext_resource type="Texture2D" uid="uid://cextgribwq6d5" path="res://assets/white-square.jpeg" id="6_ymtl8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyy1s"]
 atlas = ExtResource("4_mh7b5")
@@ -50,11 +52,48 @@ animations = [{
 resource_local_to_scene = true
 radius = 491.082
 
+[sub_resource type="Animation" id="Animation_t2x5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_5ddae"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcqm8"]
+_data = {
+"RESET": SubResource("Animation_t2x5p"),
+"on": SubResource("Animation_5ddae")
+}
+
 [node name="Firefly" type="Node2D"]
 position = Vector2(107, 109)
 script = ExtResource("1_35m0p")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
 blend_mode = 2
 texture = ExtResource("2_vej4u")
 script = ExtResource("3_ue81t")
@@ -64,6 +103,13 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_mm8xg")
 animation = &"on"
 
+[node name="GreenLight" type="Sprite2D" parent="AnimatedSprite2D"]
+z_index = 1
+material = ExtResource("5_ondym")
+position = Vector2(2, 5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_ymtl8")
+
 [node name="ReactiveComponent" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReactiveComponent"]
@@ -72,3 +118,11 @@ shape = SubResource("CircleShape2D_kcwy8")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kcqm8")
+}
+speed_scale = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

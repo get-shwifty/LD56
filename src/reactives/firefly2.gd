@@ -5,6 +5,7 @@ extends Node2D
 @export var speed: float = 60
 @export var pause: float = 0.3
 @export var oscilation: float = 7
+@export var distance_at_1s_delay = 2000
 
 @onready var start_pos: Vector2 = global_position
 
@@ -32,13 +33,19 @@ func _process(delta):
 		$AnimatedSprite2D.scale.x = 1
 
 func on():
+	var distance = global_position.distance_to(Global.player.global_position)
+	var delay = distance / distance_at_1s_delay
+	await get_tree().create_timer(delay).timeout
+	$AnimatedSprite2D/GreenLight.show()
 	$AnimatedSprite2D.play("on")
+	$AnimationPlayer.play("on")
 	$PointLight2D.show()
 	$Timer.start()
 	
 func off():
 	$AnimatedSprite2D.play("off")
 	$PointLight2D.hide()
+	$AnimatedSprite2D/GreenLight.hide()
 	
 func on_song(song: String):
 	pass
