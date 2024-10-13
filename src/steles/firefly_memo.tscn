@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu4bbth2ioo4i"]
+
+[ext_resource type="Script" path="res://memo.gd" id="1_a8jvp"]
+[ext_resource type="PackedScene" uid="uid://dlcb854vuge72" path="res://src/steles/part_1_firefly.tscn" id="2_td15j"]
+[ext_resource type="PackedScene" uid="uid://dcx2lucggn7pl" path="res://src/steles/part_2_firefly.tscn" id="3_cksh7"]
+[ext_resource type="PackedScene" uid="uid://bhgtmknaoxoh" path="res://src/steles/part_3_firefly.tscn" id="4_ts171"]
+
+[node name="FireflyMemo" type="Node2D" node_paths=PackedStringArray("parts", "particles")]
+script = ExtResource("1_a8jvp")
+parts = [NodePath("Part1"), NodePath("Part2"), NodePath("Part3")]
+particles = [NodePath("Particle1"), NodePath("Particle2"), NodePath("Particle3")]
+
+[node name="Part1" parent="." instance=ExtResource("2_td15j")]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Part2" parent="." instance=ExtResource("3_cksh7")]
+
+[node name="Part3" parent="." instance=ExtResource("4_ts171")]
+
+[node name="Particle1" type="CPUParticles2D" parent="."]
+position = Vector2(1, 16)
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.36
+randomness = 0.52
+lifetime_randomness = 0.46
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(15, 10)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+color = Color(0, 1, 0.933333, 1)
+
+[node name="Particle2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.36
+randomness = 0.52
+lifetime_randomness = 0.46
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(15, 10)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+color = Color(0, 1, 0.933333, 1)
+
+[node name="Particle3" type="CPUParticles2D" parent="."]
+position = Vector2(0, -13)
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.36
+randomness = 0.52
+lifetime_randomness = 0.46
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(15, 10)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+color = Color(0, 1, 0.933333, 1)

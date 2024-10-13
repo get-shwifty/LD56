@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn4y50a5buy43"]
+
+[ext_resource type="Texture2D" uid="uid://p7lmwq5bdvsq" path="res://assets/memo.png" id="1_u1hob"]
+
+[node name="Part3" type="Sprite2D"]
+texture = ExtResource("1_u1hob")
+region_enabled = true
+region_rect = Rect2(200, 0, 50, 50)

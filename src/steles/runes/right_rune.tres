@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dlwedgh7wyy1t"]
+
+[ext_resource type="Texture2D" uid="uid://dp87laiciayrf" path="res://david/runes.png" id="1_pfnji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy4s5"]
+atlas = ExtResource("1_pfnji")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk0g3"]
+atlas = ExtResource("1_pfnji")
+region = Rect2(48, 32, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oy4s5")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk0g3")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]

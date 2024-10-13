@@ -13,7 +13,7 @@ var song_name = "light"
 var counter = 0
 
 func _ready():
-	off()
+	on()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,9 +33,9 @@ func _process(delta):
 		$AnimatedSprite2D.scale.x = 1
 
 func on():
-	var distance = global_position.distance_to(Global.player.global_position)
-	var delay = distance / distance_at_1s_delay
-	await get_tree().create_timer(delay).timeout
+	#var distance = global_position.distance_to(Global.player.global_position)
+	#var delay = distance / distance_at_1s_delay
+	#await get_tree().create_timer(delay).timeout
 	$AnimatedSprite2D/GreenLight.show()
 	$AnimatedSprite2D.play("on")
 	$AnimationPlayer.play("on")

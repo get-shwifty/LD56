@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bai462ciqlk0"]
+
+[ext_resource type="Texture2D" uid="uid://p7lmwq5bdvsq" path="res://assets/memo.png" id="1_sxmes"]
+
+[node name="Part2" type="Sprite2D"]
+texture = ExtResource("1_sxmes")
+region_enabled = true
+region_rect = Rect2(150, 0, 50, 50)

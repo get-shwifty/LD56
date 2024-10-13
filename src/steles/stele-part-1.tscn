@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://df8qiebh8idgi"]
+
+[ext_resource type="Texture2D" uid="uid://p7lmwq5bdvsq" path="res://assets/memo.png" id="1_le701"]
+[ext_resource type="Script" path="res://src/steles/stele2.gd" id="2_s1v30"]
+
+[node name="Part1" type="Sprite2D"]
+texture = ExtResource("1_le701")
+region_enabled = true
+region_rect = Rect2(100, 0, 50, 50)
+script = ExtResource("2_s1v30")

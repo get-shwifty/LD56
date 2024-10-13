@@ -1,163 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://cuixxpx7r16rx"]
+[gd_scene load_steps=4 format=3 uid="uid://cuixxpx7r16rx"]
 
-[ext_resource type="PackedScene" uid="uid://7vfidbeug4m7" path="res://src/steles/stele-tuto-shroom.tscn" id="1_ydbvd"]
-[ext_resource type="PackedScene" uid="uid://bxu5tsgi75non" path="res://src/steles/stele_tuto_firefly_3.tscn" id="2_xs26p"]
-[ext_resource type="PackedScene" uid="uid://c4n8iclhqygp0" path="res://src/steles/stele_tuto_firefly_2.tscn" id="3_p4xgu"]
-[ext_resource type="PackedScene" uid="uid://yv56r4r7yx05" path="res://src/steles/stele_tuto_firefly_1.tscn" id="4_hh0eu"]
-[ext_resource type="PackedScene" uid="uid://1i2htf33r86n" path="res://src/steles/stele_tuto_scolo_1.tscn" id="5_h2ofi"]
-[ext_resource type="PackedScene" uid="uid://bl01ps3sdnw0e" path="res://src/steles/stele_tuto_scolo_2.tscn" id="6_hr75n"]
-[ext_resource type="PackedScene" uid="uid://clm8v5638tujb" path="res://src/steles/stele_tuto_scolo_3.tscn" id="7_m4s2e"]
-[ext_resource type="PackedScene" uid="uid://hqf5si6p24g3" path="res://src/steles/stele_boss_1.tscn" id="8_ovn7a"]
-[ext_resource type="PackedScene" uid="uid://cdpwfohh1kgmw" path="res://src/steles/stele_boss_2.tscn" id="9_2db1p"]
-[ext_resource type="PackedScene" uid="uid://dtwqrpdd6lxe8" path="res://src/steles/stele_boss_3.tscn" id="10_7ph3r"]
-[ext_resource type="PackedScene" uid="uid://cb03tjp2vfq2a" path="res://src/steles/stele-birds.tscn" id="11_5nx3k"]
+[ext_resource type="Texture2D" uid="uid://cextgribwq6d5" path="res://assets/white-square.jpeg" id="2_brna8"]
+[ext_resource type="PackedScene" uid="uid://cu4bbth2ioo4i" path="res://src/steles/firefly_memo.tscn" id="3_p46qf"]
 [ext_resource type="Texture2D" uid="uid://b5ma5vd3rnmk7" path="res://assets/vignette.png" id="12_inavl"]
 
 [node name="Memory" type="CanvasLayer"]
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
-
-[node name="SteleTutoShroom" parent="." instance=ExtResource("1_ydbvd")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(316, 1249)
-
-[node name="left-rune" parent="SteleTutoShroom/runes" index="0"]
-position = Vector2(0, 31)
-scale = Vector2(2, 2)
-
-[node name="right-rune" parent="SteleTutoShroom/runes" index="1"]
-position = Vector2(0, 3)
-scale = Vector2(2, 2)
-
-[node name="left-rune2" parent="SteleTutoShroom/runes" index="2"]
-position = Vector2(0, -23)
-scale = Vector2(2, 2)
-
-[node name="top-rune" parent="SteleTutoShroom/runes" index="3"]
-position = Vector2(0, -53)
-scale = Vector2(2, 2)
-
-[node name="SteleTutoFirefly3" parent="." instance=ExtResource("2_xs26p")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(255, 1168)
-rotation = -2.0944
-
-[node name="bottom-rune" parent="SteleTutoFirefly3/runes" index="2"]
-scale = Vector2(2, 2)
-
-[node name="SteleTutoFirefly2" parent="." instance=ExtResource("3_p4xgu")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(243, 1233)
-rotation = -1.5708
-
-[node name="top-rune" parent="SteleTutoFirefly2/runes" index="1"]
-scale = Vector2(2, 2)
-
-[node name="SteleTutoFirefly1" parent="." instance=ExtResource("4_hh0eu")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(255, 1249)
-
-[node name="left-rune" parent="SteleTutoFirefly1/runes" index="0"]
-scale = Vector2(2, 2)
-
-[node name="SteleTutoScolo1" parent="." instance=ExtResource("5_h2ofi")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(182, 1248)
-
-[node name="bottom-rune2" parent="SteleTutoScolo1/runes" index="0"]
-scale = Vector2(2, 2)
-
-[node name="SteleTutoScolo2" parent="." instance=ExtResource("6_hr75n")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(172, 1228)
-rotation = -1.8326
-
-[node name="bottom-rune2" parent="SteleTutoScolo2/runes" index="1"]
-scale = Vector2(2, 2)
-
-[node name="SteleTutoScolo3" parent="." instance=ExtResource("7_m4s2e")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(172, 1161)
-rotation = -2.35619
-
-[node name="top-rune" parent="SteleTutoScolo3/runes" index="2"]
-scale = Vector2(2, 2)
-
-[node name="SteleBoss1" parent="." instance=ExtResource("8_ovn7a")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(86, 1232)
-
-[node name="bottom-rune2" parent="SteleBoss1/runes" index="0"]
-position = Vector2(-12, 36)
-scale = Vector2(2, 2)
-
-[node name="right-rune3" parent="SteleBoss1/runes" index="1"]
-position = Vector2(-14, 12)
-scale = Vector2(2, 2)
-
-[node name="top-rune" parent="SteleBoss1/runes" index="2"]
-scale = Vector2(2, 2)
-
-[node name="SteleBoss2" parent="." instance=ExtResource("9_2db1p")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(78, 1141)
-rotation = 1.5708
-
-[node name="top-rune2" parent="SteleBoss2/runes" index="3"]
-position = Vector2(19, 7.99993)
-scale = Vector2(2, 2)
-
-[node name="bottom-rune3" parent="SteleBoss2/runes" index="4"]
-position = Vector2(-19, 6.00007)
-scale = Vector2(2, 2)
-
-[node name="right-rune" parent="SteleBoss2/runes" index="5"]
-scale = Vector2(2, 2)
-
-[node name="SteleBoss3" parent="." instance=ExtResource("10_7ph3r")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(78, 1030)
-rotation = 1.5708
-
-[node name="bottom-rune" parent="SteleBoss3/runes" index="6"]
-position = Vector2(5.99998, 5.99998)
-scale = Vector2(2, 2)
-
-[node name="left-rune" parent="SteleBoss3/runes" index="7"]
-position = Vector2(-24, 10.0001)
-scale = Vector2(2, 2)
-
-[node name="right-rune2" parent="SteleBoss3/runes" index="8"]
-position = Vector2(-52, 12.0002)
-scale = Vector2(2, 2)
-
-[node name="SteleBirds" parent="." instance=ExtResource("11_5nx3k")]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(34, 1244)
-
-[node name="left-rune" parent="SteleBirds/runes" index="0"]
-position = Vector2(0, 34)
-scale = Vector2(2, 2)
-
-[node name="top-rune" parent="SteleBirds/runes" index="1"]
-position = Vector2(-14, 14)
-scale = Vector2(2, 2)
-
-[node name="right-rune" parent="SteleBirds/runes" index="2"]
-position = Vector2(12, 6)
-scale = Vector2(2, 2)
-
-[node name="top-rune2" parent="SteleBirds/runes" index="3"]
-position = Vector2(-14, -16)
-scale = Vector2(2, 2)
-
-[node name="right-rune2" parent="SteleBirds/runes" index="4"]
-position = Vector2(12, -22)
-scale = Vector2(2, 2)
-
-[node name="bottom-rune" parent="SteleBirds/runes" index="5"]
-position = Vector2(0, -52)
-scale = Vector2(2, 2)
 
 [node name="Vignette" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.776471)
@@ -165,14 +14,12 @@ position = Vector2(1152, 634)
 scale = Vector2(1.963, 1.96)
 texture = ExtResource("12_inavl")
 
-[editable path="SteleTutoShroom"]
-[editable path="SteleTutoFirefly3"]
-[editable path="SteleTutoFirefly2"]
-[editable path="SteleTutoFirefly1"]
-[editable path="SteleTutoScolo1"]
-[editable path="SteleTutoScolo2"]
-[editable path="SteleTutoScolo3"]
-[editable path="SteleBoss1"]
-[editable path="SteleBoss2"]
-[editable path="SteleBoss3"]
-[editable path="SteleBirds"]
+[node name="Background" type="Sprite2D" parent="."]
+self_modulate = Color(0.312, 0.14, 1, 1)
+position = Vector2(186, 1144)
+scale = Vector2(3.90625, 4.34375)
+texture = ExtResource("2_brna8")
+
+[node name="FireflyMemo" parent="." instance=ExtResource("3_p46qf")]
+position = Vector2(186, 1146)
+scale = Vector2(4, 4)

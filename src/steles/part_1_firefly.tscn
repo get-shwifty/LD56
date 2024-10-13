@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlcb854vuge72"]
+
+[ext_resource type="PackedScene" uid="uid://df8qiebh8idgi" path="res://src/steles/stele-part-1.tscn" id="1_jh1ps"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="2_7idow"]
+
+[node name="Part1Firefly" type="Node2D"]
+
+[node name="Part1" parent="." instance=ExtResource("1_jh1ps")]
+
+[node name="left-rune" parent="." instance=ExtResource("2_7idow")]
+position = Vector2(0, 13)
+scale = Vector2(0.5, 0.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://f2mbdfdom55u"]
+[gd_scene load_steps=69 format=4 uid="uid://f2mbdfdom55u"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_atmrp"]
 [ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="2_cilhj"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bneutrfeuk6s7" path="res://assets/tuto.png" id="22_rct33"]
 [ext_resource type="Script" path="res://src/world/cave/light_mask.gd" id="24_ixcjc"]
 [ext_resource type="Texture2D" uid="uid://cpiqsps2sdxld" path="res://assets/light-mask-Sheet.png" id="25_k1jdt"]
+[ext_resource type="PackedScene" uid="uid://df8qiebh8idgi" path="res://src/steles/stele-part-1.tscn" id="28_acbhv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jlxb8"]
 blend_mode = 2
@@ -860,6 +861,9 @@ shape = SubResource("RectangleShape2D_sxal0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1652, 1429)
 sprite_frames = SubResource("SpriteFrames_vmf0i")
+
+[node name="Sprite2D3" parent="." instance=ExtResource("28_acbhv")]
+position = Vector2(826, 576)
 
 [connection signal="body_entered" from="Steles/ShowShroom" to="Steles" method="_on_show_shroom_body_entered"]
 [connection signal="body_entered" from="Steles/ShowFirefly" to="Steles" method="_on_show_firefly_body_entered"]

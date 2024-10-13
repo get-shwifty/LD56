@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqol0dn06kjpv"]
+
+[ext_resource type="Texture2D" uid="uid://p7lmwq5bdvsq" path="res://assets/memo.png" id="1_80qyt"]
+[ext_resource type="PackedScene" uid="uid://dqb2xia4trs6f" path="res://src/steles/stelle-complete-sombre.tscn" id="1_q3bru"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_q3bru")]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("1_80qyt")
+region_enabled = true
+region_rect = Rect2(50, 0, 50, 50)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture = ExtResource("1_80qyt")
+region_enabled = true
+region_rect = Rect2(100, 0, 50, 50)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+texture = ExtResource("1_80qyt")
+region_enabled = true
+region_rect = Rect2(150, 0, 50, 50)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+texture = ExtResource("1_80qyt")
+region_enabled = true
+region_rect = Rect2(200, 0, 50, 50)
