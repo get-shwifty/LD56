@@ -2,5 +2,5 @@
 
 [resource]
 resource_local_to_scene = true
-offsets = PackedFloat32Array(0.440789, 0.682927)
+offsets = PackedFloat32Array(0.296167, 0.682927)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)

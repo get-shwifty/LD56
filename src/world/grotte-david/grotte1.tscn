@@ -1,13 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://dxeojs2756d3x"]
+[gd_scene load_steps=10 format=4 uid="uid://dxeojs2756d3x"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_grcrr"]
 [ext_resource type="Shader" path="res://src/world/grotte-david/grotte-dark.gdshader" id="1_uxtp8"]
 [ext_resource type="TileSet" uid="uid://dvcln66v37sys" path="res://src/world/tilemap.tres" id="1_x150v"]
 [ext_resource type="Shader" path="res://src/world/grotte-david/grotte-fond.gdshader" id="2_ue0jo"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_8iaf0"]
-[ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="6_dcyl1"]
-[ext_resource type="Script" path="res://src/reactives/firefly2.gd" id="6_gikln"]
-[ext_resource type="Script" path="res://src/world/grotte-david/ligh-gradient-flicker.gd" id="7_laxf3"]
+[ext_resource type="PackedScene" uid="uid://cjd7l6c2m6h1r" path="res://src/reactives/firefly2.tscn" id="6_st4ng"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r52ck"]
 shader = ExtResource("1_uxtp8")
@@ -17,62 +15,6 @@ shader = ExtResource("2_ue0jo")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ib8y5"]
 light_mode = 2
-
-[sub_resource type="Gradient" id="Gradient_6tv8d"]
-resource_local_to_scene = true
-offsets = PackedFloat32Array(0.45, 0.682927)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_b742k"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_6tv8d")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qyy1s"]
-atlas = ExtResource("6_dcyl1")
-region = Rect2(0, 0, 20, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nhh7x"]
-atlas = ExtResource("6_dcyl1")
-region = Rect2(20, 0, 20, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rr88v"]
-atlas = ExtResource("6_dcyl1")
-region = Rect2(0, 30, 20, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5a2m"]
-atlas = ExtResource("6_dcyl1")
-region = Rect2(20, 30, 20, 19)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mm8xg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qyy1s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nhh7x")
-}],
-"loop": true,
-"name": &"off",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rr88v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p5a2m")
-}],
-"loop": true,
-"name": &"on",
-"speed": 2.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kcwy8"]
-resource_local_to_scene = true
-radius = 491.082
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-4, 46)
@@ -107,26 +49,37 @@ tile_set = ExtResource("1_x150v")
 z_index = 1
 position = Vector2(37, 118)
 
-[node name="Firefly" type="Node2D" parent="."]
-position = Vector2(107, 109)
-script = ExtResource("6_gikln")
+[node name="Firefly" parent="." instance=ExtResource("6_st4ng")]
+distance = 200.0
+speed = 50.0
 
-[node name="PointLight2D" type="PointLight2D" parent="Firefly"]
-scale = Vector2(4, 4)
-blend_mode = 2
-texture = SubResource("GradientTexture2D_b742k")
-script = ExtResource("7_laxf3")
+[node name="Firefly6" parent="." instance=ExtResource("6_st4ng")]
+position = Vector2(360, -131)
+distance = 200.0
+speed = 50.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Firefly"]
-z_index = 1
-sprite_frames = SubResource("SpriteFrames_mm8xg")
-animation = &"on"
+[node name="Firefly7" parent="." instance=ExtResource("6_st4ng")]
+position = Vector2(545, -133)
+distance = 150.0
+speed = 50.0
 
-[node name="ReactiveComponent" type="Area2D" parent="Firefly"]
+[node name="Firefly2" parent="." instance=ExtResource("6_st4ng")]
+position = Vector2(262, 180)
+distance = 150.0
+speed = 50.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Firefly/ReactiveComponent"]
-visible = false
-shape = SubResource("CircleShape2D_kcwy8")
+[node name="Firefly3" parent="." instance=ExtResource("6_st4ng")]
+position = Vector2(256, -126)
+distance = 200.0
+speed = 50.0
 
-[node name="Timer" type="Timer" parent="Firefly"]
-wait_time = 20.0
+[node name="Firefly4" parent="." instance=ExtResource("6_st4ng")]
+position = Vector2(86, -49)
+angle = 45.0
+distance = 150.0
+speed = 50.0
+
+[node name="Firefly5" parent="." instance=ExtResource("6_st4ng")]
+position = Vector2(70, -124)
+distance = 200.0
+speed = 50.0
