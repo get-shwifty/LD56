@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_h41kr"]
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_4bwvj"]
 [ext_resource type="Texture2D" uid="uid://c65x02u77bppw" path="res://assets/arbres2.png" id="3_ildge"]
-[ext_resource type="PackedScene" uid="uid://f2mbdfdom55u" path="res://src/world/tilemap.tscn" id="4_nbj0m"]
+[ext_resource type="PackedScene" uid="uid://dmauy1va82c" path="res://src/world/world4.tscn" id="4_yj5ef"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_ww6j6"]
 [ext_resource type="Texture2D" uid="uid://bhsdhqpwiof45" path="res://assets/decors/arbre.png" id="6_tocak"]
 [ext_resource type="Texture2D" uid="uid://3868gfwp81ut" path="res://assets/decors/lianes.png" id="7_vf1yj"]
 [ext_resource type="Texture2D" uid="uid://hjkvobw4pnjk" path="res://assets/decors/fougeres.png" id="8_0vcim"]
-[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="9_i8hhr"]
+[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/firefly/memory.tscn" id="9_i8hhr"]
 [ext_resource type="AudioStream" uid="uid://dwln4pq3vaog7" path="res://sounds/Musique_Zone_1.mp3" id="9_ovkpl"]
 [ext_resource type="PackedScene" uid="uid://c2dx3pd52tprs" path="res://scenes/start_screen.tscn" id="10_vctml"]
 
@@ -28,10 +28,10 @@ position = Vector2(458, 525)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("3_ildge")
 
-[node name="World2" parent="." instance=ExtResource("4_nbj0m")]
+[node name="World4" parent="." instance=ExtResource("4_yj5ef")]
 
 [node name="Player" parent="." instance=ExtResource("5_ww6j6")]
-position = Vector2(603, 592)
+position = Vector2(5270, -336)
 JUMP_HEIGHT = 75.0
 
 [node name="Foreground" type="Parallax2D" parent="."]

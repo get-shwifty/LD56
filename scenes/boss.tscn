@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bwok552t6wgoe" path="res://assets/boss/overlaypoing.png" id="7_j1ifd"]
 [ext_resource type="AudioStream" uid="uid://dlapen7e1c75s" path="res://sounds/Musique_Boss.mp3" id="10_ashse"]
 [ext_resource type="PackedScene" uid="uid://mypoxjhtpm5p" path="res://src/platformes/middle.tscn" id="11_rj7og"]
-[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="14_i6dih"]
+[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/firefly/memory.tscn" id="14_i6dih"]
 [ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="14_j1bmo"]
 
 [sub_resource type="Animation" id="Animation_xxuuw"]

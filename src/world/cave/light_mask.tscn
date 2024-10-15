@@ -31,16 +31,8 @@ animations = [{
 [node name="LightMask" type="Node2D"]
 script = ExtResource("1_8scow")
 
-[node name="Big" type="AnimatedSprite2D" parent="."]
+[node name="Visual" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_jdlll")
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_43fp8")
-frame = 1
-frame_progress = 0.820435
-
-[node name="Small" type="AnimatedSprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_jdlll")
-scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_43fp8")
 frame = 1
 frame_progress = 0.820435

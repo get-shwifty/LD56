@@ -716,6 +716,7 @@ z_as_relative = false
 position = Vector2(6052, -309)
 
 [node name="Dark" type="Node2D" parent="Caverne/grotto"]
+visible = false
 
 [node name="DarkMask" type="Sprite2D" parent="Caverne/grotto/Dark"]
 position = Vector2(383.5, -107.625)
@@ -829,7 +830,6 @@ unique_name_in_owner = true
 position = Vector2(0, -20)
 scale = Vector2(1, 1.5)
 script = ExtResource("24_ixcjc")
-base_speed = 0.2
 
 [node name="Small" type="AnimatedSprite2D" parent="Caverne/grotto/Lights/PlayerFeet/LightMask"]
 material = SubResource("CanvasItemMaterial_jdlll")

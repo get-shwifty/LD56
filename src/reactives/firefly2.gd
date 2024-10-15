@@ -7,16 +7,20 @@ extends Node2D
 @export var oscilation: float = 7
 @export var distance_at_1s_delay = 2000
 
+# filled from CaveLights
+@export var back_light: Node2D = null
+@export var front_light: Node2D = null
+
 @onready var start_pos: Vector2 = global_position
 
 var song_name = "light"
 var counter = 0
 
 func _ready():
-	on()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	counter += delta
 	$AnimatedSprite2D.position.y = sin(deg_to_rad(angle + 90)) * cos(counter * PI) * oscilation
 	$AnimatedSprite2D.position.x = cos(deg_to_rad(angle + 90)) * cos(counter * PI) * oscilation
@@ -33,32 +37,26 @@ func _process(delta):
 		$AnimatedSprite2D.scale.x = 1
 
 func on():
-	#var distance = global_position.distance_to(Global.player.global_position)
-	#var delay = distance / distance_at_1s_delay
-	#await get_tree().create_timer(delay).timeout
+	back_light.on()
+	front_light.on()
 	$AnimatedSprite2D/GreenLight.show()
 	$AnimatedSprite2D.play("on")
-	$AnimationPlayer.play("on")
-	$PointLight2D.show()
-	$Timer.start()
 	
 func off():
+	back_light.off()
+	front_light.off()
 	$AnimatedSprite2D.play("off")
-	$PointLight2D.hide()
 	$AnimatedSprite2D/GreenLight.hide()
 	
 func on_song(song: String):
 	pass
 		
-func on_song_finished(name: String):
-	if name == song_name:
-		on()
 
+func _on_reactive_component_activate():
+	on()
 
-func _on_timer_timeout():
+func _on_reactive_component_deactivate():
 	off()
-
-
 
 func smoothstep_cos(t: float) -> float:
 	var cos_val = cos(t)

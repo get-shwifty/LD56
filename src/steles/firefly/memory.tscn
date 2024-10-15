@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuixxpx7r16rx"]
+
+[ext_resource type="Script" path="res://src/steles/firefly/memory.gd" id="1_jfmf4"]
+[ext_resource type="Texture2D" uid="uid://cextgribwq6d5" path="res://assets/white-square.jpeg" id="2_brna8"]
+[ext_resource type="PackedScene" uid="uid://cu4bbth2ioo4i" path="res://src/steles/firefly/firefly_memo.tscn" id="3_p46qf"]
+[ext_resource type="Texture2D" uid="uid://b5ma5vd3rnmk7" path="res://assets/vignette.png" id="12_inavl"]
+
+[node name="Memory" type="CanvasLayer"]
+script = ExtResource("1_jfmf4")
+
+[node name="Vignette" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.776471)
+position = Vector2(589, 330)
+texture = ExtResource("12_inavl")
+
+[node name="Background" type="Sprite2D" parent="."]
+self_modulate = Color(0.312, 0.14, 1, 1)
+position = Vector2(135, 583)
+scale = Vector2(3.125, 1.625)
+texture = ExtResource("2_brna8")
+
+[node name="FireflyMemo" parent="." instance=ExtResource("3_p46qf")]
+position = Vector2(76, 581)
+scale = Vector2(2, 2)

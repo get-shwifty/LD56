@@ -1,91 +1,80 @@
 shader_type canvas_item;
+render_mode blend_add;
 
-uniform float progress : hint_range(0.0, 1.0) = 0.5;
-uniform vec4 background_color : source_color = vec4(0.5, 0.5, 0.5, 1.0);
-uniform sampler2D color_gradient : source_color;
-uniform sampler2D mask_texture : hint_default_white;
+uniform float angle = -0.3;
+uniform float position = -0.2;
+uniform float spread : hint_range(0.0, 1.0) = 0.5;
+uniform float cutoff : hint_range(-1.0, 1.0) = 0.1;
+uniform float falloff : hint_range(0.0, 1.0) = 0.2;
+uniform float edge_fade : hint_range(0.0, 1.0) = 0.15;
 
-// Wave effect parameters
-uniform float wave_amplitude : hint_range(0.0, 0.1) = 0.02;
-uniform float wave_frequency : hint_range(0.0, 10.0) = 3.0;
-uniform float wave_speed : hint_range(0.0, 5.0) = 1.5;
+uniform float speed = 1.0;
+uniform float ray1_density = 8.0;
+uniform float ray2_density = 30.0;
+uniform float ray2_intensity : hint_range(0.0, 1.0) = 0.3;
 
-// Particle effect parameters
-uniform float particle_speed : hint_range(0.01, 0.5) = 0.05;
-uniform float particle_lifetime : hint_range(1.0, 10.0) = 3.0;
-uniform float particle_softness : hint_range(0.001, 1.0) = 0.01;
-uniform float particle_spacing : hint_range(0.01, 1.0) = 0.1;
-uniform vec2 particle_offset = vec2(0.0, 0.0);
-uniform vec2 particle_start_scale = vec2(0.02, 0.02);
-uniform vec2 particle_end_scale = vec2(0.01, 0.01);
-uniform float particle_scale_randomness : hint_range(0.0, 1.0) = 0.5;
-uniform sampler2D particle_alpha_gradient : source_color;
-uniform int particle_amount : hint_range(0, 50) = 20;
+uniform vec4 color = vec4(1.0, 0.9, 0.65, 0.8);
 
-// Pseudo-random function
-float rand(vec2 co) {
-    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+uniform bool hdr = false;
+uniform float seed = 5.0;
+
+// New screen texture uniform for Godot 4.3
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+float random(vec2 _uv) {
+    highp float rand = fract(sin(dot(_uv.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+    return rand;
 }
 
-// Function to generate a single particle
-float particle(vec2 uv, float particle_id, float time, float mask_value) {
-    float random_offset = rand(vec2(particle_id, 0.0));
-    float spawn_time = particle_id * particle_spacing;
-    float life = mod(time - spawn_time, particle_lifetime) / particle_lifetime;
+float noise(in vec2 uv) {
+    vec2 i = floor(uv);
+    vec2 f = fract(uv);
 
-    if (life < 0.0 || life >= 1.0) return 0.0;
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
 
-    float vertical_pos = rand(vec2(particle_id, 1.0));
-    float horizontal_pos = progress + life * particle_speed;
+    vec2 u = f * f * (3.0 - 2.0 * f);
 
-    vec2 particle_pos = vec2(horizontal_pos, vertical_pos) + particle_offset;
+    return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+}
 
-    // Calculate scale with randomness
-    float scale_random = rand(vec2(particle_id, 2.0)) * particle_scale_randomness;
-    vec2 start_scale = particle_start_scale * (1.0 - scale_random);
-    vec2 end_scale = particle_end_scale * (1.0 - scale_random);
-    vec2 current_scale = mix(start_scale, end_scale, life);
+mat2 rotate(float _angle) {
+    return mat2(vec2(cos(_angle), -sin(_angle)),
+                vec2(sin(_angle), cos(_angle)));
+}
 
-    vec2 scaled_uv = (uv - particle_pos) / current_scale;
-    float dist = length(scaled_uv);
-
-    float alpha = texture(particle_alpha_gradient, vec2(life, 0.5)).a;
-
-    return smoothstep(1.0 + particle_softness, 1.0, dist) * alpha * mask_value;
+vec4 screen(vec4 base, vec4 blend) {
+    return 1.0 - (1.0 - base) * (1.0 - blend);
 }
 
 void fragment() {
-    vec2 uv = UV;
+    vec2 transformed_uv = (rotate(angle) * (UV - position)) / ((UV.y + spread) - (UV.y * spread));
 
-    // Sample the mask texture or use default (fully visible) if not provided
-    float mask = texture(mask_texture, uv).r;
+    vec2 ray1 = vec2(transformed_uv.x * ray1_density + sin(TIME * 0.1 * speed) * (ray1_density * 0.2) + seed, 1.0);
+    vec2 ray2 = vec2(transformed_uv.x * ray2_density + sin(TIME * 0.2 * speed) * (ray1_density * 0.2) + seed, 1.0);
 
-    // Calculate wave offset
-    float wave_offset = wave_amplitude * sin(wave_frequency * uv.y + TIME * wave_speed);
+    float cut = step(cutoff, transformed_uv.x) * step(cutoff, 1.0 - transformed_uv.x);
+    ray1 *= cut;
+    ray2 *= cut;
 
-    // Apply wave offset to progress
-    float wave_progress = progress + wave_offset;
+    float rays;
 
-    // Sample the color from the gradient texture based on progress
-    vec4 gradient_color = texture(color_gradient, vec2(progress, 0.5));
-
-    // Start with the background color
-    vec4 final_color = background_color;
-
-    // Apply the progress bar with mask
-    if (uv.x < wave_progress) {
-        final_color = mix(background_color, gradient_color, mask);
+    if (hdr) {
+        rays = noise(ray1) + (noise(ray2) * ray2_intensity);
+    } else {
+        rays = clamp(noise(ray1) + (noise(ray2) * ray2_intensity), 0., 1.);
     }
 
-    // Generate particles
-    float particles = 0.0;
-    for (float i = 0.0; i < float(particle_amount); i++) {
-        particles += particle(uv, i, TIME, mask);
-    }
-    particles = clamp(particles, 0.0, 1.0);
+    rays *= smoothstep(0.0, falloff, (1.0 - UV.y)); // Bottom fade
+    rays *= smoothstep(0.0 + cutoff, edge_fade + cutoff, transformed_uv.x); // Left fade
+    rays *= smoothstep(0.0 + cutoff, edge_fade + cutoff, 1.0 - transformed_uv.x); // Right fade
 
-    // Add particles to the final color
-    final_color = mix(final_color, gradient_color, particles * step(uv.x, 1.0));
+    vec3 shine = vec3(rays) * color.rgb;
 
-    COLOR = final_color;
+    // Use textureSample with the new SCREEN_TEXTURE uniform
+    shine = screen(texture(SCREEN_TEXTURE, SCREEN_UV), vec4(color)).rgb;
+
+    COLOR = vec4(shine, rays * color.a);
 }

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr1bu2yyfn4au"]
+
+[ext_resource type="Script" path="res://src/steles/stele_part.gd" id="1_ke3d7"]
+[ext_resource type="PackedScene" uid="uid://bhgtmknaoxoh" path="res://src/steles/firefly/stele_light_visual_3.tscn" id="2_bssj1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xmoh3"]
+radius = 35.9026
+
+[node name="SteleLight3" type="Node2D"]
+script = ExtResource("1_ke3d7")
+part = 3
+
+[node name="Part3Firefly" parent="." instance=ExtResource("2_bssj1")]
+
+[node name="PlayerContact" type="Area2D" parent="."]
+position = Vector2(0, -12)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContact"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_xmoh3")
+
+[connection signal="area_entered" from="PlayerContact" to="." method="_on_player_contact_area_entered"]

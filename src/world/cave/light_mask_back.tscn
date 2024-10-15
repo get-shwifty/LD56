@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4b763gx0qjqi"]
+[gd_scene load_steps=8 format=3 uid="uid://b4b763gx0qjqi"]
 
 [ext_resource type="Script" path="res://src/world/cave/light_mask.gd" id="1_05k5i"]
 [ext_resource type="Texture2D" uid="uid://cpiqsps2sdxld" path="res://assets/light-mask-Sheet.png" id="2_qna6b"]
+[ext_resource type="Script" path="res://src/world/grotte-david/light-gradient-flicker.gd" id="3_sixpc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jdlll"]
 blend_mode = 2
@@ -38,6 +39,7 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_43fp8")
 frame = 1
 frame_progress = 0.820435
+script = ExtResource("3_sixpc")
 
 [node name="Small" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_jdlll")

@@ -1,9 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://bk1ofwjmh8v4t"]
+[gd_scene load_steps=35 format=3 uid="uid://bk1ofwjmh8v4t"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hg8p4"]
-[ext_resource type="Texture2D" uid="uid://nhpkslgvv8rk" path="res://ligh-texture.tres" id="2_8wbnu"]
 [ext_resource type="Script" path="res://src/camera.gd" id="2_q861p"]
-[ext_resource type="Script" path="res://src/world/grotte-david/ligh-gradient-flicker.gd" id="3_7jsti"]
 [ext_resource type="Texture2D" uid="uid://b0oiyujd71gpg" path="res://assets/mask_perso.png" id="3_cvfog"]
 [ext_resource type="PackedScene" uid="uid://ddmwd0kfxmq07" path="res://src/player/music_box.tscn" id="3_wcxlj"]
 [ext_resource type="Texture2D" uid="uid://1l12ns1yj41j" path="res://assets/perso.png" id="4_cnnc1"]
@@ -223,7 +221,9 @@ streams_count = 2
 stream_0/stream = ExtResource("5_cbnvd")
 stream_1/stream = ExtResource("6_0rwb7")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mek6n"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nddlv"]
+radius = 8.0
+height = 40.0
 
 [sub_resource type="Animation" id="Animation_y24sw"]
 length = 0.001
@@ -291,14 +291,6 @@ _data = {
 collision_layer = 129
 script = ExtResource("1_hg8p4")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-1.07288e-06, -20)
-scale = Vector2(0.164062, 0.242188)
-energy = 0.8
-blend_mode = 2
-texture = ExtResource("2_8wbnu")
-script = ExtResource("3_7jsti")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, -19)
@@ -308,9 +300,7 @@ shape = SubResource("CapsuleShape2D_8oed0")
 position = Vector2(0, -50)
 zoom = Vector2(1.5, 1.5)
 process_callback = 0
-position_smoothing_enabled = true
 position_smoothing_speed = 8.0
-drag_vertical_enabled = true
 drag_left_margin = 0.0
 drag_right_margin = 0.0
 script = ExtResource("2_q861p")
@@ -389,7 +379,7 @@ collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MusicDetection"]
 position = Vector2(0, -21)
-shape = SubResource("CircleShape2D_mek6n")
+shape = SubResource("CapsuleShape2D_nddlv")
 
 [node name="AnimationPlayerPoison" type="AnimationPlayer" parent="."]
 libraries = {

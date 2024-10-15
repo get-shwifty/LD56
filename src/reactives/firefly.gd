@@ -1,11 +1,11 @@
 extends Node2D
 
+@export var back_light: Node2D = null
+@export var front_light: Node2D = null
+
 @export var target: Node2D = null
 
 @onready var initial_position = global_position
-@onready var MASK = preload("res://src/world/cave/light_mask.tscn")
-@onready var MASK_BACK = preload("res://src/world/cave/light_mask_back.tscn")
-
 
 var mask: Node2D = null
 var mask_back: Node2D = null

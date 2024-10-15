@@ -11,6 +11,11 @@ var songs: Dictionary = {
 	"birds": "ABCBCD"
 }
 
+var songs_durations: Dictionary = {
+	"light": 20,
+	"mushroom": 10
+}
+
 var musics = {
 	"shroom": preload("res://sounds/Son-ouverture champignon.mp3"),
 	"scolo": preload("res://sounds/Scolopandre_V2.mp3"),

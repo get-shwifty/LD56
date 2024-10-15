@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqh2ly05w1x4b"]
+[gd_scene load_steps=17 format=3 uid="uid://cqh2ly05w1x4b"]
 
 [ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="1_c14fr"]
 [ext_resource type="Script" path="res://src/reactives/firefly.gd" id="1_u4e3a"]
+[ext_resource type="Shader" path="res://test-tmp.gdshader" id="3_hlrjr"]
+[ext_resource type="Texture2D" uid="uid://cextgribwq6d5" path="res://assets/white-square.jpeg" id="4_4wqib"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyy1s"]
 atlas = ExtResource("1_c14fr")
@@ -44,6 +46,24 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_3eu5a"]
+offsets = PackedFloat32Array(0, 0.658009)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_71jle"]
+gradient = SubResource("Gradient_3eu5a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20gi4"]
+shader = ExtResource("3_hlrjr")
+shader_parameter/light_color = Vector3(0, 255, 0)
+shader_parameter/brightness = 0.207
+shader_parameter/attenuation_strength = 0.523
+shader_parameter/intensity = 1.0
+shader_parameter/max_brightness = 1.0
+shader_parameter/light_texture = SubResource("GradientTexture2D_71jle")
+
 [sub_resource type="Animation" id="Animation_eospl"]
 length = 0.001
 tracks/0/type = "value"
@@ -72,7 +92,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.33, 0.66, 1.03333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 10), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 5), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y5grx"]
@@ -91,6 +111,13 @@ script = ExtResource("1_u4e3a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_olvum")
 animation = &"off"
+
+[node name="GreenLight" type="Sprite2D" parent="AnimatedSprite2D"]
+z_index = 1
+material = SubResource("ShaderMaterial_20gi4")
+position = Vector2(2, 5)
+scale = Vector2(2, 2)
+texture = ExtResource("4_4wqib")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

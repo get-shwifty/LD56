@@ -7,6 +7,8 @@ class_name MusicBox
 @export var audioD: Resource = null
 @export var AUDIO_PLAYER: Resource = null
 
+@export var default_song_duration = 10
+
 @onready var area = $Area2D
 
 @onready var players = {
@@ -25,8 +27,12 @@ var can_play = true
 var buffer_interval = 10 # frames
 var music_timout = 60*3 # frames
 var music_frame = 0
+var active_songs: Array[String] = []
 
 var ignore_boss_music = false
+
+func _ready():
+	Global.music = self
 
 func _physics_process(delta):
 	if not Global.started:
@@ -107,6 +113,14 @@ func notify_song_finish(name: String):
 	for stele in Global.tp_steles:
 		if is_instance_valid(stele):
 			stele.on_song_finished(name)
+			
+	active_songs.append(name)
+	var song_timeout = default_song_duration
+	if name in Settings.songs_durations:
+		song_timeout = Settings.songs_durations[name]
+		
+	await get_tree().create_timer(song_timeout).timeout
+	active_songs.erase(name)
 
 func _on_area_2d_area_exited(area):
 	area.get_parent().on_exit()

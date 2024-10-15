@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjd7l6c2m6h1r"]
+[gd_scene load_steps=15 format=3 uid="uid://cjd7l6c2m6h1r"]
 
 [ext_resource type="Script" path="res://src/reactives/firefly2.gd" id="1_35m0p"]
-[ext_resource type="Texture2D" uid="uid://nhpkslgvv8rk" path="res://ligh-texture.tres" id="2_vej4u"]
-[ext_resource type="Script" path="res://src/world/grotte-david/ligh-gradient-flicker.gd" id="3_ue81t"]
 [ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="4_mh7b5"]
-[ext_resource type="Material" uid="uid://cdw1hvex8r88v" path="res://custom-light-material.tres" id="5_ondym"]
+[ext_resource type="Script" path="res://src/reactives/reactive_component.gd" id="5_3nviw"]
+[ext_resource type="Shader" path="res://test-tmp.gdshader" id="5_ddrn8"]
 [ext_resource type="Texture2D" uid="uid://cextgribwq6d5" path="res://assets/white-square.jpeg" id="6_ymtl8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyy1s"]
@@ -48,56 +47,31 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_hy2yg"]
+offsets = PackedFloat32Array(0, 0.658009)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_avcy2"]
+gradient = SubResource("Gradient_hy2yg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hf64g"]
+shader = ExtResource("5_ddrn8")
+shader_parameter/light_color = Vector3(0, 255, 0)
+shader_parameter/brightness = 1.0
+shader_parameter/attenuation_strength = 0.7
+shader_parameter/intensity = 2.0
+shader_parameter/max_brightness = 1.0
+shader_parameter/light_texture = SubResource("GradientTexture2D_avcy2")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_kcwy8"]
 resource_local_to_scene = true
 radius = 491.082
 
-[sub_resource type="Animation" id="Animation_t2x5p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-
-[sub_resource type="Animation" id="Animation_5ddae"]
-resource_name = "on"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcqm8"]
-_data = {
-"RESET": SubResource("Animation_t2x5p"),
-"on": SubResource("Animation_5ddae")
-}
-
 [node name="Firefly" type="Node2D"]
 position = Vector2(107, 109)
 script = ExtResource("1_35m0p")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(1e-05, 1e-05)
-color = Color(1, 1, 0.109804, 1)
-energy = 0.2
-texture = ExtResource("2_vej4u")
-script = ExtResource("3_ue81t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -106,24 +80,22 @@ animation = &"on"
 
 [node name="GreenLight" type="Sprite2D" parent="AnimatedSprite2D"]
 z_index = 1
-material = ExtResource("5_ondym")
+material = SubResource("ShaderMaterial_hf64g")
 position = Vector2(2, 5)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_ymtl8")
 
 [node name="ReactiveComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("5_3nviw")
+song_condition = "light"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReactiveComponent"]
 visible = false
 shape = SubResource("CircleShape2D_kcwy8")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_kcqm8")
-}
-speed_scale = 3.0
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="activate" from="ReactiveComponent" to="." method="_on_reactive_component_activate"]
+[connection signal="deactivate" from="ReactiveComponent" to="." method="_on_reactive_component_deactivate"]
