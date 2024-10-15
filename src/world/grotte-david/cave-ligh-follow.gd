@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 @export var target: Node2D = null
 @export var dist = 0.05
@@ -11,8 +11,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	counter += delta * TAU / 2
-	#scale = Vector2.ONE + Vector2.ONE * cos(counter) * dist
-	
 	if target:
 		global_position = target.global_position

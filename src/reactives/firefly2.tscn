@@ -1,10 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjd7l6c2m6h1r"]
+[gd_scene load_steps=19 format=3 uid="uid://cjd7l6c2m6h1r"]
 
 [ext_resource type="Script" path="res://src/reactives/firefly2.gd" id="1_35m0p"]
+[ext_resource type="Script" path="res://david/light-animation.gd" id="2_fe7px"]
 [ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="4_mh7b5"]
 [ext_resource type="Script" path="res://src/reactives/reactive_component.gd" id="5_3nviw"]
 [ext_resource type="Shader" path="res://test-tmp.gdshader" id="5_ddrn8"]
 [ext_resource type="Texture2D" uid="uid://cextgribwq6d5" path="res://assets/white-square.jpeg" id="6_ymtl8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j6nee"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_s4147"]
+offsets = PackedFloat32Array(0.337979, 0.6)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_br8xq"]
+gradient = SubResource("Gradient_s4147")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyy1s"]
 atlas = ExtResource("4_mh7b5")
@@ -53,6 +68,8 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_avcy2"]
 gradient = SubResource("Gradient_hy2yg")
+width = 80
+height = 80
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -60,18 +77,27 @@ fill_from = Vector2(0.5, 0.5)
 shader = ExtResource("5_ddrn8")
 shader_parameter/light_color = Vector3(0, 255, 0)
 shader_parameter/brightness = 1.0
-shader_parameter/attenuation_strength = 0.7
+shader_parameter/attenuation_strength = 0.553
 shader_parameter/intensity = 2.0
 shader_parameter/max_brightness = 1.0
 shader_parameter/light_texture = SubResource("GradientTexture2D_avcy2")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kcwy8"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vyp0"]
 resource_local_to_scene = true
 radius = 491.082
 
 [node name="Firefly" type="Node2D"]
-position = Vector2(107, 109)
+position = Vector2(650, 478)
 script = ExtResource("1_35m0p")
+distance = 200.0
+speed = 40.0
+pause = 0.5
+
+[node name="Light" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_j6nee")
+position = Vector2(2, 9)
+texture = SubResource("GradientTexture2D_br8xq")
+script = ExtResource("2_fe7px")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -93,7 +119,7 @@ song_condition = "light"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReactiveComponent"]
 visible = false
-shape = SubResource("CircleShape2D_kcwy8")
+shape = SubResource("CircleShape2D_0vyp0")
 
 [node name="Timer" type="Timer" parent="."]
 

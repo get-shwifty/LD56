@@ -4,22 +4,17 @@ extends Node2D
 @export var distance: float = 100
 @export var speed: float = 60
 @export var pause: float = 0.3
-@export var oscilation: float = 7
+@export var oscilation: float = 5
+@export var light_amplitude = 0.1
 @export var distance_at_1s_delay = 2000
 
-# filled from CaveLights
-@export var back_light: Node2D = null
-@export var front_light: Node2D = null
-
+@onready var light: Node2D = $Light
 @onready var start_pos: Vector2 = global_position
 
 var song_name = "light"
 var counter = 0
 
 func _ready():
-	pass
-	await get_tree().physics_frame
-	await get_tree().physics_frame
 	off()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +28,7 @@ func _physics_process(delta):
 	global_position.x = start_pos.x + cos(deg_to_rad(angle)) * offset
 	global_position.y = start_pos.y + sin(deg_to_rad(angle)) * offset
 
+	light.animate(counter * PI)
 	
 	if last_x < global_position.x:
 		$AnimatedSprite2D.scale.x = -1
@@ -40,14 +36,12 @@ func _physics_process(delta):
 		$AnimatedSprite2D.scale.x = 1
 
 func on():
-	back_light.on()
-	front_light.on()
+	light.on()
 	$AnimatedSprite2D/GreenLight.show()
 	$AnimatedSprite2D.play("on")
 	
 func off():
-	back_light.off()
-	front_light.off()
+	light.off()
 	$AnimatedSprite2D.play("off")
 	$AnimatedSprite2D/GreenLight.hide()
 	
