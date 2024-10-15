@@ -18,6 +18,9 @@ var counter = 0
 
 func _ready():
 	pass
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	off()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

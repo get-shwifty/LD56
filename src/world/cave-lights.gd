@@ -21,7 +21,7 @@ func _ready():
 		self._add_track_node(child)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	for i in range(len(tracked_nodes)):
 		var pos = tracked_nodes[i].global_position
 		tracked_light_back[i].global_position = pos
