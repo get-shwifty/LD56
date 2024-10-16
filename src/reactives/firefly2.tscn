@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjd7l6c2m6h1r"]
+[gd_scene load_steps=23 format=3 uid="uid://cjd7l6c2m6h1r"]
 
 [ext_resource type="Script" path="res://src/reactives/firefly2.gd" id="1_35m0p"]
 [ext_resource type="Script" path="res://david/light-animation.gd" id="2_fe7px"]
+[ext_resource type="Texture2D" uid="uid://o8w8xks0fgpk" path="res://light-gradient.tres" id="3_djwwt"]
 [ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="4_mh7b5"]
 [ext_resource type="Script" path="res://src/reactives/reactive_component.gd" id="5_3nviw"]
 [ext_resource type="Shader" path="res://test-tmp.gdshader" id="5_ddrn8"]
@@ -10,14 +11,23 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j6nee"]
 blend_mode = 2
 
-[sub_resource type="Gradient" id="Gradient_s4147"]
-offsets = PackedFloat32Array(0.337979, 0.6)
+[sub_resource type="Gradient" id="Gradient_wcc1a"]
+offsets = PackedFloat32Array(0.317073, 0.6)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_br8xq"]
-gradient = SubResource("Gradient_s4147")
+gradient = SubResource("Gradient_wcc1a")
 width = 256
 height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_cw16w"]
+offsets = PackedFloat32Array(0, 0.721254)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qun82"]
+gradient = SubResource("Gradient_cw16w")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -82,25 +92,41 @@ shader_parameter/intensity = 2.0
 shader_parameter/max_brightness = 1.0
 shader_parameter/light_texture = SubResource("GradientTexture2D_avcy2")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u01ql"]
+shader = ExtResource("5_ddrn8")
+shader_parameter/light_color = Vector3(150, 255, 0)
+shader_parameter/brightness = 1.0
+shader_parameter/attenuation_strength = 0.797
+shader_parameter/intensity = 0.3
+shader_parameter/max_brightness = 1.0
+shader_parameter/light_texture = ExtResource("3_djwwt")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0vyp0"]
 resource_local_to_scene = true
-radius = 491.082
+radius = 298.06
 
 [node name="Firefly" type="Node2D"]
-position = Vector2(650, 478)
 script = ExtResource("1_35m0p")
 distance = 200.0
 speed = 40.0
 pause = 0.5
+oscilation = 7.0
 
-[node name="Light" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_j6nee")
+[node name="Light" type="Node2D" parent="."]
 position = Vector2(2, 9)
-texture = SubResource("GradientTexture2D_br8xq")
 script = ExtResource("2_fe7px")
 
+[node name="Light" type="Sprite2D" parent="Light"]
+material = SubResource("CanvasItemMaterial_j6nee")
+texture = SubResource("GradientTexture2D_br8xq")
+
+[node name="PointLight2D" type="PointLight2D" parent="Light/Light"]
+visible = false
+color = Color(1, 1, 0, 1)
+texture = SubResource("GradientTexture2D_qun82")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_mm8xg")
 animation = &"on"
 
@@ -109,6 +135,13 @@ z_index = 1
 material = SubResource("ShaderMaterial_hf64g")
 position = Vector2(2, 5)
 scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_ymtl8")
+
+[node name="LightBackground" type="Sprite2D" parent="AnimatedSprite2D/GreenLight"]
+visible = false
+z_index = -2
+material = SubResource("ShaderMaterial_u01ql")
+scale = Vector2(3, 3)
 texture = ExtResource("6_ymtl8")
 
 [node name="ReactiveComponent" type="Area2D" parent="."]

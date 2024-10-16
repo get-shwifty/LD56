@@ -1,10 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo74cfhrjn5b3"]
+[gd_scene load_steps=12 format=3 uid="uid://bo74cfhrjn5b3"]
 
 [ext_resource type="Script" path="res://src/reactives/reactive_mushroom.gd" id="1_ei4v8"]
 [ext_resource type="PackedScene" uid="uid://dooukoeo0o7ei" path="res://src/reactives/champi.tscn" id="2_xngt5"]
 [ext_resource type="PackedScene" uid="uid://h1cddxillf0g" path="res://src/reactives/reactive_component.tscn" id="3_2adfg"]
 [ext_resource type="AudioStream" uid="uid://dwq4x3yit2knb" path="res://sounds/Son-ouverture champignon.mp3" id="4_728p5"]
 [ext_resource type="AudioStream" uid="uid://djmodvmjmp5a3" path="res://sounds/Son-rebond-champignon-3.mp3" id="5_xbn0n"]
+[ext_resource type="Script" path="res://david/light-animation.gd" id="6_qaw5f"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o8pp1"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_cl5ab"]
+offsets = PackedFloat32Array(0.317073, 0.6)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j7upu"]
+gradient = SubResource("Gradient_cl5ab")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o05xm"]
 size = Vector2(27.7778, 58.6669)
@@ -16,6 +31,16 @@ point_count = 2
 [node name="ReactiveMushroom" type="Node2D"]
 position = Vector2(-1, -25)
 script = ExtResource("1_ei4v8")
+
+[node name="Light" type="Node2D" parent="."]
+position = Vector2(2, 9)
+script = ExtResource("6_qaw5f")
+
+[node name="Light" type="Sprite2D" parent="Light"]
+material = SubResource("CanvasItemMaterial_o8pp1")
+position = Vector2(-2, -16)
+scale = Vector2(1.2, 1.2)
+texture = SubResource("GradientTexture2D_j7upu")
 
 [node name="Champi" parent="." instance=ExtResource("2_xngt5")]
 

@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 @export var amplitude: float = 0.05
 @export var open_speed: float = 0.8

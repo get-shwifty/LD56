@@ -30,7 +30,6 @@ func _process(delta):
 	_start()
 	
 func _start():
-	print('start !')
 	active = true
 	timer.start()
 	activate.emit()

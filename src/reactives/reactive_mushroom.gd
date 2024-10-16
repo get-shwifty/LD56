@@ -22,10 +22,12 @@ func activate():
 	$Ground/CollisionShape2D.disabled = false
 	$Timer.start()
 	Global.request_music = "shroom"
+	$Light.on()
 	
 func deactivate():
 	$Champi.play("off")
 	$Ground/CollisionShape2D.disabled = true
+	$Light.off()
 
 
 func _on_timer_timeout():

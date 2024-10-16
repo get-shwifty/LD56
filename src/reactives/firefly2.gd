@@ -14,8 +14,19 @@ extends Node2D
 var song_name = "light"
 var counter = 0
 
+#var back_light: Node2D = null
+
 func _ready():
 	off()
+	#await get_tree().physics_frame
+	#
+	#back_light = $BackLight
+	#back_light.scale *= 0.8
+	#remove_child(back_light)
+	#Global.grotte_background_ligts.add_child(back_light)
+	#back_light.global_position = light.global_position
+	#light.animate(counter * PI)
+	#back_light.animate(counter * PI)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -29,6 +40,9 @@ func _physics_process(delta):
 	global_position.y = start_pos.y + sin(deg_to_rad(angle)) * offset
 
 	light.animate(counter * PI)
+	#back_light.animate(counter * PI)
+	
+	#back_light.global_position = light.global_position
 	
 	if last_x < global_position.x:
 		$AnimatedSprite2D.scale.x = -1
