@@ -3,11 +3,19 @@ extends Node2D
 @export var song_name = "mushroom"
 @onready var boings = [preload("res://sounds/Son-rebond-champignon-1.mp3"), preload("res://sounds/Son-rebond-champignon-2.mp3"), preload("res://sounds/Son-rebond-champignon-3.mp3")]
 
+@onready var light = $Light
+
 var counter = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().physics_frame
+	remove_child(light)
+	Global.cave.lights.add_child(light)
+	light.global_position = global_position
 	deactivate()
 
+func _physics_process(delta):
+	light.global_position = global_position
 
 func on_song(song: String):
 	pass
@@ -22,12 +30,12 @@ func activate():
 	$Ground/CollisionShape2D.disabled = false
 	$Timer.start()
 	Global.request_music = "shroom"
-	$Light.on()
+	light.on()
 	
 func deactivate():
 	$Champi.play("off")
 	$Ground/CollisionShape2D.disabled = true
-	$Light.off()
+	light.off()
 
 
 func _on_timer_timeout():

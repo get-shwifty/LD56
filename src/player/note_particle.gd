@@ -5,7 +5,7 @@ var note: String = "A"
 @export var angle_spread = 20
 @export var rotation_speed = 1.0
 var angle = 0
-
+@onready var light: Node2D = $Light
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +16,9 @@ func _ready():
 	angle = randi_range(90-angle_spread, 90+angle_spread)
 	angle = deg_to_rad(angle)
 	#scale = Vector2(0.5, 0.5)
+
+	remove_child(light)
+	Global.cave.lights.add_child(light)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,7 +27,10 @@ func _physics_process(delta):
 	global_position.x += cos(angle) * delta * speed
 	if $Timer.time_left < 0.5:
 		rotate(sign(cos(angle)) * rotation_speed * delta)
+		
+	light.global_position = global_position
 
 
 func _on_timer_timeout():
 	queue_free()
+	light.queue_free()

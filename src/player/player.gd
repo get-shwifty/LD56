@@ -269,8 +269,8 @@ func is_on_ladder():
 func play_note(note: String):
 	var res = NOTE.instantiate()
 	res.note = note
-	res.global_position = %NoteSpawner.global_position
 	Global.projectile_container.add_child(res)
+	res.global_position = %NoteSpawner.global_position
 	
 func kill():
 	if is_teleport:

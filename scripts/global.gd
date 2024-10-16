@@ -13,6 +13,7 @@ var request_music = null
 var started = true
 var memory: Memory = null
 var music: MusicBox = null
+var cave: CaveManager = null
 
 var PLAYER = preload("res://src/player/note_player.tscn")
 

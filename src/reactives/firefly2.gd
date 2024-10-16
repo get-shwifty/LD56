@@ -53,11 +53,13 @@ func on():
 	light.on()
 	$AnimatedSprite2D/GreenLight.show()
 	$AnimatedSprite2D.play("on")
+	%YellowLight.on()
 	
 func off():
 	light.off()
 	$AnimatedSprite2D.play("off")
 	$AnimatedSprite2D/GreenLight.hide()
+	%YellowLight.off()
 	
 func on_song(song: String):
 	pass

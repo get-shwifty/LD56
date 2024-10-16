@@ -1,7 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://b33v4iytu446x"]
+[gd_scene load_steps=15 format=3 uid="uid://b33v4iytu446x"]
 
 [ext_resource type="Script" path="res://src/player/note_particle.gd" id="1_dc4km"]
 [ext_resource type="Texture2D" uid="uid://dp87laiciayrf" path="res://david/runes.png" id="1_ltqqn"]
+[ext_resource type="Script" path="res://david/light-animation.gd" id="2_usghw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_innbv"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_840nj"]
+offsets = PackedFloat32Array(0, 0.6)
+colors = PackedColorArray(0, 0, 0, 0.901961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qqx51"]
+gradient = SubResource("Gradient_840nj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_osnfh"]
 atlas = ExtResource("1_ltqqn")
@@ -131,6 +144,13 @@ z_index = 5
 z_as_relative = false
 script = ExtResource("1_dc4km")
 speed = 70
+
+[node name="Light" type="Node2D" parent="."]
+script = ExtResource("2_usghw")
+
+[node name="Light" type="Sprite2D" parent="Light"]
+material = SubResource("CanvasItemMaterial_innbv")
+texture = SubResource("GradientTexture2D_qqx51")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ekia8")

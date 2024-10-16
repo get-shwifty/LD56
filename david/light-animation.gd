@@ -8,13 +8,17 @@ var ondulate = false
 
 func on():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "scale", Vector2.ONE, open_speed)
+	#var tween2 = get_tree().create_tween()
+	tween.tween_property($Light, "scale", Vector2.ONE, open_speed)
+	#tween2.tween_property($Light, "modulate", Color(Color.WHITE, 1), open_speed)
 	await tween.finished
 	ondulate = true
 	
 func off():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "scale", Vector2.ZERO, open_speed)
+	#var tween2 = get_tree().create_tween()
+	tween.tween_property($Light, "scale", Vector2.ZERO, open_speed)
+	#tween2.tween_property($Light, "modulate", Color(Color.WHITE, 0), open_speed)
 	await tween.finished
 	ondulate = false
 	
