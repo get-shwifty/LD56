@@ -48,7 +48,6 @@ script = ExtResource("6_qaw5f")
 [node name="Light" type="Sprite2D" parent="Light"]
 material = SubResource("CanvasItemMaterial_o8pp1")
 position = Vector2(-2, -20)
-scale = Vector2(1.2, 1.2)
 texture = SubResource("GradientTexture2D_j7upu")
 
 [node name="PointLight2D" type="PointLight2D" parent="Light/Light"]
