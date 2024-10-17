@@ -5,11 +5,11 @@
 [ext_resource type="Script" path="res://david/light-animation.gd" id="2_usghw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_innbv"]
-blend_mode = 2
+blend_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_840nj"]
-offsets = PackedFloat32Array(0, 0.6)
-colors = PackedColorArray(0, 0, 0, 0.901961, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.205575, 0.6)
+colors = PackedColorArray(0.61165, 0.61165, 0.61165, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qqx51"]
 gradient = SubResource("Gradient_840nj")
@@ -147,6 +147,8 @@ speed = 70
 
 [node name="Light" type="Node2D" parent="."]
 script = ExtResource("2_usghw")
+amplitude = 0.0
+open_speed = 0.2
 
 [node name="Light" type="Sprite2D" parent="Light"]
 material = SubResource("CanvasItemMaterial_innbv")

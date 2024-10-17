@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_w7hwh"]
 [ext_resource type="Texture2D" uid="uid://ccrbpmrdi3dg6" path="res://assets/grotto-interior.png" id="3_a5qgt"]
 [ext_resource type="PackedScene" uid="uid://cjd7l6c2m6h1r" path="res://src/reactives/firefly2.tscn" id="5_0dcm8"]
-[ext_resource type="Script" path="res://src/world/grotte-david/grotte-entrée.gd" id="6_7p0kw"]
+[ext_resource type="Script" path="res://src/world/grotte-david/cave-entrance.gd" id="6_7p0kw"]
 [ext_resource type="Texture2D" uid="uid://cextgribwq6d5" path="res://assets/white-square.jpeg" id="7_7iypr"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="7_e1vvt"]
 [ext_resource type="Script" path="res://src/world/grotte-david/cave-ligh-follow.gd" id="7_jn4fo"]
@@ -88,7 +88,6 @@ position = Vector2(141, 478)
 position = Vector2(216, 554)
 angle = -45.0
 distance = 150.0
-speed = 40.0
 
 [node name="Firefly3" parent="Grotte/Fireflies" instance=ExtResource("5_0dcm8")]
 position = Vector2(413, 521)
@@ -128,6 +127,7 @@ scale = Vector2(37.7344, 26.4375)
 texture = ExtResource("7_7iypr")
 
 [node name="Sprite2D2" type="Sprite2D" parent="DarkSmoother" node_paths=PackedStringArray("target")]
+visible = false
 material = SubResource("CanvasItemMaterial_cxbpj")
 position = Vector2(-390, 469)
 scale = Vector2(3, 3)
@@ -136,6 +136,7 @@ script = ExtResource("7_jn4fo")
 target = NodePath("../../Player")
 
 [node name="Sprite2D5" type="Sprite2D" parent="DarkSmoother" node_paths=PackedStringArray("target")]
+visible = false
 material = SubResource("CanvasItemMaterial_cxbpj")
 position = Vector2(-390, 469)
 scale = Vector2(3, 3)
@@ -144,6 +145,7 @@ script = ExtResource("7_jn4fo")
 target = NodePath("../../Grotte/Fireflies/Firefly")
 
 [node name="Sprite2D6" type="Sprite2D" parent="DarkSmoother" node_paths=PackedStringArray("target")]
+visible = false
 material = SubResource("CanvasItemMaterial_cxbpj")
 position = Vector2(-390, 469)
 scale = Vector2(3, 3)
@@ -152,6 +154,7 @@ script = ExtResource("7_jn4fo")
 target = NodePath("../../Grotte/Fireflies/Firefly2")
 
 [node name="Sprite2D7" type="Sprite2D" parent="DarkSmoother" node_paths=PackedStringArray("target")]
+visible = false
 material = SubResource("CanvasItemMaterial_cxbpj")
 position = Vector2(-390, 469)
 scale = Vector2(3, 3)

@@ -14,4 +14,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if target:
-		global_position = target.global_position
+		var screen_cord = target.get_global_transform_with_canvas().origin
+		global_position = screen_cord

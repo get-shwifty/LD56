@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cjd7l6c2m6h1r"]
+[gd_scene load_steps=23 format=3 uid="uid://cjd7l6c2m6h1r"]
 
 [ext_resource type="Script" path="res://src/reactives/firefly2.gd" id="1_35m0p"]
 [ext_resource type="Script" path="res://david/light-animation.gd" id="2_fe7px"]
@@ -8,16 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://cextgribwq6d5" path="res://assets/white-square.jpeg" id="6_ymtl8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j6nee"]
-blend_mode = 2
+blend_mode = 1
 
-[sub_resource type="Gradient" id="Gradient_liufv"]
-offsets = PackedFloat32Array(0.317073, 0.6)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+[sub_resource type="Gradient" id="Gradient_6vwl4"]
+offsets = PackedFloat32Array(0.4, 0.682927)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_br8xq"]
-gradient = SubResource("Gradient_liufv")
-width = 256
-height = 256
+gradient = SubResource("Gradient_6vwl4")
+width = 384
+height = 384
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -62,6 +62,26 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_1pyoa"]
+offsets = PackedFloat32Array(0, 0.731707)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wijv8"]
+gradient = SubResource("Gradient_1pyoa")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_k165v"]
+offsets = PackedFloat32Array(0, 0.721254)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qun82"]
+gradient = SubResource("Gradient_k165v")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="Gradient" id="Gradient_hy2yg"]
 offsets = PackedFloat32Array(0, 0.658009)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -82,15 +102,6 @@ shader_parameter/intensity = 2.0
 shader_parameter/max_brightness = 1.0
 shader_parameter/light_texture = SubResource("GradientTexture2D_avcy2")
 
-[sub_resource type="Gradient" id="Gradient_k165v"]
-offsets = PackedFloat32Array(0, 0.721254)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qun82"]
-gradient = SubResource("Gradient_k165v")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0vyp0"]
 resource_local_to_scene = true
 radius = 298.06
@@ -103,6 +114,7 @@ pause = 0.5
 oscilation = 7.0
 
 [node name="Light" type="Node2D" parent="."]
+visible = false
 position = Vector2(2, 9)
 script = ExtResource("2_fe7px")
 
@@ -111,25 +123,43 @@ material = SubResource("CanvasItemMaterial_j6nee")
 texture = SubResource("GradientTexture2D_br8xq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 2
 sprite_frames = SubResource("SpriteFrames_mm8xg")
 animation = &"on"
 
-[node name="GreenLight" type="Sprite2D" parent="AnimatedSprite2D"]
-z_index = 1
-material = SubResource("ShaderMaterial_hf64g")
-position = Vector2(2, 5)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("6_ymtl8")
+[node name="OffLight" type="Node2D" parent="AnimatedSprite2D"]
+visible = false
+script = ExtResource("2_fe7px")
+auto_light = true
 
-[node name="YellowLight" type="PointLight2D" parent="AnimatedSprite2D/GreenLight"]
+[node name="Light" type="Node2D" parent="AnimatedSprite2D/OffLight"]
+
+[node name="Light" type="Sprite2D" parent="AnimatedSprite2D/OffLight/Light"]
+material = SubResource("CanvasItemMaterial_j6nee")
+position = Vector2(2, 5)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_wijv8")
+
+[node name="GreenLight" type="Node2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
-z_index = -2
+visible = false
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_fe7px")
+fix_to_parent = true
+
+[node name="Light" type="Node2D" parent="AnimatedSprite2D/GreenLight"]
+position = Vector2(2, 5)
+
+[node name="YellowLight" type="PointLight2D" parent="AnimatedSprite2D/GreenLight/Light"]
+position = Vector2(4.66667, 15)
 scale = Vector2(3.33333, 3.33333)
 color = Color(1, 1, 0, 1)
 energy = 2.16
 texture = SubResource("GradientTexture2D_qun82")
-script = ExtResource("2_fe7px")
+
+[node name="Green" type="Sprite2D" parent="AnimatedSprite2D/GreenLight/Light"]
+material = SubResource("ShaderMaterial_hf64g")
+position = Vector2(4.66667, 15)
+texture = ExtResource("6_ymtl8")
 
 [node name="ReactiveComponent" type="Area2D" parent="."]
 collision_layer = 0

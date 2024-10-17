@@ -8,11 +8,11 @@
 [ext_resource type="Script" path="res://david/light-animation.gd" id="6_qaw5f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o8pp1"]
-blend_mode = 2
+blend_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_cl5ab"]
 offsets = PackedFloat32Array(0, 0.6)
-colors = PackedColorArray(0, 0, 0, 0.886275, 0, 0, 0, 0)
+colors = PackedColorArray(1, 1, 1, 0.886275, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_j7upu"]
 gradient = SubResource("Gradient_cl5ab")
@@ -55,7 +55,6 @@ texture = SubResource("GradientTexture2D_j7upu")
 position = Vector2(0, 2.5)
 scale = Vector2(0.872396, 0.397135)
 color = Color(0.388235, 1, 1, 1)
-energy = 0.5
 texture = SubResource("GradientTexture2D_i41vr")
 
 [node name="Champi" parent="." instance=ExtResource("2_xngt5")]

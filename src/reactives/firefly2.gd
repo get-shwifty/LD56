@@ -18,15 +18,6 @@ var counter = 0
 
 func _ready():
 	off()
-	#await get_tree().physics_frame
-	#
-	#back_light = $BackLight
-	#back_light.scale *= 0.8
-	#remove_child(back_light)
-	#Global.grotte_background_ligts.add_child(back_light)
-	#back_light.global_position = light.global_position
-	#light.animate(counter * PI)
-	#back_light.animate(counter * PI)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -40,9 +31,6 @@ func _physics_process(delta):
 	global_position.y = start_pos.y + sin(deg_to_rad(angle)) * offset
 
 	light.animate(counter * PI)
-	#back_light.animate(counter * PI)
-	
-	#back_light.global_position = light.global_position
 	
 	if last_x < global_position.x:
 		$AnimatedSprite2D.scale.x = -1
@@ -51,15 +39,15 @@ func _physics_process(delta):
 
 func on():
 	light.on()
-	$AnimatedSprite2D/GreenLight.show()
+	$AnimatedSprite2D/GreenLight.on()
 	$AnimatedSprite2D.play("on")
-	%YellowLight.on()
+	%GreenLight.on()
 	
 func off():
 	light.off()
 	$AnimatedSprite2D.play("off")
-	$AnimatedSprite2D/GreenLight.hide()
-	%YellowLight.off()
+	$AnimatedSprite2D/GreenLight.off()
+	%GreenLight.off()
 	
 func on_song(song: String):
 	pass

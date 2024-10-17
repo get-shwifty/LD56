@@ -31,7 +31,7 @@ texture = ExtResource("3_ildge")
 [node name="World4" parent="." instance=ExtResource("4_yj5ef")]
 
 [node name="Player" parent="." instance=ExtResource("5_ww6j6")]
-position = Vector2(6377, 2026)
+position = Vector2(5194, -250)
 JUMP_HEIGHT = 75.0
 
 [node name="Foreground" type="Parallax2D" parent="."]
@@ -64,5 +64,7 @@ stream = ExtResource("9_ovkpl")
 volume_db = -9.293
 
 [node name="Memory" parent="." instance=ExtResource("9_i8hhr")]
+visible = false
 
 [node name="CanvasLayer" parent="." instance=ExtResource("10_vctml")]
+visible = false
