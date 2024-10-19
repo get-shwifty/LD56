@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://cijyn3rhnal1o"]
+
+[ext_resource type="Script" path="res://memo.gd" id="1_7jvkv"]
+[ext_resource type="Script" path="res://stele_memo_part.gd" id="2_rrybp"]
+[ext_resource type="PackedScene" uid="uid://bjpe18fjk5vm8" path="res://src/reactives/stelle.tscn" id="3_hjbfv"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="5_bkabi"]
+[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="6_78i02"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="7_aotpa"]
+
+[node name="MushroomMemo" type="Node2D" node_paths=PackedStringArray("parts", "particles")]
+position = Vector2(73, 582)
+scale = Vector2(2, 2)
+script = ExtResource("1_7jvkv")
+parts = [NodePath("SteleTutoShroom")]
+particles = [NodePath("Particle1")]
+
+[node name="Particle1" type="CPUParticles2D" parent="."]
+position = Vector2(1, 16)
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.36
+randomness = 0.52
+lifetime_randomness = 0.46
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(15, 10)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+color = Color(0, 1, 0.933333, 1)
+
+[node name="SteleTutoShroom" type="Node2D" parent="."]
+script = ExtResource("2_rrybp")
+is_memo = true
+action = "mushroom"
+
+[node name="Stelle" parent="SteleTutoShroom" instance=ExtResource("3_hjbfv")]
+script = null
+
+[node name="runes" type="Node2D" parent="SteleTutoShroom"]
+
+[node name="left-rune" parent="SteleTutoShroom/runes" instance=ExtResource("5_bkabi")]
+position = Vector2(0, 26)
+
+[node name="right-rune" parent="SteleTutoShroom/runes" instance=ExtResource("6_78i02")]
+position = Vector2(0, 9)
+
+[node name="left-rune2" parent="SteleTutoShroom/runes" instance=ExtResource("5_bkabi")]
+position = Vector2(0, -11)
+
+[node name="top-rune" parent="SteleTutoShroom/runes" instance=ExtResource("7_aotpa")]
+position = Vector2(0, -30)

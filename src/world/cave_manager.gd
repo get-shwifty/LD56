@@ -22,6 +22,7 @@ func _process(delta):
 	pass
 
 func set_ratio(ratio: float):
+	#ratio = 1.0
 	set_shader_value(ratio)
 	cover.modulate = Color(Color.WHITE, 1.0 - pow(ratio, 2))
 

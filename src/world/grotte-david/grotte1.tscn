@@ -5,13 +5,13 @@
 [ext_resource type="TileSet" uid="uid://dvcln66v37sys" path="res://src/world/tilemap.tres" id="1_x150v"]
 [ext_resource type="Shader" path="res://src/world/grotte-david/grotte-fond.gdshader" id="2_ue0jo"]
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_8iaf0"]
-[ext_resource type="PackedScene" uid="uid://dlcb854vuge72" path="res://src/steles/firefly/stele_light_1.tscn" id="5_ircjh"]
+[ext_resource type="PackedScene" uid="uid://dlcb854vuge72" path="res://src/steles/light/stele_light_1.tscn" id="5_ircjh"]
 [ext_resource type="Texture2D" uid="uid://nhpkslgvv8rk" path="res://ligh-texture.tres" id="6_rgab5"]
 [ext_resource type="PackedScene" uid="uid://cjd7l6c2m6h1r" path="res://src/reactives/firefly2.tscn" id="6_st4ng"]
 [ext_resource type="Script" path="res://src/world/grotte-david/ligh-gradient-flicker.gd" id="7_s1f54"]
-[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/firefly/memory.tscn" id="7_s1gge"]
-[ext_resource type="PackedScene" uid="uid://b24fcynj14cw5" path="res://src/steles/firefly/stele_light_2.tscn" id="11_xbbwk"]
-[ext_resource type="PackedScene" uid="uid://cr1bu2yyfn4au" path="res://src/steles/firefly/stele_light_3.tscn" id="12_0v4gp"]
+[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="7_s1gge"]
+[ext_resource type="PackedScene" uid="uid://b24fcynj14cw5" path="res://src/steles/light/stele_light_2.tscn" id="11_xbbwk"]
+[ext_resource type="PackedScene" uid="uid://cr1bu2yyfn4au" path="res://src/steles/light/stele_light_3.tscn" id="12_0v4gp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r52ck"]
 shader = ExtResource("1_uxtp8")

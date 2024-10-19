@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dlcb854vuge72"]
+
+[ext_resource type="Script" path="res://stele_memo_part.gd" id="1_ws6n2"]
+[ext_resource type="Texture2D" uid="uid://2ays7ryglgxu" path="res://assets/broken.png" id="4_xfbiu"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="5_qsxwy"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="6_v3nwx"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="7_lhrra"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vexg"]
+atlas = ExtResource("4_xfbiu")
+region = Rect2(0, 324, 81, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd824"]
+atlas = ExtResource("4_xfbiu")
+region = Rect2(318, 324, 81, 79)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyiwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vexg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd824")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xmoh3"]
+radius = 35.9026
+
+[node name="SteleLight1" type="Node2D"]
+script = ExtResource("1_ws6n2")
+
+[node name="Visual" type="Node2D" parent="."]
+position = Vector2(11, -7)
+
+[node name="Stelle" type="Node2D" parent="Visual"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual/Stelle"]
+sprite_frames = SubResource("SpriteFrames_jyiwr")
+
+[node name="PlayerContact" type="Area2D" parent="."]
+position = Vector2(0, -9)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContact"]
+position = Vector2(1, 9)
+shape = SubResource("CircleShape2D_xmoh3")
+
+[node name="runes" type="Node2D" parent="."]
+position = Vector2(8, -16)
+
+[node name="left-rune" parent="runes" instance=ExtResource("5_qsxwy")]
+position = Vector2(-8, 17)
+
+[node name="top-rune" parent="runes" instance=ExtResource("6_v3nwx")]
+visible = false
+
+[node name="bottom-rune" parent="runes" instance=ExtResource("7_lhrra")]
+visible = false
+
+[connection signal="area_entered" from="PlayerContact" to="." method="_on_player_contact_area_entered"]

@@ -8,7 +8,9 @@ func _ready():
 	Global.memory = self
 	
 	steles = {
-		"light": $FireflyMemo 
+		"light": $FireflyMemo,
+		"mushroom": $MushroomMemo,
+		"ladder": $LadderMemo
 	}
 
 func get_stele(name: String):
@@ -16,6 +18,7 @@ func get_stele(name: String):
 	return stele
 
 func found_stele_part(name: String, part: int, source):
+	print(name)
 	get_stele(name).show_part(part, source)
 	
 

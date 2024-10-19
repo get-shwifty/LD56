@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd7v3oel4nf0b"]
-
-[ext_resource type="PackedScene" uid="uid://broksaqh7558a" path="res://src/steles/firefly/stele_light_visual_1.tscn" id="1_gbhn6"]
-[ext_resource type="Script" path="res://stele_memo_part.gd" id="1_yidoo"]
-
-[node name="SteleLightMemo1" type="Node2D"]
-script = ExtResource("1_yidoo")
-
-[node name="SteleLightVisual1" parent="." instance=ExtResource("1_gbhn6")]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdpwfohh1kgmw"]
+[gd_scene load_steps=10 format=3 uid="uid://cdpwfohh1kgmw"]
 
-[ext_resource type="Script" path="res://src/steles/stele_tuto.gd" id="1_donev"]
-[ext_resource type="Script" path="res://src/steles/stelle_broken.gd" id="2_fgph2"]
+
 [ext_resource type="Texture2D" uid="uid://2ays7ryglgxu" path="res://assets/broken.png" id="3_3dyti"]
 [ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="4_0b4ep"]
 [ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_tsua0"]
@@ -36,7 +35,6 @@ script = ExtResource("1_donev")
 action = "boss"
 
 [node name="Stelle" type="Node2D" parent="."]
-script = ExtResource("2_fgph2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stelle"]
 position = Vector2(-1, 7)

@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://1i2htf33r86n"]
+
+[ext_resource type="Script" path="res://stele_memo_part.gd" id="1_vbdrk"]
+[ext_resource type="Texture2D" uid="uid://2ays7ryglgxu" path="res://assets/broken.png" id="3_huufb"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="4_u0w4n"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_x6wq0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vexg"]
+atlas = ExtResource("3_huufb")
+region = Rect2(0, 324, 81, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd824"]
+atlas = ExtResource("3_huufb")
+region = Rect2(318, 324, 81, 79)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlrj5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vexg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd824")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5vkc"]
+radius = 35.9026
+
+[node name="SteleScolo1" type="Node2D"]
+script = ExtResource("1_vbdrk")
+action = "ladder"
+
+[node name="SteleTutoScolo1" type="Node2D" parent="."]
+position = Vector2(9, -17)
+
+[node name="Stelle" type="Node2D" parent="SteleTutoScolo1"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SteleTutoScolo1/Stelle"]
+position = Vector2(-1, 7)
+sprite_frames = SubResource("SpriteFrames_qlrj5")
+
+[node name="PlayerContact" type="Area2D" parent="."]
+position = Vector2(0, -9)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContact"]
+position = Vector2(1, 9)
+shape = SubResource("CircleShape2D_h5vkc")
+
+[node name="runes" type="Node2D" parent="."]
+position = Vector2(9, -17)
+
+[node name="bottom-rune2" parent="runes" instance=ExtResource("4_u0w4n")]
+position = Vector2(-8, 18)
+
+[node name="bottom-rune" parent="runes" instance=ExtResource("4_u0w4n")]
+visible = false
+
+[node name="top-rune" parent="runes" instance=ExtResource("5_x6wq0")]
+visible = false
+position = Vector2(-22, -9)
+
+[connection signal="area_entered" from="PlayerContact" to="." method="_on_player_contact_area_entered"]

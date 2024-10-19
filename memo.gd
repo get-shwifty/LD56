@@ -25,6 +25,6 @@ func show_part(part: int, source):
 	found.append(part)
 	
 	if len(found) == len(parts):
-		await get_tree().create_timer(1+0.6).timeout
+		await get_tree().create_timer(0.5+0.4 - 0.1).timeout
 		for particle in particles:
 			particle.restart()

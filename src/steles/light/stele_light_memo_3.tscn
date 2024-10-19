@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhgtmknaoxoh"]
+
+[ext_resource type="PackedScene" uid="uid://bn4y50a5buy43" path="res://src/steles/stele-part-3.tscn" id="1_1spya"]
+[ext_resource type="Script" path="res://stele_memo_part.gd" id="1_hg1mr"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="3_pk23j"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="4_031wk"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="5_lce1e"]
+
+[node name="SteleLightVisual3" type="Node2D"]
+script = ExtResource("1_hg1mr")
+is_memo = true
+part = 3
+
+[node name="Part3" parent="." instance=ExtResource("1_1spya")]
+
+[node name="runes" type="Node2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.5, 0.5)
+
+[node name="left-rune" parent="runes" instance=ExtResource("3_pk23j")]
+visible = false
+position = Vector2(-8, 17)
+
+[node name="top-rune" parent="runes" instance=ExtResource("4_031wk")]
+visible = false
+
+[node name="bottom-rune" parent="runes" instance=ExtResource("5_lce1e")]

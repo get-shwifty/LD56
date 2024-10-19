@@ -1,5 +1,7 @@
 extends Node
 
+var camera_zoom = 1.5
+
 var songs: Dictionary = {
 	"light": "ABD",
 	"fly": "BBAA",

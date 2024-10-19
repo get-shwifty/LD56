@@ -1,9 +1,70 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqh2ly05w1x4b"]
+[gd_scene load_steps=17 format=3 uid="uid://rwj6ou77rd05"]
 
 [ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="1_c14fr"]
-[ext_resource type="Script" path="res://src/reactives/firefly.gd" id="1_u4e3a"]
 [ext_resource type="Shader" path="res://test-tmp.gdshader" id="3_hlrjr"]
 [ext_resource type="Texture2D" uid="uid://cextgribwq6d5" path="res://assets/white-square.jpeg" id="4_4wqib"]
+
+[sub_resource type="GDScript" id="GDScript_ttbdu"]
+script/source = "extends Node2D
+
+@export var back_light: Node2D = null
+@export var front_light: Node2D = null
+
+@export var target: Node2D = null
+
+@onready var initial_position = global_position
+
+var mask: Node2D = null
+var mask_back: Node2D = null
+var is_init = false
+var counter = 0.0
+var song_name = \"light\"
+# Called when the node enters the scene tree for the first time.
+func init():
+	if is_init:
+		return
+	mask = MASK.instantiate()
+	mask_back = MASK_BACK.instantiate()
+	get_parent().get_parent().get_node(\"Lights\").add_child(mask)
+	Global.grotte_background_container.add_child(mask_back)
+	off()
+	is_init = true
+	$AnimationPlayer.play(\"move\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	init()
+	counter += delta
+	var last_x = global_position.x
+	global_position = target.global_position
+	var direction = sign(last_x - global_position.x)
+	scale.x = direction
+	mask.global_position = global_position
+	mask_back.global_position = global_position
+
+func on():
+	$AnimatedSprite2D.play(\"on\")
+	mask.on()
+	mask_back.on()
+	$Timer.start()
+	
+func off():
+	$AnimatedSprite2D.play(\"off\")
+	mask.off()
+	mask_back.off()
+	
+func on_song(song: String):
+	pass
+		
+func on_song_finished(name: String):
+	if name == song_name:
+		on()
+
+
+func _on_timer_timeout():
+	off()
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyy1s"]
 atlas = ExtResource("1_c14fr")
@@ -106,7 +167,7 @@ resource_local_to_scene = true
 radius = 491.082
 
 [node name="Fly" type="Node2D"]
-script = ExtResource("1_u4e3a")
+script = SubResource("GDScript_ttbdu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_olvum")

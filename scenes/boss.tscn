@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bwok552t6wgoe" path="res://assets/boss/overlaypoing.png" id="7_j1ifd"]
 [ext_resource type="AudioStream" uid="uid://dlapen7e1c75s" path="res://sounds/Musique_Boss.mp3" id="10_ashse"]
 [ext_resource type="PackedScene" uid="uid://mypoxjhtpm5p" path="res://src/platformes/middle.tscn" id="11_rj7og"]
-[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/firefly/memory.tscn" id="14_i6dih"]
+[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="14_i6dih"]
 [ext_resource type="Texture2D" uid="uid://dmxghorjvw0v4" path="res://assets/firefly.png" id="14_j1bmo"]
 
 [sub_resource type="Animation" id="Animation_xxuuw"]
@@ -473,46 +473,6 @@ shape = SubResource("CircleShape2D_x5opm")
 
 [node name="Memory" parent="." instance=ExtResource("14_i6dih")]
 
-[node name="SteleTutoShroom" parent="Memory" index="0"]
-modulate = Color(1, 1, 1, 1)
-position = Vector2(246, 1246)
-
-[node name="SteleTutoFirefly3" parent="Memory" index="1"]
-modulate = Color(1, 1, 1, 1)
-position = Vector2(185, 1165)
-
-[node name="SteleTutoFirefly2" parent="Memory" index="2"]
-modulate = Color(1, 1, 1, 1)
-position = Vector2(173, 1230)
-
-[node name="SteleTutoFirefly1" parent="Memory" index="3"]
-modulate = Color(1, 1, 1, 1)
-position = Vector2(185, 1246)
-
-[node name="SteleTutoScolo1" parent="Memory" index="4"]
-modulate = Color(1, 1, 1, 1)
-position = Vector2(112, 1245)
-
-[node name="SteleTutoScolo2" parent="Memory" index="5"]
-modulate = Color(1, 1, 1, 1)
-position = Vector2(102, 1225)
-
-[node name="SteleTutoScolo3" parent="Memory" index="6"]
-modulate = Color(1, 1, 1, 1)
-position = Vector2(102, 1158)
-
-[node name="SteleBoss1" parent="Memory" index="7"]
-visible = false
-modulate = Color(1, 1, 1, 1)
-
-[node name="SteleBoss2" parent="Memory" index="8"]
-visible = false
-modulate = Color(1, 1, 1, 1)
-
-[node name="SteleBoss3" parent="Memory" index="9"]
-visible = false
-modulate = Color(1, 1, 1, 1)
-
 [connection signal="body_entered" from="Boss/Panier" to="." method="_on_panier_body_entered"]
 [connection signal="body_entered" from="Boss/Left/Kill" to="." method="_on_left_kill_body_entered"]
 [connection signal="body_entered" from="Boss/Right/Kill" to="." method="_on_right_kill_body_entered"]
@@ -521,14 +481,3 @@ modulate = Color(1, 1, 1, 1)
 
 [editable path="Player"]
 [editable path="Memory"]
-[editable path="Memory/SteleTutoShroom"]
-[editable path="Memory/SteleTutoFirefly3"]
-[editable path="Memory/SteleTutoFirefly2"]
-[editable path="Memory/SteleTutoFirefly1"]
-[editable path="Memory/SteleTutoScolo1"]
-[editable path="Memory/SteleTutoScolo2"]
-[editable path="Memory/SteleTutoScolo3"]
-[editable path="Memory/SteleBoss1"]
-[editable path="Memory/SteleBoss2"]
-[editable path="Memory/SteleBoss3"]
-[editable path="Memory/SteleBirds"]

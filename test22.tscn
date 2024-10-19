@@ -1,0 +1,141 @@
+[gd_scene load_steps=7 format=3 uid="uid://c41cx17j2xc7b"]
+
+[sub_resource type="Gradient" id="Gradient_7rwvx"]
+colors = PackedColorArray(0, 0, 0.807843, 1, 0.498039, 0.403922, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wxvkr"]
+gradient = SubResource("Gradient_7rwvx")
+width = 6400
+height = 640
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8gr8n"]
+
+[sub_resource type="Gradient" id="Gradient_myxjg"]
+offsets = PackedFloat32Array(0.296167, 0.682927)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7drhv"]
+gradient = SubResource("Gradient_myxjg")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a0cuu"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(975, 319)
+texture = SubResource("GradientTexture2D_wxvkr")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.125911, 0.125911, 0.125911, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(91, 80)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(93, 142)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_a0cuu")
+position = Vector2(93, 198)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(91.6, 259.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(93.6, 321.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_a0cuu")
+position = Vector2(93.6, 377.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D7" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(93.6, 438.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D8" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(95.6, 500.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D9" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_a0cuu")
+position = Vector2(95.6, 556.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D10" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(164.6, 81.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D11" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(166.6, 143.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D12" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_a0cuu")
+position = Vector2(166.6, 199.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D13" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(163.6, 265.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D14" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(165.6, 327.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D15" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_a0cuu")
+position = Vector2(165.6, 383.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D16" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(165.6, 444.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D17" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_8gr8n")
+position = Vector2(167.6, 506.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")
+
+[node name="PointLight2D18" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_a0cuu")
+position = Vector2(167.6, 562.6)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7drhv")

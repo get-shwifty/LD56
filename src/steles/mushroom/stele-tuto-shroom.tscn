@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://clqely4rcvo4u"]
+
+[ext_resource type="Script" path="res://stele_memo_part.gd" id="1_q16h7"]
+[ext_resource type="PackedScene" uid="uid://bjpe18fjk5vm8" path="res://src/reactives/stelle.tscn" id="2_eymt3"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="4_ive0f"]
+[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="5_lkfr8"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="6_h1ce0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0g60k"]
+radius = 55.3263
+
+[node name="SteleTutoShroom" type="Node2D"]
+script = ExtResource("1_q16h7")
+action = "mushroom"
+
+[node name="Stelle" parent="." instance=ExtResource("2_eymt3")]
+script = null
+
+[node name="PlayerContact" type="Area2D" parent="."]
+position = Vector2(0, -9)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContact"]
+position = Vector2(1, 9)
+shape = SubResource("CircleShape2D_0g60k")
+
+[node name="runes" type="Node2D" parent="."]
+
+[node name="left-rune" parent="runes" instance=ExtResource("4_ive0f")]
+position = Vector2(0, 26)
+
+[node name="right-rune" parent="runes" instance=ExtResource("5_lkfr8")]
+position = Vector2(0, 9)
+
+[node name="left-rune2" parent="runes" instance=ExtResource("4_ive0f")]
+position = Vector2(0, -11)
+
+[node name="top-rune" parent="runes" instance=ExtResource("6_h1ce0")]
+position = Vector2(0, -30)
+
+[connection signal="area_entered" from="PlayerContact" to="." method="_on_player_contact_area_entered"]
