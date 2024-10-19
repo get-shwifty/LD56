@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bttkqnn4pwmyk"]
+[gd_scene load_steps=20 format=3 uid="uid://bttkqnn4pwmyk"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_h41kr"]
 [ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_4bwvj"]
@@ -10,7 +10,29 @@
 [ext_resource type="Texture2D" uid="uid://hjkvobw4pnjk" path="res://assets/decors/fougeres.png" id="8_0vcim"]
 [ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="9_i8hhr"]
 [ext_resource type="AudioStream" uid="uid://dwln4pq3vaog7" path="res://sounds/Musique_Zone_1.mp3" id="9_ovkpl"]
+[ext_resource type="Script" path="res://src/world/cave_manager.gd" id="10_ribxo"]
 [ext_resource type="PackedScene" uid="uid://c2dx3pd52tprs" path="res://scenes/start_screen.tscn" id="10_vctml"]
+[ext_resource type="Shader" path="res://src/world/grotte-david/shadow-overlay-group.gdshader" id="11_brfj2"]
+[ext_resource type="Texture2D" uid="uid://cmkxj3btgi2tx" path="res://assets/dark_mask.png" id="12_mmvkx"]
+[ext_resource type="Script" path="res://src/world/grotte-david/cave-ligh-follow.gd" id="13_wban8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76dlo"]
+shader = ExtResource("11_brfj2")
+shader_parameter/alpha = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vlffj"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_s4147"]
+offsets = PackedFloat32Array(0.271777, 0.6)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fk5hb"]
+gradient = SubResource("Gradient_s4147")
+width = 205
+height = 205
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h41kr")
@@ -31,7 +53,7 @@ texture = ExtResource("3_ildge")
 [node name="World4" parent="." instance=ExtResource("4_yj5ef")]
 
 [node name="Player" parent="." instance=ExtResource("5_ww6j6")]
-position = Vector2(5718, 1149)
+position = Vector2(5186, -314)
 JUMP_HEIGHT = 75.0
 
 [node name="Foreground" type="Parallax2D" parent="."]
@@ -62,6 +84,35 @@ texture = ExtResource("8_0vcim")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ovkpl")
 volume_db = -9.293
+
+[node name="CaveOverlay" type="CanvasLayer" parent="."]
+script = ExtResource("10_ribxo")
+
+[node name="Overlay" type="Node2D" parent="CaveOverlay"]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="CaveOverlay/Overlay"]
+material = SubResource("ShaderMaterial_76dlo")
+
+[node name="Dark" type="Sprite2D" parent="CaveOverlay/Overlay/CanvasGroup"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(589, 339)
+scale = Vector2(41.8125, 25.375)
+texture = ExtResource("12_mmvkx")
+
+[node name="Lights" type="Node2D" parent="CaveOverlay/Overlay/CanvasGroup"]
+scale = Vector2(1.5, 1.5)
+
+[node name="PlayerLight" type="Node2D" parent="CaveOverlay/Overlay/CanvasGroup/Lights"]
+position = Vector2(-60, 4)
+script = ExtResource("13_wban8")
+
+[node name="Light" type="Sprite2D" parent="CaveOverlay/Overlay/CanvasGroup/Lights/PlayerLight"]
+modulate = Color(1, 1, 1, 0.760784)
+material = SubResource("CanvasItemMaterial_vlffj")
+position = Vector2(0, -18.0149)
+scale = Vector2(0.21875, 0.396602)
+texture = SubResource("GradientTexture2D_fk5hb")
 
 [node name="Memory" parent="." instance=ExtResource("9_i8hhr")]
 layer = 2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=4 uid="uid://f2mbdfdom55u"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_atmrp"]
-[ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="2_cilhj"]
+[ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/portals/stele-tp-home.tscn" id="2_cilhj"]
 [ext_resource type="TileSet" uid="uid://dvcln66v37sys" path="res://src/world/tilemap.tres" id="2_m338k"]
 [ext_resource type="PackedScene" uid="uid://ddr51g2lnxp36" path="res://src/world/caverne_back.tscn" id="2_o3yk3"]
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="4_2qash"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="11_w5p44"]
 [ext_resource type="PackedScene" uid="uid://d0bdo8qbdiw27" path="res://src/world/musique.tscn" id="14_bdwpx"]
 [ext_resource type="Script" path="res://src/world/FireflySpawner.gd" id="16_6qmpb"]
-[ext_resource type="PackedScene" uid="uid://bmr44vku1ituo" path="res://src/world/caverne.tscn" id="16_bx3fe"]
+[ext_resource type="PackedScene" path="res://src/world/caverne.tscn" id="16_bx3fe"]
 
 [sub_resource type="Curve2D" id="Curve2D_6u0ky"]
 _data = {

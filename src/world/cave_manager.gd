@@ -9,6 +9,7 @@ class_name CaveManager
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.cave = self
+	await get_tree().physics_frame
 	$Overlay/CanvasGroup/Dark.show()
 	set_ratio(0)
 	cover.get_node("DarkLayer").show()

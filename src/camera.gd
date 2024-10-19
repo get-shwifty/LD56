@@ -14,7 +14,7 @@ var shoot_shake: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	Global.camera = self
 	
 func shake_on_shoot(direction: Vector2):
 	offset = direction * SHOOT_STRENGHT

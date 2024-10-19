@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c8mwmksg1jykm" path="res://david/placeholder-tileset-Sheet2.png" id="5_wuf3y"]
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="7_gatqw"]
 [ext_resource type="PackedScene" uid="uid://bb1utdis0nury" path="res://src/spawners/interval_spawner.tscn" id="9_nd5a8"]
-[ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/stele-tp-home.tscn" id="10_gh6kn"]
+[ext_resource type="PackedScene" uid="uid://bk0tl6edk0ikp" path="res://src/steles/portals/stele-tp-home.tscn" id="10_gh6kn"]
 [ext_resource type="PackedScene" uid="uid://m4ann7nor78n" path="res://src/world/cave/grotto.tscn" id="12_o1xiy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lcrv6"]

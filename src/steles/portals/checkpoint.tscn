@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://cd13n7ek8nndo"]
+
+[ext_resource type="Script" path="res://src/steles/portals/checkpoint.gd" id="1_grrj6"]
+[ext_resource type="PackedScene" uid="uid://mfq861qjekus" path="res://src/reactives/tp.tscn" id="2_qh0ek"]
+[ext_resource type="Script" path="res://src/lights/light_register.gd" id="3_ngj0c"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_emwjc"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_q1x1c"]
+offsets = PackedFloat32Array(0.296167, 0.679443)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hma2q"]
+gradient = SubResource("Gradient_q1x1c")
+width = 192
+height = 192
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jwvl"]
+radius = 71.1969
+
+[sub_resource type="Curve" id="Curve_hgy78"]
+_data = [Vector2(0.0319149, 1), 0.0, 0.0, 0, 0, Vector2(0.971125, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_cshdm"]
+offsets = PackedFloat32Array(0, 0.235714)
+colors = PackedColorArray(0, 0.333333, 1, 1, 0, 1, 1, 1)
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_grrj6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_emwjc")
+texture = SubResource("GradientTexture2D_hma2q")
+script = ExtResource("3_ngj0c")
+
+[node name="TP" parent="." instance=ExtResource("2_qh0ek")]
+position = Vector2(0, -6)
+
+[node name="PlayerContact" type="Area2D" parent="."]
+position = Vector2(0, -12)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContact"]
+visible = false
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_5jwvl")
+
+[node name="ActiveParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -6)
+emitting = false
+amount = 200
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 10.86
+direction = Vector2(0, -10)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 15.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_hgy78")
+color_ramp = SubResource("Gradient_cshdm")
+
+[node name="Explosion" type="CPUParticles2D" parent="."]
+position = Vector2(0, -15)
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -10)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 90.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_hgy78")
+color = Color(0, 1, 1, 1)
+
+[connection signal="area_entered" from="PlayerContact" to="." method="_on_player_contact_area_entered"]

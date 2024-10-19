@@ -14,6 +14,7 @@ var started = true
 var memory: Memory = null
 var music: MusicBox = null
 var cave: CaveManager = null
+var camera: Node2D = null
 
 var PLAYER = preload("res://src/player/note_player.tscn")
 

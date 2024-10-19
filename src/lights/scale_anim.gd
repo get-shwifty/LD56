@@ -1,4 +1,4 @@
-extends LightRegister
+extends Node2D
 
 @export var auto_light = false
 @export var amplitude: float = 0.05
@@ -10,13 +10,13 @@ var ondulate = false
 var counter = 0
 
 func _ready():
-	super._ready()
 	scale = Vector2.ZERO
 	off()
 	if auto_light:
 		scale = initial_scale
 
 func on():
+	show()
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", initial_scale, open_speed)
 	await tween.finished
@@ -32,6 +32,4 @@ func animate(t: float):
 	if not ondulate:
 		return
 	scale = initial_scale + initial_scale * cos(t) * amplitude
-	
-
 	
