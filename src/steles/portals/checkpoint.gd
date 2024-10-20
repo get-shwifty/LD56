@@ -16,3 +16,7 @@ func _on_player_contact_area_entered(area):
 		return
 	Global.last_checkpoint = self
 	$Explosion.restart()
+	
+
+func revive_anim():
+	$Explosion.restart()

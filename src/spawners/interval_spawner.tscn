@@ -1,12 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb1utdis0nury"]
+[gd_scene load_steps=6 format=3 uid="uid://bb1utdis0nury"]
 
 [ext_resource type="Script" path="res://src/spawners/interval_spawner.gd" id="1_yx030"]
 [ext_resource type="PackedScene" uid="uid://s7o6a1v2l1el" path="res://src/spawners/fall_projectile.tscn" id="2_5j4q1"]
+[ext_resource type="Script" path="res://src/lights/scale_anim.gd" id="3_eh23b"]
 
-[node name="IntervalSpawner" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_jpvy4"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.28223, 0.442509, 0.526132, 0.602787, 0.665505)
+colors = PackedColorArray(0, 0, 0, 0.423529, 0.0799279, 0.0799279, 0.0799279, 0.389678, 0.296875, 0.296875, 0.296875, 0.297794, 0.472656, 0.472656, 0.472656, 0.223346, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s4ule"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_jpvy4")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="ConeSpawner" type="Node2D"]
 script = ExtResource("1_yx030")
 projectile = ExtResource("2_5j4q1")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+scale = Vector2(0.609375, 0.25)
+texture = SubResource("GradientTexture2D_s4ule")
+script = ExtResource("3_eh23b")
+auto_light = true
+amplitude = 0.0
+open_speed = 0.1
+
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Source" type="Node2D" parent="."]
+position = Vector2(0, -300)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

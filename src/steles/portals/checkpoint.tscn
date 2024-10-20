@@ -33,6 +33,7 @@ colors = PackedColorArray(0, 0.333333, 1, 1, 0, 1, 1, 1)
 script = ExtResource("1_grrj6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("CanvasItemMaterial_emwjc")
 texture = SubResource("GradientTexture2D_hma2q")
 script = ExtResource("3_ngj0c")

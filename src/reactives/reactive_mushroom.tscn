@@ -42,6 +42,7 @@ position = Vector2(-1, -25)
 script = ExtResource("1_ei4v8")
 
 [node name="Light" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("CanvasItemMaterial_o8pp1")
 position = Vector2(0, -11)
 texture = SubResource("GradientTexture2D_j7upu")
@@ -54,6 +55,7 @@ color = Color(0.388235, 1, 1, 1)
 texture = SubResource("GradientTexture2D_i41vr")
 
 [node name="Champi" parent="." instance=ExtResource("2_xngt5")]
+position = Vector2(1, 2)
 
 [node name="ReactiveComponent" parent="." instance=ExtResource("3_2adfg")]
 visible = false
@@ -63,7 +65,7 @@ scale = Vector2(7, 7)
 wait_time = 3.0
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(1, -18)
 scale = Vector2(2.16, 0.165337)
 collision_layer = 9
 
@@ -73,11 +75,12 @@ shape = SubResource("RectangleShape2D_o05xm")
 one_way_collision = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1, 2)
 stream = ExtResource("4_728p5")
 volume_db = -15.39
 
 [node name="Particles" type="CPUParticles2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(1, -7)
 emitting = false
 amount = 50
 lifetime = 0.6
@@ -102,6 +105,7 @@ color = Color(0, 1, 1, 1)
 hue_variation_max = 1.0
 
 [node name="BoingPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1, 2)
 stream = ExtResource("5_xbn0n")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

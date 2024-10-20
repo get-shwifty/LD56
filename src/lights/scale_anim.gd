@@ -14,6 +14,7 @@ func _ready():
 	off()
 	if auto_light:
 		scale = initial_scale
+		show()
 
 func on():
 	show()
@@ -32,4 +33,7 @@ func animate(t: float):
 	if not ondulate:
 		return
 	scale = initial_scale + initial_scale * cos(t) * amplitude
+	
+func animate_open(t: float):
+	scale = initial_scale * t
 	

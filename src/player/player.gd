@@ -282,6 +282,7 @@ func kill():
 	await $AnimationPlayer.animation_finished
 	await get_tree().create_timer(0.2).timeout
 	global_position = Global.last_checkpoint.global_position
+	Global.last_checkpoint.revive_anim()
 	await get_tree().create_timer(0.2).timeout
 	$AnimationPlayer.play_backwards("die")
 	is_teleport = false
