@@ -49,5 +49,6 @@ position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_57ckp")
 
 [node name="StelleLumiere" type="AnimatedSprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.196078)
 sprite_frames = SubResource("SpriteFrames_30nrd")

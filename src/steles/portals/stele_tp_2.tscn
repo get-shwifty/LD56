@@ -1,0 +1,139 @@
+[gd_scene load_steps=20 format=3 uid="uid://by3suwwbejamc"]
+
+[ext_resource type="Script" path="res://src/steles/stele_tp.gd" id="1_rii0d"]
+[ext_resource type="PackedScene" uid="uid://cd13n7ek8nndo" path="res://src/steles/portals/checkpoint.tscn" id="2_qlw5x"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="3_ekwcy"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="4_oenav"]
+[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="4_u4j1x"]
+[ext_resource type="Texture2D" uid="uid://bn2872wt630bj" path="res://assets/tp_anim.png" id="5_tlgk0"]
+[ext_resource type="AudioStream" uid="uid://cwnnos4kstgam" path="res://sounds/Bruit_Teleportation.mp3" id="6_deqxr"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="6_pg0dd"]
+[ext_resource type="Script" path="res://src/reactives/reactive_component.gd" id="7_xsb56"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y5uf"]
+atlas = ExtResource("5_tlgk0")
+region = Rect2(0, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4v1g"]
+atlas = ExtResource("5_tlgk0")
+region = Rect2(123, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ga8x"]
+atlas = ExtResource("5_tlgk0")
+region = Rect2(246, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmegy"]
+atlas = ExtResource("5_tlgk0")
+region = Rect2(369, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg854"]
+atlas = ExtResource("5_tlgk0")
+region = Rect2(492, 0, 123, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uab0d"]
+atlas = ExtResource("5_tlgk0")
+region = Rect2(615, 0, 123, 123)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tg422"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y5uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4v1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ga8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmegy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg854")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uab0d")
+}],
+"loop": false,
+"name": &"tp",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghkk6"]
+resource_local_to_scene = true
+radius = 70.7144
+
+[sub_resource type="Curve" id="Curve_f43wa"]
+_data = [Vector2(0, 0.398222), 0.0, 0.0, 0, 0, Vector2(0.955927, 0.956162), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_epfdx"]
+offsets = PackedFloat32Array(0, 0.357143, 0.585714, 0.728571, 1)
+colors = PackedColorArray(0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0.738739, 0, 1, 1, 0)
+
+[node name="SteleTp2" type="Node2D"]
+position = Vector2(5437, -2304)
+script = ExtResource("1_rii0d")
+action = "tp2"
+
+[node name="Checkpoint" parent="." instance=ExtResource("2_qlw5x")]
+
+[node name="runes" type="Node2D" parent="."]
+
+[node name="left-rune" parent="runes" instance=ExtResource("3_ekwcy")]
+position = Vector2(-27, 9)
+
+[node name="top-rune" parent="runes" instance=ExtResource("4_oenav")]
+position = Vector2(-35, -13)
+
+[node name="right-rune" parent="runes" instance=ExtResource("4_u4j1x")]
+position = Vector2(-27, -34)
+
+[node name="bottom-rune" parent="runes" instance=ExtResource("6_pg0dd")]
+position = Vector2(-7, -44)
+
+[node name="left-rune2" parent="runes" instance=ExtResource("3_ekwcy")]
+position = Vector2(14, -42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_tg422")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_deqxr")
+
+[node name="ReactiveComponent" type="Area2D" parent="."]
+scale = Vector2(7, 7)
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("7_xsb56")
+active_time = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReactiveComponent"]
+visible = false
+shape = SubResource("CircleShape2D_ghkk6")
+
+[node name="InRange" type="CPUParticles2D" parent="."]
+position = Vector2(2, 54)
+amount = 200
+lifetime = 3.0
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(50, 10)
+direction = Vector2(0, -1)
+spread = 21.26
+gravity = Vector2(0, -9)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_f43wa")
+color_ramp = SubResource("Gradient_epfdx")
+
+[connection signal="activate" from="ReactiveComponent" to="." method="_on_reactive_component_activate"]
+[connection signal="deactivate" from="ReactiveComponent" to="." method="_on_reactive_component_deactivate"]

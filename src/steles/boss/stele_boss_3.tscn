@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://bp4arxdm77cju"]
+
+[ext_resource type="Script" path="res://stele_memo_part.gd" id="1_xp50a"]
+[ext_resource type="Texture2D" uid="uid://2ays7ryglgxu" path="res://assets/broken.png" id="2_d3f0n"]
+[ext_resource type="PackedScene" uid="uid://di2rlqj7hlj64" path="res://src/steles/runes/bottom_rune.tscn" id="3_idaet"]
+[ext_resource type="PackedScene" uid="uid://b7fn4vnhpcdla" path="res://src/steles/runes/right_rune.tscn" id="4_lnt06"]
+[ext_resource type="PackedScene" uid="uid://esb88w8fylgw" path="res://src/steles/runes/top_rune.tscn" id="5_bkyfk"]
+[ext_resource type="PackedScene" uid="uid://ddlddtndf0an1" path="res://src/steles/runes/left_rune.tscn" id="6_2vpg4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jerdd"]
+atlas = ExtResource("2_d3f0n")
+region = Rect2(0, 804, 160, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il8yi"]
+atlas = ExtResource("2_d3f0n")
+region = Rect2(320, 804, 160, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2u2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jerdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il8yi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xmoh3"]
+radius = 69.0072
+
+[node name="SteleBoss" type="Node2D"]
+script = ExtResource("1_xp50a")
+action = "boss"
+
+[node name="Visual" type="Node2D" parent="."]
+position = Vector2(11, -7)
+
+[node name="Stelle" type="Node2D" parent="Visual"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual/Stelle"]
+sprite_frames = SubResource("SpriteFrames_u2u2a")
+
+[node name="runes" type="Node2D" parent="."]
+position = Vector2(8, -16)
+
+[node name="bottom-rune" parent="runes" instance=ExtResource("3_idaet")]
+visible = false
+position = Vector2(-7, 36)
+
+[node name="right-rune" parent="runes" instance=ExtResource("4_lnt06")]
+visible = false
+position = Vector2(-8, 16)
+
+[node name="top-rune" parent="runes" instance=ExtResource("5_bkyfk")]
+visible = false
+position = Vector2(-8, -9)
+
+[node name="top-rune4" parent="runes" instance=ExtResource("5_bkyfk")]
+visible = false
+position = Vector2(22, 13)
+rotation = -1.5708
+
+[node name="bottom-rune2" parent="runes" instance=ExtResource("3_idaet")]
+visible = false
+position = Vector2(-8, 13)
+rotation = -1.5708
+
+[node name="right-rune2" parent="runes" instance=ExtResource("4_lnt06")]
+visible = false
+position = Vector2(-40, 14)
+rotation = -1.5708
+
+[node name="bottom-rune3" parent="runes" instance=ExtResource("3_idaet")]
+position = Vector2(10, 4)
+rotation = -1.5708
+
+[node name="left-rune" parent="runes" instance=ExtResource("6_2vpg4")]
+position = Vector2(-14, 5)
+rotation = -1.5708
+
+[node name="right-rune3" parent="runes" instance=ExtResource("4_lnt06")]
+position = Vector2(-40, 6)
+rotation = -1.5708
+
+[node name="PlayerContact" type="Area2D" parent="."]
+position = Vector2(0, -9)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContact"]
+position = Vector2(1, 9)
+shape = SubResource("CircleShape2D_xmoh3")
+
+[connection signal="area_entered" from="PlayerContact" to="." method="_on_player_contact_area_entered"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://c728cqwfse0n0"]
+
+[ext_resource type="Script" path="res://src/world/cave_manager.gd" id="1_ut54o"]
+[ext_resource type="Shader" path="res://src/world/grotte-david/shadow-overlay-group.gdshader" id="2_4luao"]
+[ext_resource type="Texture2D" uid="uid://cmkxj3btgi2tx" path="res://assets/dark_mask.png" id="3_3it3c"]
+[ext_resource type="Script" path="res://src/world/grotte-david/cave-ligh-follow.gd" id="4_hs425"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76dlo"]
+shader = ExtResource("2_4luao")
+shader_parameter/alpha = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vlffj"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_s4147"]
+offsets = PackedFloat32Array(0.271777, 0.6)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fk5hb"]
+gradient = SubResource("Gradient_s4147")
+width = 205
+height = 205
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="CaveOverlay" type="CanvasLayer"]
+script = ExtResource("1_ut54o")
+
+[node name="Overlay" type="Node2D" parent="."]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Overlay"]
+material = SubResource("ShaderMaterial_76dlo")
+
+[node name="Dark" type="Sprite2D" parent="Overlay/CanvasGroup"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(589, 339)
+scale = Vector2(41.8125, 25.375)
+texture = ExtResource("3_3it3c")
+
+[node name="Lights" type="Node2D" parent="Overlay/CanvasGroup"]
+scale = Vector2(1.5, 1.5)
+
+[node name="PlayerLight" type="Node2D" parent="Overlay/CanvasGroup/Lights"]
+position = Vector2(-60, 4)
+script = ExtResource("4_hs425")
+
+[node name="Light" type="Sprite2D" parent="Overlay/CanvasGroup/Lights/PlayerLight"]
+modulate = Color(1, 1, 1, 0.760784)
+material = SubResource("CanvasItemMaterial_vlffj")
+position = Vector2(0, -18.0149)
+scale = Vector2(0.21875, 0.396602)
+texture = SubResource("GradientTexture2D_fk5hb")

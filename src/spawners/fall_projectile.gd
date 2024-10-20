@@ -21,7 +21,7 @@ func _on_body_entered(body):
 		return
 	play_sound()
 	ignore = true
-	freeze = true
+	set_deferred("freeze", true)
 	collision_layer = 0
 	collision_mask = 0
 	await get_tree().create_timer(0.2).timeout

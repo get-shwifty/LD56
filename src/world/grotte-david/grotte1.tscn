@@ -67,12 +67,10 @@ z_index = 1
 position = Vector2(-239, 142)
 
 [node name="Firefly" parent="." instance=ExtResource("6_st4ng")]
-distance = 200.0
 speed = 50.0
 
 [node name="Firefly6" parent="." instance=ExtResource("6_st4ng")]
 position = Vector2(360, -131)
-distance = 200.0
 speed = 50.0
 
 [node name="Firefly7" parent="." instance=ExtResource("6_st4ng")]
@@ -87,7 +85,6 @@ speed = 50.0
 
 [node name="Firefly3" parent="." instance=ExtResource("6_st4ng")]
 position = Vector2(256, -126)
-distance = 200.0
 speed = 50.0
 
 [node name="Firefly4" parent="." instance=ExtResource("6_st4ng")]
@@ -98,7 +95,6 @@ speed = 50.0
 
 [node name="Firefly5" parent="." instance=ExtResource("6_st4ng")]
 position = Vector2(70, -124)
-distance = 200.0
 speed = 50.0
 
 [node name="Memory" parent="." instance=ExtResource("7_s1gge")]

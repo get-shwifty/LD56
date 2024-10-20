@@ -1,7 +1,6 @@
 extends Area2D
 
-# -1 == forever
-@export var active_time = 11
+@export var active_time = 11.0
 @export var song_condition = ""
 
 signal activate

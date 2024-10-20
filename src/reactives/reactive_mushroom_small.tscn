@@ -32,7 +32,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5fpog"]
 resource_local_to_scene = true
-radius = 52.7152
+radius = 232.201
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o05xm"]
 size = Vector2(27.7778, 58.6669)
@@ -68,7 +68,7 @@ scale = Vector2(3, 3)
 collision_layer = 0
 collision_mask = 64
 script = ExtResource("4_rtpos")
-active_time = 3
+active_time = 0.1
 song_condition = "mushroom"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReactiveComponent"]

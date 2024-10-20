@@ -10,13 +10,16 @@ var songs: Dictionary = {
 	"mushroom": "ACAB",
 	"ladder": "DDB",
 	"boss": "DCBBDCDAC",
-	"birds": "ABCBCD"
+	"birds": "ABCBCD",
+	"tp1": "ABCDD",
+	"tp2": "ABCDA",
+	"tp3": "ABCDB"
 }
 
 var songs_durations: Dictionary = {
 	"light": 20,
-	"mushroom": 3,
-	"ladder": 3
+	"mushroom": 4.0,
+	"ladder": 10
 }
 
 var musics = {

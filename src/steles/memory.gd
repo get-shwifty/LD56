@@ -14,12 +14,15 @@ func _ready():
 	}
 
 func get_stele(name: String):
+	if name not in steles:
+		return null
 	var stele: SteleMemo = steles[name]
 	return stele
 
 func found_stele_part(name: String, part: int, source):
-	print(name)
-	get_stele(name).show_part(part, source)
+	var stele = get_stele(name)
+	if stele:
+		stele.show_part(part, source)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

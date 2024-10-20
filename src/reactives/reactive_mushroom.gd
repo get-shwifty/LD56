@@ -7,6 +7,7 @@ extends Node2D
 @onready var light: Node2D = $Light
 
 var counter = 0
+var active = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await get_tree().physics_frame
@@ -21,6 +22,7 @@ func activate():
 	$Champi.play("on")
 	$Ground/CollisionShape2D.disabled = false
 	light.on()
+	active = true
 	
 func deactivate():
 	if $Ground/CollisionShape2D.disabled:
@@ -28,6 +30,7 @@ func deactivate():
 	$Champi.play("off")
 	$Ground/CollisionShape2D.disabled = true
 	light.off()
+	active = false
 
 
 func play_boing():
