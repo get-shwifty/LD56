@@ -15,7 +15,8 @@ var songs: Dictionary = {
 
 var songs_durations: Dictionary = {
 	"light": 20,
-	"mushroom": 10
+	"mushroom": 3,
+	"ladder": 3
 }
 
 var musics = {

@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo74cfhrjn5b3"]
+[gd_scene load_steps=15 format=3 uid="uid://bo74cfhrjn5b3"]
 
 [ext_resource type="Script" path="res://src/reactives/reactive_mushroom.gd" id="1_ei4v8"]
 [ext_resource type="Script" path="res://david/light-animation.gd" id="2_4ed0j"]
 [ext_resource type="PackedScene" uid="uid://dooukoeo0o7ei" path="res://src/reactives/champi.tscn" id="2_xngt5"]
-[ext_resource type="PackedScene" uid="uid://h1cddxillf0g" path="res://src/reactives/reactive_component.tscn" id="3_2adfg"]
 [ext_resource type="AudioStream" uid="uid://dwq4x3yit2knb" path="res://sounds/Son-ouverture champignon.mp3" id="4_728p5"]
+[ext_resource type="Script" path="res://src/reactives/reactive_component.gd" id="4_gnm23"]
 [ext_resource type="AudioStream" uid="uid://djmodvmjmp5a3" path="res://sounds/Son-rebond-champignon-3.mp3" id="5_xbn0n"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o8pp1"]
@@ -29,6 +29,10 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_cw16w")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_104yt"]
+resource_local_to_scene = true
+radius = 34.3003
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o05xm"]
 size = Vector2(27.7778, 58.6669)
@@ -57,12 +61,17 @@ texture = SubResource("GradientTexture2D_i41vr")
 [node name="Champi" parent="." instance=ExtResource("2_xngt5")]
 position = Vector2(1, 2)
 
-[node name="ReactiveComponent" parent="." instance=ExtResource("3_2adfg")]
-visible = false
+[node name="ReactiveComponent" type="Area2D" parent="."]
 scale = Vector2(7, 7)
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("4_gnm23")
+active_time = 1
+song_condition = "mushroom"
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReactiveComponent"]
+visible = false
+shape = SubResource("CircleShape2D_104yt")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(1, -18)
@@ -108,5 +117,6 @@ hue_variation_max = 1.0
 position = Vector2(1, 2)
 stream = ExtResource("5_xbn0n")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="activate" from="ReactiveComponent" to="." method="_on_reactive_component_activate"]
+[connection signal="deactivate" from="ReactiveComponent" to="." method="_on_reactive_component_deactivate"]
 [connection signal="tree_entered" from="Ground/CollisionShape2D" to="." method="_on_collision_shape_2d_tree_entered"]

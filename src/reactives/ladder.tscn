@@ -1,16 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbqtdmho7rvpe"]
+[gd_scene load_steps=15 format=3 uid="uid://cbqtdmho7rvpe"]
 
 [ext_resource type="Script" path="res://src/reactives/ladder.gd" id="1_a6ir8"]
 [ext_resource type="Texture2D" uid="uid://bompojcp7qix5" path="res://assets/white.png" id="2_oick5"]
 [ext_resource type="Script" path="res://src/reactives/movable_scolo.gd" id="3_78fg2"]
 [ext_resource type="Texture2D" uid="uid://dtboxi3x4ar0" path="res://assets/scolopendre.png" id="3_ty6wx"]
+[ext_resource type="Script" path="res://src/reactives/reactive_component.gd" id="5_4sqdt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lac00"]
 resource_local_to_scene = true
 size = Vector2(24, 146.5)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_n30cl"]
-radius = 218.98
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nuvdu"]
 atlas = ExtResource("3_ty6wx")
@@ -302,6 +300,10 @@ _data = {
 "up": SubResource("Animation_bxx3t")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7j3qn"]
+resource_local_to_scene = true
+radius = 78.673
+
 [node name="Ladder" type="Node2D"]
 script = ExtResource("1_a6ir8")
 
@@ -314,16 +316,6 @@ collision_mask = 16
 position = Vector2(0, 38)
 shape = SubResource("RectangleShape2D_lac00")
 disabled = true
-
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
-position = Vector2(1, 64)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_n30cl")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
 
 [node name="Scolo" type="Sprite2D" parent="."]
 clip_children = 1
@@ -345,4 +337,16 @@ libraries = {
 "": SubResource("AnimationLibrary_txtrj")
 }
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="ReactiveComponent" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("5_4sqdt")
+active_time = 5
+song_condition = "ladder"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReactiveComponent"]
+shape = SubResource("CircleShape2D_7j3qn")
+
+[connection signal="activate" from="ReactiveComponent" to="." method="_on_reactive_component_activate"]
+[connection signal="deactivate" from="ReactiveComponent" to="." method="_on_reactive_component_deactivate"]

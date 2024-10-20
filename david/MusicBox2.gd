@@ -118,7 +118,11 @@ func notify_song_finish(name: String):
 	var song_timeout = default_song_duration
 	if name in Settings.songs_durations:
 		song_timeout = Settings.songs_durations[name]
-		
+	
+	if name == "mushroom":
+		Global.request_music = "shroom"
+	if name == "ladder":
+		Global.request_music = "scolo"
 	await get_tree().create_timer(song_timeout).timeout
 	active_songs.erase(name)
 

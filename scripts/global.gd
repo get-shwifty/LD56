@@ -18,6 +18,7 @@ var camera: Node2D = null
 
 var PLAYER = preload("res://src/player/note_player.tscn")
 
+var block = false
 
 func _ready():
 	await get_tree().physics_frame
@@ -26,7 +27,7 @@ func _ready():
 	projectile_container = container
 
 func _process(delta):
-	if request_music:
+	if request_music and not block:
 		var stream = Settings.musics[request_music]
 		var music_player = PLAYER.instantiate()
 		music_player.music = stream

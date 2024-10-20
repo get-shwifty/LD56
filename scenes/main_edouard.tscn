@@ -53,7 +53,7 @@ texture = ExtResource("3_ildge")
 [node name="World4" parent="." instance=ExtResource("4_yj5ef")]
 
 [node name="Player" parent="." instance=ExtResource("5_ww6j6")]
-position = Vector2(993, -1181)
+position = Vector2(1407, 507)
 JUMP_HEIGHT = 75.0
 
 [node name="Foreground" type="Parallax2D" parent="."]
