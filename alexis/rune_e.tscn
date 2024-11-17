@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://lfttp8c3nhr4"]
+
+[ext_resource type="Script" path="res://alexis/rune.gd" id="1_q51j7"]
+[ext_resource type="Texture2D" uid="uid://dp87laiciayrf" path="res://david/runes.png" id="2_1d4yj"]
+
+[node name="RuneE" type="Node2D"]
+script = ExtResource("1_q51j7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_1d4yj")
+hframes = 20
+vframes = 20
+frame = 41
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(2.00002, 2.00002)
+rotation = -1.5708
+texture = ExtResource("2_1d4yj")
+hframes = 20
+vframes = 20
+frame = 41
+
+[node name="Sprite2DActivated" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(2, 2)
+
+[node name="Sprite2DActivated" type="Sprite2D" parent="Sprite2DActivated"]
+rotation = -1.5708
+texture = ExtResource("2_1d4yj")
+hframes = 20
+vframes = 20
+frame = 43
+
+[node name="Sprite2DActivated2" type="Sprite2D" parent="Sprite2DActivated"]
+position = Vector2(-2.00002, -2.00003)
+rotation = -1.5708
+texture = ExtResource("2_1d4yj")
+hframes = 20
+vframes = 20
+frame = 43

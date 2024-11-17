@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b33v4iytu446x"]
+[gd_scene load_steps=10 format=3 uid="uid://b33v4iytu446x"]
 
 [ext_resource type="Script" path="res://src/player/note_particle.gd" id="1_dc4km"]
 [ext_resource type="Texture2D" uid="uid://dp87laiciayrf" path="res://david/runes.png" id="1_ltqqn"]
@@ -7,17 +7,13 @@
 atlas = ExtResource("1_ltqqn")
 region = Rect2(48, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_esg6w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvhbo"]
 atlas = ExtResource("1_ltqqn")
-region = Rect2(32, 32, 16, 16)
+region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1p8vw"]
 atlas = ExtResource("1_ltqqn")
 region = Rect2(48, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iobfv"]
-atlas = ExtResource("1_ltqqn")
-region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ekia8"]
 animations = [{
@@ -26,15 +22,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_osnfh")
 }],
 "loop": true,
-"name": &"A",
+"name": &"a",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_esg6w")
+"texture": SubResource("AtlasTexture_dvhbo")
 }],
 "loop": true,
-"name": &"B",
+"name": &"b",
 "speed": 5.0
 }, {
 "frames": [{
@@ -42,15 +38,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1p8vw")
 }],
 "loop": true,
-"name": &"C",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iobfv")
-}],
-"loop": true,
-"name": &"D",
+"name": &"c",
 "speed": 5.0
 }]
 
@@ -134,7 +122,7 @@ speed = 70
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ekia8")
-animation = &"D"
+animation = &"c"
 
 [node name="Timer" type="Timer" parent="."]
 

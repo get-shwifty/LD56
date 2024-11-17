@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5talylcm421k"]
+
+[ext_resource type="Script" path="res://alexis/MusicBox3.gd" id="1_kiw7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6shx8"]
+size = Vector2(768, 432)
+
+[node name="MusicBox3" type="Node2D"]
+script = ExtResource("1_kiw7a")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_6shx8")
+debug_color = Color(0, 1, 0, 0.419608)

@@ -1,21 +1,23 @@
-[gd_scene load_steps=35 format=3 uid="uid://bk1ofwjmh8v4t"]
+[gd_scene load_steps=38 format=3 uid="uid://bk1ofwjmh8v4t"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hg8p4"]
 [ext_resource type="Script" path="res://src/camera.gd" id="2_q861p"]
 [ext_resource type="Texture2D" uid="uid://b0oiyujd71gpg" path="res://assets/mask_perso.png" id="3_cvfog"]
-[ext_resource type="PackedScene" uid="uid://ddmwd0kfxmq07" path="res://src/player/music_box.tscn" id="3_wcxlj"]
 [ext_resource type="Texture2D" uid="uid://1l12ns1yj41j" path="res://assets/perso.png" id="4_cnnc1"]
 [ext_resource type="AudioStream" uid="uid://bh8b4ig1606gi" path="res://sounds/Chanterelle_Saut_1.mp3" id="5_cbnvd"]
 [ext_resource type="AudioStream" uid="uid://b4y6xlwqtcoo1" path="res://sounds/Chanterelle_Saut_2.mp3" id="6_0rwb7"]
+[ext_resource type="PackedScene" uid="uid://b5talylcm421k" path="res://src/player/music_box3.tscn" id="6_w4cij"]
+[ext_resource type="AudioStream" uid="uid://dwceeded223di" path="res://david/Chant-pignon_1_re.mp3" id="7_ropji"]
 [ext_resource type="AudioStream" uid="uid://b1xf1pofki0qf" path="res://sounds/Chanterelle_Pas_Marche.mp3" id="7_u0ulh"]
 [ext_resource type="AudioStream" uid="uid://dympbofj5ig8d" path="res://sounds/Son-petite-chute-post-saut.mp3" id="8_7s5qk"]
+[ext_resource type="AudioStream" uid="uid://2tlx58newr1h" path="res://david/Chant-pignon_2_sol.mp3" id="8_i7dto"]
 [ext_resource type="AudioStream" uid="uid://c210cldakklyu" path="res://sounds/Son-grosse-chute.mp3" id="9_jvxf0"]
+[ext_resource type="AudioStream" uid="uid://3j4iwo4im1ou" path="res://david/Chant-pignon_3_sib.mp3" id="9_sgipu"]
 [ext_resource type="Script" path="res://src/player/voices.gd" id="10_50chp"]
 [ext_resource type="Texture2D" uid="uid://ockavvjtwdln" path="res://assets/poison.png" id="12_t12qp"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oed0"]
-radius = 8.0
-height = 38.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nybd0"]
+size = Vector2(13, 29)
 
 [sub_resource type="Animation" id="Animation_shduq"]
 length = 0.001
@@ -120,10 +122,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ovwg"]
 _data = {
-"RESET": SubResource("Animation_shduq"),
-"blink": SubResource("Animation_tmqfe"),
-"die": SubResource("Animation_t867b"),
-"run": SubResource("Animation_vf5hf")
+&"RESET": SubResource("Animation_shduq"),
+&"blink": SubResource("Animation_tmqfe"),
+&"die": SubResource("Animation_t867b"),
+&"run": SubResource("Animation_vf5hf")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knvwl"]
@@ -281,22 +283,22 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5f201"]
 _data = {
-"RESET": SubResource("Animation_y24sw"),
-"play": SubResource("Animation_62mpq")
+&"RESET": SubResource("Animation_y24sw"),
+&"play": SubResource("Animation_62mpq")
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 129
+collision_layer = 128
 script = ExtResource("1_hg8p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -19)
-shape = SubResource("CapsuleShape2D_8oed0")
+position = Vector2(0.5, -14.5)
+shape = SubResource("RectangleShape2D_nybd0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -50)
-zoom = Vector2(1.5, 1.5)
+enabled = false
+zoom = Vector2(1.3, 1.3)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
@@ -307,7 +309,7 @@ script = ExtResource("2_q861p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0ovwg")
+&"": SubResource("AnimationLibrary_0ovwg")
 }
 
 [node name="Visual" type="Node2D" parent="."]
@@ -338,9 +340,11 @@ sprite_frames = SubResource("SpriteFrames_2sru1")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="MusicBox2" parent="." instance=ExtResource("3_wcxlj")]
-visible = false
+[node name="MusicBox3" parent="." instance=ExtResource("6_w4cij")]
 position = Vector2(0, -24)
+audioA = ExtResource("7_ropji")
+audioB = ExtResource("8_i7dto")
+audioC = ExtResource("9_sgipu")
 
 [node name="LadderDetection" type="Area2D" parent="."]
 collision_layer = 16
@@ -383,7 +387,7 @@ shape = SubResource("CircleShape2D_mek6n")
 
 [node name="AnimationPlayerPoison" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5f201")
+&"": SubResource("AnimationLibrary_5f201")
 }
 
 [node name="Poison" type="Sprite2D" parent="."]
@@ -392,4 +396,5 @@ position = Vector2(-35, -93)
 texture = ExtResource("12_t12qp")
 hframes = 4
 
+[connection signal="on_song_played" from="MusicBox3" to="." method="_on_music_box_3_on_song_played"]
 [connection signal="timeout" from="Voices/Timer" to="Voices" method="_on_timer_timeout"]

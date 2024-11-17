@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://djtpomof4foyd"]
+
+[ext_resource type="Script" path="res://src/world/map.gd" id="1_itlk6"]
+[ext_resource type="PackedScene" uid="uid://pqiwclv1w66p" path="res://src/world/sky.tscn" id="2_qh66n"]
+[ext_resource type="Texture2D" uid="uid://c65x02u77bppw" path="res://assets/arbres2.png" id="3_pf7qg"]
+[ext_resource type="PackedScene" uid="uid://cuixxpx7r16rx" path="res://src/steles/memory.tscn" id="4_5kqhc"]
+[ext_resource type="PackedScene" uid="uid://gykf6hawhgmf" path="res://alexis/room_1.tscn" id="4_cqtgb"]
+[ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="5_fmc0e"]
+[ext_resource type="Script" path="res://alexis/camera_2d.gd" id="7_euh1x"]
+[ext_resource type="Texture2D" uid="uid://b5ma5vd3rnmk7" path="res://assets/vignette.png" id="7_iqmti"]
+
+[node name="Alexis" type="Node2D"]
+script = ExtResource("1_itlk6")
+
+[node name="Sky" parent="." instance=ExtResource("2_qh66n")]
+scroll_scale = Vector2(0.05, 0.05)
+scroll_offset = Vector2(0, -300)
+
+[node name="Background" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0.15)
+scroll_offset = Vector2(0, -400)
+repeat_size = Vector2(1100, 0)
+
+[node name="Arbres2" type="Sprite2D" parent="Background"]
+position = Vector2(458, 525)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("3_pf7qg")
+
+[node name="Room1" parent="." instance=ExtResource("4_cqtgb")]
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Memory" parent="." instance=ExtResource("4_5kqhc")]
+
+[node name="Player" parent="." instance=ExtResource("5_fmc0e")]
+position = Vector2(87, 360)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(384, 216)
+script = ExtResource("7_euh1x")
+target = NodePath("../Player")
+
+[node name="Vignette" type="Sprite2D" parent="Camera2D"]
+self_modulate = Color(1, 1, 1, 0.776471)
+scale = Vector2(0.667, 0.667)
+texture = ExtResource("7_iqmti")

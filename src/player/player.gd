@@ -2,30 +2,30 @@ extends CharacterBody2D
 class_name Player
 
 ### Running
-@export var RUN_SPEED := 240.0  # px/s
-@export_range(0, 100, 1) var RUN_ACCELERATION := 50.0
-@export_range(0, 100, 1) var RUN_DECELERATION := 50.0
+var RUN_SPEED := 240.0  # px/s
+var RUN_ACCELERATION := 50.0 # range(0, 100, 1) 
+var RUN_DECELERATION := 50.0 # range(0, 100, 1) 
 # 0->49 add more force to change direction
 # 50->100 = instantly change direction (from 50 with velocity 0 to 100 with same velocity)
-@export_range(0, 100, 1) var RUN_TURN_SPEED := 50.0
+var RUN_TURN_SPEED := 50.0 # range(0, 100, 1) 
 const RUN_MAX_ACC := 10000.0
 
 ### Fall
-@export var FALL_MAX_SPEED := 600.0  # px/s
-@export_range(0, 100, 1) var FALL_GRAVITY := 50.0  # 0 = same gravity, 100 = double gravity
+var FALL_MAX_SPEED := 600.0  # px/s
+var FALL_GRAVITY := 50.0  # 0 = same gravity, 100 = double gravity # range(0, 100, 1) 
 
 ### Jumping
-@export var JUMP_HEIGHT := 70.0  # px
-@export var JUMP_TIME := 0.300  # s
-@export_range(0, 100, 1) var JUMP_CUTOFF := 0.0  # 0 = keep jumping, 100 = abort jumping
-@export var REBOUND_COEFF := 1.2  #
+var JUMP_HEIGHT := 70.0  # px
+var JUMP_TIME := 0.250  # s
+var JUMP_CUTOFF := 0.0  # 0 = keep jumping, 100 = abort jumping # range(0, 100, 1) 
+var REBOUND_COEFF := 1.2  #
 
 ### Assists
-@export var JUMP_BUFFER := 0.100  # time during which you can press the jump button before actually touching a floor
-@export var COYOTE_TIME := 0.100  # time during which you can jump after leaving a floor
+var JUMP_BUFFER := 0.100  # time during which you can press the jump button before actually touching a floor
+var COYOTE_TIME := 0.100  # time during which you can jump after leaving a floor
 
 ### Camera
-@export_range(0, 100, 1) var CAM_LOOKAHEAD := 0.0
+var CAM_LOOKAHEAD := 0.0 # range(0, 100, 1) 
 
 @onready var NOTE = preload("res://src/player/note_particle.tscn")
 @onready var PARTICLE = preload("res://src/player/walk_particle.tscn")
@@ -40,7 +40,10 @@ var last_fallspeed_in_air := 0.0
 var coyote_time := 0.0
 var jump_buffer := 0.0
 
-enum {IDLE, RUN, JUMP}
+var dash_time := 0.0
+var dash_dir := 0.0
+
+enum {IDLE, RUN, JUMP, DASH}
 var state = IDLE
 
 func _ready():
@@ -70,13 +73,28 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var GRAVITY = 2.0 * JUMP_HEIGHT / (JUMP_TIME * JUMP_TIME)
-	var can_input = not Input.is_action_pressed("sing") and get_collision_mask_value(1)
+	var can_input = get_collision_mask_value(1)
+	
+	if state == DASH:
+		dash_time -= delta
+		if dash_time <= 0.0 or (
+				dash_dir < 0.0 and not Input.is_action_pressed("a")
+			) or (
+				dash_dir > 0.0 and not Input.is_action_pressed("c")
+			):
+			dash_time = 0.0
+			set_state(IDLE)
+		else:
+			can_input = false
 
 	# Add the gravity.
 	if not is_on_floor():
+		var gravity = GRAVITY
 		if velocity.y > 0:
-			velocity.y *= lerp_value(FALL_GRAVITY, 1.0, 2.0, 3)
-		velocity.y += GRAVITY * delta
+			gravity *= lerp_value(FALL_GRAVITY, 1.0, 2.0, 3)
+
+		velocity.y += gravity * delta
+
 		if velocity.y > FALL_MAX_SPEED:
 			velocity.y = FALL_MAX_SPEED
 		last_fallspeed_in_air = velocity.y
@@ -101,8 +119,8 @@ func _physics_process(delta: float) -> void:
 		jump_buffer -= delta
 
 	# rebound
-
-	if state != JUMP:
+		
+	if state != JUMP and state != DASH:
 		var rebound_vector = null
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
@@ -130,7 +148,10 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right") if can_input else 0.0
-	if direction:
+	if state == DASH:
+		velocity.y = 0.0
+		velocity.x = dash_dir * RUN_SPEED
+	elif direction:
 		%AnimatedSprite2D.scale.x = sign(direction)
 		%PlayerMask.scale.x = sign(direction)
 
@@ -283,3 +304,14 @@ func kill():
 	await get_tree().create_timer(0.2).timeout
 	$AnimationPlayer.play_backwards("die")
 	is_teleport = false
+
+
+func _on_music_box_3_on_song_played(song: String) -> void:
+	if song.ends_with("bacfa"): # dash left
+		set_state(DASH)
+		dash_time = 0.5
+		dash_dir = -1.3
+	elif song.ends_with("bacfc"): # dash right
+		set_state(DASH)
+		dash_time = 0.5
+		dash_dir = 1.3
