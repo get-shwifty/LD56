@@ -337,11 +337,11 @@ texture = ExtResource("3_cvfog")
 unique_name_in_owner = true
 position = Vector2(0, 17)
 sprite_frames = SubResource("SpriteFrames_2sru1")
-animation = &"idle"
+animation = &"climb"
 autoplay = "idle"
 
 [node name="MusicBox3" parent="." instance=ExtResource("6_w4cij")]
-position = Vector2(0, -24)
+position = Vector2(0, -37)
 audioA = ExtResource("7_ropji")
 audioB = ExtResource("8_i7dto")
 audioC = ExtResource("9_sgipu")

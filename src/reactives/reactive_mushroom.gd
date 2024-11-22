@@ -10,7 +10,8 @@ func _ready() -> void:
 
 
 func on_song(song: String):
-	pass
+	if song == "dcab":
+		activate()
 		
 func on_song_finished(name: String):
 	if name == song_name:

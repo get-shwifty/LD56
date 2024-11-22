@@ -11,6 +11,8 @@ var tween_move
 @export var is_tall = false
 @export var is_enabled = false
 var moving_factor : float = 0.0
+var vibrate = false
+var t := 0.0
 
 # rock = bc
 # small = a
@@ -46,25 +48,73 @@ func _physics_process(delta: float):
 			runes[0].deactivate()
 			runes[1].deactivate()
 			runes[2].deactivate()
+	
+	if vibrate:
+		t += delta
+		var offset = sin(t * 15.0) * 1.0
+		$Sprite2D2.position.x = offset
+		$MovingPart.position.x = offset
+		$Runes.position.x = offset
+	else:
+		t = 0.0
+		$Sprite2D2.position.x = 0.0
+		$MovingPart.position.x = 0.0
+		$Runes.position.x = 0.0
 
 func on_song(song):
+	if song == "":
+		return
+	
 	var adj = "c" if is_tall else "a"
 	
-	if song.ends_with(adj + "bcd"): # enable
+	# vibration
+	if song.ends_with("fbc" + adj): # pending move
+		vibrate = true
+	else:
+		vibrate = false
+	
+	# runes
+	
+	#if song.ends_with(adj+"bc"):
+		#runes[0].show()
+		#runes[1].show()
+		#runes[2].show()
+		#runes[0].activate()
+		#runes[1].activate()
+		#runes[2].activate()
+	#else:
+		#runes[0].hide()
+		#runes[1].hide()
+		#runes[2].hide()
+		#runes[0].deactivate()
+		#runes[1].deactivate()
+		#runes[2].deactivate()
+	#elif song.ends_with(adj+"b"):
+		#runes[0].activate()
+		#runes[1].activate()
+		#runes[2].deactivate()
+	#elif song.ends_with(adj):
+		#runes[0].activate()
+		#runes[1].deactivate()
+		#runes[2].deactivate()
+	#else:
+		#runes[0].deactivate()
+		#runes[1].deactivate()
+		#runes[2].deactivate()
+	
+	# actions
+	
+	if song.ends_with("dbc" + adj): # enable
 		if tween:
 			tween.kill()
 		tween = get_tree().create_tween()
 		tween.tween_property($MovingPart/VeryShort, "modulate:a", 1.0,
 			(1.0 - $MovingPart/VeryShort.modulate.a) * ANIM_DURATION)
 		$MovingPart/VeryShort.collision_layer = 1
-
-		runes[0].deactivate()
-		runes[1].deactivate()
-		runes[2].deactivate()
 		
 		return true
 
-	elif not is_tall and song.ends_with("abcec"): # transform tall
+	elif not is_tall and song.ends_with("ebcac"): # transform tall
 		is_tall = true
 		if tween_move:
 			tween_move.kill()
@@ -72,14 +122,10 @@ func on_song(song):
 		tween_move = get_tree().create_tween().set_parallel(true)
 		tween_move.tween_property($MovingPart, "position:y", -32.0, t * ANIM_MOVE_DURATION)
 		tween_move.tween_property(runes[0], "rotation_degrees", 180.0, t * ANIM_MOVE_DURATION)
-
-		runes[0].deactivate()
-		runes[1].deactivate()
-		runes[2].deactivate()
 		
 		return true
 
-	elif is_tall and song.ends_with("cbcea"): # transform small
+	elif is_tall and song.ends_with("ebcca"): # transform small
 		is_tall = false
 		if tween_move:
 			tween_move.kill()
@@ -87,44 +133,15 @@ func on_song(song):
 		tween_move = get_tree().create_tween().set_parallel(true)
 		tween_move.tween_property($MovingPart, "position:y", 0.0, t * ANIM_MOVE_DURATION)
 		tween_move.tween_property(runes[0], "rotation_degrees", 0.0, t * ANIM_MOVE_DURATION)
-
-		runes[0].deactivate()
-		runes[1].deactivate()
-		runes[2].deactivate()
 		
 		return true
 
-	elif song.ends_with(adj + "bcfa"): # move left
+	elif song.ends_with("fbc" + adj + "a"): # move left
 		moving_factor = -1.0
-
-		runes[0].activate()
-		runes[1].activate()
-		runes[2].activate()
 		
 		return true
 
-	elif song.ends_with(adj + "bcfc"): # move right
+	elif song.ends_with("fbc" + adj + "c"): # move right
 		moving_factor = 1.0
-
-		runes[0].activate()
-		runes[1].activate()
-		runes[2].activate()
 		
 		return true
-
-	elif song.ends_with(adj+"bc") or song.ends_with(adj+"bce") or song.ends_with(adj+"bcf"):
-		runes[0].activate()
-		runes[1].activate()
-		runes[2].activate()
-	elif song.ends_with(adj+"b"):
-		runes[0].activate()
-		runes[1].activate()
-		runes[2].deactivate()
-	elif song.ends_with(adj):
-		runes[0].activate()
-		runes[1].deactivate()
-		runes[2].deactivate()
-	else:
-		runes[0].deactivate()
-		runes[1].deactivate()
-		runes[2].deactivate()

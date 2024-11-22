@@ -1,19 +1,19 @@
-extends Sprite2D
+extends Node2D
 
 func on_song(song: String):
-	if song.ends_with("bac") or song.ends_with("bacf"):
-		$RuneB.activate()
+	if song.ends_with("acb"):
 		$RuneA.activate()
 		$RuneC.activate()
-	elif song.ends_with("ba"):
 		$RuneB.activate()
+	elif song.ends_with("ac"):
+		$RuneA.activate()
+		$RuneC.activate()
+		$RuneB.deactivate()
+	elif song.ends_with("a"):
 		$RuneA.activate()
 		$RuneC.deactivate()
-	elif song.ends_with("b"):
-		$RuneB.activate()
-		$RuneA.deactivate()
-		$RuneC.deactivate()
-	else:
 		$RuneB.deactivate()
+	else:
 		$RuneA.deactivate()
 		$RuneC.deactivate()
+		$RuneB.deactivate()

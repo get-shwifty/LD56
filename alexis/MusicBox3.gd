@@ -9,6 +9,31 @@ signal on_song_played(song: String)
 @export var AUDIO_PLAYER: Resource = null
 
 @onready var area = $Area2D
+@onready var SAura = preload("res://alexis/aura.tscn")
+
+@onready var SParticleNote = preload("res://alexis/note_particle2.tscn")
+@onready var SParticleNotes = {
+	"a": preload("res://alexis/rune_a.tscn"),
+	"b": preload("res://alexis/rune_b.tscn"),
+	"c": preload("res://alexis/rune_c.tscn"),
+	"d": preload("res://alexis/rune_d.tscn"),
+	"e": preload("res://alexis/rune_e.tscn"),
+	"f": preload("res://alexis/rune_f.tscn"),
+}
+
+@onready var ALL_HINTS = [
+	$StaticMemo/HintPetitePierre,
+	$StaticMemo/HintGrandePierre,
+	$StaticMemo/HintPlayer,
+	$StaticMemo/HintEnable,
+	$StaticMemo/HintTransform,
+	$StaticMemo/HintMove,
+]
+@onready var ALL_DYN_HINTS = [
+	$DynMemo/HintPetitePierre,
+	$DynMemo/HintGrandePierre,
+	$DynMemo/HintPlayer
+]
 
 @onready var players = {
 	"A": audioA,
@@ -19,6 +44,7 @@ signal on_song_played(song: String)
 var melodies = Settings.songs
 
 var buffer = []
+var buffer_static_hint = []
 var buffer_frame = 0
 var played = ""
 var can_play = true
@@ -28,6 +54,8 @@ var music_frame = 0
 
 var ignore_boss_music = false
 
+var dyn_hint = false
+
 func _physics_process(delta):
 	if not Global.started:
 		return
@@ -36,6 +64,24 @@ func _physics_process(delta):
 	
 	var cam = get_viewport().get_camera_2d()
 	$Area2D.global_position = cam.global_position
+	
+	if Input.is_action_just_pressed("static_hint"):
+		if $StaticMemo.is_visible():
+			$StaticMemo.hide()
+		else:
+			buffer_static_hint.clear()
+			$StaticMemo.show()
+			for hint in ALL_HINTS:
+				hint.on_song("")
+	
+	
+	if Input.is_action_just_pressed("dyn_hint_toggle"):
+		dyn_hint = not dyn_hint
+	
+	if Input.is_action_pressed("dyn_hint") or dyn_hint:
+		$DynMemo.show()
+	else:
+		$DynMemo.hide()
 
 	if Input.is_action_pressed("alt1") and Input.is_action_pressed("alt2"):
 		if Input.is_action_just_pressed("a"):
@@ -67,14 +113,87 @@ func _physics_process(delta):
 			new_note("c")
 
 func new_note(note):
-	buffer.append(note)
-	if buffer.size() > 30:
-		buffer.pop_front()
+	if $StaticMemo.is_visible():
+		if note == "d" or note == "e" or note == "f":
+			buffer_static_hint.clear()
 
+		buffer_static_hint.append(note)
+		if buffer_static_hint.size() > 8:
+			buffer_static_hint.pop_front()
+		for hint in ALL_HINTS:
+			hint.on_song("".join(buffer_static_hint))
+	else:
+		if note in SParticleNotes:
+			var res = SParticleNote.instantiate()
+			var particle_note = SParticleNotes[note].instantiate()
+			res.add_child(particle_note)
+			res.position = %NoteSpawner.global_position
+			Global.projectile_container.add_child(res)
+			particle_note.activate()
+
+		if note == "d" or note == "e" or note == "f":
+			buffer.clear()
+
+		buffer.append(note)
+		if buffer.size() > 8:
+			buffer.pop_front()
+		
+		#if note == "d" or note == "e" or note == "f":
+			#trigger_aura(global_position)
+
+		notify_song()
+		if buffer.is_empty():
+			notify_song()
+
+func notify_song():
 	var song = "".join(buffer)
 	on_song_played.emit(song)
 	
+	update_dyn_hint(song)
+	
 	var areas = area.get_overlapping_areas()
-	for a in areas:
+	for a: Area2D in areas:
 		if a.get_parent().on_song(song) == true:
 			buffer.clear()
+			trigger_aura(a.global_position)
+
+func update_dyn_hint(song: String):
+	for hint in ALL_DYN_HINTS:
+		hint.on_song(song)
+		
+	if song in ["db", "eb", "fb", "dbc", "ebc", "fbc"]:
+		# show pierres
+		$DynMemo/HintGrandePierre.show()
+		$DynMemo/HintPetitePierre.show()
+		$DynMemo/HintPlayer.hide()
+		$DynMemo/Nothing.hide()
+	elif song in ["dbca", "ebca", "fbca"]:
+		# show pierres
+		$DynMemo/HintGrandePierre.hide()
+		$DynMemo/HintPetitePierre.show()
+		$DynMemo/HintPlayer.hide()
+		$DynMemo/Nothing.hide()
+	elif song in ["dbcc", "ebcc", "fbcc"]:
+		# show pierres
+		$DynMemo/HintGrandePierre.show()
+		$DynMemo/HintPetitePierre.hide()
+		$DynMemo/HintPlayer.hide()
+		$DynMemo/Nothing.hide()
+	elif song in ["fa", "fac", "fab"]:
+		# show player
+		$DynMemo/HintGrandePierre.hide()
+		$DynMemo/HintPetitePierre.hide()
+		$DynMemo/HintPlayer.show()
+		$DynMemo/Nothing.hide()
+	else:
+		$DynMemo/HintGrandePierre.hide()
+		$DynMemo/HintPetitePierre.hide()
+		$DynMemo/HintPlayer.hide()
+		$DynMemo/Nothing.show()
+		
+
+func trigger_aura(position):
+	var aura = SAura.instantiate()
+	aura.position = position
+	Global.projectile_container.add_child(aura)
+	

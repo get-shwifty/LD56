@@ -1,7 +1,7 @@
-extends Sprite2D
+extends Node2D
 
 func on_song(song: String):
-	if song.ends_with("e"):
+	if song.begins_with("e"):
 		$RuneE.activate()
 	else:
 		$RuneE.deactivate()

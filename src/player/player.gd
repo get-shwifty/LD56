@@ -73,7 +73,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var GRAVITY = 2.0 * JUMP_HEIGHT / (JUMP_TIME * JUMP_TIME)
-	var can_input = get_collision_mask_value(1)
+	var can_input = get_collision_mask_value(1) and not $MusicBox3/StaticMemo.is_visible()
 	
 	if state == DASH:
 		dash_time -= delta
@@ -306,12 +306,14 @@ func kill():
 	is_teleport = false
 
 
-func _on_music_box_3_on_song_played(song: String) -> void:
-	if song.ends_with("bacfa"): # dash left
+func _on_music_box_3_on_song_played(song: String):
+	if song.ends_with("facba"): # dash left
 		set_state(DASH)
 		dash_time = 0.5
 		dash_dir = -1.3
-	elif song.ends_with("bacfc"): # dash right
+		return true
+	elif song.ends_with("facbc"): # dash right
 		set_state(DASH)
 		dash_time = 0.5
 		dash_dir = 1.3
+		return true

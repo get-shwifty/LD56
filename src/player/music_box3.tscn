@@ -1,6 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5talylcm421k"]
+[gd_scene load_steps=16 format=3 uid="uid://b5talylcm421k"]
 
 [ext_resource type="Script" path="res://alexis/MusicBox3.gd" id="1_kiw7a"]
+[ext_resource type="PackedScene" uid="uid://cwrknv3moe2nm" path="res://alexis/hint_petite_pierre.tscn" id="2_ovom3"]
+[ext_resource type="PackedScene" uid="uid://dju7xsft5gwf0" path="res://alexis/hint_grande_pierre.tscn" id="3_wetr6"]
+[ext_resource type="PackedScene" uid="uid://dpw0mljnw7mpr" path="res://alexis/hint_player.tscn" id="4_4wtux"]
+[ext_resource type="Script" path="res://alexis/tuto1.gd" id="4_nnaee"]
+[ext_resource type="Texture2D" uid="uid://bneutrfeuk6s7" path="res://assets/tuto.png" id="5_exs62"]
+[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/rune_d.tscn" id="6_csyyy"]
+[ext_resource type="Script" path="res://alexis/tuto3.gd" id="7_ieyci"]
+[ext_resource type="Script" path="res://alexis/tuto2.gd" id="7_rjjpk"]
+[ext_resource type="PackedScene" uid="uid://bojrx2noj8w26" path="res://alexis/rune_f.tscn" id="8_3hp5e"]
+[ext_resource type="PackedScene" uid="uid://lfttp8c3nhr4" path="res://alexis/rune_e.tscn" id="8_4wtux"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="9_ieyci"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="10_4wtux"]
+[ext_resource type="Texture2D" uid="uid://dp87laiciayrf" path="res://david/runes.png" id="14_piptr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6shx8"]
 size = Vector2(768, 432)
@@ -16,3 +29,174 @@ collision_mask = 512
 visible = false
 shape = SubResource("RectangleShape2D_6shx8")
 debug_color = Color(0, 1, 0, 0.419608)
+
+[node name="StaticMemo" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="StaticMemo"]
+offset_right = 768.0
+offset_bottom = 432.0
+color = Color(0, 0, 0, 0.501961)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticMemo"]
+offset_left = 88.0
+offset_top = 80.0
+offset_right = 668.0
+offset_bottom = 340.0
+color = Color(0.627451, 0.403922, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="StaticMemo"]
+offset_left = 90.0
+offset_top = 82.0
+offset_right = 666.0
+offset_bottom = 338.0
+color = Color(0.364557, 0.203926, 0.424094, 1)
+
+[node name="HintPetitePierre" parent="StaticMemo" instance=ExtResource("2_ovom3")]
+position = Vector2(120, 176)
+
+[node name="HintGrandePierre" parent="StaticMemo" instance=ExtResource("3_wetr6")]
+position = Vector2(144, 176)
+
+[node name="HintPlayer" parent="StaticMemo" instance=ExtResource("4_4wtux")]
+position = Vector2(120, 264)
+
+[node name="HintEnable" type="Node2D" parent="StaticMemo"]
+position = Vector2(424, 144)
+scale = Vector2(0.94, 1)
+script = ExtResource("4_nnaee")
+
+[node name="Tuto" type="Sprite2D" parent="StaticMemo/HintEnable"]
+position = Vector2(-8.51064, -8)
+scale = Vector2(0.70922, 0.666667)
+texture = ExtResource("5_exs62")
+region_enabled = true
+region_rect = Rect2(102, 15, 96, 72)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticMemo/HintEnable"]
+offset_left = -31.9149
+offset_top = -22.0
+offset_right = 8.08509
+offset_bottom = 3.0
+color = Color(0.117647, 0.0745098, 0.337255, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StaticMemo/HintEnable"]
+offset_left = -39.3617
+offset_top = -27.0
+offset_right = 23.6383
+offset_bottom = 13.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]Enable"
+metadata/_edit_use_anchors_ = true
+
+[node name="RuneD" parent="StaticMemo/HintEnable" instance=ExtResource("6_csyyy")]
+position = Vector2(-8.51064, -6)
+
+[node name="HintTransform" type="Node2D" parent="StaticMemo"]
+position = Vector2(520, 144)
+scale = Vector2(0.94, 1)
+script = ExtResource("7_ieyci")
+
+[node name="Tuto" type="Sprite2D" parent="StaticMemo/HintTransform"]
+position = Vector2(-8.51064, -8)
+scale = Vector2(0.70922, 0.666667)
+texture = ExtResource("5_exs62")
+region_enabled = true
+region_rect = Rect2(102, 15, 96, 72)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticMemo/HintTransform"]
+offset_left = -31.9149
+offset_top = -22.0
+offset_right = 8.08509
+offset_bottom = 3.0
+color = Color(0.117647, 0.0745098, 0.337255, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StaticMemo/HintTransform"]
+offset_left = -39.3617
+offset_top = -27.0
+offset_right = 23.6383
+offset_bottom = 13.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]Transform"
+metadata/_edit_use_anchors_ = true
+
+[node name="RuneE" parent="StaticMemo/HintTransform" instance=ExtResource("8_4wtux")]
+position = Vector2(-7.44681, -5)
+
+[node name="HintMove" type="Node2D" parent="StaticMemo"]
+position = Vector2(616, 144)
+scale = Vector2(0.94, 1)
+script = ExtResource("7_rjjpk")
+
+[node name="Tuto" type="Sprite2D" parent="StaticMemo/HintMove"]
+position = Vector2(-8.51064, -8)
+scale = Vector2(0.70922, 0.666667)
+texture = ExtResource("5_exs62")
+region_enabled = true
+region_rect = Rect2(102, 15, 96, 72)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticMemo/HintMove"]
+offset_left = -31.9149
+offset_top = -22.0
+offset_right = 8.08509
+offset_bottom = 3.0
+color = Color(0.117647, 0.0745098, 0.337255, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StaticMemo/HintMove"]
+offset_left = -39.3617
+offset_top = -27.0
+offset_right = 23.6383
+offset_bottom = 13.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]Move"
+metadata/_edit_use_anchors_ = true
+
+[node name="RuneF" parent="StaticMemo/HintMove" instance=ExtResource("8_3hp5e")]
+position = Vector2(-10.6383, 6)
+
+[node name="RuneA" parent="StaticMemo/HintMove" instance=ExtResource("9_ieyci")]
+position = Vector2(-18.0851, -6)
+
+[node name="RuneC" parent="StaticMemo/HintMove" instance=ExtResource("10_4wtux")]
+position = Vector2(1.90735e-06, -5)
+
+[node name="DynMemo" type="Node2D" parent="."]
+
+[node name="HintPetitePierre" parent="DynMemo" instance=ExtResource("2_ovom3")]
+visible = false
+position = Vector2(-8, -8)
+
+[node name="HintGrandePierre" parent="DynMemo" instance=ExtResource("3_wetr6")]
+visible = false
+position = Vector2(8, -8)
+
+[node name="HintPlayer" parent="DynMemo" instance=ExtResource("4_4wtux")]
+visible = false
+position = Vector2(0, -16)
+
+[node name="Nothing" type="Node2D" parent="DynMemo"]
+position = Vector2(-2, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="DynMemo/Nothing"]
+texture = ExtResource("14_piptr")
+hframes = 20
+vframes = 20
+frame = 41
+
+[node name="Sprite2D2" type="Sprite2D" parent="DynMemo/Nothing"]
+position = Vector2(6, 0)
+rotation = 3.14159
+texture = ExtResource("14_piptr")
+hframes = 20
+vframes = 20
+frame = 41
+
+[node name="NoteSpawner" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-7, 7)

@@ -31,16 +31,20 @@ position = Vector2(0, -48)
 collision_layer = 0
 
 [node name="ReactiveComponent2" parent="." instance=ExtResource("2_o5tbf")]
+position = Vector2(0, -31)
 
 [node name="Runes" type="Node2D" parent="."]
 
 [node name="RuneA" parent="Runes" instance=ExtResource("5_tpf36")]
+visible = false
 position = Vector2(0, -11)
 
 [node name="RuneB" parent="Runes" instance=ExtResource("5_lclqb")]
+visible = false
 position = Vector2(0, -29)
 
 [node name="RuneC" parent="Runes" instance=ExtResource("6_tpf36")]
+visible = false
 position = Vector2(0, -48)
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
