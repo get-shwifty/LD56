@@ -161,12 +161,14 @@ func update_dyn_hint(song: String):
 	for hint in ALL_DYN_HINTS:
 		hint.on_song(song)
 		
-	if song in ["db", "eb", "fb", "dbc", "ebc", "fbc"]:
+	if song in ["d", "e", "f", "db", "eb", "fb", "dbc", "ebc", "fbc"]:
 		# show pierres
 		$DynMemo/HintGrandePierre.show()
 		$DynMemo/HintPetitePierre.show()
 		$DynMemo/HintPlayer.hide()
 		$DynMemo/Nothing.hide()
+		if song == "f":
+			$DynMemo/HintPlayer.show()
 	elif song in ["dbca", "ebca", "fbca"]:
 		# show pierres
 		$DynMemo/HintGrandePierre.hide()
