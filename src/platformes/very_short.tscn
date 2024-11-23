@@ -63,11 +63,12 @@ size = Vector2(62, 10)
 [node name="VeryShort" type="CharacterBody2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 16)
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 255, 255, 0, 0, 2, 0, 3, 0, 0, 0)
 tile_set = SubResource("TileSet_n8ha0")
 collision_enabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_8p200")
 one_way_collision = true

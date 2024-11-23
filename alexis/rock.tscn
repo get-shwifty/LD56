@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="6_tpf36"]
 
 [node name="Rock" type="Node2D"]
+position = Vector2(0, 32)
 script = ExtResource("1_11h1m")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
@@ -27,7 +28,7 @@ region_rect = Rect2(0, 48, 64, 32)
 
 [node name="VeryShort" parent="MovingPart" instance=ExtResource("4_5xt8l")]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(0, -48)
+position = Vector2(0, -64)
 collision_layer = 0
 
 [node name="ReactiveComponent2" parent="." instance=ExtResource("2_o5tbf")]
