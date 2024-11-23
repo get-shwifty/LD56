@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo74cfhrjn5b3"]
+[gd_scene load_steps=9 format=3 uid="uid://blp8807emshje"]
 
-[ext_resource type="Script" path="res://src/reactives/reactive_mushroom.gd" id="1_ei4v8"]
-[ext_resource type="PackedScene" uid="uid://dooukoeo0o7ei" path="res://src/reactives/champi.tscn" id="2_xngt5"]
-[ext_resource type="PackedScene" uid="uid://h1cddxillf0g" path="res://src/reactives/reactive_component.tscn" id="3_2adfg"]
-[ext_resource type="AudioStream" uid="uid://dwq4x3yit2knb" path="res://sounds/Son-ouverture champignon.mp3" id="4_728p5"]
-[ext_resource type="AudioStream" uid="uid://djmodvmjmp5a3" path="res://sounds/Son-rebond-champignon-3.mp3" id="5_xbn0n"]
-[ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="6_ykv6d"]
+[ext_resource type="Script" path="res://src/reactives/reactive_mushroom.gd" id="1_3vfwm"]
+[ext_resource type="PackedScene" uid="uid://dooukoeo0o7ei" path="res://src/reactives/champi.tscn" id="2_177k6"]
+[ext_resource type="PackedScene" uid="uid://h1cddxillf0g" path="res://src/reactives/reactive_component.tscn" id="3_bknlg"]
+[ext_resource type="AudioStream" uid="uid://dwq4x3yit2knb" path="res://sounds/Son-ouverture champignon.mp3" id="4_2hopc"]
+[ext_resource type="AudioStream" uid="uid://djmodvmjmp5a3" path="res://sounds/Son-rebond-champignon-3.mp3" id="5_aaue7"]
+[ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="6_4ath0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o05xm"]
 size = Vector2(22.2222, 48.386)
@@ -16,11 +16,12 @@ point_count = 2
 
 [node name="ReactiveMushroom" type="Node2D"]
 position = Vector2(0, 16)
-script = ExtResource("1_ei4v8")
+script = ExtResource("1_3vfwm")
+opened = true
 
-[node name="Champi" parent="." instance=ExtResource("2_xngt5")]
+[node name="Champi" parent="." instance=ExtResource("2_177k6")]
 
-[node name="ReactiveComponent" parent="." instance=ExtResource("3_2adfg")]
+[node name="ReactiveComponent" parent="." instance=ExtResource("3_bknlg")]
 visible = false
 scale = Vector2(7, 7)
 
@@ -34,12 +35,11 @@ collision_layer = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(4.41516e-07, 48.386)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_o05xm")
 one_way_collision = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_728p5")
+stream = ExtResource("4_2hopc")
 volume_db = -15.39
 
 [node name="Particles" type="CPUParticles2D" parent="."]
@@ -68,9 +68,9 @@ color = Color(0, 1, 1, 1)
 hue_variation_max = 1.0
 
 [node name="BoingPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_xbn0n")
+stream = ExtResource("5_aaue7")
 
-[node name="ReactiveComponent2" parent="." instance=ExtResource("6_ykv6d")]
+[node name="ReactiveComponent2" parent="." instance=ExtResource("6_4ath0")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="tree_entered" from="Ground/CollisionShape2D" to="." method="_on_collision_shape_2d_tree_entered"]

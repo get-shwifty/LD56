@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2x87je88h7st"]
+
+[ext_resource type="Script" path="res://alexis/room_grid.gd" id="1_p0s5q"]
+
+[node name="RoomGrid" type="Node2D"]
+script = ExtResource("1_p0s5q")

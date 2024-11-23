@@ -1,12 +1,16 @@
 extends Node2D
 
 @export var song_name = "mushroom"
+@export var opened: bool = false
 @onready var boings = [preload("res://sounds/Son-rebond-champignon-1.mp3"), preload("res://sounds/Son-rebond-champignon-2.mp3"), preload("res://sounds/Son-rebond-champignon-3.mp3")]
 
 var counter = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	deactivate()
+	if opened:
+		activate()
+	else:
+		deactivate()
 
 
 func on_song(song: String):
@@ -21,7 +25,7 @@ func on_song_finished(name: String):
 func activate():
 	$Champi.play("on")
 	$Ground/CollisionShape2D.disabled = false
-	$Timer.start()
+	#$Timer.start()
 	Global.request_music = "shroom"
 	
 func deactivate():
