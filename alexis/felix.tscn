@@ -34,7 +34,7 @@ texture = ExtResource("3_60w1t")
 [node name="Memory" parent="." instance=ExtResource("5_7cyum")]
 
 [node name="Player" parent="." instance=ExtResource("6_xahu2")]
-position = Vector2(64, 256)
+position = Vector2(768, -320)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(384, 216)
@@ -46,15 +46,24 @@ self_modulate = Color(1, 1, 1, 0.776471)
 scale = Vector2(0.667, 0.667)
 texture = ExtResource("8_wpqrb")
 
-[node name="Rock" parent="." instance=ExtResource("9_hk10q")]
-position = Vector2(544, 400)
+[node name="Rocks" type="Node2D" parent="."]
+position = Vector2(552, 400)
 
-[node name="Rock2" parent="." instance=ExtResource("9_hk10q")]
-position = Vector2(1024, 272)
+[node name="Rock" parent="Rocks" instance=ExtResource("9_hk10q")]
+position = Vector2(0, 0)
 
-[node name="Rock3" parent="." instance=ExtResource("9_hk10q")]
-position = Vector2(840, 176)
+[node name="Rock2" parent="Rocks" instance=ExtResource("9_hk10q")]
+position = Vector2(472, -128)
 
-[node name="Rock4" parent="." instance=ExtResource("9_hk10q")]
-position = Vector2(1200, 488)
-scale = Vector2(1.07999, 1.07999)
+[node name="Rock3" parent="Rocks" instance=ExtResource("9_hk10q")]
+position = Vector2(296, -216)
+
+[node name="Rock5" parent="Rocks" instance=ExtResource("9_hk10q")]
+position = Vector2(1064, 1.52588e-05)
+is_enabled = true
+
+[node name="Rock6" parent="Rocks" instance=ExtResource("9_hk10q")]
+position = Vector2(1272, -576)
+
+[node name="Rock4" parent="Rocks" instance=ExtResource("9_hk10q")]
+position = Vector2(648, 88)
