@@ -54,3 +54,6 @@ position = Vector2(1024, 272)
 
 [node name="Rock3" parent="." instance=ExtResource("9_hk10q")]
 position = Vector2(840, 176)
+
+[node name="Rock4" parent="." instance=ExtResource("9_hk10q")]
+position = Vector2(1200, 488)
