@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://dgts66gjf7p1w"]
+[gd_scene load_steps=11 format=4 uid="uid://dgts66gjf7p1w"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://c2x87je88h7st" path="res://alexis/room_grid.tscn" id="1_cygu0"]
 [ext_resource type="TileSet" uid="uid://dvcln66v37sys" path="res://src/world/tilemap.tres" id="3_8uhi2"]
 [ext_resource type="PackedScene" uid="uid://b7htylpreriai" path="res://alexis/toggable_tile_map_layer_foreground.tscn" id="4_mtblt"]
+[ext_resource type="PackedScene" uid="uid://cqemd752q7j4m" path="res://alexis/rock.tscn" id="5_mtblt"]
+[ext_resource type="PackedScene" uid="uid://r4ytkrllej1e" path="res://alexis/tuto_champ.tscn" id="6_djt32"]
+[ext_resource type="PackedScene" uid="uid://ce5cf3boj6urj" path="res://alexis/tuto_pierre.tscn" id="7_etedf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cygu0"]
 size = Vector2(760.5, 115)
@@ -56,3 +59,33 @@ tile_map_data = PackedByteArray("AAAuAPz/AwABAAEAAAAuAP3/AwABAAEAAAAuAP7/AwABAAE
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ToggableTileMapLayerForeground2/Area2D"]
 position = Vector2(1727, 13)
 polygon = PackedVector2Array(35, 0, 39, 108, -170, 109, -176, 29, -276, -27, -268, -128, -211, -160, -153, -164, -129, -99, -84, -92, -79, -12)
+
+[node name="Rocks" type="Node2D" parent="."]
+position = Vector2(552, 400)
+
+[node name="Rock" parent="Rocks" instance=ExtResource("5_mtblt")]
+position = Vector2(0, 0)
+
+[node name="Rock2" parent="Rocks" instance=ExtResource("5_mtblt")]
+position = Vector2(472, -128)
+
+[node name="Rock3" parent="Rocks" instance=ExtResource("5_mtblt")]
+position = Vector2(296, -216)
+
+[node name="Rock5" parent="Rocks" instance=ExtResource("5_mtblt")]
+position = Vector2(1064, 1.52588e-05)
+is_enabled = true
+
+[node name="Rock6" parent="Rocks" instance=ExtResource("5_mtblt")]
+position = Vector2(1272, -576)
+
+[node name="Rock4" parent="Rocks" instance=ExtResource("5_mtblt")]
+position = Vector2(648, 88)
+
+[node name="Tutos" type="Node2D" parent="."]
+
+[node name="TutoChamp" parent="Tutos" instance=ExtResource("6_djt32")]
+position = Vector2(1320, 152)
+
+[node name="TutoPierre" parent="Tutos" instance=ExtResource("7_etedf")]
+position = Vector2(480, -96)

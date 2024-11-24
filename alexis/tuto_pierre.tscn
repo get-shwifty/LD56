@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce5cf3boj6urj"]
+
+[ext_resource type="Script" path="res://alexis/tuto_pierre.gd" id="1_k3jh1"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="3_ett22"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="4_ymjj8"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="5_vpa8s"]
+[ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="6_auvli"]
+
+[node name="TutoPierre" type="Node2D"]
+script = ExtResource("1_k3jh1")
+
+[node name="RuneB" parent="." instance=ExtResource("5_vpa8s")]
+
+[node name="RuneC" parent="." instance=ExtResource("3_ett22")]
+position = Vector2(0, -16)
+
+[node name="RuneA" parent="." instance=ExtResource("4_ymjj8")]
+position = Vector2(0, -32)
+
+[node name="ReactiveComponent2" parent="." instance=ExtResource("6_auvli")]
