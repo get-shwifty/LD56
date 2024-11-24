@@ -9,7 +9,7 @@ func _ready():
 		area.body_exited.connect(_on_area_2d_body_exited)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	show()
+	hide()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	hide()
+	show()
