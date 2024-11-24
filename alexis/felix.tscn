@@ -34,7 +34,7 @@ texture = ExtResource("3_60w1t")
 [node name="Memory" parent="." instance=ExtResource("5_7cyum")]
 
 [node name="Player" parent="." instance=ExtResource("6_xahu2")]
-position = Vector2(87, 360)
+position = Vector2(64, 256)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(384, 216)
@@ -57,3 +57,4 @@ position = Vector2(840, 176)
 
 [node name="Rock4" parent="." instance=ExtResource("9_hk10q")]
 position = Vector2(1200, 488)
+scale = Vector2(1.07999, 1.07999)
