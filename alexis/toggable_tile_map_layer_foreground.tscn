@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=4 uid="uid://b7htylpreriai"]
 
-[ext_resource type="TileSet" uid="uid://dvcln66v37sys" path="res://src/world/tilemap.tres" id="1_e3ttv"]
+[ext_resource type="TileSet" uid="uid://b5i3yqydw5cfn" path="res://src/world/tilemap_no_collision.tres" id="1_e3ttv"]
 [ext_resource type="Script" path="res://alexis/toggable_layer.gd" id="2_4bu7j"]
 
 [node name="ToggableTileMapLayerForeground" type="TileMapLayer"]
