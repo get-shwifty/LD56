@@ -307,12 +307,12 @@ func kill():
 
 
 func _on_music_box_3_on_song_played(song: String):
-	if song.ends_with("facba"): # dash left
+	if song.ends_with("faaba"): # dash left
 		set_state(DASH)
 		dash_time = 0.5
 		dash_dir = -1.3
 		return true
-	elif song.ends_with("facbc"): # dash right
+	elif song.ends_with("faabc"): # dash right
 		set_state(DASH)
 		dash_time = 0.5
 		dash_dir = 1.3

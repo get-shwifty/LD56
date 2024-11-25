@@ -1,28 +1,19 @@
 extends Node2D
 
 func on_song(song: String):
-	if song == "dcab":
-		$RuneD.activate()
-		$RuneC.activate()
+	if song == "aac":
 		$RuneA.activate()
+		$RuneAb.activate()
 		$RuneB.activate()
-	elif song == "dca":
-		$RuneD.activate()
-		$RuneC.activate()
+	elif song == "aa":
 		$RuneA.activate()
+		$RuneAb.activate()
 		$RuneB.deactivate()
-	elif song == "dc":
-		$RuneD.activate()
-		$RuneC.activate()
-		$RuneA.deactivate()
-		$RuneB.deactivate()
-	elif song == "d":
-		$RuneD.activate()
-		$RuneC.deactivate()
-		$RuneA.deactivate()
+	elif song == "a":
+		$RuneA.activate()
+		$RuneAb.deactivate()
 		$RuneB.deactivate()
 	else:
-		$RuneD.deactivate()
-		$RuneC.deactivate()
 		$RuneA.deactivate()
+		$RuneAb.deactivate()
 		$RuneB.deactivate()
