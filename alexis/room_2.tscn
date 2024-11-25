@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://c2x87je88h7st" path="res://alexis/room_grid.tscn" id="1_cygu0"]
-[ext_resource type="PackedScene" uid="uid://dya5aouynhlv2" path="res://alexis/tuto_perso.tscn" id="3_6hk8d"]
+[ext_resource type="PackedScene" uid="uid://bgmx5s4yk3ql" path="res://alexis/tuto_perso.tscn" id="3_6hk8d"]
 [ext_resource type="TileSet" uid="uid://dvcln66v37sys" path="res://src/world/tilemap.tres" id="3_8uhi2"]
 [ext_resource type="PackedScene" uid="uid://b7htylpreriai" path="res://alexis/toggable_tile_map_layer_foreground.tscn" id="4_mtblt"]
 [ext_resource type="PackedScene" uid="uid://cqemd752q7j4m" path="res://alexis/rock.tscn" id="5_mtblt"]

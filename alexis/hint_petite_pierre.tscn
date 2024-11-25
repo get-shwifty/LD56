@@ -11,6 +11,7 @@
 script = ExtResource("1_ma7mt")
 
 [node name="IconeRock" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 1)
 position = Vector2(0, -64)
 texture = ExtResource("2_734kf")
 
@@ -24,6 +25,7 @@ position = Vector2(0, -24)
 position = Vector2(0, -40)
 
 [node name="Capsule" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 1)
 position = Vector2(-1.19209e-07, -24)
 scale = Vector2(1.23, 1.23)
 texture = ExtResource("6_734kf")

@@ -20,10 +20,12 @@ position = Vector2(0, -24)
 position = Vector2(0, -40)
 
 [node name="IconPlayer" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 1)
 position = Vector2(0, -64)
 texture = ExtResource("5_tb7yi")
 
 [node name="Capsule" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 1)
 position = Vector2(-2.98023e-08, -24)
 scale = Vector2(1.23, 1.23)
 texture = ExtResource("5_x3u0c")
