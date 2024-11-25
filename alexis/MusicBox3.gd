@@ -132,7 +132,8 @@ func new_note(note):
 			particle_note.activate()
 
 		if note == "d" or note == "e" or note == "f":
-			buffer.clear()
+			if not (buffer.size() == 1 and buffer[0] == "d"):
+				buffer.clear()
 
 		buffer.append(note)
 		if buffer.size() > 8:

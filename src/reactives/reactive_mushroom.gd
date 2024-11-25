@@ -16,6 +16,8 @@ func _ready() -> void:
 func on_song(song: String):
 	if song == "dcab":
 		activate()
+	elif song == "ddcab":
+		deactivate()
 		
 func on_song_finished(name: String):
 	if name == song_name:
