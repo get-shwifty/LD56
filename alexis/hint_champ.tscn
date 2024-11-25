@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt6xpt00bs6ta"]
+
+[ext_resource type="Script" path="res://alexis/hint_champ.gd" id="1_ko600"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="2_xdddy"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="3_i8mp6"]
+[ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="4_rcdw1"]
+[ext_resource type="Texture2D" uid="uid://lvcxwpgwaqmq" path="res://assets/icone_champ_only.png" id="5_ko600"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="5_xdddy"]
+
+[node name="HintChamp" type="Node2D"]
+script = ExtResource("1_ko600")
+
+[node name="Capsule" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 1)
+position = Vector2(-5.96046e-07, -48)
+scale = Vector2(1.28, 1.28)
+texture = ExtResource("4_rcdw1")
+
+[node name="IconeChampOnly" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 1)
+position = Vector2(0, -90)
+texture = ExtResource("5_ko600")
+
+[node name="RuneC" parent="." instance=ExtResource("3_i8mp6")]
+position = Vector2(0, -33)
+
+[node name="RuneA" parent="." instance=ExtResource("5_xdddy")]
+position = Vector2(0, -48)
+
+[node name="RuneB" parent="." instance=ExtResource("2_xdddy")]
+position = Vector2(1, -61)
