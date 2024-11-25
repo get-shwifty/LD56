@@ -1,13 +1,18 @@
-[gd_scene load_steps=14 format=4 uid="uid://dgts66gjf7p1w"]
+[gd_scene load_steps=19 format=4 uid="uid://dgts66gjf7p1w"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://c2x87je88h7st" path="res://alexis/room_grid.tscn" id="1_cygu0"]
+[ext_resource type="PackedScene" uid="uid://dya5aouynhlv2" path="res://alexis/tuto_perso.tscn" id="3_6hk8d"]
 [ext_resource type="TileSet" uid="uid://dvcln66v37sys" path="res://src/world/tilemap.tres" id="3_8uhi2"]
 [ext_resource type="PackedScene" uid="uid://b7htylpreriai" path="res://alexis/toggable_tile_map_layer_foreground.tscn" id="4_mtblt"]
 [ext_resource type="PackedScene" uid="uid://cqemd752q7j4m" path="res://alexis/rock.tscn" id="5_mtblt"]
 [ext_resource type="PackedScene" uid="uid://r4ytkrllej1e" path="res://alexis/tuto_champ.tscn" id="6_djt32"]
 [ext_resource type="PackedScene" uid="uid://ce5cf3boj6urj" path="res://alexis/tuto_pierre.tscn" id="7_etedf"]
 [ext_resource type="Texture2D" uid="uid://j21swnvdgfiu" path="res://assets/text_tuto.png" id="8_pwcr2"]
+[ext_resource type="PackedScene" uid="uid://cqnipbk8a57c0" path="res://alexis/door.tscn" id="9_sx12u"]
+[ext_resource type="PackedScene" uid="uid://cyfxw0fgllosq" path="res://alexis/key.tscn" id="10_g53dq"]
+[ext_resource type="Texture2D" uid="uid://dpyq7ydi8p6im" path="res://assets/end.png" id="11_g53dq"]
+[ext_resource type="Texture2D" uid="uid://cnwemxefed4pl" path="res://assets/secret.png" id="12_0yr4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cygu0"]
 size = Vector2(760.5, 115)
@@ -35,6 +40,10 @@ position = Vector2(1393, 121)
 [node name="TutoPierre" parent="Tutos" instance=ExtResource("7_etedf")]
 z_index = 2
 position = Vector2(889, 170)
+
+[node name="TutoChamp2" parent="Tutos" instance=ExtResource("3_6hk8d")]
+z_index = 2
+position = Vector2(3040, -232)
 
 [node name="RoomGrid" parent="." instance=ExtResource("1_cygu0")]
 z_index = 3
@@ -105,9 +114,34 @@ is_enabled = true
 position = Vector2(1272, -576)
 
 [node name="Rock4" parent="Rocks" instance=ExtResource("5_mtblt")]
-position = Vector2(648, 88)
+position = Vector2(648, 96)
 
 [node name="TextTuto" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(1260, 193)
 texture = ExtResource("8_pwcr2")
+
+[node name="Door" parent="." node_paths=PackedStringArray("keys") instance=ExtResource("9_sx12u")]
+position = Vector2(64, 344)
+scale = Vector2(1.36, 1.36)
+keys = [NodePath("../Keys/Key"), NodePath("../Keys/Key2"), NodePath("../Keys/Key3")]
+
+[node name="Keys" type="Node2D" parent="."]
+position = Vector2(1472, 368)
+
+[node name="Key" parent="Keys" instance=ExtResource("10_g53dq")]
+
+[node name="Key2" parent="Keys" instance=ExtResource("10_g53dq")]
+position = Vector2(16, -456)
+
+[node name="Key3" parent="Keys" instance=ExtResource("10_g53dq")]
+position = Vector2(280, -456)
+
+[node name="End" type="Sprite2D" parent="."]
+position = Vector2(1282.75, -314.75)
+scale = Vector2(0.618, 0.618)
+texture = ExtResource("11_g53dq")
+
+[node name="Secret" type="Sprite2D" parent="."]
+position = Vector2(-568, 272)
+texture = ExtResource("12_0yr4i")

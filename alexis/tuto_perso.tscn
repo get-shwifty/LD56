@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dya5aouynhlv2"]
+
+[ext_resource type="Script" path="res://alexis/tuto_champ.gd" id="1_f48p8"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="4_pc3fe"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="5_picfl"]
+[ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="6_6kumi"]
+[ext_resource type="Texture2D" uid="uid://bn0jyge20dbsd" path="res://assets/icon_player.png" id="6_r1fsj"]
+[ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="7_eifvn"]
+
+[node name="TutoChamp" type="Node2D"]
+script = ExtResource("1_f48p8")
+
+[node name="RuneA" parent="." instance=ExtResource("4_pc3fe")]
+position = Vector2(0.375, -11.25)
+
+[node name="RuneA2" parent="." instance=ExtResource("4_pc3fe")]
+position = Vector2(1.375, -26.25)
+
+[node name="RuneB" parent="." instance=ExtResource("5_picfl")]
+position = Vector2(1.375, -41.25)
+
+[node name="ReactiveComponent2" parent="." instance=ExtResource("6_6kumi")]
+
+[node name="Capsule" type="Sprite2D" parent="."]
+position = Vector2(0.375, -26.25)
+scale = Vector2(1.23, 1.23)
+texture = ExtResource("7_eifvn")
+
+[node name="IconPlayer" type="Sprite2D" parent="."]
+position = Vector2(-1, -67)
+texture = ExtResource("6_r1fsj")

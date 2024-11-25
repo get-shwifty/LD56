@@ -47,7 +47,8 @@ script = ExtResource("1_jiax2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_m6wuf")
-frame_progress = 0.769464
+frame = 1
+frame_progress = 0.0883982
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
