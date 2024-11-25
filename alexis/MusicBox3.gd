@@ -31,8 +31,9 @@ signal on_song_played(song: String)
 ]
 @onready var ALL_DYN_HINTS = [
 	$DynMemo/HintPetitePierre,
-	$DynMemo/HintGrandePierre,
-	$DynMemo/HintPlayer
+	#$DynMemo/HintGrandePierre,
+	$DynMemo/HintPlayer,
+	$DynMemo/HintChamp,
 ]
 
 @onready var players = {
@@ -65,14 +66,14 @@ func _physics_process(delta):
 	var cam = get_viewport().get_camera_2d()
 	$Area2D.global_position = cam.global_position
 	
-	if Input.is_action_just_pressed("static_hint"):
-		if $StaticMemo.is_visible():
-			$StaticMemo.hide()
-		else:
-			buffer_static_hint.clear()
-			$StaticMemo.show()
-			for hint in ALL_HINTS:
-				hint.on_song("")
+	#if Input.is_action_just_pressed("static_hint"):
+		#if $StaticMemo.is_visible():
+			#$StaticMemo.hide()
+		#else:
+			#buffer_static_hint.clear()
+			#$StaticMemo.show()
+			#for hint in ALL_HINTS:
+				#hint.on_song("")
 	
 	
 	if Input.is_action_just_pressed("dyn_hint_toggle"):
@@ -159,41 +160,26 @@ func notify_song():
 			trigger_aura(a.global_position)
 
 func update_dyn_hint(song: String):
+	var visible_hints = []
+	
 	for hint in ALL_DYN_HINTS:
 		hint.on_song(song)
-		
-	if song in ["d", "e", "f", "db", "eb", "fb", "dbc", "ebc", "fbc"]:
-		# show pierres
-		$DynMemo/HintGrandePierre.show()
-		$DynMemo/HintPetitePierre.show()
-		$DynMemo/HintPlayer.hide()
-		$DynMemo/Nothing.hide()
-		if song == "f":
-			$DynMemo/HintPlayer.show()
-	elif song in ["dbca", "ebca", "fbca"]:
-		# show pierres
-		$DynMemo/HintGrandePierre.hide()
-		$DynMemo/HintPetitePierre.show()
-		$DynMemo/HintPlayer.hide()
-		$DynMemo/Nothing.hide()
-	elif song in ["dbcc", "ebcc", "fbcc"]:
-		# show pierres
-		$DynMemo/HintGrandePierre.show()
-		$DynMemo/HintPetitePierre.hide()
-		$DynMemo/HintPlayer.hide()
-		$DynMemo/Nothing.hide()
-	elif song in ["fa", "fac", "fab"]:
-		# show player
-		$DynMemo/HintGrandePierre.hide()
-		$DynMemo/HintPetitePierre.hide()
-		$DynMemo/HintPlayer.show()
-		$DynMemo/Nothing.hide()
-	else:
-		$DynMemo/HintGrandePierre.hide()
-		$DynMemo/HintPetitePierre.hide()
-		$DynMemo/HintPlayer.hide()
+
+		if hint.can_display_hint(song):
+			hint.show()
+			visible_hints.append(hint)
+		else:
+			hint.hide()
+	
+	if visible_hints.is_empty():
 		$DynMemo/Nothing.show()
-		
+	else:
+		$DynMemo/Nothing.hide()
+
+		var N = visible_hints.size()
+		var offset = 0.5 if N % 2 == 0 else 0.0
+		for i in range(N):
+			visible_hints[i].position.x = (i - (i / 2) - offset) * 20.0
 
 func trigger_aura(position):
 	var aura = SAura.instantiate()

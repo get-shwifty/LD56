@@ -4,25 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="2_x3u0c"]
 [ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="3_eb2k3"]
 [ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="4_8mx6j"]
-[ext_resource type="Texture2D" uid="uid://1l12ns1yj41j" path="res://assets/perso.png" id="5_dkv4j"]
+[ext_resource type="Texture2D" uid="uid://bn0jyge20dbsd" path="res://assets/icon_player.png" id="5_tb7yi"]
 
 [node name="HintPlayer" type="Node2D"]
 scale = Vector2(0.94, 1)
 script = ExtResource("1_tb7yi")
 
 [node name="RuneA" parent="." instance=ExtResource("3_eb2k3")]
-position = Vector2(0, -24)
+position = Vector2(0, -8)
 
 [node name="RuneC" parent="." instance=ExtResource("4_8mx6j")]
-position = Vector2(0, -40)
+position = Vector2(0, -24)
 
 [node name="RuneB" parent="." instance=ExtResource("2_x3u0c")]
-position = Vector2(0, -56)
+position = Vector2(0, -40)
 
-[node name="Perso" type="Sprite2D" parent="."]
-modulate = Color(0.639216, 0.639216, 0.811765, 1)
-position = Vector2(0, -4)
-scale = Vector2(0.531915, 0.545454)
-texture = ExtResource("5_dkv4j")
-region_enabled = true
-region_rect = Rect2(122, 16, 32, 44)
+[node name="IconPlayer" type="Sprite2D" parent="."]
+position = Vector2(0, -59)
+texture = ExtResource("5_tb7yi")

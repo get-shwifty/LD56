@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5talylcm421k"]
+[gd_scene load_steps=19 format=3 uid="uid://b5talylcm421k"]
 
 [ext_resource type="Script" path="res://alexis/MusicBox3.gd" id="1_kiw7a"]
 [ext_resource type="PackedScene" uid="uid://cwrknv3moe2nm" path="res://alexis/hint_petite_pierre.tscn" id="2_ovom3"]
@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://lfttp8c3nhr4" path="res://alexis/rune_e.tscn" id="8_4wtux"]
 [ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="9_ieyci"]
 [ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="10_4wtux"]
+[ext_resource type="Script" path="res://alexis/hint_champ.gd" id="14_46qtc"]
+[ext_resource type="Texture2D" uid="uid://dsfktv74utwyx" path="res://assets/icone_champ.png" id="14_kxc8f"]
 [ext_resource type="Texture2D" uid="uid://dp87laiciayrf" path="res://david/runes.png" id="14_piptr"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="15_y03l6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6shx8"]
 size = Vector2(768, 432)
@@ -167,18 +170,30 @@ position = Vector2(-18.0851, -6)
 position = Vector2(1.90735e-06, -5)
 
 [node name="DynMemo" type="Node2D" parent="."]
+z_index = 15
 
 [node name="HintPetitePierre" parent="DynMemo" instance=ExtResource("2_ovom3")]
-visible = false
-position = Vector2(-8, -8)
-
-[node name="HintGrandePierre" parent="DynMemo" instance=ExtResource("3_wetr6")]
-visible = false
-position = Vector2(8, -8)
+position = Vector2(-20, -8)
 
 [node name="HintPlayer" parent="DynMemo" instance=ExtResource("4_4wtux")]
-visible = false
-position = Vector2(0, -16)
+position = Vector2(0, -8)
+
+[node name="HintChamp" type="Node2D" parent="DynMemo"]
+position = Vector2(22, -8)
+script = ExtResource("14_46qtc")
+
+[node name="IconeChamp" type="Sprite2D" parent="DynMemo/HintChamp"]
+position = Vector2(0, -58)
+texture = ExtResource("14_kxc8f")
+
+[node name="RuneC" parent="DynMemo/HintChamp" instance=ExtResource("10_4wtux")]
+position = Vector2(0, -8)
+
+[node name="RuneA" parent="DynMemo/HintChamp" instance=ExtResource("9_ieyci")]
+position = Vector2(0, -24)
+
+[node name="RuneB" parent="DynMemo/HintChamp" instance=ExtResource("15_y03l6")]
+position = Vector2(0, -40)
 
 [node name="Nothing" type="Node2D" parent="DynMemo"]
 position = Vector2(-2, -16)
