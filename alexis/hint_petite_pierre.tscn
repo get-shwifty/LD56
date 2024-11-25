@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwrknv3moe2nm"]
+[gd_scene load_steps=7 format=3 uid="uid://cwrknv3moe2nm"]
 
 [ext_resource type="Script" path="res://alexis/hint_petite_pierre.gd" id="1_ma7mt"]
 [ext_resource type="Texture2D" uid="uid://b2wsv0ar8tb2l" path="res://assets/icone_rock.png" id="2_734kf"]
 [ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="2_ma7mt"]
 [ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="3_734kf"]
 [ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="4_5cq04"]
+[ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="6_734kf"]
 
 [node name="HintPetitePierre" type="Node2D"]
 script = ExtResource("1_ma7mt")
 
 [node name="IconeRock" type="Sprite2D" parent="."]
-position = Vector2(0, -56)
+position = Vector2(0, -64)
 texture = ExtResource("2_734kf")
 
 [node name="RuneB" parent="." instance=ExtResource("3_734kf")]
@@ -21,3 +22,8 @@ position = Vector2(0, -24)
 
 [node name="RuneA" parent="." instance=ExtResource("2_ma7mt")]
 position = Vector2(0, -40)
+
+[node name="Capsule" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-07, -24)
+scale = Vector2(1.23, 1.23)
+texture = ExtResource("6_734kf")

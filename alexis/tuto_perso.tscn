@@ -1,14 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dya5aouynhlv2"]
+[gd_scene load_steps=7 format=3 uid="uid://bgmx5s4yk3ql"]
 
-[ext_resource type="Script" path="res://alexis/tuto_champ.gd" id="1_f48p8"]
+[ext_resource type="Script" path="res://alexis/tuto_perso.gd" id="1_r1fsj"]
 [ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="4_pc3fe"]
 [ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="5_picfl"]
 [ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="6_6kumi"]
 [ext_resource type="Texture2D" uid="uid://bn0jyge20dbsd" path="res://assets/icon_player.png" id="6_r1fsj"]
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="7_eifvn"]
 
-[node name="TutoChamp" type="Node2D"]
-script = ExtResource("1_f48p8")
+[node name="TutoPerso" type="Node2D"]
+script = ExtResource("1_r1fsj")
 
 [node name="RuneA" parent="." instance=ExtResource("4_pc3fe")]
 position = Vector2(0.375, -11.25)

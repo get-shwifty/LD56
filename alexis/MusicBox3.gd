@@ -179,7 +179,7 @@ func update_dyn_hint(song: String):
 		var N = visible_hints.size()
 		var offset = 0.5 if N % 2 == 0 else 0.0
 		for i in range(N):
-			visible_hints[i].position.x = (i - (i / 2) - offset) * 20.0
+			visible_hints[i].position.x = (i - (i / 2) - offset) * 22.0
 
 func trigger_aura(position):
 	var aura = SAura.instantiate()
