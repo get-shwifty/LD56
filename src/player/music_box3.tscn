@@ -359,6 +359,7 @@ position = Vector2(-7, 7)
 [node name="SamplerInstrumentOriginal" type="AudioStreamPlayer" parent="."]
 script = ExtResource("20_f8rej")
 samples = Array[ExtResource("21_k55nm")]([SubResource("Resource_duomd"), SubResource("Resource_jm4nn"), SubResource("Resource_8ei74"), SubResource("Resource_3ivq7")])
+env_release = 0.4
 metadata/_custom_type_script = ExtResource("20_f8rej")
 
 [node name="SamplerInstrumentGuitar" type="AudioStreamPlayer" parent="."]

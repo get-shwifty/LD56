@@ -57,7 +57,8 @@ const notes_tones = {
 @onready var calculator: NoteValueCalculator = get_node("/root/NoteValue")
 @onready var samplers: Array[SamplerInstrument] = [
 	$SamplerInstrumentGuitar,
-	$SamplerInstrumentPiano
+	$SamplerInstrumentPiano,
+	$SamplerInstrumentOriginal,
 ]
 var current_sampler_index = 0
 var sampler
