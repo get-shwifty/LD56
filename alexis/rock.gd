@@ -104,7 +104,7 @@ func on_song(song):
 	
 	# actions
 	
-	if song.ends_with("dbc" + adj): # enable
+	if song == ("dbc" + adj): # enable
 		if tween:
 			tween.kill()
 		tween = get_tree().create_tween()
@@ -113,8 +113,18 @@ func on_song(song):
 		$MovingPart/VeryShort.collision_layer = 1
 		
 		return true
+	
+	elif song == ("ddbc" + adj): # disable
+		if tween:
+			tween.kill()
+		tween = get_tree().create_tween()
+		tween.tween_property($MovingPart/VeryShort, "modulate:a", 0.0,
+			$MovingPart/VeryShort.modulate.a * ANIM_DURATION)
+		$MovingPart/VeryShort.collision_layer = 0
+		
+		return true
 
-	elif not is_tall and song.ends_with("ebcac"): # transform tall
+	elif not is_tall and song == ("ebcac"): # transform tall
 		is_tall = true
 		if tween_move:
 			tween_move.kill()
@@ -125,7 +135,7 @@ func on_song(song):
 		
 		return true
 
-	elif is_tall and song.ends_with("ebcca"): # transform small
+	elif is_tall and song == ("ebcca"): # transform small
 		is_tall = false
 		if tween_move:
 			tween_move.kill()
@@ -136,12 +146,12 @@ func on_song(song):
 		
 		return true
 
-	elif song.ends_with("fbc" + adj + "a"): # move left
+	elif song == ("fbc" + adj + "a"): # move left
 		moving_factor = -1.0
 		
 		return true
 
-	elif song.ends_with("fbc" + adj + "c"): # move right
+	elif song == ("fbc" + adj + "c"): # move right
 		moving_factor = 1.0
 		
 		return true

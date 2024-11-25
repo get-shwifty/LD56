@@ -17,3 +17,11 @@ func on_song(song):
 		$RuneB.deactivate()
 		$RuneC.deactivate()
 		$RuneA.deactivate()
+
+func can_display_hint(song: String):
+	if song in [
+		"d", "db", "dbc", "dbca",
+		"dd", "ddb", "ddbc", "ddbca",
+		"f", "fb", "fbc", "fbca"]:
+		return true
+	return false

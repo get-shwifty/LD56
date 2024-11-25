@@ -1,25 +1,26 @@
 extends Node2D
 
-func on_song(song: String):
-	if song.ends_with("acb"):
-		$RuneA.activate()
+func on_song(song):
+	if song.ends_with("cab"):
 		$RuneC.activate()
+		$RuneA.activate()
 		$RuneB.activate()
-	elif song.ends_with("ac"):
-		$RuneA.activate()
+	elif song.ends_with("ca"):
 		$RuneC.activate()
-		$RuneB.deactivate()
-	elif song.ends_with("a"):
 		$RuneA.activate()
-		$RuneC.deactivate()
+		$RuneB.deactivate()
+	elif song.ends_with("c"):
+		$RuneC.activate()
+		$RuneA.deactivate()
 		$RuneB.deactivate()
 	else:
-		$RuneA.deactivate()
 		$RuneC.deactivate()
+		$RuneA.deactivate()
 		$RuneB.deactivate()
 
 func can_display_hint(song: String):
 	if song in [
-		"f", "fa", "fac", "facb"]:
+		"d", "dc", "dca", "dcab",
+		"dd", "ddc", "ddca", "ddcab"]:
 		return true
 	return false
