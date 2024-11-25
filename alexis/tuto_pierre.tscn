@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce5cf3boj6urj"]
+[gd_scene load_steps=8 format=3 uid="uid://ce5cf3boj6urj"]
 
 [ext_resource type="Script" path="res://alexis/tuto_pierre.gd" id="1_k3jh1"]
 [ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="3_ett22"]
 [ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="4_ymjj8"]
 [ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="5_vpa8s"]
 [ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="6_auvli"]
+[ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="6_n0bc1"]
+[ext_resource type="Texture2D" uid="uid://b2wsv0ar8tb2l" path="res://assets/icone_rock.png" id="7_ykb2q"]
 
 [node name="TutoPierre" type="Node2D"]
 script = ExtResource("1_k3jh1")
@@ -18,3 +20,12 @@ position = Vector2(0, -16)
 position = Vector2(0, -32)
 
 [node name="ReactiveComponent2" parent="." instance=ExtResource("6_auvli")]
+
+[node name="Capsule" type="Sprite2D" parent="."]
+position = Vector2(0.499999, -16.5)
+scale = Vector2(1.32, 1.34)
+texture = ExtResource("6_n0bc1")
+
+[node name="IconeRock" type="Sprite2D" parent="."]
+position = Vector2(1, -59)
+texture = ExtResource("7_ykb2q")
