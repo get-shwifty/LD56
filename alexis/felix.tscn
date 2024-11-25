@@ -33,7 +33,7 @@ texture = ExtResource("3_60w1t")
 [node name="Memory" parent="." instance=ExtResource("5_7cyum")]
 
 [node name="Player" parent="." instance=ExtResource("6_xahu2")]
-position = Vector2(2264, -64)
+position = Vector2(48, -288)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(384, 216)
