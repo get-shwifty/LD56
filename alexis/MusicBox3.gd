@@ -55,7 +55,12 @@ const notes_tones = {
 }
 
 @onready var calculator: NoteValueCalculator = get_node("/root/NoteValue")
-@onready var sampler: SamplerInstrument = $SamplerInstrumentGuitar
+@onready var samplers: Array[SamplerInstrument] = [
+	$SamplerInstrumentGuitar,
+	$SamplerInstrumentPiano
+]
+var current_sampler_index = 0
+var sampler
 
 var melodies = Settings.songs
 
@@ -73,6 +78,9 @@ var ignore_boss_music = false
 var dyn_hint = false
 var has_to_release = -1.0
 
+func _ready():
+	sampler = samplers[current_sampler_index]
+
 func _physics_process(delta):
 	if not Global.started:
 		return
@@ -81,6 +89,12 @@ func _physics_process(delta):
 
 	var cam = get_viewport().get_camera_2d()
 	$Area2D.global_position = cam.global_position
+	
+	if Input.is_action_just_pressed("instrument"):
+		current_sampler_index += 1
+		if current_sampler_index >= samplers.size():
+			current_sampler_index = 0
+		sampler = samplers[current_sampler_index]
 
 	#if Input.is_action_just_pressed("static_hint"):
 		#if $StaticMemo.is_visible():
@@ -100,28 +114,28 @@ func _physics_process(delta):
 	else:
 		$DynMemo.hide()
 
-	if Input.is_action_just_pressed("alt1"):
-		if buffer.size() > 0:
-			if buffer[-1] in notes_tones:
-				var note_tone = notes_tones[buffer[-1]]
-				var value = calculator.get_note_value(note_tone[0], note_tone[1])
-				var note_down = calculator.get_note_name(value - 2)
-				var note_down_octave = calculator.get_note_octave(value - 2)
-				sampler.glide(note_down, note_down_octave, 0.3)
-	elif Input.is_action_just_pressed("alt2"):
-		if buffer.size() > 0:
-			if buffer[-1] in notes_tones:
-				var note_tone = notes_tones[buffer[-1]]
-				var value = calculator.get_note_value(note_tone[0], note_tone[1])
-				var note_down = calculator.get_note_name(value + 2)
-				var note_down_octave = calculator.get_note_octave(value + 2)
-				sampler.glide(note_down, note_down_octave, 0.3)
+	#if Input.is_action_just_pressed("alt1"):
+		#if buffer.size() > 0:
+			#if buffer[-1] in notes_tones:
+				#var note_tone = notes_tones[buffer[-1]]
+				#var value = calculator.get_note_value(note_tone[0], note_tone[1])
+				#var note_down = calculator.get_note_name(value - 2)
+				#var note_down_octave = calculator.get_note_octave(value - 2)
+				#sampler.glide(note_down, note_down_octave, 0.3)
+	#elif Input.is_action_just_pressed("alt2"):
+		#if buffer.size() > 0:
+			#if buffer[-1] in notes_tones:
+				#var note_tone = notes_tones[buffer[-1]]
+				#var value = calculator.get_note_value(note_tone[0], note_tone[1])
+				#var note_down = calculator.get_note_name(value + 2)
+				#var note_down_octave = calculator.get_note_octave(value + 2)
+				#sampler.glide(note_down, note_down_octave, 0.3)
 
 	if has_to_release > 0.0:
 		has_to_release -= delta
-		if has_to_release > 0.2:
+		if has_to_release > 0.4:
 			if ( not Input.is_action_pressed("a")) and ( not Input.is_action_pressed("b")) and ( not Input.is_action_pressed("c")):
-				has_to_release = 0.2
+				has_to_release = 0.4
 		elif has_to_release < 0.0:
 			sampler.release()
 
@@ -158,6 +172,8 @@ func new_note(note):
 	if note in notes_tones:
 		var note_tone = notes_tones[note]
 		sampler.play_note(note_tone[0], note_tone[1])
+		#if note in ["d", "e", "f"]:
+			#sampler.play_note(note_tone[0], note_tone[1] - 1)
 		has_to_release = 100.0
 
 	if $StaticMemo.is_visible():

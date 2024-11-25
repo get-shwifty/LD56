@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b5talylcm421k"]
+[gd_scene load_steps=51 format=3 uid="uid://b5talylcm421k"]
 
 [ext_resource type="Script" path="res://alexis/MusicBox3.gd" id="1_kiw7a"]
 [ext_resource type="PackedScene" uid="uid://cwrknv3moe2nm" path="res://alexis/hint_petite_pierre.tscn" id="2_ovom3"]
@@ -31,6 +31,10 @@
 [ext_resource type="AudioStream" uid="uid://bpsprcrn10t0u" path="res://sounds/FSS-SteelStringGuitar-SFZ-20200521/samples/HV_65.wav" id="29_xu8yv"]
 [ext_resource type="AudioStream" uid="uid://dlt65pdaiqcyn" path="res://sounds/FSS-SteelStringGuitar-SFZ-20200521/samples/HV_67.wav" id="30_53ds2"]
 [ext_resource type="AudioStream" uid="uid://h56irqjdqrrr" path="res://sounds/FSS-SteelStringGuitar-SFZ-20200521/samples/HV_69.wav" id="31_0t4or"]
+[ext_resource type="AudioStream" uid="uid://x8ldadvddsir" path="res://sounds/UprightPianoKW-small-bright-SFZ-20190703/samples/F#3vH.wav" id="32_53ds2"]
+[ext_resource type="AudioStream" uid="uid://b0e3mq3qr4q45" path="res://sounds/UprightPianoKW-small-bright-SFZ-20190703/samples/A3vH.wav" id="33_0t4or"]
+[ext_resource type="AudioStream" uid="uid://b1fj8tp06s2fb" path="res://sounds/UprightPianoKW-small-bright-SFZ-20190703/samples/C4vH.wav" id="34_7iiug"]
+[ext_resource type="AudioStream" uid="uid://bhduvwv86rkkv" path="res://sounds/UprightPianoKW-small-bright-SFZ-20190703/samples/D#4vH.wav" id="35_2cugb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6shx8"]
 size = Vector2(768, 432)
@@ -111,6 +115,38 @@ metadata/_custom_type_script = ExtResource("21_k55nm")
 script = ExtResource("21_k55nm")
 stream = ExtResource("31_0t4or")
 tone = "A"
+octave = 4
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_emglk"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("32_53ds2")
+tone = "F#"
+octave = 3
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_y1kye"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("33_0t4or")
+tone = "A"
+octave = 3
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_bssvi"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("34_7iiug")
+tone = "C"
+octave = 4
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_cd3o6"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("35_2cugb")
+tone = "D#"
 octave = 4
 velocity = 5
 metadata/_custom_type_script = ExtResource("21_k55nm")
@@ -326,8 +362,15 @@ samples = Array[ExtResource("21_k55nm")]([SubResource("Resource_duomd"), SubReso
 metadata/_custom_type_script = ExtResource("20_f8rej")
 
 [node name="SamplerInstrumentGuitar" type="AudioStreamPlayer" parent="."]
-volume_db = -40.0
+volume_db = -36.0
 script = ExtResource("20_f8rej")
 samples = Array[ExtResource("21_k55nm")]([SubResource("Resource_7iiug"), SubResource("Resource_2cugb"), SubResource("Resource_gb3ap"), SubResource("Resource_xq8to"), SubResource("Resource_6rwl8"), SubResource("Resource_38qju")])
+env_release = 0.4
+metadata/_custom_type_script = ExtResource("20_f8rej")
+
+[node name="SamplerInstrumentPiano" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0
+script = ExtResource("20_f8rej")
+samples = Array[ExtResource("21_k55nm")]([SubResource("Resource_emglk"), SubResource("Resource_y1kye"), SubResource("Resource_bssvi"), SubResource("Resource_cd3o6")])
 env_release = 0.4
 metadata/_custom_type_script = ExtResource("20_f8rej")
