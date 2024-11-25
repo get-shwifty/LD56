@@ -3,9 +3,9 @@ class_name MusicBox3
 
 signal on_song_played(song: String)
 
-@export var audioA: Resource  = null
-@export var audioB: Resource  = null
-@export var audioC: Resource  = null
+@export var audioA: Resource = null
+@export var audioB: Resource = null
+@export var audioC: Resource = null
 @export var AUDIO_PLAYER: Resource = null
 
 @onready var area = $Area2D
@@ -19,6 +19,18 @@ signal on_song_played(song: String)
 	"d": preload("res://alexis/rune_d.tscn"),
 	"e": preload("res://alexis/rune_e.tscn"),
 	"f": preload("res://alexis/rune_f.tscn"),
+}
+
+const notes_tones = {
+	"a": ["G", 3],
+	"b": ["A#", 3],
+	"c": ["D", 4],
+	"d": ["F", 3],
+	"e": ["A", 3],
+	"f": ["C", 4],
+	"g": ["E", 4],
+	"h": ["F", 4],
+	"i": ["G", 4],
 }
 
 @onready var ALL_HINTS = [
@@ -42,6 +54,9 @@ signal on_song_played(song: String)
 	"C": audioC
 }
 
+@onready var calculator: NoteValueCalculator = get_node("/root/NoteValue")
+@onready var sampler: SamplerInstrument = $SamplerInstrumentGuitar
+
 var melodies = Settings.songs
 
 var buffer = []
@@ -49,23 +64,24 @@ var buffer_static_hint = []
 var buffer_frame = 0
 var played = ""
 var can_play = true
-var buffer_interval = 10 # frames
-var music_timout = 60*3 # frames
+var buffer_interval = 10  # frames
+var music_timout = 60 * 3  # frames
 var music_frame = 0
 
 var ignore_boss_music = false
 
 var dyn_hint = false
+var has_to_release = -1.0
 
 func _physics_process(delta):
 	if not Global.started:
 		return
 	if not can_play:
 		return
-	
+
 	var cam = get_viewport().get_camera_2d()
 	$Area2D.global_position = cam.global_position
-	
+
 	#if Input.is_action_just_pressed("static_hint"):
 		#if $StaticMemo.is_visible():
 			#$StaticMemo.hide()
@@ -74,15 +90,40 @@ func _physics_process(delta):
 			#$StaticMemo.show()
 			#for hint in ALL_HINTS:
 				#hint.on_song("")
-	
-	
+
+
 	if Input.is_action_just_pressed("dyn_hint_toggle"):
 		dyn_hint = not dyn_hint
-	
+
 	if Input.is_action_pressed("dyn_hint") or dyn_hint:
 		$DynMemo.show()
 	else:
 		$DynMemo.hide()
+
+	if Input.is_action_just_pressed("alt1"):
+		if buffer.size() > 0:
+			if buffer[-1] in notes_tones:
+				var note_tone = notes_tones[buffer[-1]]
+				var value = calculator.get_note_value(note_tone[0], note_tone[1])
+				var note_down = calculator.get_note_name(value - 2)
+				var note_down_octave = calculator.get_note_octave(value - 2)
+				sampler.glide(note_down, note_down_octave, 0.3)
+	elif Input.is_action_just_pressed("alt2"):
+		if buffer.size() > 0:
+			if buffer[-1] in notes_tones:
+				var note_tone = notes_tones[buffer[-1]]
+				var value = calculator.get_note_value(note_tone[0], note_tone[1])
+				var note_down = calculator.get_note_name(value + 2)
+				var note_down_octave = calculator.get_note_octave(value + 2)
+				sampler.glide(note_down, note_down_octave, 0.3)
+
+	if has_to_release > 0.0:
+		has_to_release -= delta
+		if has_to_release > 0.2:
+			if ( not Input.is_action_pressed("a")) and ( not Input.is_action_pressed("b")) and ( not Input.is_action_pressed("c")):
+				has_to_release = 0.2
+		elif has_to_release < 0.0:
+			sampler.release()
 
 	if Input.is_action_pressed("alt1") and Input.is_action_pressed("alt2"):
 		if Input.is_action_just_pressed("a"):
@@ -114,6 +155,11 @@ func _physics_process(delta):
 			new_note("c")
 
 func new_note(note):
+	if note in notes_tones:
+		var note_tone = notes_tones[note]
+		sampler.play_note(note_tone[0], note_tone[1])
+		has_to_release = 100.0
+
 	if $StaticMemo.is_visible():
 		if note == "d" or note == "e" or note == "f":
 			buffer_static_hint.clear()
@@ -139,7 +185,7 @@ func new_note(note):
 		buffer.append(note)
 		if buffer.size() > 8:
 			buffer.pop_front()
-		
+
 		#if note == "d" or note == "e" or note == "f":
 			#trigger_aura(global_position)
 
@@ -150,9 +196,9 @@ func new_note(note):
 func notify_song():
 	var song = "".join(buffer)
 	on_song_played.emit(song)
-	
+
 	update_dyn_hint(song)
-	
+
 	var areas = area.get_overlapping_areas()
 	for a: Area2D in areas:
 		if a.get_parent().on_song(song) == true:
@@ -161,7 +207,7 @@ func notify_song():
 
 func update_dyn_hint(song: String):
 	var visible_hints = []
-	
+
 	for hint in ALL_DYN_HINTS:
 		hint.on_song(song)
 
@@ -170,7 +216,7 @@ func update_dyn_hint(song: String):
 			visible_hints.append(hint)
 		else:
 			hint.hide()
-	
+
 	if visible_hints.is_empty():
 		$DynMemo/Nothing.show()
 	else:
@@ -185,4 +231,3 @@ func trigger_aura(position):
 	var aura = SAura.instantiate()
 	aura.position = position
 	Global.projectile_container.add_child(aura)
-	

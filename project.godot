@@ -19,12 +19,17 @@ config/icon="res://icon.svg"
 
 Settings="*res://scripts/settings.gd"
 Global="*res://scripts/global.gd"
+NoteValue="*res://addons/SimpleSampler/note_value.gd"
 
 [display]
 
 window/size/viewport_width=768
 window/size/viewport_height=432
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SimpleSampler/plugin.cfg")
 
 [input]
 
