@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtgr0ugijtjyl"]
+[gd_scene load_steps=8 format=3 uid="uid://g2a0i1cwkof6"]
 
 [ext_resource type="Script" path="res://alexis/tuto_move.gd" id="1_j5bsa"]
 [ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="2_2yog1"]

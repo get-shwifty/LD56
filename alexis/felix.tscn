@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bk1ofwjmh8v4t" path="res://src/player/player.tscn" id="6_xahu2"]
 [ext_resource type="Script" path="res://alexis/camera_2d.gd" id="7_pwb0g"]
 [ext_resource type="Texture2D" uid="uid://b5ma5vd3rnmk7" path="res://assets/vignette.png" id="8_wpqrb"]
-[ext_resource type="PackedScene" uid="uid://dtgr0ugijtjyl" path="res://alexis/tuto_move.tscn" id="9_hk10q"]
+[ext_resource type="PackedScene" uid="uid://g2a0i1cwkof6" path="res://alexis/tuto_move.tscn" id="9_hk10q"]
 
 [node name="Felix" type="Node2D"]
 script = ExtResource("1_jisd6")
