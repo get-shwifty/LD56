@@ -195,7 +195,7 @@ func new_note(note):
 			Global.projectile_container.add_child(res)
 			particle_note.activate()
 
-		if note == "d" or note == "e" or note == "f":
+		if note == "d": # or note == "e" or note == "f":
 			if not (buffer.size() == 1 and buffer[0] == note):
 				buffer.clear()
 
