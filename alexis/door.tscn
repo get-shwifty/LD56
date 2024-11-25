@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqnipbk8a57c0"]
+
+[ext_resource type="Script" path="res://alexis/door.gd" id="1_ed1w4"]
+[ext_resource type="Texture2D" uid="uid://0noyqt7x6qe0" path="res://assets/door.png" id="2_fr7pq"]
+[ext_resource type="Texture2D" uid="uid://cro8emhs7kjt" path="res://assets/key.png" id="3_s07ek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pv32w"]
+size = Vector2(48, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmapk"]
+size = Vector2(64, 96)
+
+[node name="Door" type="Node2D" node_paths=PackedStringArray("keys")]
+script = ExtResource("1_ed1w4")
+keys = [null]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fr7pq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_pv32w")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(56, 0)
+collision_layer = 0
+collision_mask = 1024
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_qmapk")
+
+[node name="Keys" type="Node2D" parent="."]
+
+[node name="Key1" type="Sprite2D" parent="Keys"]
+visible = false
+position = Vector2(-0.5, -29.5)
+texture = ExtResource("3_s07ek")
+hframes = 4
+
+[node name="Key2" type="Sprite2D" parent="Keys"]
+visible = false
+position = Vector2(0.5, 0.5)
+texture = ExtResource("3_s07ek")
+hframes = 4
+
+[node name="Key3" type="Sprite2D" parent="Keys"]
+visible = false
+position = Vector2(1.5, 29.5)
+texture = ExtResource("3_s07ek")
+hframes = 4
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

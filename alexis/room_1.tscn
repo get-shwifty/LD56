@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://gykf6hawhgmf"]
+[gd_scene load_steps=21 format=4 uid="uid://gykf6hawhgmf"]
 
 [ext_resource type="PackedScene" uid="uid://c2x87je88h7st" path="res://alexis/room_grid.tscn" id="1_1c3mm"]
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_tnnmn"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="14_584dt"]
 [ext_resource type="Script" path="res://alexis/tuto4.gd" id="14_f6a3m"]
 [ext_resource type="Texture2D" uid="uid://1l12ns1yj41j" path="res://assets/perso.png" id="15_f6a3m"]
+[ext_resource type="PackedScene" uid="uid://cqnipbk8a57c0" path="res://alexis/door.tscn" id="19_qmapk"]
+[ext_resource type="PackedScene" uid="uid://cyfxw0fgllosq" path="res://alexis/key.tscn" id="21_pv32w"]
 
 [node name="Room1" type="Node2D"]
 
@@ -190,3 +192,16 @@ scale = Vector2(1.06383, 1)
 texture = ExtResource("15_f6a3m")
 region_enabled = true
 region_rect = Rect2(122, 16, 32, 44)
+
+[node name="Door" parent="." node_paths=PackedStringArray("keys") instance=ExtResource("19_qmapk")]
+position = Vector2(80, 320)
+keys = [NodePath("../Key1"), NodePath("../Key2"), NodePath("../Key3")]
+
+[node name="Key1" parent="." instance=ExtResource("21_pv32w")]
+position = Vector2(280, 280)
+
+[node name="Key2" parent="." instance=ExtResource("21_pv32w")]
+position = Vector2(320, 280)
+
+[node name="Key3" parent="." instance=ExtResource("21_pv32w")]
+position = Vector2(360, 280)
