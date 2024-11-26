@@ -119,6 +119,7 @@ instrument={
 2d_physics/layer_1="All"
 2d_physics/layer_4="Rebound"
 2d_physics/layer_8="PlayerKill"
+2d_physics/layer_9="PlayerDeath"
 2d_physics/layer_10="Music"
 2d_physics/layer_11="Player"
 

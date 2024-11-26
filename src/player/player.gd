@@ -43,6 +43,8 @@ var jump_buffer := 0.0
 var dash_time := 0.0
 var dash_dir := 0.0
 
+var last_gpos : Vector2
+
 enum {IDLE, RUN, JUMP, DASH}
 var state = IDLE
 
@@ -71,6 +73,10 @@ func _physics_process(delta: float) -> void:
 	if is_teleport:
 		velocity = Vector2.ZERO
 		return
+
+	if is_on_floor():
+		last_gpos.x = snappedf(global_position.x, 32.0) - 16.0 * sign(velocity.x)
+		last_gpos.y = global_position.y - 8.0
 	
 	var GRAVITY = 2.0 * JUMP_HEIGHT / (JUMP_TIME * JUMP_TIME)
 	var can_input = get_collision_mask_value(1) and not $MusicBox3/StaticMemo.is_visible()
@@ -278,6 +284,7 @@ func teleport(position: Vector2):
 	await get_tree().create_timer(teleport_time).timeout
 	show()
 	is_teleport = false
+	set_state(IDLE)
 
 func is_on_ladder():
 	var areas = $LadderDetection.get_overlapping_areas()
@@ -317,3 +324,7 @@ func _on_music_box_3_on_song_played(song: String):
 		dash_time = 0.5
 		dash_dir = 1.3
 		return true
+
+
+func _on_death_detection_area_entered(area: Area2D) -> void:
+	teleport(last_gpos)

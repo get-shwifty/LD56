@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bk1ofwjmh8v4t"]
+[gd_scene load_steps=39 format=3 uid="uid://bk1ofwjmh8v4t"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hg8p4"]
 [ext_resource type="Script" path="res://src/camera.gd" id="2_q861p"]
@@ -287,6 +287,9 @@ _data = {
 &"play": SubResource("Animation_62mpq")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlj80"]
+size = Vector2(32, 40)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 1152
 script = ExtResource("1_hg8p4")
@@ -396,5 +399,15 @@ position = Vector2(-35, -93)
 texture = ExtResource("12_t12qp")
 hframes = 4
 
+[node name="DeathDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathDetection"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_wlj80")
+
 [connection signal="on_song_played" from="MusicBox3" to="." method="_on_music_box_3_on_song_played"]
 [connection signal="timeout" from="Voices/Timer" to="Voices" method="_on_timer_timeout"]
+[connection signal="area_entered" from="DeathDetection" to="." method="_on_death_detection_area_entered"]

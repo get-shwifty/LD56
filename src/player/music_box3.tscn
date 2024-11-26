@@ -312,6 +312,7 @@ position = Vector2(0, -8)
 script = ExtResource("14_3788w")
 
 [node name="HintChamp" type="Node2D" parent="DynMemo"]
+visible = false
 position = Vector2(24, -8)
 script = ExtResource("14_46qtc")
 
