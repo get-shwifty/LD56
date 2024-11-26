@@ -78,6 +78,8 @@ var ignore_boss_music = false
 
 var dyn_hint = false
 var has_to_release = -1.0
+var last_new_note := 0.0
+const NOTE_MAX_DELAY = 2.0
 
 func _ready():
 	sampler = samplers[current_sampler_index]
@@ -87,6 +89,12 @@ func _physics_process(delta):
 		return
 	if not can_play:
 		return
+	
+	if last_new_note >= 0.0 and buffer.size() > 0:
+		last_new_note -= delta
+		if last_new_note < 0.0:
+			buffer.clear()
+			notify_song()
 
 	var cam = get_viewport().get_camera_2d()
 	$Area2D.global_position = cam.global_position
@@ -170,6 +178,8 @@ func _physics_process(delta):
 			new_note("c")
 
 func new_note(note):
+	last_new_note = NOTE_MAX_DELAY
+
 	if note in notes_tones:
 		var note_tone = notes_tones[note]
 		sampler.play_note(note_tone[0], note_tone[1])

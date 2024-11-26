@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqemd752q7j4m"]
+[gd_scene load_steps=9 format=3 uid="uid://cqemd752q7j4m"]
 
 [ext_resource type="Script" path="res://alexis/rock.gd" id="1_11h1m"]
 [ext_resource type="Texture2D" uid="uid://dbdrfmgk08gl8" path="res://david/steles.png" id="1_uuxky"]
+[ext_resource type="PackedScene" uid="uid://fygbmdfgvcpq" path="res://alexis/aura_loop.tscn" id="2_ka766"]
 [ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="2_o5tbf"]
 [ext_resource type="PackedScene" uid="uid://vot3lpgxtqe7" path="res://src/platformes/very_short.tscn" id="4_5xt8l"]
 [ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="5_lclqb"]
@@ -67,3 +68,6 @@ hit_from_inside = true
 position = Vector2(25, 0)
 target_position = Vector2(0, 8)
 hit_from_inside = true
+
+[node name="AuraLoop" parent="." instance=ExtResource("2_ka766")]
+position = Vector2(0, -32)

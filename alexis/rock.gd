@@ -24,6 +24,7 @@ var t := 0.0
 # right = long c
 
 func _ready():
+	$AuraLoop.hide()
 	if is_tall:
 		$MovingPart.position.y = -32.0
 		runes[0].rotation_degrees = 180.0
@@ -62,16 +63,15 @@ func _physics_process(delta: float):
 		$Runes.position.x = 0.0
 
 func on_song(song):
-	if song == "":
-		return
-	
 	var adj = "c" if is_tall else "a"
 	
 	# vibration
-	if song.ends_with("fbc" + adj): # pending move
+	if song == "fbc" + adj: # pending move
 		vibrate = true
+		$AuraLoop.show()
 	else:
 		vibrate = false
+		$AuraLoop.hide()
 	
 	# runes
 	

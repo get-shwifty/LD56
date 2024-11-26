@@ -50,6 +50,7 @@ var state = IDLE
 
 func _ready():
 	Global.player = self
+	$AuraLoop.hide()
 
 func set_state(new_state):
 	if state == new_state:
@@ -314,16 +315,19 @@ func kill():
 
 
 func _on_music_box_3_on_song_played(song: String):
-	if song.ends_with("faaba"): # dash left
+	$AuraLoop.hide()
+	if song == "faaba": # dash left
 		set_state(DASH)
 		dash_time = 0.5
 		dash_dir = -1.3
 		return true
-	elif song.ends_with("faabc"): # dash right
+	elif song == "faabc": # dash right
 		set_state(DASH)
 		dash_time = 0.5
 		dash_dir = 1.3
 		return true
+	elif song == "faab": # will dash
+		$AuraLoop.show()
 
 
 func _on_death_detection_area_entered(area: Area2D) -> void:

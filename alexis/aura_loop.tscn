@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://fygbmdfgvcpq"]
+
+[ext_resource type="Script" path="res://alexis/aura_loop.gd" id="1_llrub"]
+[ext_resource type="Texture2D" uid="uid://bn2872wt630bj" path="res://assets/tp_anim.png" id="2_c6sjd"]
+
+[node name="AuraLoop" type="Node2D"]
+script = ExtResource("1_llrub")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_c6sjd")
+hframes = 6
