@@ -56,9 +56,9 @@ const notes_tones = {
 
 @onready var calculator: NoteValueCalculator = get_node("/root/NoteValue")
 @onready var samplers: Array[SamplerInstrument] = [
-	$SamplerInstrumentPiano,
-	$SamplerInstrumentGuitar,
 	$SamplerInstrumentOriginal,
+	$SamplerInstrumentGuitar,
+	$SamplerInstrumentPiano,
 	$SamplerInstrumentBass,
 ]
 var current_sampler_index = 0
@@ -80,7 +80,7 @@ var ignore_boss_music = false
 var dyn_hint = false
 var has_to_release = -1.0
 var last_new_note := 0.0
-const NOTE_MAX_DELAY = 2.0
+const NOTE_MAX_DELAY = 5.0
 
 func _ready():
 	sampler = samplers[current_sampler_index]
@@ -104,6 +104,10 @@ func _physics_process(delta):
 		current_sampler_index += 1
 		if current_sampler_index >= samplers.size():
 			current_sampler_index = 0
+		if current_sampler_index != 0:
+			$BackgroundMusic.stop()
+		else:
+			$BackgroundMusic.play()
 		sampler = samplers[current_sampler_index]
 
 	#if Input.is_action_just_pressed("static_hint"):

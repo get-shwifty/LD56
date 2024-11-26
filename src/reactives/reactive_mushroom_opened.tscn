@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="6_4ath0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o05xm"]
-size = Vector2(22.2222, 48.386)
+size = Vector2(29.6296, 48.386)
 
 [sub_resource type="Curve" id="Curve_bao0t"]
 _data = [Vector2(0.015625, 0.923077), 0.0, 0.0, 0, 0, Vector2(1, 0.153846), 0.0, 0.0, 0, 0]
@@ -20,6 +20,7 @@ script = ExtResource("1_3vfwm")
 opened = true
 
 [node name="Champi" parent="." instance=ExtResource("2_177k6")]
+animation = &"on"
 
 [node name="ReactiveComponent" parent="." instance=ExtResource("3_bknlg")]
 visible = false
@@ -34,7 +35,7 @@ scale = Vector2(2.16, 0.165337)
 collision_layer = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(4.41516e-07, 48.386)
+position = Vector2(1.76606e-06, 48.386)
 shape = SubResource("RectangleShape2D_o05xm")
 one_way_collision = true
 

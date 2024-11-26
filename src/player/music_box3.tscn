@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://b5talylcm421k"]
+[gd_scene load_steps=64 format=3 uid="uid://b5talylcm421k"]
 
 [ext_resource type="Script" path="res://alexis/MusicBox3.gd" id="1_kiw7a"]
 [ext_resource type="PackedScene" uid="uid://cwrknv3moe2nm" path="res://alexis/hint_petite_pierre.tscn" id="2_ovom3"]
@@ -21,10 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="18_3g288"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sampler_instrument.gd" id="20_f8rej"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sample_resource.gd" id="21_k55nm"]
-[ext_resource type="AudioStream" uid="uid://we4vrr5dqr60" path="res://sounds/Chant-pignon_1_re.mp3" id="22_6trjd"]
-[ext_resource type="AudioStream" uid="uid://dfnvrt4lbr12v" path="res://sounds/Chant-pignon_2_sol.mp3" id="23_duomd"]
-[ext_resource type="AudioStream" uid="uid://cjltfitcmih1m" path="res://sounds/Chant-pignon_3_sib.mp3" id="24_8ei74"]
-[ext_resource type="AudioStream" uid="uid://dkyawlkyrjnj4" path="res://sounds/Chant-pignon_4_re2.mp3" id="25_3ivq7"]
+[ext_resource type="AudioStream" uid="uid://d0r3n36ee2kio" path="res://sounds/new_flute/Chant-pignon_1_re.mp3" id="22_6rwl8"]
+[ext_resource type="AudioStream" uid="uid://b2eyfl32wf6il" path="res://sounds/new_flute/Chant-pignon_2_sol.mp3" id="23_6rwl8"]
+[ext_resource type="AudioStream" uid="uid://b68iqk1yv15ne" path="res://sounds/new_flute/Chant-pignon_3_sib.mp3" id="24_38qju"]
+[ext_resource type="AudioStream" uid="uid://eud0v67v1lid" path="res://sounds/new_flute/Chant-pignon_4_re2.mp3" id="25_emglk"]
 [ext_resource type="AudioStream" uid="uid://c2pwokkxxkvlb" path="res://sounds/FSS-SteelStringGuitar-SFZ-20200521/samples/HV_60.wav" id="26_bssvi"]
 [ext_resource type="AudioStream" uid="uid://d066yl7k7ciew" path="res://sounds/FSS-SteelStringGuitar-SFZ-20200521/samples/HV_62.wav" id="27_84l2q"]
 [ext_resource type="AudioStream" uid="uid://61bdnp5vitei" path="res://sounds/FSS-SteelStringGuitar-SFZ-20200521/samples/HV_64.wav" id="28_30nm1"]
@@ -41,13 +41,14 @@
 [ext_resource type="AudioStream" uid="uid://bnv15ttx0r2xi" path="res://sounds/bass/babyblue_d4_f_rr1.wav" id="39_y1kye"]
 [ext_resource type="AudioStream" uid="uid://wameeoatqrix" path="res://sounds/bass/babyblue_f3_f_rr1.wav" id="40_cd3o6"]
 [ext_resource type="AudioStream" uid="uid://uj7372ntlk0q" path="res://sounds/bass/babyblue_g3_f_rr1.wav" id="41_chfam"]
+[ext_resource type="AudioStream" uid="uid://djoyyu58cb2ct" path="res://sounds/Musique_Zone_2_haute.mp3" id="42_38qju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6shx8"]
 size = Vector2(768, 432)
 
 [sub_resource type="Resource" id="Resource_duomd"]
 script = ExtResource("21_k55nm")
-stream = ExtResource("22_6trjd")
+stream = ExtResource("22_6rwl8")
 tone = "D"
 octave = 4
 velocity = 5
@@ -55,7 +56,7 @@ metadata/_custom_type_script = ExtResource("21_k55nm")
 
 [sub_resource type="Resource" id="Resource_jm4nn"]
 script = ExtResource("21_k55nm")
-stream = ExtResource("23_duomd")
+stream = ExtResource("23_6rwl8")
 tone = "G"
 octave = 4
 velocity = 5
@@ -63,7 +64,7 @@ metadata/_custom_type_script = ExtResource("21_k55nm")
 
 [sub_resource type="Resource" id="Resource_8ei74"]
 script = ExtResource("21_k55nm")
-stream = ExtResource("24_8ei74")
+stream = ExtResource("24_38qju")
 tone = "A#"
 octave = 4
 velocity = 5
@@ -71,7 +72,7 @@ metadata/_custom_type_script = ExtResource("21_k55nm")
 
 [sub_resource type="Resource" id="Resource_3ivq7"]
 script = ExtResource("21_k55nm")
-stream = ExtResource("25_3ivq7")
+stream = ExtResource("25_emglk")
 tone = "D"
 octave = 5
 velocity = 5
@@ -412,6 +413,7 @@ unique_name_in_owner = true
 position = Vector2(-7, 7)
 
 [node name="SamplerInstrumentOriginal" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 script = ExtResource("20_f8rej")
 samples = Array[ExtResource("21_k55nm")]([SubResource("Resource_duomd"), SubResource("Resource_jm4nn"), SubResource("Resource_8ei74"), SubResource("Resource_3ivq7")])
 env_release = 0.4
@@ -437,3 +439,8 @@ script = ExtResource("20_f8rej")
 samples = Array[ExtResource("21_k55nm")]([SubResource("Resource_6d1p8"), SubResource("Resource_roimx"), SubResource("Resource_xlcuj"), SubResource("Resource_hmuxl"), SubResource("Resource_82581"), SubResource("Resource_qldjx")])
 env_release = 0.4
 metadata/_custom_type_script = ExtResource("20_f8rej")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("42_38qju")
+autoplay = true
+max_distance = 4836.0
