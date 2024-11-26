@@ -14,7 +14,7 @@ vframes = 20
 frame = 41
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(2.00002, 2.00002)
+position = Vector2(2, 2)
 rotation = 3.14159
 texture = ExtResource("2_3yry6")
 hframes = 20
