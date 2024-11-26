@@ -51,15 +51,19 @@ position = Vector2(0, -48)
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -16)
 target_position = Vector2(-28, 0)
+hit_from_inside = true
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
 position = Vector2(0, -16)
 target_position = Vector2(25, 0)
+hit_from_inside = true
 
 [node name="RayCast2DDownLeft" type="RayCast2D" parent="."]
 position = Vector2(-28, 0)
-target_position = Vector2(0, 16)
+target_position = Vector2(0, 8)
+hit_from_inside = true
 
 [node name="RayCast2DDownRight" type="RayCast2D" parent="."]
 position = Vector2(25, 0)
-target_position = Vector2(0, 16)
+target_position = Vector2(0, 8)
+hit_from_inside = true
