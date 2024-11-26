@@ -1,6 +1,9 @@
 extends Node2D
 
 func on_song(song: String):
+	if song == "":
+		return
+
 	if song.ends_with("bca"):
 		$RuneB.activate()
 		$RuneC.activate()
