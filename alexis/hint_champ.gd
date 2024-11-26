@@ -1,5 +1,8 @@
 extends Node2D
 
+var unlocked_d := false
+var unlocked_dd := false
+
 func on_song(song):
 	if song.ends_with("cab"):
 		$RuneC.activate()
@@ -19,8 +22,14 @@ func on_song(song):
 		$RuneB.deactivate()
 
 func can_display_hint(song: String):
-	if song in [
-		"d", "dc", "dca", "dcab",
-		"dd", "ddc", "ddca", "ddcab"]:
+	if not unlocked_d and song == "dcab":
+		unlocked_d = true
+	if not unlocked_dd and song == "ddcab":
+		unlocked_dd = true
+	
+	if unlocked_d and song in ["d", "dc", "dca", "dcab"]:
 		return true
+	if unlocked_dd and song in ["dd", "ddc", "ddca", "ddcab"]:
+		return true
+
 	return false
