@@ -31,7 +31,7 @@ var CAM_LOOKAHEAD := 0.0 # range(0, 100, 1)
 @onready var PARTICLE = preload("res://src/player/walk_particle.tscn")
 
 ### Teleport
-@export var teleport_time = 0.8
+var teleport_time = 0.5
 var is_teleport = false
 
 var counter_frame = 0
