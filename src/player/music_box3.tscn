@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b5talylcm421k"]
+[gd_scene load_steps=63 format=3 uid="uid://b5talylcm421k"]
 
 [ext_resource type="Script" path="res://alexis/MusicBox3.gd" id="1_kiw7a"]
 [ext_resource type="PackedScene" uid="uid://cwrknv3moe2nm" path="res://alexis/hint_petite_pierre.tscn" id="2_ovom3"]
@@ -35,6 +35,12 @@
 [ext_resource type="AudioStream" uid="uid://b0e3mq3qr4q45" path="res://sounds/UprightPianoKW-small-bright-SFZ-20190703/samples/A3vH.wav" id="33_0t4or"]
 [ext_resource type="AudioStream" uid="uid://b1fj8tp06s2fb" path="res://sounds/UprightPianoKW-small-bright-SFZ-20190703/samples/C4vH.wav" id="34_7iiug"]
 [ext_resource type="AudioStream" uid="uid://bhduvwv86rkkv" path="res://sounds/UprightPianoKW-small-bright-SFZ-20190703/samples/D#4vH.wav" id="35_2cugb"]
+[ext_resource type="AudioStream" uid="uid://5qybyovv5rao" path="res://sounds/bass/babyblue_a3_f_rr1.wav" id="36_6rwl8"]
+[ext_resource type="AudioStream" uid="uid://s7r3k8xddqws" path="res://sounds/bass/babyblue_b3_f_rr1.wav" id="37_38qju"]
+[ext_resource type="AudioStream" uid="uid://mqg1q7ryic68" path="res://sounds/bass/babyblue_c4_f_rr1.wav" id="38_emglk"]
+[ext_resource type="AudioStream" uid="uid://bnv15ttx0r2xi" path="res://sounds/bass/babyblue_d4_f_rr1.wav" id="39_y1kye"]
+[ext_resource type="AudioStream" uid="uid://wameeoatqrix" path="res://sounds/bass/babyblue_f3_f_rr1.wav" id="40_cd3o6"]
+[ext_resource type="AudioStream" uid="uid://uj7372ntlk0q" path="res://sounds/bass/babyblue_g3_f_rr1.wav" id="41_chfam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6shx8"]
 size = Vector2(768, 432)
@@ -148,6 +154,54 @@ script = ExtResource("21_k55nm")
 stream = ExtResource("35_2cugb")
 tone = "D#"
 octave = 4
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_6d1p8"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("36_6rwl8")
+tone = "A"
+octave = 3
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_roimx"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("37_38qju")
+tone = "B"
+octave = 3
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_xlcuj"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("38_emglk")
+tone = "C"
+octave = 4
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_hmuxl"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("39_y1kye")
+tone = "D"
+octave = 4
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_82581"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("40_cd3o6")
+tone = "F"
+octave = 3
+velocity = 5
+metadata/_custom_type_script = ExtResource("21_k55nm")
+
+[sub_resource type="Resource" id="Resource_qldjx"]
+script = ExtResource("21_k55nm")
+stream = ExtResource("41_chfam")
+tone = "G"
+octave = 3
 velocity = 5
 metadata/_custom_type_script = ExtResource("21_k55nm")
 
@@ -374,5 +428,12 @@ metadata/_custom_type_script = ExtResource("20_f8rej")
 volume_db = -30.0
 script = ExtResource("20_f8rej")
 samples = Array[ExtResource("21_k55nm")]([SubResource("Resource_emglk"), SubResource("Resource_y1kye"), SubResource("Resource_bssvi"), SubResource("Resource_cd3o6")])
+env_release = 0.4
+metadata/_custom_type_script = ExtResource("20_f8rej")
+
+[node name="SamplerInstrumentBass" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+script = ExtResource("20_f8rej")
+samples = Array[ExtResource("21_k55nm")]([SubResource("Resource_6d1p8"), SubResource("Resource_roimx"), SubResource("Resource_xlcuj"), SubResource("Resource_hmuxl"), SubResource("Resource_82581"), SubResource("Resource_qldjx")])
 env_release = 0.4
 metadata/_custom_type_script = ExtResource("20_f8rej")
