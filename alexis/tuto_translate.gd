@@ -24,6 +24,7 @@ func on_song(song: String):
 		$RuneC.deactivate()
 		$RuneA.deactivate()
 	else:
+		$RuneE.deactivate()
 		$RuneB.deactivate()
 		$RuneC.deactivate()
 		$RuneA.deactivate()

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://lfttp8c3nhr4" path="res://alexis/rune_e.tscn" id="7_dlh44"]
 [ext_resource type="Texture2D" uid="uid://17cflhjatpo6" path="res://assets/icon_translate.png" id="8_yvpgo"]
 
-[node name="TutoPierre" type="Node2D"]
+[node name="TutoTranslate" type="Node2D"]
 script = ExtResource("1_fhxxx")
 
 [node name="RuneB" parent="." instance=ExtResource("2_dlh44")]
