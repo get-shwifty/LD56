@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dgts66gjf7p1w"]
+[gd_scene load_steps=26 format=4 uid="uid://dgts66gjf7p1w"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://c2x87je88h7st" path="res://alexis/room_grid.tscn" id="1_cygu0"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://r4ytkrllej1e" path="res://alexis/tuto_champ.tscn" id="6_djt32"]
 [ext_resource type="PackedScene" uid="uid://ce5cf3boj6urj" path="res://alexis/tuto_pierre.tscn" id="7_etedf"]
 [ext_resource type="Texture2D" uid="uid://j21swnvdgfiu" path="res://assets/text_tuto.png" id="8_pwcr2"]
+[ext_resource type="PackedScene" uid="uid://dtdne222ur6pl" path="res://alexis/tuto_translate.tscn" id="8_r37qr"]
 [ext_resource type="PackedScene" uid="uid://cqnipbk8a57c0" path="res://alexis/door.tscn" id="9_sx12u"]
+[ext_resource type="Texture2D" uid="uid://b5sq517wyfkpm" path="res://assets/secret_translated.png" id="9_u62pp"]
 [ext_resource type="PackedScene" uid="uid://cyfxw0fgllosq" path="res://alexis/key.tscn" id="10_g53dq"]
 [ext_resource type="Texture2D" uid="uid://dpyq7ydi8p6im" path="res://assets/end.png" id="11_g53dq"]
 [ext_resource type="Texture2D" uid="uid://cnwemxefed4pl" path="res://assets/secret.png" id="12_0yr4i"]
@@ -68,6 +70,24 @@ texture = ExtResource("6_8uhi2")
 z_index = 2
 position = Vector2(1984, 419)
 texture = ExtResource("8_pwcr2")
+
+[node name="TutoTranslate" parent="Tutos" instance=ExtResource("8_r37qr")]
+z_index = 2
+position = Vector2(-738, 317)
+scale = Vector2(1.56, 1.56)
+
+[node name="SecretTranslated" type="Sprite2D" parent="Tutos"]
+position = Vector2(-568, 280)
+texture = ExtResource("9_u62pp")
+
+[node name="End" type="Sprite2D" parent="Tutos"]
+position = Vector2(1282.75, -314.75)
+scale = Vector2(0.618, 0.618)
+texture = ExtResource("11_g53dq")
+
+[node name="Secret" type="Sprite2D" parent="Tutos"]
+position = Vector2(-568, 280)
+texture = ExtResource("12_0yr4i")
 
 [node name="RoomGrid" parent="." instance=ExtResource("1_cygu0")]
 z_index = 3
@@ -169,15 +189,6 @@ position = Vector2(16, -456)
 
 [node name="Key3" parent="Keys" instance=ExtResource("10_g53dq")]
 position = Vector2(280, -456)
-
-[node name="End" type="Sprite2D" parent="."]
-position = Vector2(1282.75, -314.75)
-scale = Vector2(0.618, 0.618)
-texture = ExtResource("11_g53dq")
-
-[node name="Secret" type="Sprite2D" parent="."]
-position = Vector2(-568, 280)
-texture = ExtResource("12_0yr4i")
 
 [node name="AreaDeath" type="Area2D" parent="."]
 position = Vector2(64, 392)

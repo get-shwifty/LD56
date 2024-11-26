@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtdne222ur6pl"]
+
+[ext_resource type="Script" path="res://alexis/tuto_translate.gd" id="1_fhxxx"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="2_dlh44"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="3_yvpgo"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="4_jbgta"]
+[ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="5_gmgv4"]
+[ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="6_awmo6"]
+[ext_resource type="PackedScene" uid="uid://lfttp8c3nhr4" path="res://alexis/rune_e.tscn" id="7_dlh44"]
+[ext_resource type="Texture2D" uid="uid://17cflhjatpo6" path="res://assets/icon_translate.png" id="8_yvpgo"]
+
+[node name="TutoPierre" type="Node2D"]
+script = ExtResource("1_fhxxx")
+
+[node name="RuneB" parent="." instance=ExtResource("2_dlh44")]
+
+[node name="RuneC" parent="." instance=ExtResource("3_yvpgo")]
+position = Vector2(0, -16)
+
+[node name="RuneA" parent="." instance=ExtResource("4_jbgta")]
+position = Vector2(0, -32)
+
+[node name="ReactiveComponent2" parent="." instance=ExtResource("5_gmgv4")]
+
+[node name="Capsule" type="Sprite2D" parent="."]
+position = Vector2(0.499999, -16.5)
+scale = Vector2(1.32, 1.34)
+texture = ExtResource("6_awmo6")
+
+[node name="RuneE" parent="." instance=ExtResource("7_dlh44")]
+position = Vector2(0, 20)
+
+[node name="IconTranslate" type="Sprite2D" parent="."]
+position = Vector2(3, -58)
+texture = ExtResource("8_yvpgo")
