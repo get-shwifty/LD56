@@ -1,22 +1,24 @@
 extends Node2D
 
 func on_song(song: String):
-	if song.ends_with("ebca"):
+	if song == "ebca":
 		$RuneE.activate()
 		$RuneB.activate()
 		$RuneC.activate()
 		$RuneA.activate()
-	elif song.ends_with("ebc"):
+		var tween = get_tree().create_tween()
+		tween.tween_property($"../Secret", "modulate:a", 0.0, 0.3)
+	elif song == "ebc":
 		$RuneE.activate()
 		$RuneB.activate()
 		$RuneC.activate()
 		$RuneA.deactivate()
-	elif song.ends_with("eb"):
+	elif song == "eb":
 		$RuneE.activate()
 		$RuneB.activate()
 		$RuneC.deactivate()
 		$RuneA.deactivate()
-	elif song.ends_with("e"):
+	elif song == "e":
 		$RuneE.activate()
 		$RuneB.deactivate()
 		$RuneC.deactivate()
