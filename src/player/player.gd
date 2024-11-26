@@ -156,7 +156,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right") if can_input else 0.0
 	if state == DASH:
-		velocity.y = 0.0
+		velocity.y = -lerp(0.0, 1.0, (dash_time*2)**2) * RUN_SPEED / 10.0
 		velocity.x = dash_dir * RUN_SPEED * lerp(0.0, 2.2, (dash_time*2)**2)
 	elif direction:
 		%AnimatedSprite2D.scale.x = sign(direction)
