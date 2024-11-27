@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://g2a0i1cwkof6"]
+[gd_scene load_steps=9 format=3 uid="uid://g2a0i1cwkof6"]
 
 [ext_resource type="Script" path="res://alexis/tuto_move.gd" id="1_j5bsa"]
 [ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="2_2yog1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bojrx2noj8w26" path="res://alexis/rune_f.tscn" id="5_2yog1"]
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="5_rct0q"]
 [ext_resource type="Texture2D" uid="uid://cgjggvxtehuc" path="res://assets/icon_move.png" id="7_2yog1"]
+[ext_resource type="Texture2D" uid="uid://bfokq1pra7ttb" path="res://assets/icone_interrogation.png" id="8_guuh7"]
 
 [node name="TutoMove" type="Node2D"]
 script = ExtResource("1_j5bsa")
@@ -23,7 +24,7 @@ position = Vector2(1, -37)
 texture = ExtResource("4_j5bsa")
 
 [node name="RuneF" parent="." instance=ExtResource("5_2yog1")]
-position = Vector2(0, -10)
+position = Vector2(0, -9)
 scale = Vector2(0.72, 0.72)
 
 [node name="RuneA" parent="." instance=ExtResource("2_2yog1")]
@@ -31,6 +32,10 @@ position = Vector2(1.5, -64)
 scale = Vector2(0.745877, 0.745877)
 
 [node name="IconMove" type="Sprite2D" parent="."]
-position = Vector2(-0.625, -73.375)
+position = Vector2(0, -76)
 scale = Vector2(0.69, 0.69)
 texture = ExtResource("7_2yog1")
+
+[node name="IconeInterrogation" type="Sprite2D" parent="."]
+position = Vector2(0, -37)
+texture = ExtResource("8_guuh7")

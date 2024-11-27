@@ -209,11 +209,11 @@ metadata/_custom_type_script = ExtResource("21_k55nm")
 [node name="MusicBox3" type="Node2D"]
 script = ExtResource("1_kiw7a")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2DReactives" type="Area2D" parent="."]
 collision_layer = 512
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DReactives"]
 visible = false
 shape = SubResource("RectangleShape2D_6shx8")
 debug_color = Color(0, 1, 0, 0.419608)
@@ -444,3 +444,5 @@ metadata/_custom_type_script = ExtResource("20_f8rej")
 stream = ExtResource("42_38qju")
 autoplay = true
 max_distance = 4836.0
+
+[connection signal="area_entered" from="Area2DReactives" to="." method="_on_area_2d_reactives_area_entered"]

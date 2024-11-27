@@ -1,22 +1,22 @@
 extends Node2D
 
 func on_song(song):
-	if song.ends_with("dcab"):
+	if song == "dcab":
 		$RuneD.activate()
 		$RuneC.activate()
 		$RuneA.activate()
 		$RuneB.activate()
-	elif song.ends_with("dca"):
+	elif song == "dca":
 		$RuneD.activate()
 		$RuneC.activate()
 		$RuneA.activate()
 		$RuneB.deactivate()
-	elif song.ends_with("dc"):
+	elif song == "dc":
 		$RuneD.activate()
 		$RuneC.activate()
 		$RuneA.deactivate()
 		$RuneB.deactivate()
-	elif song.ends_with("d"):
+	elif song == "d":
 		$RuneD.activate()
 		$RuneC.deactivate()
 		$RuneA.deactivate()

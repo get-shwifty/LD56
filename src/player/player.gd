@@ -208,6 +208,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0
 	
 	if velocity.x != 0:
+		$MusicBox3.sign_direction = sign(velocity.x)
 		counter_frame += 1
 		if counter_frame %  randi_range(10, 20) == 0 and is_on_floor():
 			var particle = PARTICLE.instantiate()
@@ -313,8 +314,7 @@ func kill():
 	$AnimationPlayer.play_backwards("die")
 	is_teleport = false
 
-
-func _on_music_box_3_on_song_played(song: String):
+func on_song(song: String):
 	$AuraLoop.hide()
 	if song == "faaba": # dash left
 		set_state(DASH)

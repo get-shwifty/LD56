@@ -8,7 +8,7 @@ signal on_song_played(song: String)
 @export var audioC: Resource = null
 @export var AUDIO_PLAYER: Resource = null
 
-@onready var area = $Area2D
+@onready var areaReactives = $Area2DReactives
 @onready var SAura = preload("res://alexis/aura.tscn")
 
 @onready var SParticleNote = preload("res://alexis/note_particle2.tscn")
@@ -75,6 +75,8 @@ var buffer_interval = 10  # frames
 var music_timout = 60 * 3  # frames
 var music_frame = 0
 
+var sign_direction = 1.0
+
 var ignore_boss_music = false
 
 var dyn_hint = false
@@ -98,7 +100,7 @@ func _physics_process(delta):
 			notify_song()
 
 	var cam = get_viewport().get_camera_2d()
-	$Area2D.global_position = cam.global_position
+	areaReactives.global_position = cam.global_position
 	
 	if Input.is_action_just_pressed("instrument"):
 		current_sampler_index += 1
@@ -206,7 +208,10 @@ func new_note(note):
 			var res = SParticleNote.instantiate()
 			var particle_note = SParticleNotes[note].instantiate()
 			res.add_child(particle_note)
-			res.position = %NoteSpawner.global_position
+			var local_pos = %NoteSpawner.position
+			local_pos.x *= sign_direction
+			res.position = to_global(local_pos)
+			
 			Global.projectile_container.add_child(res)
 			particle_note.activate()
 
@@ -233,10 +238,10 @@ func notify_song():
 
 	update_dyn_hint(song)
 
-	var areas = area.get_overlapping_areas()
+	var areas = areaReactives.get_overlapping_areas()
 	for a: Area2D in areas:
 		if a.get_parent().on_song(song) == true:
-			buffer.clear()
+			#buffer.clear()
 			trigger_aura(a.global_position)
 
 func update_dyn_hint(song: String):
@@ -265,3 +270,8 @@ func trigger_aura(position):
 	var aura = SAura.instantiate()
 	aura.position = position
 	Global.projectile_container.add_child(aura)
+
+
+func _on_area_2d_reactives_area_entered(area: Area2D) -> void:
+	buffer.clear()
+	notify_song()

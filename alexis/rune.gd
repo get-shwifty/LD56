@@ -17,3 +17,8 @@ func deactivate():
 	tween.tween_property($Sprite2DActivated, "modulate:a", 0.0,
 		$Sprite2DActivated.modulate.a * ANIM_DURATION)
 	
+func on_song(song: String):
+	if song.begins_with("d"):
+		activate()
+	else:
+		deactivate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bk1ofwjmh8v4t"]
+[gd_scene load_steps=41 format=3 uid="uid://bk1ofwjmh8v4t"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hg8p4"]
 [ext_resource type="Script" path="res://src/camera.gd" id="2_q861p"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://3j4iwo4im1ou" path="res://david/Chant-pignon_3_sib.mp3" id="9_sgipu"]
 [ext_resource type="Script" path="res://src/player/voices.gd" id="10_50chp"]
 [ext_resource type="Texture2D" uid="uid://ockavvjtwdln" path="res://assets/poison.png" id="12_t12qp"]
+[ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="17_hrerp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nybd0"]
 size = Vector2(13, 29)
@@ -354,6 +355,8 @@ audioA = ExtResource("7_ropji")
 audioB = ExtResource("8_i7dto")
 audioC = ExtResource("9_sgipu")
 
+[node name="ReactiveComponent2" parent="." instance=ExtResource("17_hrerp")]
+
 [node name="LadderDetection" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 16
@@ -413,6 +416,5 @@ monitorable = false
 position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_wlj80")
 
-[connection signal="on_song_played" from="MusicBox3" to="." method="_on_music_box_3_on_song_played"]
 [connection signal="timeout" from="Voices/Timer" to="Voices" method="_on_timer_timeout"]
 [connection signal="area_entered" from="DeathDetection" to="." method="_on_death_detection_area_entered"]
