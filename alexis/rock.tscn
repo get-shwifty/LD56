@@ -23,7 +23,7 @@ region_rect = Rect2(0, 48, 64, 64)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPart"]
 visible = false
-position = Vector2(-3, -48)
+position = Vector2(0, -48)
 texture = ExtResource("1_uuxky")
 region_enabled = true
 region_rect = Rect2(0, 48, 64, 32)

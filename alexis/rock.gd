@@ -124,27 +124,27 @@ func on_song(song):
 		
 		return true
 
-	elif not is_tall and song == ("ebcac"): # transform tall
-		is_tall = true
-		if tween_move:
-			tween_move.kill()
-		var t = (32.0 + $MovingPart.position.y) / 32.0
-		tween_move = get_tree().create_tween().set_parallel(true)
-		tween_move.tween_property($MovingPart, "position:y", -32.0, t * ANIM_MOVE_DURATION)
-		tween_move.tween_property(runes[0], "rotation_degrees", 180.0, t * ANIM_MOVE_DURATION)
-		
-		return true
-
-	elif is_tall and song == ("ebcca"): # transform small
-		is_tall = false
-		if tween_move:
-			tween_move.kill()
-		var t = -$MovingPart.position.y / 32.0
-		tween_move = get_tree().create_tween().set_parallel(true)
-		tween_move.tween_property($MovingPart, "position:y", 0.0, t * ANIM_MOVE_DURATION)
-		tween_move.tween_property(runes[0], "rotation_degrees", 0.0, t * ANIM_MOVE_DURATION)
-		
-		return true
+	#elif not is_tall and song == ("ebcac"): # transform tall
+		#is_tall = true
+		#if tween_move:
+			#tween_move.kill()
+		#var t = (32.0 + $MovingPart.position.y) / 32.0
+		#tween_move = get_tree().create_tween().set_parallel(true)
+		#tween_move.tween_property($MovingPart, "position:y", -32.0, t * ANIM_MOVE_DURATION)
+		#tween_move.tween_property(runes[0], "rotation_degrees", 180.0, t * ANIM_MOVE_DURATION)
+		#
+		#return true
+#
+	#elif is_tall and song == ("ebcca"): # transform small
+		#is_tall = false
+		#if tween_move:
+			#tween_move.kill()
+		#var t = -$MovingPart.position.y / 32.0
+		#tween_move = get_tree().create_tween().set_parallel(true)
+		#tween_move.tween_property($MovingPart, "position:y", 0.0, t * ANIM_MOVE_DURATION)
+		#tween_move.tween_property(runes[0], "rotation_degrees", 0.0, t * ANIM_MOVE_DURATION)
+		#
+		#return true
 
 	elif song == ("fbc" + adj + "a"): # move left
 		moving_factor = -1.0
