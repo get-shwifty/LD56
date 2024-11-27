@@ -82,10 +82,11 @@ var sign_direction = 1.0
 
 var ignore_boss_music = false
 
-var dyn_hint = false
 var has_to_release = -1.0
 var last_new_note := 0.0
 const NOTE_MAX_DELAY = 5.0
+
+var unlocked_dyn_hint := false
 
 func _ready():
 	sampler = samplers[current_sampler_index]
@@ -124,11 +125,7 @@ func _physics_process(delta):
 			#for hint in ALL_HINTS:
 				#hint.on_song("")
 
-
-	#if Input.is_action_just_pressed("dyn_hint_toggle"):
-		#dyn_hint = not dyn_hint
-
-	if Input.is_action_pressed("dyn_hint") or dyn_hint:
+	if unlocked_dyn_hint and Input.is_action_pressed("dyn_hint"):
 		$DynMemo.show()
 	else:
 		$DynMemo.hide()
@@ -235,6 +232,9 @@ func new_note(note):
 func notify_song():
 	var song = "".join(buffer)
 	on_song_played.emit(song)
+	
+	if not unlocked_dyn_hint and song == "dcab":
+		unlocked_dyn_hint = true
 
 	update_dyn_hint(song)
 
