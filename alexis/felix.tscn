@@ -34,7 +34,7 @@ metadata/_edit_lock_ = true
 [node name="Memory" parent="." instance=ExtResource("5_7cyum")]
 
 [node name="Player" parent="." instance=ExtResource("6_xahu2")]
-position = Vector2(561, 397)
+position = Vector2(128, 288)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(384, 216)
