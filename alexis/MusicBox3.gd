@@ -122,8 +122,8 @@ func _physics_process(delta):
 				#hint.on_song("")
 
 
-	if Input.is_action_just_pressed("dyn_hint_toggle"):
-		dyn_hint = not dyn_hint
+	#if Input.is_action_just_pressed("dyn_hint_toggle"):
+		#dyn_hint = not dyn_hint
 
 	if Input.is_action_pressed("dyn_hint") or dyn_hint:
 		$DynMemo.show()
