@@ -114,7 +114,7 @@ func on_song(song):
 		
 		return true
 	
-	elif $MovingPart/VeryShort.collision_layer != 0 and song == ("ddbc" + adj): # disable
+	elif $MovingPart/VeryShort.collision_layer != 0 and song == ("gbc" + adj): # disable
 		if tween:
 			tween.kill()
 		tween = get_tree().create_tween()

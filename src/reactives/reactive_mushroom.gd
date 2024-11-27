@@ -17,7 +17,7 @@ func on_song(song: String):
 	if $Ground/CollisionShape2D.disabled and song == "dcab":
 		activate()
 		return true
-	elif not $Ground/CollisionShape2D.disabled and song == "ddcab":
+	elif not $Ground/CollisionShape2D.disabled and song == "gcab":
 		deactivate()
 		return true
 		

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="3_u4qsj"]
 [ext_resource type="Texture2D" uid="uid://bldtxxtcyjmfp" path="res://assets/capsule_activate.png" id="4_fnaof"]
 [ext_resource type="Texture2D" uid="uid://bp4ywoh8t5csr" path="res://assets/icon_deactivate.png" id="5_tehgd"]
-[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/rune_d.tscn" id="6_6vopw"]
+[ext_resource type="PackedScene" uid="uid://bfkbt2cuwsaok" path="res://alexis/rune_g.tscn" id="6_tehgd"]
 
 [node name="TutoDeactivate" type="Node2D"]
 script = ExtResource("1_6vopw")
@@ -13,24 +13,16 @@ script = ExtResource("1_6vopw")
 [node name="ReactiveComponent2" parent="." instance=ExtResource("2_afg50")]
 
 [node name="Capsule" type="Sprite2D" parent="."]
-position = Vector2(47, -2)
-rotation = -1.5708
+position = Vector2(0, -32)
 texture = ExtResource("3_u4qsj")
 
 [node name="CapsuleActivate" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(47, -2)
-rotation = -1.5708
+position = Vector2(0, -32)
 texture = ExtResource("4_fnaof")
 
 [node name="IconDeactivate" type="Sprite2D" parent="."]
-position = Vector2(81, -1)
+position = Vector2(0, -64)
 texture = ExtResource("5_tehgd")
 
-[node name="RuneD" parent="." instance=ExtResource("6_6vopw")]
-position = Vector2(4, -3)
-scale = Vector2(0.851079, 0.851079)
-
-[node name="RuneD2" parent="." instance=ExtResource("6_6vopw")]
-position = Vector2(16, -2)
-scale = Vector2(0.88677, 0.88677)
+[node name="RuneG" parent="." instance=ExtResource("6_tehgd")]

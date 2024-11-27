@@ -5,6 +5,7 @@
 
 [node name="RuneE" type="Node2D"]
 script = ExtResource("1_q51j7")
+note = "e"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708

@@ -20,5 +20,5 @@ func has_all_keys():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if has_all_keys():
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "position:y", 100.0, 2.0).as_relative()
+		tween.tween_property(self, "position:y", 120.0, 2.0).as_relative()
 		tween.tween_callback(queue_free)

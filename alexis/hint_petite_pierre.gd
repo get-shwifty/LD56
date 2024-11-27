@@ -1,7 +1,7 @@
 extends Node2D
 
 var unlocked_d := false
-var unlocked_dd := false
+var unlocked_g := false
 var unlocked_f := false
 
 func on_song(song):
@@ -25,14 +25,14 @@ func on_song(song):
 func can_display_hint(song: String):
 	if not unlocked_d and song == "dbca":
 		unlocked_d = true
-	if not unlocked_dd and song == "ddbca":
-		unlocked_dd = true
+	if not unlocked_g and song == "gbca":
+		unlocked_g = true
 	if not unlocked_f and song == "fbca":
 		unlocked_f = true
 	
 	if unlocked_d and song in ["d", "db", "dbc", "dbca"]:
 		return true
-	if unlocked_dd and song in ["dd", "ddb", "ddbc", "ddbca"]:
+	if unlocked_g and song in ["g", "gb", "gbc", "gbca"]:
 		return true
 	if unlocked_f and song in ["f", "fb", "fbc", "fbca"]:
 		return true

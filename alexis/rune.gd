@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var note := ""
+
 const ANIM_DURATION = 0.150
 var tween
 
@@ -18,7 +20,7 @@ func deactivate():
 		$Sprite2DActivated.modulate.a * ANIM_DURATION)
 	
 func on_song(song: String):
-	if song.begins_with("d"):
+	if song.begins_with(note):
 		activate()
 	else:
 		deactivate()

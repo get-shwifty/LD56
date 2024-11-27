@@ -5,6 +5,7 @@
 
 [node name="RuneF" type="Node2D"]
 script = ExtResource("1_qwdgr")
+note = "f"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_aefpr")

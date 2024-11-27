@@ -19,6 +19,9 @@ signal on_song_played(song: String)
 	"d": preload("res://alexis/rune_d.tscn"),
 	"e": preload("res://alexis/rune_e.tscn"),
 	"f": preload("res://alexis/rune_f.tscn"),
+	"g": preload("res://alexis/rune_g.tscn"),
+	"h": preload("res://alexis/rune_h.tscn"),
+	"i": preload("res://alexis/rune_i.tscn"),
 }
 
 const notes_tones = {
@@ -195,7 +198,7 @@ func new_note(note):
 		has_to_release = 100.0
 
 	if $StaticMemo.is_visible():
-		if note == "d" or note == "e" or note == "f":
+		if note not in ["a", "b", "c"]:
 			buffer_static_hint.clear()
 
 		buffer_static_hint.append(note)
@@ -215,10 +218,7 @@ func new_note(note):
 			Global.projectile_container.add_child(res)
 			particle_note.activate()
 
-		if note == "d":
-			if not (buffer.size() == 1 and buffer[0] == note):
-				buffer.clear()
-		elif note == "e" or note == "f":
+		if note not in ["a", "b", "c"]:
 			buffer.clear()
 
 		buffer.append(note)
