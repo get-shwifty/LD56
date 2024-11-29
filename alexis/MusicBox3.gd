@@ -36,14 +36,6 @@ const notes_tones = {
 	"i": ["G", 4],
 }
 
-@onready var ALL_HINTS = [
-	$StaticMemo/HintPetitePierre,
-	$StaticMemo/HintGrandePierre,
-	$StaticMemo/HintPlayer,
-	$StaticMemo/HintEnable,
-	$StaticMemo/HintTransform,
-	$StaticMemo/HintMove,
-]
 @onready var ALL_DYN_HINTS = [
 	$DynMemo/HintPetitePierre,
 	#$DynMemo/HintGrandePierre,
@@ -70,7 +62,6 @@ var sampler
 var melodies = Settings.songs
 
 var buffer = []
-var buffer_static_hint = []
 var buffer_frame = 0
 var played = ""
 var can_play = true
@@ -83,10 +74,12 @@ var sign_direction = 1.0
 var ignore_boss_music = false
 
 var has_to_release = -1.0
-var last_new_note := 0.0
-const NOTE_MAX_DELAY = 5.0
+var last_note_time := 0.0
+const NOTE_MAX_DELAY = 5000
 
 var unlocked_dyn_hint := false
+
+const CHORD_DELAY = 90 # 5 ticks is 5*16.67 = 83
 
 func _ready():
 	sampler = samplers[current_sampler_index]
@@ -96,12 +89,12 @@ func _physics_process(delta):
 		return
 	if not can_play:
 		return
-	
-	if last_new_note >= 0.0 and buffer.size() > 0:
-		last_new_note -= delta
-		if last_new_note < 0.0:
-			buffer.clear()
-			notify_song()
+		
+	var cur_time = Time.get_ticks_msec()
+
+	if buffer.size() > 0 and cur_time - last_note_time >= NOTE_MAX_DELAY:
+		buffer.clear()
+		notify_song()
 
 	var cam = get_viewport().get_camera_2d()
 	areaReactives.global_position = cam.global_position
@@ -115,15 +108,6 @@ func _physics_process(delta):
 		else:
 			$BackgroundMusic.play()
 		sampler = samplers[current_sampler_index]
-
-	#if Input.is_action_just_pressed("static_hint"):
-		#if $StaticMemo.is_visible():
-			#$StaticMemo.hide()
-		#else:
-			#buffer_static_hint.clear()
-			#$StaticMemo.show()
-			#for hint in ALL_HINTS:
-				#hint.on_song("")
 
 	if unlocked_dyn_hint and Input.is_action_pressed("dyn_hint"):
 		$DynMemo.show()
@@ -185,52 +169,57 @@ func _physics_process(delta):
 			new_note("c")
 
 func new_note(note):
-	last_new_note = NOTE_MAX_DELAY
-
 	if note in notes_tones:
 		var note_tone = notes_tones[note]
 		sampler.play_note(note_tone[0], note_tone[1])
 		#if note in ["d", "e", "f"]:
 			#sampler.play_note(note_tone[0], note_tone[1] - 1)
-		has_to_release = 100.0
+		has_to_release = 5.0
 
-	if $StaticMemo.is_visible():
-		if note not in ["a", "b", "c"]:
-			buffer_static_hint.clear()
+	if note in SParticleNotes:
+		var res = SParticleNote.instantiate()
+		var particle_note = SParticleNotes[note].instantiate()
+		res.add_child(particle_note)
+		var local_pos = %NoteSpawner.position
+		local_pos.x *= sign_direction
+		res.position = to_global(local_pos)
+		
+		Global.projectile_container.add_child(res)
+		particle_note.activate()
 
-		buffer_static_hint.append(note)
-		if buffer_static_hint.size() > 8:
-			buffer_static_hint.pop_front()
-		for hint in ALL_HINTS:
-			hint.on_song("".join(buffer_static_hint))
-	else:
-		if note in SParticleNotes:
-			var res = SParticleNote.instantiate()
-			var particle_note = SParticleNotes[note].instantiate()
-			res.add_child(particle_note)
-			var local_pos = %NoteSpawner.position
-			local_pos.x *= sign_direction
-			res.position = to_global(local_pos)
-			
-			Global.projectile_container.add_child(res)
-			particle_note.activate()
+	var cur_time = Time.get_ticks_msec()
 
-		if note not in ["a", "b", "c"]:
-			buffer.clear()
+	if note not in ["a", "b", "c"]:
+		buffer.clear()
+	elif cur_time - last_note_time <= CHORD_DELAY and buffer.size() > 0:
+		# manage chords
+		var last_note = buffer[-1]
+		if (note == "a" and last_note == "b") or (note == "b" and last_note == "a"):
+			buffer.pop_back()
+			note = "A"
+		elif (note == "b" and last_note == "c") or (note == "c" and last_note == "b"):
+			buffer.pop_back()
+			note = "B"
+		elif (note == "c" and last_note == "a") or (note == "a" and last_note == "c"):
+			buffer.pop_back()
+			note = "C"
+	
+	last_note_time = cur_time
+	buffer.append(note)
 
-		buffer.append(note)
-		if buffer.size() > 8:
-			buffer.pop_front()
+	if buffer.size() > 8:
+		buffer.pop_front()
 
-		#if note == "d" or note == "e" or note == "f":
-			#trigger_aura(global_position)
+	#if note == "d" or note == "e" or note == "f":
+		#trigger_aura(global_position)
 
+	notify_song()
+	if buffer.is_empty():
 		notify_song()
-		if buffer.is_empty():
-			notify_song()
 
 func notify_song():
 	var song = "".join(buffer)
+	print(song)
 	on_song_played.emit(song)
 	
 	if not unlocked_dyn_hint and song == "dcab":

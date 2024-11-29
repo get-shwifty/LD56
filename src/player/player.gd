@@ -316,17 +316,17 @@ func kill():
 
 func on_song(song: String):
 	$AuraLoop.hide()
-	if song == "faaba": # dash left
+	if song == "fBba": # dash left
 		set_state(DASH)
 		dash_time = 0.5
 		dash_dir = -1.3
 		return true
-	elif song == "faabc": # dash right
+	elif song == "fBbc": # dash right
 		set_state(DASH)
 		dash_time = 0.5
 		dash_dir = 1.3
 		return true
-	elif song == "faab": # will dash
+	elif song == "fBb": # will dash
 		$AuraLoop.show()
 
 
