@@ -22,10 +22,10 @@ position = Vector2(-1, -67)
 texture = ExtResource("6_r1fsj")
 
 [node name="RuneB" parent="." instance=ExtResource("5_picfl")]
-position = Vector2(-3, -21)
+position = Vector2(-3, -20)
 
 [node name="RuneC" parent="." instance=ExtResource("6_ph0nd")]
-position = Vector2(2.5, -19)
+position = Vector2(2.5, -20)
 
 [node name="RuneB2" parent="." instance=ExtResource("5_picfl")]
 position = Vector2(1, -36)

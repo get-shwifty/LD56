@@ -25,7 +25,7 @@ texture = ExtResource("5_x3u0c")
 position = Vector2(-3.19149, -17)
 
 [node name="RuneC" parent="." instance=ExtResource("5_eb2k3")]
-position = Vector2(2.12766, -16)
+position = Vector2(2.12766, -17)
 
 [node name="RuneB2" parent="." instance=ExtResource("2_x3u0c")]
 position = Vector2(0, -34)
