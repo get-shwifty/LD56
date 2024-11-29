@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5ujeqk3m8myw"]
+[gd_scene load_steps=8 format=3 uid="uid://b5ujeqk3m8myw"]
 
 [ext_resource type="Script" path="res://alexis/tuto_deactivate.gd" id="1_6vopw"]
 [ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="2_afg50"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bldtxxtcyjmfp" path="res://assets/capsule_activate.png" id="4_fnaof"]
 [ext_resource type="Texture2D" uid="uid://bp4ywoh8t5csr" path="res://assets/icon_deactivate.png" id="5_tehgd"]
 [ext_resource type="PackedScene" uid="uid://bfkbt2cuwsaok" path="res://alexis/rune_g.tscn" id="6_tehgd"]
+[ext_resource type="Texture2D" uid="uid://bfokq1pra7ttb" path="res://assets/icone_interrogation.png" id="7_6vopw"]
 
 [node name="TutoDeactivate" type="Node2D"]
 script = ExtResource("1_6vopw")
@@ -26,3 +27,7 @@ position = Vector2(0, -64)
 texture = ExtResource("5_tehgd")
 
 [node name="RuneG" parent="." instance=ExtResource("6_tehgd")]
+
+[node name="IconeInterrogation" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("7_6vopw")
