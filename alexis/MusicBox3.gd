@@ -230,7 +230,6 @@ func new_note(note):
 
 func notify_song():
 	var song = "".join(buffer)
-	print(song)
 	on_song_played.emit(song)
 	
 	if not unlocked_dyn_hint and song == "dcab":
