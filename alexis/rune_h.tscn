@@ -23,6 +23,7 @@ region_enabled = true
 region_rect = Rect2(19, 42, 3, 3)
 
 [node name="Sprite2DActivated" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(2, 2)
 
 [node name="Sprite2DActivated" type="Sprite2D" parent="Sprite2DActivated"]

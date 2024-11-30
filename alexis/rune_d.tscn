@@ -8,6 +8,7 @@ script = ExtResource("1_i1oua")
 note = "d"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.00272e-05, 1.00004)
 rotation = 3.14159
 texture = ExtResource("2_3yry6")
 hframes = 20
@@ -15,7 +16,7 @@ vframes = 20
 frame = 41
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(2, 2)
+position = Vector2(2, -0.99998)
 rotation = 3.14159
 texture = ExtResource("2_3yry6")
 hframes = 20
@@ -27,13 +28,14 @@ modulate = Color(1, 1, 1, 0)
 rotation = 3.14159
 
 [node name="Sprite2DActivated" type="Sprite2D" parent="Sprite2DActivated"]
+position = Vector2(2.53518e-06, -1)
 texture = ExtResource("2_3yry6")
 hframes = 20
 vframes = 20
 frame = 43
 
 [node name="Sprite2DActivated2" type="Sprite2D" parent="Sprite2DActivated"]
-position = Vector2(-2.00002, -2.00003)
+position = Vector2(-2, 0.999995)
 texture = ExtResource("2_3yry6")
 hframes = 20
 vframes = 20

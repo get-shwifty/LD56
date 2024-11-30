@@ -14,7 +14,7 @@ vframes = 20
 frame = 41
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(2.00002, 2.00002)
+position = Vector2(-2, 2)
 texture = ExtResource("2_aefpr")
 hframes = 20
 vframes = 20
@@ -25,13 +25,14 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(2, 2)
 
 [node name="Sprite2DActivated" type="Sprite2D" parent="Sprite2DActivated"]
+position = Vector2(-2, -2)
 texture = ExtResource("2_aefpr")
 hframes = 20
 vframes = 20
 frame = 43
 
 [node name="Sprite2DActivated2" type="Sprite2D" parent="Sprite2DActivated"]
-position = Vector2(-2.00002, -2.00003)
+position = Vector2(-4, 0)
 texture = ExtResource("2_aefpr")
 hframes = 20
 vframes = 20

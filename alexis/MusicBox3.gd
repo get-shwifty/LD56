@@ -78,6 +78,15 @@ var last_note_time := 0.0
 const NOTE_MAX_DELAY = 5000
 
 var unlocked_dyn_hint := false
+var visible_hints = []
+var verbs_visible_hints = {
+	"d": false,
+	"e": false,
+	"f": false,
+	"g": false,
+	"h": false,
+	"i": false,
+}
 
 const CHORD_DELAY = 90 # 5 ticks is 5*16.67 = 83
 
@@ -168,6 +177,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("c"):
 			new_note("c")
 
+	process_dyn_hint()
+
 func new_note(note):
 	if note in notes_tones:
 		var note_tone = notes_tones[note]
@@ -226,6 +237,7 @@ func notify_song():
 		unlocked_dyn_hint = true
 
 	update_dyn_hint(song)
+	process_dyn_hint()
 
 	var areas = areaReactives.get_overlapping_areas()
 	for a: Area2D in areas:
@@ -234,26 +246,106 @@ func notify_song():
 			trigger_aura(a.global_position)
 
 func update_dyn_hint(song: String):
-	var visible_hints = []
+	visible_hints = []
+	verbs_visible_hints = {
+		"d": false,
+		"e": false,
+		"f": false,
+		"g": false,
+		"h": false,
+		"i": false,
+	}
 
 	for hint in ALL_DYN_HINTS:
 		hint.on_song(song)
-
 		if hint.can_display_hint(song):
 			hint.show()
 			visible_hints.append(hint)
 		else:
 			hint.hide()
 
-	if visible_hints.is_empty():
-		$DynMemo/Nothing.show()
-	else:
-		$DynMemo/Nothing.hide()
+		for verb in verbs_visible_hints.keys():
+			if hint.can_display_hint(verb):
+				verbs_visible_hints[verb] = true
 
+func process_dyn_hint():
+	$DynMemo/No_LBRB.hide()
+	$DynMemo/LB_verbs.hide()
+	$DynMemo/LB_verbs/RuneD.visible = verbs_visible_hints["d"]
+	$DynMemo/LB_verbs/RuneD.position.x = -15.0
+	$DynMemo/LB_verbs/RuneE.visible = verbs_visible_hints["e"]
+	$DynMemo/LB_verbs/RuneE.position.x = 0.0
+	$DynMemo/LB_verbs/RuneF.visible = verbs_visible_hints["f"]
+	$DynMemo/LB_verbs/RuneF.position.x = 15.0
+	$DynMemo/LB_verbs/RuneD.deactivate(true)
+	$DynMemo/LB_verbs/RuneE.deactivate(true)
+	$DynMemo/LB_verbs/RuneF.deactivate(true)
+	$DynMemo/RB_verbs.hide()
+	$DynMemo/RB_verbs/RuneG.visible = verbs_visible_hints["g"]
+	$DynMemo/RB_verbs/RuneG.position.x = -15.0
+	$DynMemo/RB_verbs/RuneH.visible = verbs_visible_hints["h"]
+	$DynMemo/RB_verbs/RuneH.position.x = 0.0
+	$DynMemo/RB_verbs/RuneI.visible = verbs_visible_hints["i"]
+	$DynMemo/RB_verbs/RuneI.position.x = 15.0
+	$DynMemo/RB_verbs/RuneG.deactivate(true)
+	$DynMemo/RB_verbs/RuneH.deactivate(true)
+	$DynMemo/RB_verbs/RuneI.deactivate(true)
+	
+	if visible_hints.is_empty():
+		if Input.is_action_pressed("alt1") and Input.is_action_pressed("alt2"):
+			pass
+		elif Input.is_action_pressed("alt1"):
+			$DynMemo/LB_verbs.show()
+		elif Input.is_action_pressed("alt2"):
+			$DynMemo/RB_verbs.show()
+		else:
+			$DynMemo/No_LBRB.show()
+	else:
 		var N = visible_hints.size()
 		var offset = 0.5 if N % 2 == 0 else 0.0
 		for i in range(N):
 			visible_hints[i].position.x = (i - (i / 2) - offset) * 22.0
+		
+		if buffer.size() > 0:
+			var first_note = buffer[0]
+
+			if first_note in ["d", "e", "f"]:
+				$DynMemo/LB_verbs.show()
+				$DynMemo/LB_verbs/RuneD.hide()
+				$DynMemo/LB_verbs/RuneE.hide()
+				$DynMemo/LB_verbs/RuneF.hide()
+				match first_note:
+					"d":
+						$DynMemo/LB_verbs/RuneD.show()
+						$DynMemo/LB_verbs/RuneD.activate(true)
+						$DynMemo/LB_verbs/RuneD.position.x = 0.0
+					"e":
+						$DynMemo/LB_verbs/RuneE.show()
+						$DynMemo/LB_verbs/RuneE.activate(true)
+						$DynMemo/LB_verbs/RuneE.position.x = 0.0
+					"f":
+						$DynMemo/LB_verbs/RuneF.show()
+						$DynMemo/LB_verbs/RuneF.activate(true)
+						$DynMemo/LB_verbs/RuneF.position.x = 0.0
+
+			elif first_note in ["g", "h", "i"]:
+				$DynMemo/RB_verbs.show()
+				$DynMemo/RB_verbs/RuneG.hide()
+				$DynMemo/RB_verbs/RuneH.hide()
+				$DynMemo/RB_verbs/RuneI.hide()
+				match first_note:
+					"g":
+						$DynMemo/RB_verbs/RuneG.show()
+						$DynMemo/RB_verbs/RuneG.activate(true)
+						$DynMemo/RB_verbs/RuneG.position.x = 0.0
+					"h":
+						$DynMemo/RB_verbs/RuneH.show()
+						$DynMemo/RB_verbs/RuneH.activate(true)
+						$DynMemo/RB_verbs/RuneH.position.x = 0.0
+					"i":
+						$DynMemo/RB_verbs/RuneI.show()
+						$DynMemo/RB_verbs/RuneI.activate(true)
+						$DynMemo/RB_verbs/RuneI.position.x = 0.0
 
 func trigger_aura(position):
 	var aura = SAura.instantiate()

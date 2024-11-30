@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://b5talylcm421k"]
+[gd_scene load_steps=68 format=3 uid="uid://b5talylcm421k"]
 
 [ext_resource type="Script" path="res://alexis/MusicBox3.gd" id="1_kiw7a"]
 [ext_resource type="PackedScene" uid="uid://cwrknv3moe2nm" path="res://alexis/hint_petite_pierre.tscn" id="2_ovom3"]
@@ -19,10 +19,14 @@
 [ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="15_y03l6"]
 [ext_resource type="Texture2D" uid="uid://lvcxwpgwaqmq" path="res://assets/icone_champ_only.png" id="16_f8rej"]
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="18_3g288"]
+[ext_resource type="Texture2D" uid="uid://b0oiyujd71gpg" path="res://assets/mask_perso.png" id="20_emglk"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sampler_instrument.gd" id="20_f8rej"]
+[ext_resource type="PackedScene" uid="uid://bfkbt2cuwsaok" path="res://alexis/rune_g.tscn" id="21_chfam"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sample_resource.gd" id="21_k55nm"]
+[ext_resource type="PackedScene" uid="uid://lk0l1nx73a7h" path="res://alexis/rune_h.tscn" id="22_6d1p8"]
 [ext_resource type="AudioStream" uid="uid://d0r3n36ee2kio" path="res://sounds/new_flute/Chant-pignon_1_re.mp3" id="22_6rwl8"]
 [ext_resource type="AudioStream" uid="uid://b2eyfl32wf6il" path="res://sounds/new_flute/Chant-pignon_2_sol.mp3" id="23_6rwl8"]
+[ext_resource type="PackedScene" uid="uid://cvre08fxoqumx" path="res://alexis/rune_i.tscn" id="23_roimx"]
 [ext_resource type="AudioStream" uid="uid://b68iqk1yv15ne" path="res://sounds/new_flute/Chant-pignon_3_sib.mp3" id="24_38qju"]
 [ext_resource type="AudioStream" uid="uid://eud0v67v1lid" path="res://sounds/new_flute/Chant-pignon_4_re2.mp3" id="25_emglk"]
 [ext_resource type="AudioStream" uid="uid://c2pwokkxxkvlb" path="res://sounds/FSS-SteelStringGuitar-SFZ-20200521/samples/HV_60.wav" id="26_bssvi"]
@@ -356,19 +360,17 @@ position = Vector2(1.90735e-06, -5)
 
 [node name="DynMemo" type="Node2D" parent="."]
 z_index = 15
+position = Vector2(0, -6)
 
 [node name="HintPetitePierre" parent="DynMemo" instance=ExtResource("2_ovom3")]
-visible = false
-position = Vector2(-24, -8)
+position = Vector2(-24, -17)
 
 [node name="HintPlayer" parent="DynMemo" instance=ExtResource("4_4wtux")]
-visible = false
-position = Vector2(0, -8)
+position = Vector2(0, -17)
 script = ExtResource("14_3788w")
 
 [node name="HintChamp" type="Node2D" parent="DynMemo"]
-visible = false
-position = Vector2(24, -8)
+position = Vector2(24, -17)
 script = ExtResource("14_46qtc")
 
 [node name="IconeChamp" type="Sprite2D" parent="DynMemo/HintChamp"]
@@ -392,6 +394,7 @@ scale = Vector2(1.23, 1.23)
 texture = ExtResource("18_3g288")
 
 [node name="Nothing" type="Node2D" parent="DynMemo"]
+visible = false
 position = Vector2(-2, -16)
 
 [node name="Sprite2D" type="Sprite2D" parent="DynMemo/Nothing"]
@@ -407,6 +410,40 @@ texture = ExtResource("14_piptr")
 hframes = 20
 vframes = 20
 frame = 43
+
+[node name="No_LBRB" type="Node2D" parent="DynMemo"]
+
+[node name="MaskPerso" type="Sprite2D" parent="DynMemo/No_LBRB"]
+position = Vector2(-14, -11.5)
+scale = Vector2(0.755556, 0.46)
+texture = ExtResource("20_emglk")
+
+[node name="MaskPerso2" type="Sprite2D" parent="DynMemo/No_LBRB"]
+position = Vector2(14, -11.5)
+scale = Vector2(-0.756, 0.46)
+texture = ExtResource("20_emglk")
+
+[node name="LB_verbs" type="Node2D" parent="DynMemo"]
+
+[node name="RuneD" parent="DynMemo/LB_verbs" instance=ExtResource("6_csyyy")]
+position = Vector2(-15, -7)
+
+[node name="RuneE" parent="DynMemo/LB_verbs" instance=ExtResource("8_4wtux")]
+position = Vector2(0, -7)
+
+[node name="RuneF" parent="DynMemo/LB_verbs" instance=ExtResource("8_3hp5e")]
+position = Vector2(15, -7)
+
+[node name="RB_verbs" type="Node2D" parent="DynMemo"]
+
+[node name="RuneG" parent="DynMemo/RB_verbs" instance=ExtResource("21_chfam")]
+position = Vector2(-15, -5)
+
+[node name="RuneH" parent="DynMemo/RB_verbs" instance=ExtResource("22_6d1p8")]
+position = Vector2(-2, -3)
+
+[node name="RuneI" parent="DynMemo/RB_verbs" instance=ExtResource("23_roimx")]
+position = Vector2(15, -6)
 
 [node name="NoteSpawner" type="Marker2D" parent="."]
 unique_name_in_owner = true
