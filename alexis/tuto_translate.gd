@@ -8,6 +8,9 @@ func on_song(song: String):
 		$RuneA.activate()
 		var tween = get_tree().create_tween()
 		tween.tween_property($"../Secret", "modulate:a", 0.0, 0.3)
+		if $EndSpeedrun.get_overlapping_bodies().size() > 0:
+			# be sure player is in the room
+			Global.stop_speedrun()
 	elif song == "ebc":
 		$RuneE.activate()
 		$RuneB.activate()

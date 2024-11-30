@@ -363,13 +363,16 @@ z_index = 15
 position = Vector2(0, -6)
 
 [node name="HintPetitePierre" parent="DynMemo" instance=ExtResource("2_ovom3")]
+visible = false
 position = Vector2(-24, -17)
 
 [node name="HintPlayer" parent="DynMemo" instance=ExtResource("4_4wtux")]
+visible = false
 position = Vector2(0, -17)
 script = ExtResource("14_3788w")
 
 [node name="HintChamp" type="Node2D" parent="DynMemo"]
+visible = false
 position = Vector2(24, -17)
 script = ExtResource("14_46qtc")
 
@@ -412,12 +415,14 @@ vframes = 20
 frame = 43
 
 [node name="No_LBRB" type="Node2D" parent="DynMemo"]
+visible = false
 
 [node name="LbRb" type="Sprite2D" parent="DynMemo/No_LBRB"]
 position = Vector2(0, -7)
 texture = ExtResource("20_chfam")
 
 [node name="LB_verbs" type="Node2D" parent="DynMemo"]
+visible = false
 
 [node name="RuneD" parent="DynMemo/LB_verbs" instance=ExtResource("6_csyyy")]
 position = Vector2(-15, -7)
@@ -429,6 +434,7 @@ position = Vector2(0, -7)
 position = Vector2(15, -7)
 
 [node name="RB_verbs" type="Node2D" parent="DynMemo"]
+visible = false
 
 [node name="RuneG" parent="DynMemo/RB_verbs" instance=ExtResource("21_chfam")]
 position = Vector2(-15, -5)

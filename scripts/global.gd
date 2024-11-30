@@ -12,6 +12,8 @@ var request_music = null
 var started = true
 var memory = null
 
+var speedrun_start_time = -1
+var speedrun_time = -1
 
 var PLAYER = preload("res://src/player/note_player.tscn")
 
@@ -22,6 +24,10 @@ func _process(delta):
 		music_player.music = stream
 		player.add_child(music_player)
 		request_music = null
+	
+	if Input.is_action_just_pressed("speedrun"):
+		get_tree().reload_current_scene()
+		start_speedrun()
 
 func set_music(music):
 	var map_m = map.get_node("Music")
@@ -36,3 +42,12 @@ func set_music(music):
 	#request_music = "teleport"
 	#await get_tree().create_timer(timeout).timeout
 	#map_m.play()
+
+func start_speedrun():
+	speedrun_start_time = Time.get_ticks_msec()
+	speedrun_time = -1
+
+func stop_speedrun():
+	if speedrun_start_time > 0:
+		speedrun_time = Time.get_ticks_msec() - speedrun_start_time
+		speedrun_start_time = -1

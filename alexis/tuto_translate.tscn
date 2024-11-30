@@ -33,3 +33,11 @@ position = Vector2(0, 20)
 [node name="IconTranslate" type="Sprite2D" parent="."]
 position = Vector2(3, -58)
 texture = ExtResource("8_yvpgo")
+
+[node name="EndSpeedrun" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EndSpeedrun"]
+polygon = PackedVector2Array(0, 81, 470, 80, 470, -6, 254, -14, 0, -73)
