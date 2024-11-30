@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="15_y03l6"]
 [ext_resource type="Texture2D" uid="uid://lvcxwpgwaqmq" path="res://assets/icone_champ_only.png" id="16_f8rej"]
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="18_3g288"]
-[ext_resource type="Texture2D" uid="uid://b0oiyujd71gpg" path="res://assets/mask_perso.png" id="20_emglk"]
+[ext_resource type="Texture2D" uid="uid://dyw7gr38er75p" path="res://assets/lb_rb.png" id="20_chfam"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sampler_instrument.gd" id="20_f8rej"]
 [ext_resource type="PackedScene" uid="uid://bfkbt2cuwsaok" path="res://alexis/rune_g.tscn" id="21_chfam"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sample_resource.gd" id="21_k55nm"]
@@ -413,15 +413,9 @@ frame = 43
 
 [node name="No_LBRB" type="Node2D" parent="DynMemo"]
 
-[node name="MaskPerso" type="Sprite2D" parent="DynMemo/No_LBRB"]
-position = Vector2(-14, -11.5)
-scale = Vector2(0.755556, 0.46)
-texture = ExtResource("20_emglk")
-
-[node name="MaskPerso2" type="Sprite2D" parent="DynMemo/No_LBRB"]
-position = Vector2(14, -11.5)
-scale = Vector2(-0.756, 0.46)
-texture = ExtResource("20_emglk")
+[node name="LbRb" type="Sprite2D" parent="DynMemo/No_LBRB"]
+position = Vector2(0, -7)
+texture = ExtResource("20_chfam")
 
 [node name="LB_verbs" type="Node2D" parent="DynMemo"]
 
