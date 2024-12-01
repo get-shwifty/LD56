@@ -79,6 +79,7 @@ const NOTE_MAX_DELAY = 5000
 
 var unlocked_dyn_hint := false
 var visible_hints = []
+var force_dyn_hint := false
 var verbs_visible_hints = {
 	"d": false,
 	"e": false,
@@ -117,8 +118,11 @@ func _physics_process(delta):
 		else:
 			$BackgroundMusic.play()
 		sampler = samplers[current_sampler_index]
+		
+	if Input.is_action_just_pressed("dyn_hint_toggle"):
+		force_dyn_hint = not force_dyn_hint
 
-	if unlocked_dyn_hint and Input.is_action_pressed("dyn_hint"):
+	if force_dyn_hint or (unlocked_dyn_hint and Input.is_action_pressed("dyn_hint")):
 		$DynMemo.show()
 	else:
 		$DynMemo.hide()
