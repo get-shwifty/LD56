@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dgts66gjf7p1w"]
+[gd_scene load_steps=36 format=4 uid="uid://dgts66gjf7p1w"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://c2x87je88h7st" path="res://alexis/room_grid.tscn" id="1_cygu0"]
@@ -24,6 +24,9 @@
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="16_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://blp8807emshje" path="res://src/reactives/reactive_mushroom_opened.tscn" id="17_vcdn3"]
 [ext_resource type="Texture2D" uid="uid://bfgq5ml55ed2c" path="res://assets/parot.png" id="24_j1frn"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="25_gcsrh"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="26_gkjqo"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="27_i82bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cygu0"]
 size = Vector2(760.5, 115)
@@ -112,6 +115,7 @@ position = Vector2(-27, 0)
 [node name="ReactiveComponent2" parent="Tutos/ThinkText2/RuneD2" instance=ExtResource("10_byrkf")]
 
 [node name="TextTuto" type="Sprite2D" parent="Tutos"]
+visible = false
 z_index = 2
 position = Vector2(1984, 419)
 texture = ExtResource("8_pwcr2")
@@ -275,3 +279,157 @@ position = Vector2(-660, 130)
 scale = Vector2(-2, 2)
 sprite_frames = SubResource("SpriteFrames_6nvvv")
 animation = &"new_animation"
+
+[node name="ControllerKeys" type="Node2D" parent="."]
+position = Vector2(7, -10)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ControllerKeys"]
+z_index = 20
+offset_left = 1576.0
+offset_top = 369.0
+offset_right = 1584.0
+offset_bottom = 386.0
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "X"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ControllerKeys"]
+z_index = 20
+offset_left = 1591.0
+offset_top = 358.0
+offset_right = 1599.0
+offset_bottom = 375.0
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "Y"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="ControllerKeys"]
+z_index = 20
+offset_left = 1607.0
+offset_top = 369.0
+offset_right = 1615.0
+offset_bottom = 386.0
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "B"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="ControllerKeys"]
+z_index = 20
+offset_left = 1568.0
+offset_top = 346.0
+offset_right = 1583.0
+offset_bottom = 363.0
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[u]LB"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RuneA" parent="ControllerKeys" instance=ExtResource("25_gcsrh")]
+visible = false
+z_index = 20
+position = Vector2(1579, 388)
+
+[node name="ReactiveComponent2" parent="ControllerKeys/RuneA" instance=ExtResource("10_byrkf")]
+
+[node name="RuneB" parent="ControllerKeys" instance=ExtResource("26_gkjqo")]
+visible = false
+z_index = 20
+position = Vector2(1595, 379)
+
+[node name="ReactiveComponent2" parent="ControllerKeys/RuneB" instance=ExtResource("10_byrkf")]
+
+[node name="RuneC" parent="ControllerKeys" instance=ExtResource("27_i82bh")]
+visible = false
+z_index = 20
+position = Vector2(1610, 389)
+
+[node name="ReactiveComponent2" parent="ControllerKeys/RuneC" instance=ExtResource("10_byrkf")]
+
+[node name="KeyboardKeys" type="Node2D" parent="."]
+position = Vector2(7, 38)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="KeyboardKeys"]
+z_index = 20
+offset_left = 1575.0
+offset_top = 368.0
+offset_right = 1585.0
+offset_bottom = 385.0
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "Q"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="KeyboardKeys"]
+z_index = 20
+offset_left = 1586.0
+offset_top = 358.0
+offset_right = 1605.0
+offset_bottom = 375.0
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "Z/S"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="KeyboardKeys"]
+z_index = 20
+offset_left = 1607.0
+offset_top = 368.0
+offset_right = 1616.0
+offset_bottom = 385.0
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "D"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="KeyboardKeys"]
+z_index = 20
+offset_left = 1543.0
+offset_top = 345.0
+offset_right = 1582.0
+offset_bottom = 362.0
+theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[u]LSHIFT"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RuneA2" parent="KeyboardKeys" instance=ExtResource("25_gcsrh")]
+visible = false
+z_index = 20
+position = Vector2(1579, 388)
+
+[node name="ReactiveComponent2" parent="KeyboardKeys/RuneA2" instance=ExtResource("10_byrkf")]
+
+[node name="RuneB2" parent="KeyboardKeys" instance=ExtResource("26_gkjqo")]
+visible = false
+z_index = 20
+position = Vector2(1595, 379)
+
+[node name="ReactiveComponent2" parent="KeyboardKeys/RuneB2" instance=ExtResource("10_byrkf")]
+
+[node name="RuneC2" parent="KeyboardKeys" instance=ExtResource("27_i82bh")]
+visible = false
+z_index = 20
+position = Vector2(1610, 389)
+
+[node name="ReactiveComponent2" parent="KeyboardKeys/RuneC2" instance=ExtResource("10_byrkf")]
