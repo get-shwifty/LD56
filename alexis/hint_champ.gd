@@ -21,15 +21,15 @@ func on_song(song):
 		$RuneA.deactivate()
 		$RuneB.deactivate()
 
-func can_display_hint(song: String):
+func can_display_hint(song: String) -> int:
 	if not unlocked_d and song == "dcab":
 		unlocked_d = true
 	if not unlocked_g and song == "gcab":
 		unlocked_g = true
 	
 	if unlocked_d and song in ["d", "dc", "dca", "dcab"]:
-		return true
+		return 2 if song == "dcab" else 1
 	if unlocked_g and song in ["g", "gc", "gca", "gcab"]:
-		return true
-
-	return false
+		return 2 if song == "gcab" else 1
+	
+	return 0

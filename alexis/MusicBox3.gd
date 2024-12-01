@@ -74,7 +74,7 @@ var sign_direction = 1.0
 var ignore_boss_music = false
 
 var has_to_release = -1.0
-var last_note_time := 0.0
+var last_note_time := 0
 const NOTE_MAX_DELAY = 5000
 
 var unlocked_dyn_hint := false
@@ -88,6 +88,9 @@ var verbs_visible_hints = {
 	"h": false,
 	"i": false,
 }
+var tween_dyn_hint : Tween = null
+var can_show_dyn_hint = false
+const DYN_HINT_DELAY = 750
 
 const CHORD_DELAY = 90 # 5 ticks is 5*16.67 = 83
 
@@ -102,9 +105,14 @@ func _physics_process(delta):
 		
 	var cur_time = Time.get_ticks_msec()
 
-	if buffer.size() > 0 and cur_time - last_note_time >= NOTE_MAX_DELAY:
-		buffer.clear()
-		notify_song()
+	if buffer.size() > 0:
+		var time_since_last_note = cur_time - last_note_time
+		if time_since_last_note >= NOTE_MAX_DELAY:
+			reset_buffer()
+		elif time_since_last_note >= NOTE_MAX_DELAY - 500:
+			hide_dyn_hint()
+		elif time_since_last_note >= DYN_HINT_DELAY:
+			show_dyn_hint()
 
 	var cam = get_viewport().get_camera_2d()
 	areaReactives.global_position = cam.global_position
@@ -121,11 +129,11 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("dyn_hint_toggle"):
 		force_dyn_hint = not force_dyn_hint
-
-	if force_dyn_hint or (unlocked_dyn_hint and Input.is_action_pressed("dyn_hint")):
-		$DynMemo.show()
-	else:
-		$DynMemo.hide()
+	
+	#if force_dyn_hint or (unlocked_dyn_hint and Input.is_action_pressed("dyn_hint")):
+		#$DynMemo.show()
+	#else:
+		#$DynMemo.hide()
 
 	#if Input.is_action_just_pressed("alt1"):
 		#if buffer.size() > 0:
@@ -183,6 +191,10 @@ func _physics_process(delta):
 
 	process_dyn_hint()
 
+func reset_buffer():
+	buffer.clear()
+	notify_song()
+
 func new_note(note):
 	if note in notes_tones:
 		var note_tone = notes_tones[note]
@@ -206,6 +218,7 @@ func new_note(note):
 
 	if note not in ["a", "b", "c"]:
 		buffer.clear()
+		can_show_dyn_hint = true
 	elif cur_time - last_note_time <= CHORD_DELAY and buffer.size() > 0:
 		# manage chords
 		var last_note = buffer[-1]
@@ -261,15 +274,35 @@ func update_dyn_hint(song: String):
 
 	for hint in ALL_DYN_HINTS:
 		hint.on_song(song)
-		if hint.can_display_hint(song):
-			hint.show()
-			visible_hints.append(hint)
-		else:
-			hint.hide()
+		match hint.can_display_hint(song):
+			0:
+				hint.hide()
+			1:
+				hint.show()
+				visible_hints.append(hint)
+			2:
+				#hint.show()
+				#visible_hints.append(hint)
+				hide_dyn_hint()
 
-		for verb in verbs_visible_hints.keys():
-			if hint.can_display_hint(verb):
-				verbs_visible_hints[verb] = true
+		#for verb in verbs_visible_hints.keys():
+			#if hint.can_display_hint(verb):
+				#verbs_visible_hints[verb] = true
+
+func show_dyn_hint():
+	if can_show_dyn_hint:
+		can_show_dyn_hint = false
+		if tween_dyn_hint:
+			tween_dyn_hint.kill()
+		tween_dyn_hint = get_tree().create_tween()
+		tween_dyn_hint.tween_property($DynMemo, "modulate:a", 1.0, 0.3)
+
+func hide_dyn_hint():
+	can_show_dyn_hint = false
+	if tween_dyn_hint:
+		tween_dyn_hint.kill()
+	tween_dyn_hint = get_tree().create_tween()
+	tween_dyn_hint.tween_property($DynMemo, "modulate:a", 0.0, 0.5)
 
 func process_dyn_hint():
 	$DynMemo/No_LBRB.hide()
@@ -295,6 +328,7 @@ func process_dyn_hint():
 	$DynMemo/RB_verbs/RuneI.deactivate(true)
 	
 	if visible_hints.is_empty():
+		return
 		if Input.is_action_pressed("alt1") and Input.is_action_pressed("alt2"):
 			pass
 		elif Input.is_action_pressed("alt1"):
