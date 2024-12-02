@@ -90,7 +90,7 @@ var verbs_visible_hints = {
 }
 var tween_dyn_hint : Tween = null
 var can_show_dyn_hint = false
-const DYN_HINT_DELAY = 750
+const DYN_HINT_DELAY = 1000
 
 const CHORD_DELAY = 90 # 5 ticks is 5*16.67 = 83
 
@@ -297,12 +297,15 @@ func show_dyn_hint():
 		tween_dyn_hint = get_tree().create_tween()
 		tween_dyn_hint.tween_property($DynMemo, "modulate:a", 1.0, 0.3)
 
-func hide_dyn_hint():
+func hide_dyn_hint(fast = false):
 	can_show_dyn_hint = false
 	if tween_dyn_hint:
 		tween_dyn_hint.kill()
-	tween_dyn_hint = get_tree().create_tween()
-	tween_dyn_hint.tween_property($DynMemo, "modulate:a", 0.0, 0.5)
+	if fast:
+		$DynMemo.modulate.a = 0.0
+	else:
+		tween_dyn_hint = get_tree().create_tween()
+		tween_dyn_hint.tween_property($DynMemo, "modulate:a", 0.0, 0.5)
 
 func process_dyn_hint():
 	$DynMemo/No_LBRB.hide()
