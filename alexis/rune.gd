@@ -7,6 +7,8 @@ const ANIM_DURATION = 0.150
 var tween
 
 func ready():
+	$Sprite2DActivated.frame = 0
+	$Sprite2DActivated.play()
 	if activated:
 		activate(true)
 	else:

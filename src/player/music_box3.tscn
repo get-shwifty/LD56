@@ -21,12 +21,12 @@
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="18_3g288"]
 [ext_resource type="Texture2D" uid="uid://dyw7gr38er75p" path="res://assets/lb_rb.png" id="20_chfam"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sampler_instrument.gd" id="20_f8rej"]
-[ext_resource type="PackedScene" uid="uid://bfkbt2cuwsaok" path="res://alexis/rune_g.tscn" id="21_chfam"]
+[ext_resource type="PackedScene" path="res://alexis/rune_g.tscn" id="21_chfam"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sample_resource.gd" id="21_k55nm"]
 [ext_resource type="PackedScene" uid="uid://lk0l1nx73a7h" path="res://alexis/rune_h.tscn" id="22_6d1p8"]
 [ext_resource type="AudioStream" uid="uid://d0r3n36ee2kio" path="res://sounds/new_flute/Chant-pignon_1_re.mp3" id="22_6rwl8"]
 [ext_resource type="AudioStream" uid="uid://b2eyfl32wf6il" path="res://sounds/new_flute/Chant-pignon_2_sol.mp3" id="23_6rwl8"]
-[ext_resource type="PackedScene" uid="uid://cvre08fxoqumx" path="res://alexis/rune_i.tscn" id="23_roimx"]
+[ext_resource type="PackedScene" path="res://alexis/rune_i.tscn" id="23_roimx"]
 [ext_resource type="AudioStream" uid="uid://b68iqk1yv15ne" path="res://sounds/new_flute/Chant-pignon_3_sib.mp3" id="24_38qju"]
 [ext_resource type="AudioStream" uid="uid://eud0v67v1lid" path="res://sounds/new_flute/Chant-pignon_4_re2.mp3" id="25_emglk"]
 [ext_resource type="AudioStream" uid="uid://c2pwokkxxkvlb" path="res://sounds/FSS-SteelStringGuitar-SFZ-20200521/samples/HV_60.wav" id="26_bssvi"]
@@ -360,7 +360,7 @@ position = Vector2(1.90735e-06, -5)
 
 [node name="DynMemo" type="Node2D" parent="."]
 z_index = 15
-position = Vector2(0, -6)
+position = Vector2(29, 29)
 
 [node name="HintPetitePierre" parent="DynMemo" instance=ExtResource("2_ovom3")]
 visible = false
