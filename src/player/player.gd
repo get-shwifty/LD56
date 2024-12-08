@@ -318,18 +318,20 @@ func kill():
 func on_melody(melody: String, rest: String):
 	$AuraLoop.hide()
 	if melody == "MelodyDashPlayer":
-		if rest == "a": # dash left
-			set_state(DASH)
-			dash_time = 0.5
-			dash_dir = -1.3
-			return true
-		elif rest == "c": # dash right
-			set_state(DASH)
-			dash_time = 0.5
-			dash_dir = 1.3
-			return true
-		elif rest == "": # will dash
-			$AuraLoop.show()
+		match rest:
+			"a", "d":  # dash left
+				set_state(DASH)
+				dash_time = 0.5
+				dash_dir = -1.3
+				return false
+			"c", "f": # dash right
+				set_state(DASH)
+				dash_time = 0.5
+				dash_dir = 1.3
+				return false
+			"": # will dash
+				$AuraLoop.show()
+				return true
 
 func _on_death_detection_area_entered(area: Area2D) -> void:
 	teleport(last_gpos)
