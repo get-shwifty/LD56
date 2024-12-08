@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://u1kq7gjn0t37"]
+[gd_scene load_steps=5 format=3 uid="uid://u1kq7gjn0t37"]
 
 [ext_resource type="PackedScene" uid="uid://cwjh883dijrtd" path="res://alexis/melodies/verbs/melody_activer.tscn" id="1_n7ysl"]
 [ext_resource type="Script" path="res://alexis/melody.gd" id="1_os1p8"]
 [ext_resource type="PackedScene" uid="uid://do10kvev0t6ng" path="res://alexis/melodies/names/melody_pierre.tscn" id="2_os1p8"]
+[ext_resource type="Texture2D" uid="uid://bhgq4t7ybr4t0" path="res://assets/icone_rock_activated.png" id="4_r5i6n"]
 
 [node name="MelodyActiverPierre" type="Node2D"]
 script = ExtResource("1_os1p8")
@@ -20,6 +21,12 @@ position = Vector2(0, -42)
 
 [node name="RuneD" parent="MelodyPierre" index="2"]
 position = Vector2(0, -56)
+
+[node name="Top" type="Node2D" parent="."]
+position = Vector2(0, -75)
+
+[node name="IconeRockActivated" type="Sprite2D" parent="Top"]
+texture = ExtResource("4_r5i6n")
 
 [editable path="MelodyActiver"]
 [editable path="MelodyPierre"]

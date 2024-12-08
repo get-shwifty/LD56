@@ -13,15 +13,15 @@ signal on_song_played(song: String)
 
 @onready var SParticleNote = preload("res://alexis/note_particle2.tscn")
 @onready var SParticleNotes = {
-	"a": preload("res://alexis/rune_a.tscn"),
-	"b": preload("res://alexis/rune_b.tscn"),
-	"c": preload("res://alexis/rune_c.tscn"),
-	"d": preload("res://alexis/rune_d.tscn"),
-	"e": preload("res://alexis/rune_e.tscn"),
-	"f": preload("res://alexis/rune_f.tscn"),
-	"g": preload("res://alexis/rune_g.tscn"),
-	"h": preload("res://alexis/rune_h.tscn"),
-	"i": preload("res://alexis/rune_i.tscn"),
+	"a": preload("res://alexis/melodies/runes/rune_a.tscn"),
+	"b": preload("res://alexis/melodies/runes/rune_b.tscn"),
+	"c": preload("res://alexis/melodies/runes/rune_c.tscn"),
+	"d": preload("res://alexis/melodies/runes/rune_d.tscn"),
+	"e": preload("res://alexis/melodies/runes/rune_e.tscn"),
+	"f": preload("res://alexis/melodies/runes/rune_f.tscn"),
+	"g": preload("res://alexis/melodies/runes/rune_g.tscn"),
+	"h": preload("res://alexis/melodies/runes/rune_h.tscn"),
+	"i": preload("res://alexis/melodies/runes/rune_i.tscn"),
 }
 
 const notes_tones = {
@@ -212,8 +212,8 @@ func new_note(note):
 	
 	last_note_time = cur_time
 	buffer.append(note)
-
 	auto_reset_melody()
+	can_show_dyn_hint = true
 
 	notify_song()
 	if buffer.is_empty():
@@ -241,7 +241,7 @@ func notify_song():
 				notify_melody(melody, rest)
 	if song == "":
 		notify_melody("", "")
-
+	print(song)
 	update_dyn_hint(song)
 	process_dyn_hint()
 

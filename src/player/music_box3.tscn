@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b5talylcm421k"]
+[gd_scene load_steps=64 format=3 uid="uid://b5talylcm421k"]
 
 [ext_resource type="Script" path="res://alexis/MusicBox3.gd" id="1_kiw7a"]
 [ext_resource type="PackedScene" uid="uid://cwrknv3moe2nm" path="res://alexis/hint_petite_pierre.tscn" id="2_ovom3"]
@@ -15,8 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/melodies/runes/rune_c.tscn" id="10_4wtux"]
 [ext_resource type="PackedScene" uid="uid://gqdc85vskhi4" path="res://alexis/melodies/melody_activer_champ.tscn" id="14_7iiug"]
 [ext_resource type="PackedScene" uid="uid://4ul2xkctqcvv" path="res://alexis/melodies/melody_dash_player.tscn" id="15_2cugb"]
+[ext_resource type="PackedScene" uid="uid://dxmi7idap3cnd" path="res://alexis/melodies/melody_desactiver_champ.tscn" id="15_6rwl8"]
 [ext_resource type="PackedScene" uid="uid://u1kq7gjn0t37" path="res://alexis/melodies/melody_activer_pierre.tscn" id="16_gb3ap"]
 [ext_resource type="PackedScene" uid="uid://b0ukbr4lmjk0c" path="res://alexis/melodies/melody_move_pierre.tscn" id="17_xq8to"]
+[ext_resource type="PackedScene" uid="uid://dcg2p27sflyi6" path="res://alexis/melodies/melody_desactiver_pierre.tscn" id="18_38qju"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sampler_instrument.gd" id="20_f8rej"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sample_resource.gd" id="21_k55nm"]
 [ext_resource type="AudioStream" uid="uid://d0r3n36ee2kio" path="res://sounds/new_flute/Chant-pignon_1_re.mp3" id="22_6rwl8"]
@@ -357,12 +359,22 @@ z_index = 15
 position = Vector2(29, 29)
 
 [node name="MelodyActiverChamp" parent="DynMemo" instance=ExtResource("14_7iiug")]
+is_hint = true
+
+[node name="MelodyDesactiverChamp" parent="DynMemo" instance=ExtResource("15_6rwl8")]
+is_hint = true
 
 [node name="MelodyDashPlayer" parent="DynMemo" instance=ExtResource("15_2cugb")]
+is_hint = true
 
 [node name="MelodyActiverPierre" parent="DynMemo" instance=ExtResource("16_gb3ap")]
+is_hint = true
+
+[node name="MelodyDesactiverPierre" parent="DynMemo" instance=ExtResource("18_38qju")]
+is_hint = true
 
 [node name="MelodyMovePierre" parent="DynMemo" instance=ExtResource("17_xq8to")]
+is_hint = true
 
 [node name="NoteSpawner" type="Marker2D" parent="."]
 unique_name_in_owner = true

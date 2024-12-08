@@ -8,11 +8,14 @@ class_name Melody
 			compute_runes()
 
 @export var song := ""
+@export var is_hint := false
 
+const RUNE_DIFF = 16
+const TOP_OFFSET = 5
 var all_runes : Array[Rune] = []
 
 func _ready() -> void:
-	_get_all_runes()
+	compute_runes()
 
 func _get_all_runes(this = self):
 	if this == self:
@@ -32,9 +35,16 @@ func compute_runes():
 	var off_y = 0
 	song = ""
 	for rune in all_runes:
+		rune.is_hint = is_hint
 		rune.position = Vector2(0, off_y)
-		off_y -= 14
+		off_y -= RUNE_DIFF
 		song += rune.note
+	if has_node("Top"):
+		$Top.position = Vector2(0, off_y - TOP_OFFSET)
+		if is_hint:
+			$Top.modulate.r = 100.0
+			$Top.modulate.g = 100.0
+			$Top.modulate.b = 100.0
 	
 func on_song(played_song: String):
 	for i in range(played_song.length(), -1, -1):

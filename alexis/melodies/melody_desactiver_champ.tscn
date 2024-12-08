@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxmi7idap3cnd"]
+
+[ext_resource type="Script" path="res://alexis/melody.gd" id="1_1h36p"]
+[ext_resource type="PackedScene" uid="uid://bekijt7reipdc" path="res://alexis/melodies/verbs/melody_desactiver.tscn" id="2_1h36p"]
+[ext_resource type="PackedScene" uid="uid://dwpeoeebk5idk" path="res://alexis/melodies/names/melody_champ.tscn" id="3_qhnql"]
+[ext_resource type="Texture2D" uid="uid://lvcxwpgwaqmq" path="res://assets/icone_champ_only.png" id="4_bomdi"]
+[ext_resource type="Texture2D" uid="uid://bp4ywoh8t5csr" path="res://assets/icon_deactivate.png" id="5_qhnql"]
+
+[node name="MelodyDesactiverChamp" type="Node2D"]
+script = ExtResource("1_1h36p")
+song = "acfde"
+
+[node name="MelodyDesactiver" parent="." instance=ExtResource("2_1h36p")]
+
+[node name="Rune_c" parent="MelodyDesactiver" index="1"]
+position = Vector2(0, -16)
+
+[node name="MelodyChamp" parent="." instance=ExtResource("3_qhnql")]
+
+[node name="RuneF" parent="MelodyChamp" index="0"]
+position = Vector2(0, -32)
+
+[node name="RuneD" parent="MelodyChamp" index="1"]
+position = Vector2(0, -48)
+
+[node name="RuneE" parent="MelodyChamp" index="2"]
+position = Vector2(0, -64)
+
+[node name="Top" type="Node2D" parent="."]
+position = Vector2(0, -85)
+
+[node name="IconeChampOnly" type="Sprite2D" parent="Top"]
+texture = ExtResource("4_bomdi")
+
+[node name="IconDeactivate" type="Sprite2D" parent="Top"]
+position = Vector2(0, -13)
+texture = ExtResource("5_qhnql")
+
+[editable path="MelodyDesactiver"]
+[editable path="MelodyChamp"]

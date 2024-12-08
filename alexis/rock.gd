@@ -74,12 +74,13 @@ func on_melody(melody: String, rest: String):
 			"": # pending move
 				vibrate = true
 				$AuraLoop.show()
+				return true
 			"a": # move left
 				moving_factor = -1.0
-				return true
+				return false
 			"c": # move right
 				moving_factor = 1.0
-				return true
+				return false
 	else:
 		vibrate = false
 		$AuraLoop.hide()

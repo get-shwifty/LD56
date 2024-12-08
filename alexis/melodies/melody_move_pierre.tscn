@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0ukbr4lmjk0c"]
+[gd_scene load_steps=6 format=3 uid="uid://b0ukbr4lmjk0c"]
 
 [ext_resource type="Script" path="res://alexis/melody.gd" id="1_b36wg"]
 [ext_resource type="PackedScene" uid="uid://bqvk7622ybkr2" path="res://alexis/melodies/verbs/melody_move.tscn" id="1_shn1o"]
 [ext_resource type="PackedScene" uid="uid://do10kvev0t6ng" path="res://alexis/melodies/names/melody_pierre.tscn" id="2_b36wg"]
+[ext_resource type="Texture2D" uid="uid://b2wsv0ar8tb2l" path="res://assets/icone_rock.png" id="4_tdcfr"]
+[ext_resource type="Texture2D" uid="uid://cgjggvxtehuc" path="res://assets/icon_move.png" id="5_uwxlb"]
 
 [node name="MelodyMovePierre" type="Node2D"]
 script = ExtResource("1_b36wg")
@@ -11,18 +13,34 @@ song = "cbefd"
 [node name="MelodyMove" parent="." instance=ExtResource("1_shn1o")]
 
 [node name="RuneB" parent="MelodyMove" index="1"]
-position = Vector2(0, -14)
+position = Vector2(0, -16)
 
 [node name="MelodyPierre" parent="." instance=ExtResource("2_b36wg")]
 
 [node name="RuneE" parent="MelodyPierre" index="0"]
-position = Vector2(0, -28)
+position = Vector2(0, -32)
 
 [node name="RuneF" parent="MelodyPierre" index="1"]
-position = Vector2(0, -42)
+position = Vector2(0, -48)
 
 [node name="RuneD" parent="MelodyPierre" index="2"]
-position = Vector2(0, -56)
+position = Vector2(0, -64)
+
+[node name="Top" type="Node2D" parent="."]
+position = Vector2(0, -85)
+
+[node name="IconeRock" type="Sprite2D" parent="Top"]
+texture = ExtResource("4_tdcfr")
+
+[node name="IconMove" type="Sprite2D" parent="Top"]
+position = Vector2(-3.625, -12.75)
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("5_uwxlb")
+
+[node name="IconMove2" type="Sprite2D" parent="Top"]
+position = Vector2(2.375, -12.75)
+scale = Vector2(-0.75, 0.5)
+texture = ExtResource("5_uwxlb")
 
 [editable path="MelodyMove"]
 [editable path="MelodyPierre"]

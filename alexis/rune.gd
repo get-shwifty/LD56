@@ -12,8 +12,8 @@ var is_activated := false
 const ANIM_DURATION = 0.150
 var tween
 
-func ready():
-	$Hint.visible = is_hint
+func _ready():
+	$Activated.show()
 	deactivate(true)
 
 func activate(fast = false):
@@ -35,7 +35,7 @@ func deactivate(fast = false):
 		tween = get_tree().create_tween()
 		tween.tween_property($Activated, "modulate:a", 0.0,
 			$Activated.modulate.a * ANIM_DURATION)
-	
+
 func on_song(song: String, fast = false):
 	if song.ends_with(note):
 		activate(fast)
