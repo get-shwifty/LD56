@@ -19,14 +19,14 @@
 [ext_resource type="PackedScene" uid="uid://cyfxw0fgllosq" path="res://alexis/key.tscn" id="10_g53dq"]
 [ext_resource type="Texture2D" uid="uid://dpyq7ydi8p6im" path="res://assets/end.png" id="11_g53dq"]
 [ext_resource type="Texture2D" uid="uid://cnwemxefed4pl" path="res://assets/secret.png" id="12_0yr4i"]
-[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/rune_d.tscn" id="12_byrkf"]
+[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/melodies/runes/rune_d.tscn" id="12_byrkf"]
 [ext_resource type="Texture2D" uid="uid://bsao843tkpmwt" path="res://assets/text_tuto2.png" id="14_ec5q4"]
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="16_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://blp8807emshje" path="res://src/reactives/reactive_mushroom_opened.tscn" id="17_vcdn3"]
 [ext_resource type="Texture2D" uid="uid://bfgq5ml55ed2c" path="res://assets/parot.png" id="24_j1frn"]
-[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="25_gcsrh"]
-[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="26_gkjqo"]
-[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="27_i82bh"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/melodies/runes/rune_a.tscn" id="25_gcsrh"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/melodies/runes/rune_b.tscn" id="26_gkjqo"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/melodies/runes/rune_c.tscn" id="27_i82bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cygu0"]
 size = Vector2(760.5, 115)

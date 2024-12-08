@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://alexis/hint_grande_pierre.gd" id="1_4243n"]
 [ext_resource type="Texture2D" uid="uid://dbdrfmgk08gl8" path="res://david/steles.png" id="1_ckdm2"]
-[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="2_4243n"]
-[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="3_ixr66"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/melodies/runes/rune_c.tscn" id="2_4243n"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/melodies/runes/rune_b.tscn" id="3_ixr66"]
 
 [node name="HintGrandePierre" type="Node2D"]
 script = ExtResource("1_4243n")

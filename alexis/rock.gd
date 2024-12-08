@@ -45,8 +45,6 @@ func _physics_process(delta: float):
 func on_melody(melody: String, rest: String):
 	var adj = "c" if is_tall else "a"
 	
-	prints(melody, rest)
-	
 	if $MovingPart/VeryShort.collision_layer != 1 and melody == "MelodyActiverPierre": # enable
 		if tween:
 			tween.kill()

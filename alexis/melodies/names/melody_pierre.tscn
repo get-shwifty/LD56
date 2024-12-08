@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://do10kvev0t6ng"]
 
-[ext_resource type="PackedScene" uid="uid://lfttp8c3nhr4" path="res://alexis/rune_e.tscn" id="1_msw85"]
-[ext_resource type="PackedScene" uid="uid://bojrx2noj8w26" path="res://alexis/rune_f.tscn" id="2_xg753"]
-[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/rune_d.tscn" id="3_iskwi"]
+[ext_resource type="PackedScene" uid="uid://lfttp8c3nhr4" path="res://alexis/melodies/runes/rune_e.tscn" id="1_msw85"]
+[ext_resource type="PackedScene" uid="uid://bojrx2noj8w26" path="res://alexis/melodies/runes/rune_f.tscn" id="2_xg753"]
+[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/melodies/runes/rune_d.tscn" id="3_iskwi"]
 
 [node name="MelodyPierre" type="Node2D"]
 

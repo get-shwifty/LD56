@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="3_u4qsj"]
 [ext_resource type="Texture2D" uid="uid://bldtxxtcyjmfp" path="res://assets/capsule_activate.png" id="4_fnaof"]
 [ext_resource type="Texture2D" uid="uid://bp4ywoh8t5csr" path="res://assets/icon_deactivate.png" id="5_tehgd"]
-[ext_resource type="PackedScene" path="res://alexis/rune_g.tscn" id="6_tehgd"]
+[ext_resource type="PackedScene" uid="uid://bfkbt2cuwsaok" path="res://alexis/melodies/runes/rune_g.tscn" id="6_tehgd"]
 [ext_resource type="Texture2D" uid="uid://bfokq1pra7ttb" path="res://assets/icone_interrogation.png" id="7_6vopw"]
 
 [node name="TutoDeactivate" type="Node2D"]

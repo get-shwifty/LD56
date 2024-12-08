@@ -195,15 +195,20 @@ func new_note(note):
 	if cur_time - last_note_time <= CHORD_DELAY and buffer.size() > 0:
 		# manage chords
 		var last_note = buffer[-1]
-		if (note == "a" and last_note == "b") or (note == "b" and last_note == "a"):
-			buffer.pop_back()
-			note = "A"
-		elif (note == "b" and last_note == "c") or (note == "c" and last_note == "b"):
-			buffer.pop_back()
-			note = "B"
-		elif (note == "c" and last_note == "a") or (note == "a" and last_note == "c"):
-			buffer.pop_back()
-			note = "C"
+		var tuple = note + last_note
+		match tuple:
+			"bc", "cb":
+				buffer.pop_back()
+				note = "B"
+			"ef", "fe":
+				buffer.pop_back()
+				note = "E"
+			"hi", "ih":
+				buffer.pop_back()
+				note = "H"
+			"kl", "lk":
+				buffer.pop_back()
+				note = "K"
 	
 	last_note_time = cur_time
 	buffer.append(note)
