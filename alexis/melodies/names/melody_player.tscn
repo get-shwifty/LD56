@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c60r2loh0bqwb"]
+
+[ext_resource type="PackedScene" uid="uid://lk0l1nx73a7h" path="res://alexis/melodies/runes/rune_h.tscn" id="1_tylm6"]
+[ext_resource type="PackedScene" uid="uid://cvre08fxoqumx" path="res://alexis/melodies/runes/rune_i.tscn" id="2_57adn"]
+
+[node name="MelodyPlayer" type="Node2D"]
+
+[node name="RuneI" parent="." instance=ExtResource("2_57adn")]
+
+[node name="RuneH" parent="." instance=ExtResource("1_tylm6")]

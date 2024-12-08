@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://alexis/hint_petite_pierre.gd" id="1_ma7mt"]
 [ext_resource type="Texture2D" uid="uid://b2wsv0ar8tb2l" path="res://assets/icone_rock.png" id="2_734kf"]
-[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="2_ma7mt"]
-[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="3_734kf"]
-[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="4_5cq04"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/melodies/runes/rune_a.tscn" id="2_ma7mt"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/melodies/runes/rune_b.tscn" id="3_734kf"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/melodies/runes/rune_c.tscn" id="4_5cq04"]
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="6_734kf"]
 
 [node name="HintPetitePierre" type="Node2D"]

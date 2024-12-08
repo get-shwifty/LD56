@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlw37mas610wc"]
+
+[ext_resource type="Script" path="res://alexis/rune.gd" id="1_l106t"]
+[ext_resource type="Texture2D" uid="uid://chfudhccfmq3y" path="res://assets/new_runes.png" id="4_l5d8e"]
+
+[node name="RuneA" type="Node2D"]
+script = ExtResource("1_l106t")
+note = "a"
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("4_l5d8e")
+hframes = 4
+vframes = 3
+frame = 6
+
+[node name="Hint" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_l5d8e")
+hframes = 4
+vframes = 3
+frame = 2
+
+[node name="Activated" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_l5d8e")
+hframes = 4
+vframes = 3
+frame = 10

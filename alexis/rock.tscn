@@ -1,13 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqemd752q7j4m"]
+[gd_scene load_steps=6 format=3 uid="uid://cqemd752q7j4m"]
 
 [ext_resource type="Script" path="res://alexis/rock.gd" id="1_11h1m"]
 [ext_resource type="Texture2D" uid="uid://dbdrfmgk08gl8" path="res://david/steles.png" id="1_uuxky"]
 [ext_resource type="PackedScene" uid="uid://fygbmdfgvcpq" path="res://alexis/aura_loop.tscn" id="2_ka766"]
 [ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="2_o5tbf"]
 [ext_resource type="PackedScene" uid="uid://vot3lpgxtqe7" path="res://src/platformes/very_short.tscn" id="4_5xt8l"]
-[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="5_lclqb"]
-[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="5_tpf36"]
-[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="6_tpf36"]
 
 [node name="Rock" type="Node2D"]
 position = Vector2(0, 32)
@@ -35,20 +32,6 @@ collision_layer = 0
 
 [node name="ReactiveComponent2" parent="." instance=ExtResource("2_o5tbf")]
 position = Vector2(0, -31)
-
-[node name="Runes" type="Node2D" parent="."]
-
-[node name="RuneA" parent="Runes" instance=ExtResource("5_tpf36")]
-visible = false
-position = Vector2(0, -11)
-
-[node name="RuneB" parent="Runes" instance=ExtResource("5_lclqb")]
-visible = false
-position = Vector2(0, -29)
-
-[node name="RuneC" parent="Runes" instance=ExtResource("6_tpf36")]
-visible = false
-position = Vector2(0, -48)
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -16)

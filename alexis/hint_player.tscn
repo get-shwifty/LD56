@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dpw0mljnw7mpr"]
 
 [ext_resource type="Script" path="res://alexis/tuto_champ.gd" id="1_tb7yi"]
-[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="2_x3u0c"]
-[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="5_eb2k3"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/melodies/runes/rune_b.tscn" id="2_x3u0c"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/melodies/runes/rune_c.tscn" id="5_eb2k3"]
 [ext_resource type="Texture2D" uid="uid://bn0jyge20dbsd" path="res://assets/icon_player.png" id="5_tb7yi"]
 [ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="5_x3u0c"]
 

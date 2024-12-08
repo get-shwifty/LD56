@@ -314,21 +314,21 @@ func kill():
 	$AnimationPlayer.play_backwards("die")
 	is_teleport = false
 
-func on_song(song: String):
+func on_melody(melody: String, rest: String):
 	$AuraLoop.hide()
-	if song == "fBba": # dash left
-		set_state(DASH)
-		dash_time = 0.5
-		dash_dir = -1.3
-		return true
-	elif song == "fBbc": # dash right
-		set_state(DASH)
-		dash_time = 0.5
-		dash_dir = 1.3
-		return true
-	elif song == "fBb": # will dash
-		$AuraLoop.show()
-
+	if melody == "MelodyDashPlayer":
+		if rest == "a": # dash left
+			set_state(DASH)
+			dash_time = 0.5
+			dash_dir = -1.3
+			return true
+		elif rest == "c": # dash right
+			set_state(DASH)
+			dash_time = 0.5
+			dash_dir = 1.3
+			return true
+		elif rest == "": # will dash
+			$AuraLoop.show()
 
 func _on_death_detection_area_entered(area: Area2D) -> void:
 	teleport(last_gpos)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://gqdc85vskhi4"]
+
+[ext_resource type="Script" path="res://alexis/melody.gd" id="1_2dohw"]
+[ext_resource type="PackedScene" uid="uid://cwjh883dijrtd" path="res://alexis/melodies/verbs/melody_activer.tscn" id="2_e2vl6"]
+[ext_resource type="PackedScene" uid="uid://dwpeoeebk5idk" path="res://alexis/melodies/names/melody_champ.tscn" id="3_e2vl6"]
+
+[node name="MelodyActiverChamp" type="Node2D"]
+script = ExtResource("1_2dohw")
+song = "aafde"
+
+[node name="MelodyActiver" parent="." instance=ExtResource("2_e2vl6")]
+
+[node name="MelodyChamp" parent="." instance=ExtResource("3_e2vl6")]
+
+[editable path="MelodyActiver"]
+[editable path="MelodyChamp"]
