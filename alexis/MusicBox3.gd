@@ -365,7 +365,7 @@ func update_dyn_hint(song: String):
 func process_dyn_hint():
 	var N = visible_hints.size()
 	for i in range(N):
-		visible_hints[i].position.x = i * 16
+		visible_hints[i].position.x = i * 20
 
 func trigger_aura(position):
 	var aura = SAura.instantiate()

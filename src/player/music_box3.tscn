@@ -364,9 +364,6 @@ is_hint = true
 [node name="MelodyDesactiverChamp" parent="DynMemo" instance=ExtResource("15_6rwl8")]
 is_hint = true
 
-[node name="MelodyDashPlayer" parent="DynMemo" instance=ExtResource("15_2cugb")]
-is_hint = true
-
 [node name="MelodyActiverPierre" parent="DynMemo" instance=ExtResource("16_gb3ap")]
 is_hint = true
 
@@ -374,6 +371,9 @@ is_hint = true
 is_hint = true
 
 [node name="MelodyMovePierre" parent="DynMemo" instance=ExtResource("17_xq8to")]
+is_hint = true
+
+[node name="MelodyDashPlayer" parent="DynMemo" instance=ExtResource("15_2cugb")]
 is_hint = true
 
 [node name="NoteSpawner" type="Marker2D" parent="."]

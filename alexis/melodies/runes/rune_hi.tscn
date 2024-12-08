@@ -10,14 +10,14 @@ note = "H"
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="Background"]
-position = Vector2(0, -2)
+position = Vector2(-6, 0)
 texture = ExtResource("2_ptc1u")
 hframes = 4
 vframes = 3
 frame = 4
 
 [node name="Background2" type="Sprite2D" parent="Background"]
-position = Vector2(5, 3)
+position = Vector2(6, 0)
 rotation = 1.5708
 texture = ExtResource("2_ptc1u")
 hframes = 4
@@ -28,13 +28,13 @@ frame = 4
 visible = false
 
 [node name="Hint" type="Sprite2D" parent="Hint"]
-position = Vector2(0, -2)
+position = Vector2(-6, 0)
 texture = ExtResource("2_ptc1u")
 hframes = 4
 vframes = 3
 
 [node name="Hint2" type="Sprite2D" parent="Hint"]
-position = Vector2(5, 3)
+position = Vector2(6, 0)
 rotation = 1.5708
 texture = ExtResource("2_ptc1u")
 hframes = 4
@@ -44,14 +44,14 @@ vframes = 3
 visible = false
 
 [node name="Activated" type="Sprite2D" parent="Activated"]
-position = Vector2(0, -2)
+position = Vector2(-6, 0)
 texture = ExtResource("2_ptc1u")
 hframes = 4
 vframes = 3
 frame = 8
 
 [node name="Activated2" type="Sprite2D" parent="Activated"]
-position = Vector2(5, 3)
+position = Vector2(6, 0)
 rotation = 1.5708
 texture = ExtResource("2_ptc1u")
 hframes = 4
