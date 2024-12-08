@@ -78,15 +78,13 @@ script = ExtResource("1_l106t")
 note = "a"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 rotation = 3.14159
 texture = ExtResource("2_hx0nw")
 hframes = 20
 vframes = 20
 frame = 41
 
-[node name="Sprite2DActivatedb" type="Sprite2D" parent="."]
-visible = false
+[node name="Sprite2DActivated" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 rotation = 3.14159
 texture = ExtResource("2_hx0nw")
@@ -94,6 +92,8 @@ hframes = 20
 vframes = 20
 frame = 43
 
-[node name="Sprite2DActivated" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2DActivated_new" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_dwunw")
 autoplay = "default"
+frame = 9

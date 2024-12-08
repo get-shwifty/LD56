@@ -1,4 +1,5 @@
 extends Node2D
+class_name Rune
 
 @export var note := ""
 @export var activated := false
