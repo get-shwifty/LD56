@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://b5talylcm421k"]
+[gd_scene load_steps=62 format=3 uid="uid://b5talylcm421k"]
 
 [ext_resource type="Script" path="res://alexis/MusicBox3.gd" id="1_kiw7a"]
 [ext_resource type="PackedScene" uid="uid://cwrknv3moe2nm" path="res://alexis/hint_petite_pierre.tscn" id="2_ovom3"]
@@ -13,20 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://lfttp8c3nhr4" path="res://alexis/rune_e.tscn" id="8_4wtux"]
 [ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/rune_a.tscn" id="9_ieyci"]
 [ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/rune_c.tscn" id="10_4wtux"]
-[ext_resource type="Script" path="res://alexis/hint_champ.gd" id="14_46qtc"]
-[ext_resource type="Script" path="res://alexis/tuto_perso.gd" id="14_3788w"]
-[ext_resource type="Texture2D" uid="uid://dp87laiciayrf" path="res://david/runes.png" id="14_piptr"]
-[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/rune_b.tscn" id="15_y03l6"]
-[ext_resource type="Texture2D" uid="uid://lvcxwpgwaqmq" path="res://assets/icone_champ_only.png" id="16_f8rej"]
-[ext_resource type="Texture2D" uid="uid://ddfmaingvepuo" path="res://assets/capsule.png" id="18_3g288"]
-[ext_resource type="Texture2D" uid="uid://dyw7gr38er75p" path="res://assets/lb_rb.png" id="20_chfam"]
+[ext_resource type="PackedScene" uid="uid://gqdc85vskhi4" path="res://alexis/melodies/melody_activer_champ.tscn" id="14_7iiug"]
+[ext_resource type="PackedScene" uid="uid://4ul2xkctqcvv" path="res://alexis/melodies/melody_dash_player.tscn" id="15_2cugb"]
+[ext_resource type="PackedScene" uid="uid://u1kq7gjn0t37" path="res://alexis/melodies/melody_activer_pierre.tscn" id="16_gb3ap"]
+[ext_resource type="PackedScene" uid="uid://b0ukbr4lmjk0c" path="res://alexis/melodies/melody_move_pierre.tscn" id="17_xq8to"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sampler_instrument.gd" id="20_f8rej"]
-[ext_resource type="PackedScene" path="res://alexis/rune_g.tscn" id="21_chfam"]
 [ext_resource type="Script" path="res://addons/SimpleSampler/sample_resource.gd" id="21_k55nm"]
-[ext_resource type="PackedScene" uid="uid://lk0l1nx73a7h" path="res://alexis/rune_h.tscn" id="22_6d1p8"]
 [ext_resource type="AudioStream" uid="uid://d0r3n36ee2kio" path="res://sounds/new_flute/Chant-pignon_1_re.mp3" id="22_6rwl8"]
 [ext_resource type="AudioStream" uid="uid://b2eyfl32wf6il" path="res://sounds/new_flute/Chant-pignon_2_sol.mp3" id="23_6rwl8"]
-[ext_resource type="PackedScene" path="res://alexis/rune_i.tscn" id="23_roimx"]
 [ext_resource type="AudioStream" uid="uid://b68iqk1yv15ne" path="res://sounds/new_flute/Chant-pignon_3_sib.mp3" id="24_38qju"]
 [ext_resource type="AudioStream" uid="uid://eud0v67v1lid" path="res://sounds/new_flute/Chant-pignon_4_re2.mp3" id="25_emglk"]
 [ext_resource type="AudioStream" uid="uid://c2pwokkxxkvlb" path="res://sounds/FSS-SteelStringGuitar-SFZ-20200521/samples/HV_60.wav" id="26_bssvi"]
@@ -362,88 +356,13 @@ position = Vector2(1.90735e-06, -5)
 z_index = 15
 position = Vector2(29, 29)
 
-[node name="HintPetitePierre" parent="DynMemo" instance=ExtResource("2_ovom3")]
-visible = false
-position = Vector2(-24, -17)
+[node name="MelodyActiverChamp" parent="DynMemo" instance=ExtResource("14_7iiug")]
 
-[node name="HintPlayer" parent="DynMemo" instance=ExtResource("4_4wtux")]
-visible = false
-position = Vector2(0, -17)
-script = ExtResource("14_3788w")
+[node name="MelodyDashPlayer" parent="DynMemo" instance=ExtResource("15_2cugb")]
 
-[node name="HintChamp" type="Node2D" parent="DynMemo"]
-visible = false
-position = Vector2(24, -17)
-script = ExtResource("14_46qtc")
+[node name="MelodyActiverPierre" parent="DynMemo" instance=ExtResource("16_gb3ap")]
 
-[node name="IconeChamp" type="Sprite2D" parent="DynMemo/HintChamp"]
-modulate = Color(100, 100, 100, 1)
-position = Vector2(0, -64)
-texture = ExtResource("16_f8rej")
-
-[node name="RuneC" parent="DynMemo/HintChamp" instance=ExtResource("10_4wtux")]
-position = Vector2(0, -8)
-
-[node name="RuneA" parent="DynMemo/HintChamp" instance=ExtResource("9_ieyci")]
-position = Vector2(0, -24)
-
-[node name="RuneB" parent="DynMemo/HintChamp" instance=ExtResource("15_y03l6")]
-position = Vector2(0, -40)
-
-[node name="Capsule" type="Sprite2D" parent="DynMemo/HintChamp"]
-modulate = Color(100, 100, 100, 1)
-position = Vector2(-5.96046e-08, -24)
-scale = Vector2(1.23, 1.23)
-texture = ExtResource("18_3g288")
-
-[node name="Nothing" type="Node2D" parent="DynMemo"]
-visible = false
-position = Vector2(-2, -16)
-
-[node name="Sprite2D" type="Sprite2D" parent="DynMemo/Nothing"]
-texture = ExtResource("14_piptr")
-hframes = 20
-vframes = 20
-frame = 43
-
-[node name="Sprite2D2" type="Sprite2D" parent="DynMemo/Nothing"]
-position = Vector2(6, 0)
-rotation = 3.14159
-texture = ExtResource("14_piptr")
-hframes = 20
-vframes = 20
-frame = 43
-
-[node name="No_LBRB" type="Node2D" parent="DynMemo"]
-visible = false
-
-[node name="LbRb" type="Sprite2D" parent="DynMemo/No_LBRB"]
-position = Vector2(0, -7)
-texture = ExtResource("20_chfam")
-
-[node name="LB_verbs" type="Node2D" parent="DynMemo"]
-visible = false
-
-[node name="RuneD" parent="DynMemo/LB_verbs" instance=ExtResource("6_csyyy")]
-position = Vector2(-15, -7)
-
-[node name="RuneE" parent="DynMemo/LB_verbs" instance=ExtResource("8_4wtux")]
-position = Vector2(0, -7)
-
-[node name="RuneF" parent="DynMemo/LB_verbs" instance=ExtResource("8_3hp5e")]
-position = Vector2(15, -7)
-
-[node name="RB_verbs" type="Node2D" parent="DynMemo"]
-visible = false
-
-[node name="RuneG" parent="DynMemo/RB_verbs" instance=ExtResource("21_chfam")]
-position = Vector2(-15, -5)
-
-[node name="RuneH" parent="DynMemo/RB_verbs" instance=ExtResource("22_6d1p8")]
-position = Vector2(-2, -3)
-
-[node name="RuneI" parent="DynMemo/RB_verbs" instance=ExtResource("23_roimx")]
-position = Vector2(15, -6)
+[node name="MelodyMovePierre" parent="DynMemo" instance=ExtResource("17_xq8to")]
 
 [node name="NoteSpawner" type="Marker2D" parent="."]
 unique_name_in_owner = true

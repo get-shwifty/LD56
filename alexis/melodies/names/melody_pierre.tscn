@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://do10kvev0t6ng"]
+
+[ext_resource type="PackedScene" uid="uid://lfttp8c3nhr4" path="res://alexis/rune_e.tscn" id="1_msw85"]
+[ext_resource type="PackedScene" uid="uid://bojrx2noj8w26" path="res://alexis/rune_f.tscn" id="2_xg753"]
+[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/rune_d.tscn" id="3_iskwi"]
+
+[node name="MelodyPierre" type="Node2D"]
+
+[node name="RuneE" parent="." instance=ExtResource("1_msw85")]
+
+[node name="RuneF" parent="." instance=ExtResource("2_xg753")]
+
+[node name="RuneD" parent="." instance=ExtResource("3_iskwi")]

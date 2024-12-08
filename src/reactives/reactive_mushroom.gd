@@ -13,13 +13,14 @@ func _ready() -> void:
 		deactivate()
 
 
-func on_song(song: String):
-	if $Ground/CollisionShape2D.disabled and song == "dcab":
-		activate()
-		return true
-	elif not $Ground/CollisionShape2D.disabled and song == "gcab":
-		deactivate()
-		return true
+func on_melody(melody: String, rest: String):
+	if rest == "":
+		if $Ground/CollisionShape2D.disabled and melody == "MelodyActiverChamp":
+			activate()
+			return true
+		elif not $Ground/CollisionShape2D.disabled and melody == "MelodyDesactiverChamp":
+			deactivate()
+			return true
 		
 func on_song_finished(name: String):
 	if name == song_name:

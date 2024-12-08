@@ -8,26 +8,40 @@ class_name Melody
 			compute_runes()
 
 @export var song := ""
-@export var with_feedback := true
+
+var all_runes : Array[Rune] = []
+
+func _ready() -> void:
+	_get_all_runes()
+
+func _get_all_runes(this = self):
+	if this == self:
+		all_runes = []
+	for child in this.get_children():
+		if child is Rune:
+			if Engine.is_editor_hint():
+				if not is_editable_instance(this):
+					set_editable_instance(this, true)
+			all_runes.append(child)
+		elif child.get_child_count() > 0:
+			_get_all_runes(child)
 
 func compute_runes():
+	_get_all_runes()
+	
 	var off_y = 0
 	song = ""
-	for child in get_children():
-		if child is Rune:
-			child.position.y = off_y
-			off_y -= 14
-			song += child.note
+	for rune in all_runes:
+		rune.position = Vector2(0, off_y)
+		off_y -= 14
+		song += rune.note
 	
 func on_song(played_song: String):
 	for i in range(played_song.length(), -1, -1):
 		if i == 0 or song.substr(0, i) == played_song:
-			var j = 0
-			for child in get_children():
-				if child is Rune:
-					if j < i:
-						child.activate()
-					else:
-						child.deactivate()
-					j += 1
-			return with_feedback and played_song == song
+			for j in range(all_runes.size()):
+				if j < i:
+					all_runes[j].activate()
+				else:
+					all_runes[j].deactivate()
+			return played_song == song

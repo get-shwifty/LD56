@@ -36,13 +36,6 @@ const notes_tones = {
 	"g": ["G", 4],
 }
 
-@onready var ALL_DYN_HINTS = [
-	$DynMemo/HintPetitePierre,
-	#$DynMemo/HintGrandePierre,
-	$DynMemo/HintPlayer,
-	$DynMemo/HintChamp,
-]
-
 @onready var players = {
 	"A": audioA,
 	"B": audioB,
@@ -77,17 +70,8 @@ var has_to_release = -1.0
 var last_note_time := 0
 const NOTE_MAX_DELAY = 5000
 
-var unlocked_dyn_hint := false
 var visible_hints = []
-var force_dyn_hint := false
-var verbs_visible_hints = {
-	"d": false,
-	"e": false,
-	"f": false,
-	"g": false,
-	"h": false,
-	"i": false,
-}
+var unlocked_hints = {}
 var tween_dyn_hint : Tween = null
 var can_show_dyn_hint = false
 const DYN_HINT_DELAY = 1000
@@ -126,14 +110,6 @@ func _physics_process(delta):
 		else:
 			$BackgroundMusic.play()
 		sampler = samplers[current_sampler_index]
-		
-	if Input.is_action_just_pressed("dyn_hint_toggle"):
-		force_dyn_hint = not force_dyn_hint
-	
-	#if force_dyn_hint or (unlocked_dyn_hint and Input.is_action_pressed("dyn_hint")):
-		#$DynMemo.show()
-	#else:
-		#$DynMemo.hide()
 
 	#if Input.is_action_just_pressed("alt1"):
 		#if buffer.size() > 0:
@@ -193,6 +169,7 @@ func _physics_process(delta):
 
 func reset_buffer():
 	buffer.clear()
+	can_show_dyn_hint = false
 	notify_song()
 
 func new_note(note):
@@ -215,11 +192,7 @@ func new_note(note):
 		particle_note.activate()
 
 	var cur_time = Time.get_ticks_msec()
-
-	if note not in ["a", "b", "c"]:
-		buffer.clear()
-		can_show_dyn_hint = true
-	elif cur_time - last_note_time <= CHORD_DELAY and buffer.size() > 0:
+	if cur_time - last_note_time <= CHORD_DELAY and buffer.size() > 0:
 		# manage chords
 		var last_note = buffer[-1]
 		if (note == "a" and last_note == "b") or (note == "b" and last_note == "a"):
@@ -235,11 +208,7 @@ func new_note(note):
 	last_note_time = cur_time
 	buffer.append(note)
 
-	if buffer.size() > 8:
-		buffer.pop_front()
-
-	#if note == "d" or note == "e" or note == "f":
-		#trigger_aura(global_position)
+	auto_reset_melody()
 
 	notify_song()
 	if buffer.is_empty():
@@ -248,46 +217,35 @@ func new_note(note):
 func notify_song():
 	var song = "".join(buffer)
 	on_song_played.emit(song)
-	
-	if not unlocked_dyn_hint and song == "dcab":
-		unlocked_dyn_hint = true
+
+	for a: Reactive2 in areaReactives.get_overlapping_areas():
+		if a.get_parent().has_method("on_song"):
+			if a.get_parent().on_song(song) == true and a.trigger_feedback:
+				continue
+				#trigger_aura(a.global_position)
+				#unlocked_hints[song] = a.get_parent().name
+				#hide_dyn_hint()
+
+	for l in range(song.length(), 0, -1):
+		var subsong = song.substr(0, l)
+		for hint: Melody in $DynMemo.get_children():
+			if hint.on_song(subsong) == true:
+				unlocked_hints[subsong] = hint.name
+				var melody = hint.name
+				var rest = song.substr(l)
+				notify_melody(melody, rest)
+	if song == "":
+		notify_melody("", "")
 
 	update_dyn_hint(song)
 	process_dyn_hint()
 
-	var areas = areaReactives.get_overlapping_areas()
-	for a: Area2D in areas:
-		if a.get_parent().on_song(song) == true:
-			#buffer.clear()
-			trigger_aura(a.global_position)
-
-func update_dyn_hint(song: String):
-	visible_hints = []
-	verbs_visible_hints = {
-		"d": false,
-		"e": false,
-		"f": false,
-		"g": false,
-		"h": false,
-		"i": false,
-	}
-
-	for hint in ALL_DYN_HINTS:
-		hint.on_song(song)
-		match hint.can_display_hint(song):
-			0:
-				hint.hide()
-			1:
-				hint.show()
-				visible_hints.append(hint)
-			2:
-				#hint.show()
-				#visible_hints.append(hint)
+func notify_melody(melody, rest):
+	for a: Reactive2 in areaReactives.get_overlapping_areas():
+		if a.get_parent().has_method("on_melody"):
+			if a.get_parent().on_melody(melody, rest) == true and a.trigger_feedback:
+				trigger_aura(a.global_position)
 				hide_dyn_hint()
-
-		#for verb in verbs_visible_hints.keys():
-			#if hint.can_display_hint(verb):
-				#verbs_visible_hints[verb] = true
 
 func show_dyn_hint():
 	if can_show_dyn_hint:
@@ -307,91 +265,66 @@ func hide_dyn_hint(fast = false):
 		tween_dyn_hint = get_tree().create_tween()
 		tween_dyn_hint.tween_property($DynMemo, "modulate:a", 0.0, 0.5)
 
-func process_dyn_hint():
-	$DynMemo/No_LBRB.hide()
-	$DynMemo/LB_verbs.hide()
-	$DynMemo/LB_verbs/RuneD.visible = verbs_visible_hints["d"]
-	$DynMemo/LB_verbs/RuneD.position.x = -15.0
-	$DynMemo/LB_verbs/RuneE.visible = verbs_visible_hints["e"]
-	$DynMemo/LB_verbs/RuneE.position.x = 0.0
-	$DynMemo/LB_verbs/RuneF.visible = verbs_visible_hints["f"]
-	$DynMemo/LB_verbs/RuneF.position.x = 15.0
-	$DynMemo/LB_verbs/RuneD.deactivate(true)
-	$DynMemo/LB_verbs/RuneE.deactivate(true)
-	$DynMemo/LB_verbs/RuneF.deactivate(true)
-	$DynMemo/RB_verbs.hide()
-	$DynMemo/RB_verbs/RuneG.visible = verbs_visible_hints["g"]
-	$DynMemo/RB_verbs/RuneG.position.x = -15.0
-	$DynMemo/RB_verbs/RuneH.visible = verbs_visible_hints["h"]
-	$DynMemo/RB_verbs/RuneH.position.x = 0.0
-	$DynMemo/RB_verbs/RuneI.visible = verbs_visible_hints["i"]
-	$DynMemo/RB_verbs/RuneI.position.x = 15.0
-	$DynMemo/RB_verbs/RuneG.deactivate(true)
-	$DynMemo/RB_verbs/RuneH.deactivate(true)
-	$DynMemo/RB_verbs/RuneI.deactivate(true)
-	
-	if visible_hints.is_empty():
-		return
-		if Input.is_action_pressed("alt1") and Input.is_action_pressed("alt2"):
-			pass
-		elif Input.is_action_pressed("alt1"):
-			$DynMemo/LB_verbs.show()
-		elif Input.is_action_pressed("alt2"):
-			$DynMemo/RB_verbs.show()
+func auto_reset_melody():
+	var verb_found_index = -1
+	var middle_b = 0
+	for i in range(buffer.size() - 1, -1, -1):
+		var note = buffer[i]
+		if verb_found_index == -1:
+			if note in ["a", "b", "c"]:
+				verb_found_index = i
+		elif note in ["a", "b", "c"]:
+			verb_found_index = i
+
+			if note in ["a", "c"] or (middle_b == 2 and note == "b"):
+				break
+			elif note == "b":
+				middle_b += 1
 		else:
-			$DynMemo/No_LBRB.show()
-	else:
-		var N = visible_hints.size()
-		var offset = 0.5 if N % 2 == 0 else 0.0
-		for i in range(N):
-			visible_hints[i].position.x = (i - (i / 2) - offset) * 22.0
-		
-		if buffer.size() > 0:
-			var first_note = buffer[0]
+			break
 
-			if first_note in ["d", "e", "f"]:
-				$DynMemo/LB_verbs.show()
-				$DynMemo/LB_verbs/RuneD.hide()
-				$DynMemo/LB_verbs/RuneE.hide()
-				$DynMemo/LB_verbs/RuneF.hide()
-				match first_note:
-					"d":
-						$DynMemo/LB_verbs/RuneD.show()
-						$DynMemo/LB_verbs/RuneD.activate(true)
-						$DynMemo/LB_verbs/RuneD.position.x = 0.0
-					"e":
-						$DynMemo/LB_verbs/RuneE.show()
-						$DynMemo/LB_verbs/RuneE.activate(true)
-						$DynMemo/LB_verbs/RuneE.position.x = 0.0
-					"f":
-						$DynMemo/LB_verbs/RuneF.show()
-						$DynMemo/LB_verbs/RuneF.activate(true)
-						$DynMemo/LB_verbs/RuneF.position.x = 0.0
+	if verb_found_index == -1:
+		buffer.clear()
+		can_show_dyn_hint = false
+	elif verb_found_index > 0:
+		if buffer.size() > 0 and \
+		"".join(buffer).begins_with("cb") and \
+		buffer[-1] in ["a", "c"] and \
+		buffer[-2] not in ["a", "b", "c"]:
+			pass # special case move we do nothing
+		else:
+			buffer = buffer.slice(verb_found_index)
+			can_show_dyn_hint = true
 
-			elif first_note in ["g", "h", "i"]:
-				$DynMemo/RB_verbs.show()
-				$DynMemo/RB_verbs/RuneG.hide()
-				$DynMemo/RB_verbs/RuneH.hide()
-				$DynMemo/RB_verbs/RuneI.hide()
-				match first_note:
-					"g":
-						$DynMemo/RB_verbs/RuneG.show()
-						$DynMemo/RB_verbs/RuneG.activate(true)
-						$DynMemo/RB_verbs/RuneG.position.x = 0.0
-					"h":
-						$DynMemo/RB_verbs/RuneH.show()
-						$DynMemo/RB_verbs/RuneH.activate(true)
-						$DynMemo/RB_verbs/RuneH.position.x = 0.0
-					"i":
-						$DynMemo/RB_verbs/RuneI.show()
-						$DynMemo/RB_verbs/RuneI.activate(true)
-						$DynMemo/RB_verbs/RuneI.position.x = 0.0
+func melody_get_verb(melody: String):
+	var verb = ""
+	for i in range(melody.length()):
+		if melody[i] in ["a", "b", "c"]:
+			verb += melody[i]
+		else:
+			break
+	return verb
+
+func update_dyn_hint(song: String):
+	visible_hints = []
+
+	for hint: Melody in $DynMemo.get_children():
+		hint.on_song(song)
+		if hint.song in unlocked_hints and song.begins_with(melody_get_verb(hint.song)):
+			visible_hints.append(hint)
+			hint.show()
+		else:
+			hint.hide()
+
+func process_dyn_hint():
+	var N = visible_hints.size()
+	for i in range(N):
+		visible_hints[i].position.x = i * 16
 
 func trigger_aura(position):
 	var aura = SAura.instantiate()
 	aura.position = position
 	Global.projectile_container.add_child(aura)
-
 
 func _on_area_2d_reactives_area_entered(area: Area2D) -> void:
 	buffer.clear()
