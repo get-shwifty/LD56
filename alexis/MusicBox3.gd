@@ -3,6 +3,8 @@ class_name MusicBox3
 
 signal on_song_played(song: String)
 
+const SYSTEM = 2
+
 @export var audioA: Resource = null
 @export var audioB: Resource = null
 @export var audioC: Resource = null
@@ -22,6 +24,8 @@ signal on_song_played(song: String)
 	"g": preload("res://alexis/melodies/runes/rune_g.tscn"),
 	"h": preload("res://alexis/melodies/runes/rune_h.tscn"),
 	"i": preload("res://alexis/melodies/runes/rune_i.tscn"),
+	"n": preload("res://alexis/melodies/runes/rune_n.tscn"),
+	"o": preload("res://alexis/melodies/runes/rune_o.tscn"),
 }
 
 const notes_tones = {
@@ -34,6 +38,8 @@ const notes_tones = {
 	"i": ["D#", 4],
 	"h": ["F", 4],
 	"g": ["G", 4],
+	"n": ["G", 3],
+	"o": ["D", 3],
 }
 
 @onready var players = {
@@ -89,14 +95,21 @@ func _physics_process(delta):
 		
 	var cur_time = Time.get_ticks_msec()
 
-	if buffer.size() > 0:
-		var time_since_last_note = cur_time - last_note_time
-		if time_since_last_note >= NOTE_MAX_DELAY:
+	if SYSTEM <= 2:
+		if buffer.size() > 0:
+			var time_since_last_note = cur_time - last_note_time
+			if time_since_last_note >= NOTE_MAX_DELAY:
+				reset_buffer()
+			elif time_since_last_note >= NOTE_MAX_DELAY - 500:
+				hide_dyn_hint()
+			elif time_since_last_note >= DYN_HINT_DELAY:
+				show_dyn_hint()
+	else:
+		if Input.is_action_just_pressed("alt1"):
 			reset_buffer()
-		elif time_since_last_note >= NOTE_MAX_DELAY - 500:
+		elif Input.is_action_just_released("alt1"):
+			reset_buffer()
 			hide_dyn_hint()
-		elif time_since_last_note >= DYN_HINT_DELAY:
-			show_dyn_hint()
 
 	var cam = get_viewport().get_camera_2d()
 	areaReactives.global_position = cam.global_position
@@ -136,34 +149,55 @@ func _physics_process(delta):
 		elif has_to_release < 0.0:
 			sampler.release()
 
-	if Input.is_action_pressed("alt1") and Input.is_action_pressed("alt2"):
-		if Input.is_action_just_pressed("a"):
-			new_note("j")
-		if Input.is_action_just_pressed("b"):
-			new_note("k")
-		if Input.is_action_just_pressed("c"):
-			new_note("l")
-	elif Input.is_action_pressed("alt1"):
-		if Input.is_action_just_pressed("a"):
-			new_note("d")
-		if Input.is_action_just_pressed("b"):
-			new_note("e")
-		if Input.is_action_just_pressed("c"):
-			new_note("f")
-	elif Input.is_action_pressed("alt2"):
-		if Input.is_action_just_pressed("a"):
-			new_note("g")
-		if Input.is_action_just_pressed("b"):
-			new_note("h")
-		if Input.is_action_just_pressed("c"):
-			new_note("i")
+	if SYSTEM <= 2:
+		if Input.is_action_pressed("alt1") and Input.is_action_pressed("alt2"):
+			if Input.is_action_just_pressed("a"):
+				new_note("j")
+			if Input.is_action_just_pressed("b"):
+				new_note("k")
+			if Input.is_action_just_pressed("c"):
+				new_note("l")
+		elif Input.is_action_pressed("alt1"):
+			if Input.is_action_just_pressed("a"):
+				new_note("d")
+			if Input.is_action_just_pressed("b"):
+				new_note("e")
+			if Input.is_action_just_pressed("c"):
+				new_note("f")
+		elif Input.is_action_pressed("alt2"):
+			if Input.is_action_just_pressed("a"):
+				new_note("g")
+			if Input.is_action_just_pressed("b"):
+				new_note("h")
+			if Input.is_action_just_pressed("c"):
+				new_note("i")
+		else:
+			if Input.is_action_just_pressed("a"):
+				new_note("a")
+			if Input.is_action_just_pressed("b"):
+				new_note("b")
+			if Input.is_action_just_pressed("c"):
+				new_note("c")
 	else:
-		if Input.is_action_just_pressed("a"):
-			new_note("a")
-		if Input.is_action_just_pressed("b"):
-			new_note("b")
-		if Input.is_action_just_pressed("c"):
-			new_note("c")
+		if Input.is_action_pressed("alt1"):
+			if Input.is_action_pressed("alt2"):
+				if Input.is_action_just_pressed("a"):
+					new_note("g")
+				if Input.is_action_just_pressed("b"):
+					new_note("h")
+				if Input.is_action_just_pressed("c"):
+					new_note("i")
+				if Input.is_action_just_pressed("d"):
+					new_note("o")
+			else:
+				if Input.is_action_just_pressed("a"):
+					new_note("d")
+				if Input.is_action_just_pressed("b"):
+					new_note("e")
+				if Input.is_action_just_pressed("c"):
+					new_note("f")
+				if Input.is_action_just_pressed("d"):
+					new_note("n")
 
 	process_dyn_hint()
 
@@ -235,13 +269,14 @@ func notify_song():
 		var subsong = song.substr(0, l)
 		for hint: Melody in $DynMemo.get_children():
 			if hint.on_song(subsong) == true:
+				can_show_dyn_hint = false
 				unlocked_hints[subsong] = hint.name
 				var melody = hint.name
 				var rest = song.substr(l)
 				notify_melody(melody, rest)
 	if song == "":
 		notify_melody("", "")
-	print(song)
+
 	update_dyn_hint(song)
 	process_dyn_hint()
 
@@ -271,6 +306,9 @@ func hide_dyn_hint(fast = false):
 		tween_dyn_hint.tween_property($DynMemo, "modulate:a", 0.0, 0.5)
 
 func auto_reset_melody():
+	if SYSTEM > 2:
+		return
+
 	var verb_found_index = -1
 	var middle_b = 0
 	for i in range(buffer.size() - 1, -1, -1):
@@ -302,13 +340,16 @@ func auto_reset_melody():
 			can_show_dyn_hint = true
 
 func melody_get_verb(melody: String):
-	var verb = ""
-	for i in range(melody.length()):
-		if melody[i] in ["a", "b", "c"]:
-			verb += melody[i]
-		else:
-			break
-	return verb
+	if SYSTEM > 2:
+		return melody.substr(0, 2)
+	else:
+		var verb = ""
+		for i in range(melody.length()):
+			if melody[i] in ["a", "b", "c"]:
+				verb += melody[i]
+			else:
+				break
+		return verb
 
 func update_dyn_hint(song: String):
 	visible_hints = []

@@ -120,7 +120,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_time -= delta
 
-	if can_input and Input.is_action_just_pressed("up"):
+	var jump_enabled = $MusicBox3.SYSTEM <= 2 or not Input.is_action_pressed("alt1")
+	if jump_enabled and can_input and Input.is_action_just_pressed("up"):
 		jump_buffer = JUMP_BUFFER
 	else:
 		jump_buffer -= delta
