@@ -319,12 +319,12 @@ func on_melody(melody: String, rest: String):
 	$AuraLoop.hide()
 	if melody == "MelodyDashPlayer":
 		match rest:
-			"a", "d":  # dash left
+			"a", "d", "g":  # dash left
 				set_state(DASH)
 				dash_time = 0.5
 				dash_dir = -1.3
 				return false
-			"c", "f": # dash right
+			"c", "f", "i": # dash right
 				set_state(DASH)
 				dash_time = 0.5
 				dash_dir = 1.3
