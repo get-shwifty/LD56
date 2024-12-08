@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://dgts66gjf7p1w"]
+[gd_scene load_steps=34 format=4 uid="uid://dgts66gjf7p1w"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://c2x87je88h7st" path="res://alexis/room_grid.tscn" id="1_cygu0"]
@@ -8,11 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://b7htylpreriai" path="res://alexis/toggable_tile_map_layer_foreground.tscn" id="4_mtblt"]
 [ext_resource type="PackedScene" uid="uid://u1kq7gjn0t37" path="res://alexis/melodies/melody_activer_pierre.tscn" id="5_gcsrh"]
 [ext_resource type="PackedScene" uid="uid://cqemd752q7j4m" path="res://alexis/rock.tscn" id="5_mtblt"]
-[ext_resource type="Texture2D" uid="uid://6ihukskjyi4s" path="res://assets/think_text.png" id="6_8uhi2"]
 [ext_resource type="PackedScene" uid="uid://4ul2xkctqcvv" path="res://alexis/melodies/melody_dash_player.tscn" id="6_60ne7"]
 [ext_resource type="PackedScene" uid="uid://dxmi7idap3cnd" path="res://alexis/melodies/melody_desactiver_champ.tscn" id="7_60ne7"]
+[ext_resource type="PackedScene" uid="uid://seiwffux0vvg" path="res://alexis/tuto_hint.tscn" id="8_6nvvv"]
 [ext_resource type="PackedScene" uid="uid://dtdne222ur6pl" path="res://alexis/tuto_translate.tscn" id="8_r37qr"]
-[ext_resource type="Script" path="res://alexis/melody.gd" id="9_gkjqo"]
 [ext_resource type="PackedScene" uid="uid://cqnipbk8a57c0" path="res://alexis/door.tscn" id="9_sx12u"]
 [ext_resource type="Texture2D" uid="uid://b5sq517wyfkpm" path="res://assets/secret_translated.png" id="9_u62pp"]
 [ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="10_byrkf"]
@@ -76,7 +75,7 @@ position = Vector2(2264, 400)
 
 [node name="MelodyMovePierre2" parent="Tutos" instance=ExtResource("3_gkjqo")]
 position = Vector2(-1504, -56)
-song = "cbefda"
+song = "eeefda"
 
 [node name="Rune_a" parent="Tutos/MelodyMovePierre2" instance=ExtResource("25_gcsrh")]
 position = Vector2(0, -80)
@@ -98,43 +97,13 @@ position = Vector2(1424, -256)
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyDesactiverChamp" instance=ExtResource("10_byrkf")]
 
-[node name="TutoHint" type="Node2D" parent="Tutos"]
+[node name="TutoHint" parent="Tutos" instance=ExtResource("8_6nvvv")]
 position = Vector2(1232, 200)
-script = ExtResource("9_gkjqo")
-song = "aa"
+song = "dd"
 
-[node name="Rune_a" parent="Tutos/TutoHint" instance=ExtResource("25_gcsrh")]
-
-[node name="Rune_a2" parent="Tutos/TutoHint" instance=ExtResource("25_gcsrh")]
-position = Vector2(0, -16)
-
-[node name="ReactiveComponent2" parent="Tutos/TutoHint" instance=ExtResource("10_byrkf")]
-
-[node name="ThinkText" type="Sprite2D" parent="Tutos/TutoHint"]
-z_index = 2
-position = Vector2(21, -5)
-texture = ExtResource("6_8uhi2")
-region_enabled = true
-region_rect = Rect2(41, 0, 20, 25)
-
-[node name="TutoHint2" type="Node2D" parent="Tutos"]
+[node name="TutoHint2" parent="Tutos" instance=ExtResource("8_6nvvv")]
 position = Vector2(888, 128)
-script = ExtResource("9_gkjqo")
-song = "aa"
-
-[node name="Rune_a" parent="Tutos/TutoHint2" instance=ExtResource("25_gcsrh")]
-
-[node name="Rune_a2" parent="Tutos/TutoHint2" instance=ExtResource("25_gcsrh")]
-position = Vector2(0, -16)
-
-[node name="ReactiveComponent2" parent="Tutos/TutoHint2" instance=ExtResource("10_byrkf")]
-
-[node name="ThinkText" type="Sprite2D" parent="Tutos/TutoHint2"]
-z_index = 2
-position = Vector2(21, -5)
-texture = ExtResource("6_8uhi2")
-region_enabled = true
-region_rect = Rect2(41, 0, 20, 25)
+song = "dd"
 
 [node name="TutoTranslate" parent="Tutos" instance=ExtResource("8_r37qr")]
 z_index = 2

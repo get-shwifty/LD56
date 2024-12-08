@@ -8,11 +8,11 @@
 
 [node name="MelodyDesactiverPierre" type="Node2D"]
 script = ExtResource("1_pyv4w")
-song = "acefd"
+song = "ggefd"
 
 [node name="MelodyDesactiver" parent="." instance=ExtResource("2_4qnmu")]
 
-[node name="Rune_c" parent="MelodyDesactiver" index="1"]
+[node name="Rune_g2" parent="MelodyDesactiver" index="1"]
 position = Vector2(0, -16)
 
 [node name="MelodyPierre" parent="." instance=ExtResource("3_pyv4w")]

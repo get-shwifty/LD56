@@ -3,7 +3,7 @@ class_name MusicBox3
 
 signal on_song_played(song: String)
 
-const SYSTEM = 2
+const SYSTEM = 3
 
 @export var audioA: Resource = null
 @export var audioB: Resource = null
@@ -107,9 +107,14 @@ func _physics_process(delta):
 	else:
 		if Input.is_action_just_pressed("alt1"):
 			reset_buffer()
+			can_show_dyn_hint = true
 		elif Input.is_action_just_released("alt1"):
 			reset_buffer()
 			hide_dyn_hint()
+		elif buffer.size() > 0:
+			var time_since_last_note = cur_time - last_note_time
+			if time_since_last_note >= DYN_HINT_DELAY:
+				show_dyn_hint()
 
 	var cam = get_viewport().get_camera_2d()
 	areaReactives.global_position = cam.global_position
@@ -187,7 +192,7 @@ func _physics_process(delta):
 					new_note("h")
 				if Input.is_action_just_pressed("c"):
 					new_note("i")
-				if Input.is_action_just_pressed("d"):
+				if SYSTEM == 4 and Input.is_action_just_pressed("d"):
 					new_note("o")
 			else:
 				if Input.is_action_just_pressed("a"):
@@ -196,7 +201,7 @@ func _physics_process(delta):
 					new_note("e")
 				if Input.is_action_just_pressed("c"):
 					new_note("f")
-				if Input.is_action_just_pressed("d"):
+				if SYSTEM == 4 and Input.is_action_just_pressed("d"):
 					new_note("n")
 
 	process_dyn_hint()
@@ -247,7 +252,6 @@ func new_note(note):
 	last_note_time = cur_time
 	buffer.append(note)
 	auto_reset_melody()
-	can_show_dyn_hint = true
 
 	notify_song()
 	if buffer.is_empty():
