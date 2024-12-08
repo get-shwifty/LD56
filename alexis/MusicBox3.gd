@@ -3,7 +3,7 @@ class_name MusicBox3
 
 signal on_song_played(song: String)
 
-const SYSTEM = 3
+const SYSTEM = 4
 
 @export var audioA: Resource = null
 @export var audioB: Resource = null
@@ -248,6 +248,18 @@ func new_note(note):
 			"kl", "lk":
 				buffer.pop_back()
 				note = "K"
+			"am", "ma":
+				buffer.pop_back()
+				note = "M"
+			"dn", "nd":
+				buffer.pop_back()
+				note = "N"
+			"go", "og":
+				buffer.pop_back()
+				note = "G"
+			"jp", "pj":
+				buffer.pop_back()
+				note = "P"
 	
 	last_note_time = cur_time
 	buffer.append(note)

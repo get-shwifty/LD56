@@ -7,7 +7,7 @@
 
 [node name="MelodyActiverPierre" type="Node2D"]
 script = ExtResource("1_os1p8")
-song = "ddefd"
+song = "ddNd"
 
 [node name="MelodyActiver" parent="." instance=ExtResource("1_n7ysl")]
 
@@ -16,17 +16,14 @@ position = Vector2(0, -16)
 
 [node name="MelodyPierre" parent="." instance=ExtResource("2_os1p8")]
 
-[node name="RuneE" parent="MelodyPierre" index="0"]
+[node name="Rune_N" parent="MelodyPierre" index="0"]
 position = Vector2(0, -32)
 
-[node name="RuneF" parent="MelodyPierre" index="1"]
+[node name="Rune_d" parent="MelodyPierre" index="1"]
 position = Vector2(0, -48)
 
-[node name="RuneD" parent="MelodyPierre" index="2"]
-position = Vector2(0, -64)
-
 [node name="Top" type="Node2D" parent="."]
-position = Vector2(0, -85)
+position = Vector2(0, -69)
 
 [node name="IconeRockActivated" type="Sprite2D" parent="Top"]
 texture = ExtResource("4_r5i6n")

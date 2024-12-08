@@ -8,7 +8,7 @@
 
 [node name="MelodyDesactiverChamp" type="Node2D"]
 script = ExtResource("1_1h36p")
-song = "ggfd"
+song = "ggef"
 
 [node name="MelodyDesactiver" parent="." instance=ExtResource("2_1h36p")]
 
@@ -17,10 +17,10 @@ position = Vector2(0, -16)
 
 [node name="MelodyChamp" parent="." instance=ExtResource("3_qhnql")]
 
-[node name="RuneF" parent="MelodyChamp" index="0"]
+[node name="Rune_e" parent="MelodyChamp" index="0"]
 position = Vector2(0, -32)
 
-[node name="RuneD" parent="MelodyChamp" index="1"]
+[node name="Rune_f" parent="MelodyChamp" index="1"]
 position = Vector2(0, -48)
 
 [node name="Top" type="Node2D" parent="."]
