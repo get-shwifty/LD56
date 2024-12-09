@@ -157,28 +157,28 @@ func _physics_process(delta):
 		if Input.is_action_pressed("alt1") and Input.is_action_pressed("alt2"):
 			if Input.is_action_just_pressed("a"):
 				new_note("j")
-			if Input.is_action_just_pressed("b"):
+			if Input.is_action_just_pressed("b") or Input.is_action_just_pressed("d"):
 				new_note("k")
 			if Input.is_action_just_pressed("c"):
 				new_note("l")
 		elif Input.is_action_pressed("alt1"):
 			if Input.is_action_just_pressed("a"):
 				new_note("d")
-			if Input.is_action_just_pressed("b"):
+			if Input.is_action_just_pressed("b") or Input.is_action_just_pressed("d"):
 				new_note("e")
 			if Input.is_action_just_pressed("c"):
 				new_note("f")
 		elif Input.is_action_pressed("alt2"):
 			if Input.is_action_just_pressed("a"):
 				new_note("g")
-			if Input.is_action_just_pressed("b"):
+			if Input.is_action_just_pressed("b") or Input.is_action_just_pressed("d"):
 				new_note("h")
 			if Input.is_action_just_pressed("c"):
 				new_note("i")
 		else:
 			if Input.is_action_just_pressed("a"):
 				new_note("a")
-			if Input.is_action_just_pressed("b"):
+			if Input.is_action_just_pressed("b") or Input.is_action_just_pressed("d"):
 				new_note("b")
 			if Input.is_action_just_pressed("c"):
 				new_note("c")
