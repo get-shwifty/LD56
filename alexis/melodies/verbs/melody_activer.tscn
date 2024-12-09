@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwjh883dijrtd"]
 
-[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/melodies/runes/rune_d.tscn" id="1_yfn6q"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/melodies/runes/rune_a.tscn" id="1_yfn6q"]
 
 [node name="MelodyActiver" type="Node2D"]
 
-[node name="Rune_d" parent="." instance=ExtResource("1_yfn6q")]
+[node name="Rune_a" parent="." instance=ExtResource("1_yfn6q")]
 
-[node name="Rune_d2" parent="." instance=ExtResource("1_yfn6q")]
+[node name="Rune_a2" parent="." instance=ExtResource("1_yfn6q")]

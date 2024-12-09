@@ -76,9 +76,10 @@ position = Vector2(2264, 400)
 
 [node name="MelodyMovePierre2" parent="Tutos" instance=ExtResource("3_gkjqo")]
 position = Vector2(-1504, -56)
-song = "eeefda"
+song = "cbbcad"
 
 [node name="Rune_d" parent="Tutos/MelodyMovePierre2" instance=ExtResource("12_byrkf")]
+position = Vector2(0, -80)
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyMovePierre2" instance=ExtResource("10_byrkf")]
 
@@ -99,11 +100,9 @@ position = Vector2(1424, -256)
 
 [node name="TutoHint" parent="Tutos" instance=ExtResource("8_6nvvv")]
 position = Vector2(1232, 200)
-song = "dd"
 
 [node name="TutoHint2" parent="Tutos" instance=ExtResource("8_6nvvv")]
 position = Vector2(888, 128)
-song = "dd"
 
 [node name="TutoTranslate" parent="Tutos" instance=ExtResource("8_r37qr")]
 z_index = 2

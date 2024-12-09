@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqvk7622ybkr2"]
+[gd_scene load_steps=3 format=3 uid="uid://bqvk7622ybkr2"]
 
-[ext_resource type="PackedScene" uid="uid://cl3wl0f1nfdy6" path="res://alexis/melodies/runes/rune_n.tscn" id="1_yv2xq"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/melodies/runes/rune_c.tscn" id="1_65qnq"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/melodies/runes/rune_b.tscn" id="2_5rhow"]
 
 [node name="MelodyMove" type="Node2D"]
 
-[node name="Rune_n" parent="." instance=ExtResource("1_yv2xq")]
+[node name="Rune_c" parent="." instance=ExtResource("1_65qnq")]
 
-[node name="Rune_n2" parent="." instance=ExtResource("1_yv2xq")]
+[node name="Rune_b" parent="." instance=ExtResource("2_5rhow")]

@@ -3,7 +3,7 @@ class_name MusicBox3
 
 signal on_song_played(song: String)
 
-const SYSTEM = 4
+const SYSTEM = 2
 
 @export var audioA: Resource = null
 @export var audioB: Resource = null
@@ -107,7 +107,6 @@ func _physics_process(delta):
 	else:
 		if Input.is_action_just_pressed("alt1"):
 			reset_buffer()
-			can_show_dyn_hint = true
 		elif Input.is_action_just_released("alt1"):
 			reset_buffer()
 			hide_dyn_hint()
@@ -262,6 +261,8 @@ func new_note(note):
 				note = "P"
 	
 	last_note_time = cur_time
+	if buffer.size() == 0:
+		can_show_dyn_hint = true
 	buffer.append(note)
 	auto_reset_melody()
 
