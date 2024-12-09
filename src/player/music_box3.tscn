@@ -248,6 +248,7 @@ position = Vector2(144, 176)
 
 [node name="HintPlayer" parent="StaticMemo" instance=ExtResource("4_4wtux")]
 position = Vector2(120, 264)
+script = null
 
 [node name="HintEnable" type="Node2D" parent="StaticMemo"]
 position = Vector2(424, 144)

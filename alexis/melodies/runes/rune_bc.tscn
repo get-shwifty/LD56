@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://yp226lwu0q7y"]
+
+[ext_resource type="Script" path="res://alexis/rune.gd" id="1_m8oax"]
+[ext_resource type="Texture2D" uid="uid://chfudhccfmq3y" path="res://assets/new_runes.png" id="2_mbo80"]
+
+[node name="Rune_B" type="Node2D"]
+script = ExtResource("1_m8oax")
+note = "B"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Background"]
+position = Vector2(-6, 0)
+texture = ExtResource("2_mbo80")
+hframes = 4
+vframes = 3
+frame = 6
+
+[node name="Background2" type="Sprite2D" parent="Background"]
+position = Vector2(4, 0)
+rotation = 1.5708
+texture = ExtResource("2_mbo80")
+hframes = 4
+vframes = 3
+frame = 6
+
+[node name="Hint" type="Node2D" parent="."]
+visible = false
+
+[node name="Hint" type="Sprite2D" parent="Hint"]
+position = Vector2(-6, 0)
+texture = ExtResource("2_mbo80")
+hframes = 4
+vframes = 3
+frame = 2
+
+[node name="Hint2" type="Sprite2D" parent="Hint"]
+position = Vector2(4, 0)
+rotation = 1.5708
+texture = ExtResource("2_mbo80")
+hframes = 4
+vframes = 3
+frame = 2
+
+[node name="Activated" type="Node2D" parent="."]
+visible = false
+
+[node name="Activated" type="Sprite2D" parent="Activated"]
+position = Vector2(-6, 0)
+texture = ExtResource("2_mbo80")
+hframes = 4
+vframes = 3
+frame = 10
+
+[node name="Activated2" type="Sprite2D" parent="Activated"]
+position = Vector2(4, 0)
+rotation = 1.5708
+texture = ExtResource("2_mbo80")
+hframes = 4
+vframes = 3
+frame = 10

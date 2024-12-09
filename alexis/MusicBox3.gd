@@ -3,7 +3,7 @@ class_name MusicBox3
 
 signal on_song_played(song: String)
 
-const SYSTEM = 2
+const SYSTEM = 1
 
 @export var audioA: Resource = null
 @export var audioB: Resource = null
@@ -273,6 +273,7 @@ func new_note(note):
 func notify_song():
 	var song = "".join(buffer)
 	on_song_played.emit(song)
+	print(song)
 
 	for a: Reactive2 in areaReactives.get_overlapping_areas():
 		if a.get_parent().has_method("on_song"):
@@ -330,24 +331,31 @@ func auto_reset_melody():
 	var middle_b = 0
 	for i in range(buffer.size() - 1, -1, -1):
 		var note = buffer[i]
-		if verb_found_index == -1:
-			if note in ["a", "b", "c"]:
+		if SYSTEM == 1:
+			if note not in ["a", "b", "c", "B"]:
 				verb_found_index = i
-		elif note in ["a", "b", "c"]:
-			verb_found_index = i
-
-			if note in ["a", "c"] or (middle_b == 2 and note == "b"):
 				break
-			elif note == "b":
-				middle_b += 1
 		else:
-			break
+			if verb_found_index == -1:
+				if note in ["a", "b", "c", "B"]:
+					verb_found_index = i
+					
+			elif note in ["a", "b", "c", "B"]:
+				verb_found_index = i
+
+				if note in ["a", "c", "B"] or (middle_b == 2 and note == "b"):
+					break
+				elif note == "b":
+					middle_b += 1
+			else:
+				break
 
 	if verb_found_index == -1:
 		buffer.clear()
 		can_show_dyn_hint = false
 	elif verb_found_index > 0:
-		if buffer.size() > 0 and \
+		if SYSTEM == 2 and \
+		buffer.size() > 0 and \
 		"".join(buffer).begins_with("cb") and \
 		buffer[-1] in ["a", "c"] and \
 		buffer[-2] not in ["a", "b", "c"]:
@@ -359,6 +367,8 @@ func auto_reset_melody():
 func melody_get_verb(melody: String):
 	if SYSTEM > 2:
 		return melody.substr(0, 2)
+	elif SYSTEM == 1:
+		return melody.substr(0, 1)
 	else:
 		var verb = ""
 		for i in range(melody.length()):

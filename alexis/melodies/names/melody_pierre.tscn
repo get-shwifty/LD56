@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://do10kvev0t6ng"]
 
-[ext_resource type="PackedScene" uid="uid://lfttp8c3nhr4" path="res://alexis/melodies/runes/rune_e.tscn" id="1_msw85"]
-[ext_resource type="PackedScene" uid="uid://bojrx2noj8w26" path="res://alexis/melodies/runes/rune_f.tscn" id="2_xg753"]
-[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/melodies/runes/rune_d.tscn" id="3_iskwi"]
+[ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/melodies/runes/rune_b.tscn" id="1_msw85"]
+[ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/melodies/runes/rune_c.tscn" id="2_xg753"]
+[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/melodies/runes/rune_a.tscn" id="3_iskwi"]
 
 [node name="MelodyPierre" type="Node2D"]
 
-[node name="Rune_e" parent="." instance=ExtResource("1_msw85")]
+[node name="Rune_b" parent="." instance=ExtResource("1_msw85")]
 
-[node name="Rune_f" parent="." instance=ExtResource("2_xg753")]
+[node name="Rune_c" parent="." instance=ExtResource("2_xg753")]
 
-[node name="Rune_d" parent="." instance=ExtResource("3_iskwi")]
+[node name="Rune_a" parent="." instance=ExtResource("3_iskwi")]

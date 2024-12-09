@@ -71,30 +71,34 @@ z_index = 2
 
 [node name="MelodyActiverChamp" parent="Tutos" instance=ExtResource("1_gcsrh")]
 position = Vector2(2264, 400)
+song = "dcab"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyActiverChamp" instance=ExtResource("10_byrkf")]
 
 [node name="MelodyMovePierre2" parent="Tutos" instance=ExtResource("3_gkjqo")]
 position = Vector2(-1504, -56)
-song = "cbbcad"
+song = "fbcad"
 
 [node name="Rune_d" parent="Tutos/MelodyMovePierre2" instance=ExtResource("12_byrkf")]
-position = Vector2(0, -80)
+position = Vector2(0, -64)
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyMovePierre2" instance=ExtResource("10_byrkf")]
 
 [node name="MelodyActiverPierre" parent="Tutos" instance=ExtResource("5_gcsrh")]
 position = Vector2(304, -64)
+song = "dbca"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyActiverPierre" instance=ExtResource("10_byrkf")]
 
 [node name="MelodyDashPlayer" parent="Tutos" instance=ExtResource("6_60ne7")]
 position = Vector2(2976, -232)
+song = "f"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyDashPlayer" instance=ExtResource("10_byrkf")]
 
 [node name="MelodyDesactiverChamp" parent="Tutos" instance=ExtResource("7_60ne7")]
 position = Vector2(1424, -256)
+song = "gcab"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyDesactiverChamp" instance=ExtResource("10_byrkf")]
 

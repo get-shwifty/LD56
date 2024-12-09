@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://alexis/melody.gd" id="1_dkusm"]
 [ext_resource type="PackedScene" uid="uid://ycakm571vaf7" path="res://src/reactives/reactive_component2.tscn" id="3_685p7"]
-[ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/melodies/runes/rune_a.tscn" id="4_dkusm"]
+[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/melodies/runes/rune_d.tscn" id="4_dkusm"]
 [ext_resource type="Texture2D" uid="uid://6ihukskjyi4s" path="res://assets/think_text.png" id="4_uw5xa"]
 
 [node name="TutoHint" type="Node2D"]
@@ -18,7 +18,4 @@ texture = ExtResource("4_uw5xa")
 region_enabled = true
 region_rect = Rect2(41, 0, 20, 25)
 
-[node name="Rune_a" parent="." instance=ExtResource("4_dkusm")]
-
-[node name="Rune_a2" parent="." instance=ExtResource("4_dkusm")]
-position = Vector2(0, -16)
+[node name="Rune_d" parent="." instance=ExtResource("4_dkusm")]
