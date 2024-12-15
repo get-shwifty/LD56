@@ -7,26 +7,29 @@
 
 [node name="MelodyActiverPierre" type="Node2D"]
 script = ExtResource("1_os1p8")
-song = "daab"
-
-[node name="MelodyActiver" parent="." instance=ExtResource("1_n7ysl")]
+song = "aabdd"
 
 [node name="MelodyPierre" parent="." instance=ExtResource("2_os1p8")]
 
-[node name="Rune_a" parent="MelodyPierre" index="0"]
+[node name="Rune_a2" parent="MelodyPierre" index="1"]
 position = Vector2(0, -16)
 
-[node name="Rune_a2" parent="MelodyPierre" index="1"]
+[node name="Rune_b" parent="MelodyPierre" index="2"]
 position = Vector2(0, -32)
 
-[node name="Rune_b" parent="MelodyPierre" index="2"]
+[node name="MelodyActiver" parent="." instance=ExtResource("1_n7ysl")]
+
+[node name="Rune_d" parent="MelodyActiver" index="0"]
 position = Vector2(0, -48)
 
+[node name="Rune_d2" parent="MelodyActiver" index="1"]
+position = Vector2(0, -64)
+
 [node name="Top" type="Node2D" parent="."]
-position = Vector2(0, -69)
+position = Vector2(0, -85)
 
 [node name="IconeRockActivated" type="Sprite2D" parent="Top"]
 texture = ExtResource("4_r5i6n")
 
-[editable path="MelodyActiver"]
 [editable path="MelodyPierre"]
+[editable path="MelodyActiver"]

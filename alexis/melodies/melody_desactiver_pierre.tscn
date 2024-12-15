@@ -8,25 +8,25 @@
 
 [node name="MelodyDesactiverPierre" type="Node2D"]
 script = ExtResource("1_pyv4w")
-song = "dbdaab"
-
-[node name="MelodyDesactiver" parent="." instance=ExtResource("2_4qnmu")]
-
-[node name="Rune_b" parent="MelodyDesactiver" index="1"]
-position = Vector2(0, -16)
-
-[node name="Rune_d2" parent="MelodyDesactiver" index="2"]
-position = Vector2(0, -32)
+song = "aabdbd"
 
 [node name="MelodyPierre" parent="." instance=ExtResource("3_pyv4w")]
 
-[node name="Rune_a" parent="MelodyPierre" index="0"]
-position = Vector2(0, -48)
-
 [node name="Rune_a2" parent="MelodyPierre" index="1"]
-position = Vector2(0, -64)
+position = Vector2(0, -16)
 
 [node name="Rune_b" parent="MelodyPierre" index="2"]
+position = Vector2(0, -32)
+
+[node name="MelodyDesactiver" parent="." instance=ExtResource("2_4qnmu")]
+
+[node name="Rune_d" parent="MelodyDesactiver" index="0"]
+position = Vector2(0, -48)
+
+[node name="Rune_b" parent="MelodyDesactiver" index="1"]
+position = Vector2(0, -64)
+
+[node name="Rune_d2" parent="MelodyDesactiver" index="2"]
 position = Vector2(0, -80)
 
 [node name="Top" type="Node2D" parent="."]
@@ -39,5 +39,5 @@ texture = ExtResource("4_ck3m8")
 position = Vector2(0, -13)
 texture = ExtResource("5_jklev")
 
-[editable path="MelodyDesactiver"]
 [editable path="MelodyPierre"]
+[editable path="MelodyDesactiver"]
