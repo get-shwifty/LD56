@@ -3,7 +3,7 @@ class_name MusicBox3
 
 signal on_song_played(song: String)
 
-const NB_NOTES = 6
+const NB_NOTES = 5
 
 @export var audioA: Resource = null
 @export var audioB: Resource = null

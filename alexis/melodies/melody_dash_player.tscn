@@ -8,11 +8,11 @@
 
 [node name="MelodyDashPlayer" type="Node2D"]
 script = ExtResource("1_k8t58")
-song = "feBb"
+song = "fbBb"
 
 [node name="MelodyMove" parent="." instance=ExtResource("2_b3q64")]
 
-[node name="Rune_e" parent="MelodyMove" index="1"]
+[node name="Rune_b" parent="MelodyMove" index="1"]
 position = Vector2(0, -16)
 
 [node name="MelodyPlayer" parent="." instance=ExtResource("3_contq")]

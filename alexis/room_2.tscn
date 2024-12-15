@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://dgts66gjf7p1w"]
+[gd_scene load_steps=36 format=4 uid="uid://dgts66gjf7p1w"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://c2x87je88h7st" path="res://alexis/room_grid.tscn" id="1_cygu0"]
@@ -18,12 +18,14 @@
 [ext_resource type="PackedScene" uid="uid://cyfxw0fgllosq" path="res://alexis/key.tscn" id="10_g53dq"]
 [ext_resource type="Texture2D" uid="uid://dpyq7ydi8p6im" path="res://assets/end.png" id="11_g53dq"]
 [ext_resource type="Texture2D" uid="uid://cnwemxefed4pl" path="res://assets/secret.png" id="12_0yr4i"]
+[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/melodies/runes/rune_d.tscn" id="12_byrkf"]
 [ext_resource type="Texture2D" uid="uid://bsao843tkpmwt" path="res://assets/text_tuto2.png" id="14_ec5q4"]
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="16_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://blp8807emshje" path="res://src/reactives/reactive_mushroom_opened.tscn" id="17_vcdn3"]
 [ext_resource type="Texture2D" uid="uid://bfgq5ml55ed2c" path="res://assets/parot.png" id="24_j1frn"]
 [ext_resource type="PackedScene" uid="uid://dlw37mas610wc" path="res://alexis/melodies/runes/rune_a.tscn" id="25_gcsrh"]
 [ext_resource type="PackedScene" uid="uid://cuw4busq3jsoy" path="res://alexis/melodies/runes/rune_b.tscn" id="26_gkjqo"]
+[ext_resource type="PackedScene" uid="uid://bojrx2noj8w26" path="res://alexis/melodies/runes/rune_f.tscn" id="27_gcsrh"]
 [ext_resource type="PackedScene" uid="uid://ttfncy2n1d4w" path="res://alexis/melodies/runes/rune_c.tscn" id="27_i82bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cygu0"]
@@ -75,7 +77,7 @@ position = Vector2(2264, 400)
 
 [node name="MelodyMovePierre2" parent="Tutos" instance=ExtResource("3_gkjqo")]
 position = Vector2(-1504, -56)
-song = "feaaba"
+song = "fbaaba"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyMovePierre2" instance=ExtResource("10_byrkf")]
 
@@ -172,6 +174,7 @@ tile_set = ExtResource("3_8uhi2")
 metadata/_edit_lock_ = true
 
 [node name="ToggableTileMapLayerForeground" parent="." instance=ExtResource("4_mtblt")]
+visible = false
 tile_map_data = PackedByteArray("AADz/wwAAwABAAEAAADz/wsAAwABAAEAAADz/woAAwABAAEAAADz/wkAAwABAAEAAADz/wgAAwABAAEAAADz/wcAAwABAAEAAADz/wYAAwABAAEAAADz/wUAAwABAAEAAADz/wQAAwABAAEAAADz/wMAAwABAAEAAADz/wIAAwABAAEAAADy/wwAAwABAAEAAADy/wsAAwABAAEAAADy/woAAwABAAEAAADy/wkAAwABAAEAAADy/wgAAwABAAEAAADy/wcAAwABAAEAAADy/wYAAwABAAEAAADy/wUAAwABAAEAAADy/wQAAwABAAEAAADy/wMAAwABAAEAAADy/wIAAwABAAEAAADx/wwAAwABAAEAAADx/wsAAwABAAEAAADx/woAAwABAAEAAADx/wkAAwABAAEAAADx/wgAAwABAAEAAADx/wcAAwABAAEAAADx/wYAAwABAAEAAADx/wUAAwABAAEAAADx/wQAAwABAAEAAADx/wMAAwABAAEAAADx/wIAAwABAAEAAADw/wwAAwABAAEAAADw/wsAAwABAAEAAADw/woAAwABAAEAAADw/wkAAwABAAEAAADw/wgAAwABAAEAAADw/wcAAwABAAEAAADw/wYAAwABAAEAAADw/wUAAwABAAEAAADw/wQAAwABAAEAAADw/wMAAwABAAEAAADw/wIAAwABAAEAAADv/wwAAwABAAEAAADv/wsAAwABAAEAAADv/woAAwABAAEAAADv/wkAAwABAAEAAADv/wgAAwABAAEAAADv/wcAAwABAAEAAADv/wYAAwABAAEAAADv/wUAAwABAAEAAADv/wQAAwABAAEAAADv/wMAAwABAAEAAADv/wIAAwABAAEAAADu/wwAAwABAAEAAADu/wsAAwABAAEAAADu/woAAwABAAEAAADu/wkAAwABAAEAAADu/wgAAwABAAEAAADu/wcAAwABAAEAAADu/wYAAwABAAEAAADu/wUAAwABAAEAAADu/wQAAwABAAEAAADu/wMAAwABAAEAAADu/wIAAwABAAEAAADt/wwAAwABAAEAAADt/wsAAwABAAEAAADt/woAAwABAAEAAADt/wkAAwABAAEAAADt/wgAAwABAAEAAADt/wcAAwABAAEAAADt/wYAAwABAAEAAADt/wUAAwABAAEAAADt/wQAAwABAAEAAADt/wMAAwABAAEAAADt/wIAAwABAAEAAADs/wwAAwABAAEAAADs/wsAAwABAAEAAADs/woAAwABAAEAAADs/wkAAwABAAEAAADs/wgAAwABAAEAAADs/wcAAwABAAEAAADs/wYAAwABAAEAAADs/wUAAwABAAEAAADs/wQAAwABAAEAAADs/wMAAwABAAEAAADs/wIAAwABAAEAAADr/wwAAwABAAEAAADr/wsAAwABAAEAAADr/woAAwABAAEAAADr/wkAAwABAAEAAADr/wgAAwABAAEAAADr/wcAAwABAAEAAADr/wYAAwABAAEAAADr/wUAAwABAAEAAADr/wQAAwABAAEAAADr/wMAAwABAAEAAADr/wIAAwABAAEAAADq/wwAAwABAAEAAADq/wsAAwABAAEAAADq/woAAwABAAEAAADq/wkAAwABAAEAAADq/wgAAwABAAEAAADq/wcAAwABAAEAAADq/wYAAwABAAEAAADq/wUAAwABAAEAAADq/wQAAwABAAEAAADq/wMAAwABAAEAAADq/wIAAwABAAEAAADp/wwAAwABAAEAAADp/wsAAwABAAEAAADp/woAAwABAAEAAADp/wkAAwABAAEAAADp/wgAAwABAAEAAADp/wcAAwABAAEAAADp/wYAAwABAAEAAADp/wUAAwABAAEAAADp/wQAAwABAAEAAADp/wMAAwABAAEAAADp/wIAAwABAAEAAAD5/wwAAwABAAEAAAD5/wsAAwABAAEAAAD5/woAAwABAAEAAAD5/wkAAwABAAEAAAD5/wgAAwABAAEAAAD5/wcAAwABAAEAAAD4/wwAAwABAAEAAAD4/wsAAwABAAEAAAD4/woAAwABAAEAAAD4/wkAAwABAAEAAAD4/wgAAwABAAEAAAD4/wcAAwABAAEAAAD3/wwAAwABAAEAAAD3/wsAAwABAAEAAAD3/woAAwABAAEAAAD3/wkAAwABAAEAAAD3/wgAAwABAAEAAAD3/wcAAwABAAEAAAD2/wwAAwABAAEAAAD2/wsAAwABAAEAAAD2/woAAwABAAEAAAD2/wkAAwABAAEAAAD2/wgAAwABAAEAAAD2/wcAAwABAAEAAAD1/wwAAwABAAEAAAD1/wsAAwABAAEAAAD1/woAAwABAAEAAAD1/wkAAwABAAEAAAD1/wgAAwABAAEAAAD1/wcAAwABAAEAAAD0/wwAAwABAAEAAAD0/wsAAwABAAEAAAD0/woAAwABAAEAAAD0/wkAAwABAAEAAAD0/wgAAwABAAEAAAD0/wcAAwABAAEAAAD//wwAAwABAAEAAAD//wsAAwABAAEAAAD//woAAwABAAEAAAD//wkAAwABAAEAAAD+/wwAAwABAAEAAAD+/wsAAwABAAEAAAD+/woAAwABAAEAAAD+/wkAAwABAAEAAAD9/wwAAwABAAEAAAD9/wsAAwABAAEAAAD9/woAAwABAAEAAAD9/wkAAwABAAEAAAD8/wwAAwABAAEAAAD8/wsAAwABAAEAAAD8/woAAwABAAEAAAD7/wwAAwABAAEAAAD7/wsAAwABAAEAAAD7/woAAwABAAEAAAD7/wkAAwABAAEAAAD6/wwAAwABAAEAAAD6/wsAAwABAAEAAAD6/woAAwABAAEAAAD6/wkAAwABAAEAAAAAAAwAAwABAAEAAAAAAAsAAwABAAEAAAAAAAoAAwACAAEAAAAAAAkAAwABAAEAAAD0/wYAAwABAAEAAAD6/wgAAwACAAEAAAD8/wkAAwABAAEAAAAtAAsAAwABAAEAAAAtAAwAAwABAAEAAAAtAA0AAwABAAEAAAAuAAoAAwABAAEAAAAuAAsAAwABAAEAAAAuAAwAAwABAAEAAAAuAA0AAwABAAEAAAAvAAoAAwABAAEAAAAvAAsAAwABAAEAAAAvAAwAAwABAAEAAAAvAA0AAwABAAEAAAApAAsAAwAGAAEAAAApAAwAAwAAAAIAAAAqAAoAAwABAAEAAAAqAAsAAwABAAEAAAAqAAwAAwAGAAEAAAAqAA0AAwAAAAIAAAArAAoAAwABAAEAAAArAAsAAwABAAEAAAArAAwAAwABAAEAAAArAA0AAwAGAAEAAAAsAAkAAwABAAEAAAAsAAoAAwABAAEAAAAsAAsAAwABAAEAAAAsAAwAAwABAAEAAAAsAA0AAwABAAEAAAAtAAkAAwABAAEAAAAtAAoAAwABAAEAAAAuAAkAAwABAAEAAAAvAAkAAwABAAEAAAA7AP3/AwACAAIAAAA6AP3/AwAAABUAAQA7APz/AwABAAEAAAA6APz/AwABAAEAAAA5APz/AwABAAEAAAA4APz/AwABAAEAAAA3APz/AwABAAEAAAA4APv/AwABAAEAAAA2APz/AwABAAEAAAA2APv/AwABAAEAAAA3APv/AwABAAEAAAA3AP3/AwABAAEAAAA2AP3/AwABAAEAAAA2AP7/AwABAAEAAAA3AP7/AwABAAEAAAA3AP//AwABAAEAAAA4AP//AwABAAEAAAA5AP//AwACAAEAAAA1AP3/AwABAAEAAAA1APz/AwABAAEAAAA1AP7/AwABAAEAAAA1AP//AwABAAEAAAA2AP//AwABAAEAAAA4AP7/AwABAAEAAAA4AP3/AwABAAEAAAA5AP7/AwACAAEAAAA5AP3/AwAFAAEAAAA1APv/AwABAAEAAAA5APv/AwABAAEAAAArAAQAAwACAAEAAAArAAMAAwACAAEAAAArAAIAAwACAAEAAAArAAEAAwACAAEAAAArAAAAAwAFAAEAAAAqAAQAAwABAAEAAAAqAAMAAwABAAEAAAAqAAIAAwABAAEAAAAqAAEAAwABAAEAAAAqAAAAAwABAAEAAAApAAQAAwABAAEAAAApAAMAAwABAAEAAAApAAIAAwABAAEAAAApAAEAAwABAAEAAAApAAAAAwABAAEAAAAoAAQAAwABAAEAAAAoAAMAAwABAAEAAAAoAAIAAwABAAEAAAAoAAEAAwABAAEAAAAoAAAAAwABAAEAAAAnAAQAAwABAAEAAAAnAAMAAwABAAEAAAAnAAIAAwABAAEAAAAnAAEAAwABAAEAAAAnAAAAAwABAAEAAAAmAAQAAwABAAEAAAAmAAMAAwABAAEAAAAmAAIAAwABAAEAAAAmAAEAAwABAAEAAAAmAAAAAwABAAEAAAAlAAQAAwABAAEAAAAlAAMAAwABAAEAAAAlAAIAAwABAAEAAAAlAAEAAwABAAEAAAAlAAAAAwABAAEAAAAkAAQAAwABAAEAAAAkAAMAAwABAAEAAAAkAAIAAwABAAEAAAAkAAEAAwABAAEAAAAjAAQAAwABAAEAAAAlAAUAAwABAAEAAAAkAAUAAwAAAAEAAAAmAAUAAwABAAEAAAAnAAUAAwABAAEAAAAoAAUAAwABAAEAAAApAAUAAwABAAEAAAAqAAUAAwAFAAEAAAAkAAAAAwABAAEAAAAjAAAAAwABAAEAAAAjAAEAAwAAAAEAAAAjAAIAAwAAAAEAAAAjAAMAAwAAAAEAAAAnAAYAAwABAAIAAAAmAAYAAwAAABUAAQAoAAYAAwABAAIAAAApAAYAAwAAABUAAQAqAAYAAwACAAIAAAArAAUAAwACAAIAAAAlAAYAAwAAABUAAQAkAAYAAwAAABUAAQAjAAYAAwAAAAIAAADo/wwAAwABAAEAAADo/wsAAwABAAEAAADo/woAAwABAAEAAADo/wkAAwABAAEAAADo/wgAAwABAAEAAADo/wcAAwABAAEAAADo/wYAAwABAAEAAADo/wUAAwABAAEAAADo/wQAAwABAAEAAADo/wMAAwABAAEAAADo/wIAAwABAAEAAAAoAAsAAwAAABYAAQAnAAsAAwAAAAIAAAAnAAoAAwAAAAwAAQAoAAoAAwAGAAIAAAAoAAkAAwAAAAwAAQApAAkAAwAAAAoAAQApAAoAAwABAAEAAAAqAAkAAwAAAAkAAQArAAkAAwAGAAIAAAArAAgAAwAAAAAAAAAsAAgAAwAAAAkAAQAtAAgAAwAGAAIAAAAtAAcAAwAAAAwAAQAuAAcAAwAAAAcAAQAvAAcAAwAAAAcAAQAuAAgAAwABAAEAAAAvAAgAAwABAAEAAAAwAAcAAwACAAAAAAAwAAgAAwACAAEAAAAwAAkAAwACAAEAAAAwAAoAAwACAAEAAAAwAAsAAwACAAEAAAAwAAwAAwACAAEAAAAwAA0AAwABAAEAAADp/wEAAwABAAEAAADq/wEAAwABAAEAAADr/wEAAwABAAEAAADs/wEAAwABAAEAAADt/wEAAwABAAEAAADu/wEAAwABAAEAAADv/wEAAwABAAEAAADq/wAAAwABAAEAAADr/wAAAwABAAEAAADs/wAAAwABAAEAAADt/wAAAwABAAEAAADu/wAAAwABAAEAAAA=")
 metadata/_edit_lock_ = true
 
@@ -194,6 +197,7 @@ position = Vector2(1267.5, 87)
 shape = SubResource("RectangleShape2D_etedf")
 
 [node name="ToggableTileMapLayerForeground2" parent="." instance=ExtResource("4_mtblt")]
+visible = false
 tile_map_data = PackedByteArray("AAAuAPz/AwABAAEAAAAuAP3/AwABAAEAAAAuAP7/AwABAAEAAAAuAP//AwABAAEAAAAtAP//AwABAAEAAAAtAP7/AwABAAEAAAAtAP3/AwABAAEAAAAvAPv/AwAAAAEAAAAvAPz/AwABAAEAAAAvAP3/AwABAAEAAAAvAP7/AwABAAEAAAAvAP//AwABAAEAAAAwAP//AwABAAEAAAAwAP7/AwABAAEAAAAwAP3/AwABAAEAAAAwAPz/AwABAAEAAAAwAPv/AwABAAEAAAAxAPv/AwABAAEAAAAxAPz/AwABAAEAAAAxAP3/AwABAAEAAAAxAP7/AwABAAEAAAAxAP//AwABAAEAAAAyAP7/AwABAAEAAAAyAP3/AwABAAEAAAAyAP//AwABAAEAAAAuAAAAAwABAAEAAAAvAAAAAwABAAEAAAAwAAAAAwABAAEAAAAxAAAAAwABAAEAAAAxAAEAAwABAAEAAAAwAAEAAwABAAEAAAAxAAIAAwABAAEAAAAxAAMAAwABAAEAAAAyAAMAAwABAAEAAAAzAAMAAwABAAEAAAAwAAIAAwAAAAEAAAAyAAEAAwABAAEAAAAyAAAAAwABAAEAAAAzAP7/AwABAAEAAAAzAP3/AwABAAEAAAAyAAIAAwABAAEAAAAzAAIAAwABAAEAAAA0AAIAAwAFAAEAAAA1AAIAAwAAABUAAQAzAAEAAwABAAEAAAAzAAAAAwABAAEAAAAzAP//AwABAAEAAAA0AAEAAwABAAEAAAA0AAAAAwABAAEAAAA1AAAAAwABAAEAAAA1AAEAAwABAAEAAAA2AAEAAwACAAEAAAA2AAAAAwABAAEAAAA2AAIAAwAAABYAAQAcAAUAAwABAAEAAAAcAAQAAwACAAEAAAAcAAMAAwACAAEAAAAcAAIAAwACAAEAAAAcAAEAAwACAAEAAAAcAAAAAwACAAEAAAAbAAUAAwABAAEAAAAbAAQAAwABAAEAAAAbAAMAAwABAAEAAAAbAAIAAwABAAEAAAAbAAEAAwABAAEAAAAbAAAAAwABAAEAAAAaAAUAAwABAAEAAAAaAAQAAwABAAEAAAAaAAMAAwABAAEAAAAaAAIAAwABAAEAAAAaAAEAAwABAAEAAAAaAAAAAwABAAEAAAAZAAUAAwABAAEAAAAZAAQAAwABAAEAAAAZAAMAAwABAAEAAAAZAAIAAwABAAEAAAAZAAEAAwABAAEAAAAZAAAAAwABAAEAAAAYAAUAAwABAAEAAAAYAAQAAwAAAAEAAAAYAAMAAwABAAEAAAAYAAIAAwABAAEAAAAYAAEAAwABAAEAAAAYAAAAAwABAAEAAAA0AP//AwABAAEAAAA0AP7/AwABAAEAAAA1AP7/AwACAAEAAAA1AP//AwACAAEAAAAyAPz/AwABAAEAAAAyAPv/AwABAAEAAAAzAPv/AwABAAEAAAAzAPz/AwABAAEAAAA0APv/AwABAAEAAAA0APz/AwABAAEAAAA0AP3/AwABAAEAAAA1AP3/AwACAAEAAAA1APz/AwACAAEAAAA1APv/AwABAAEAAAA0AAMAAwACAAEAAAAzAAQAAwABAAIAAAAyAAQAAwAAABUAAQA0AAQAAwACAAIAAAAxAAQAAwAAABUAAQAwAAQAAwAAAAIAAAAwAAMAAwAAAAEAAAA=")
 metadata/_edit_lock_ = true
 
@@ -208,6 +212,7 @@ position = Vector2(852, 101.5)
 shape = SubResource("RectangleShape2D_pwcr2")
 
 [node name="ToggableTileMapLayerForeground3" parent="." instance=ExtResource("4_mtblt")]
+visible = false
 tile_map_data = PackedByteArray("AAAZAPL/AwAAAAEAAAAZAPP/AwAAAAEAAAAZAPT/AwAAAAEAAAAZAPX/AwAAAAEAAAAZAPb/AwAGAAEAAAAaAPL/AwABAAEAAAAaAPP/AwABAAEAAAAaAPT/AwABAAEAAAAaAPX/AwABAAEAAAAaAPb/AwABAAEAAAAbAPL/AwABAAEAAAAbAPP/AwABAAEAAAAbAPT/AwABAAEAAAAbAPX/AwABAAEAAAAbAPb/AwACAAEAAAAcAPL/AwABAAEAAAAcAPP/AwABAAEAAAAcAPT/AwABAAEAAAAcAPX/AwABAAEAAAAdAPL/AwABAAEAAAAdAPP/AwABAAEAAAAdAPT/AwABAAEAAAAdAPX/AwABAAEAAAAeAPL/AwABAAEAAAAeAPP/AwABAAEAAAAeAPT/AwABAAEAAAAeAPX/AwABAAEAAAAfAPL/AwABAAEAAAAfAPP/AwABAAEAAAAfAPT/AwABAAEAAAAfAPX/AwABAAEAAAAgAPL/AwABAAEAAAAgAPP/AwABAAEAAAAgAPT/AwABAAEAAAAgAPX/AwABAAEAAAAhAPL/AwABAAEAAAAhAPP/AwABAAEAAAAhAPT/AwABAAEAAAAhAPX/AwABAAEAAAAhAPb/AwABAAEAAAAiAPL/AwABAAEAAAAiAPP/AwABAAEAAAAiAPT/AwABAAEAAAAiAPX/AwABAAEAAAAiAPb/AwABAAEAAAAiAPf/AwAAABUAAQAjAPL/AwABAAEAAAAjAPP/AwABAAEAAAAjAPT/AwABAAEAAAAjAPX/AwABAAEAAAAjAPb/AwABAAEAAAAjAPf/AwAGAAEAAAAjAPj/AwAAAAIAAAAkAPL/AwABAAEAAAAkAPP/AwABAAEAAAAkAPT/AwABAAEAAAAkAPX/AwABAAEAAAAkAPb/AwABAAEAAAAkAPf/AwABAAEAAAAkAPj/AwABAAIAAAAlAPL/AwABAAEAAAAlAPP/AwABAAEAAAAlAPT/AwABAAEAAAAlAPX/AwABAAEAAAAlAPb/AwABAAEAAAAlAPf/AwABAAEAAAAlAPj/AwAGAAEAAAAlAPn/AwAAAAIAAAAmAPL/AwABAAEAAAAmAPP/AwABAAEAAAAmAPT/AwABAAEAAAAmAPX/AwABAAEAAAAmAPb/AwABAAEAAAAmAPf/AwABAAEAAAAmAPj/AwABAAEAAAAmAPn/AwAAABUAAQAnAPL/AwABAAEAAAAnAPP/AwABAAEAAAAnAPT/AwABAAEAAAAnAPX/AwABAAEAAAAnAPb/AwABAAEAAAAnAPf/AwABAAEAAAAnAPj/AwABAAEAAAAnAPn/AwAAABYAAQAoAPL/AwABAAEAAAAoAPP/AwABAAEAAAAoAPT/AwABAAEAAAAoAPX/AwABAAEAAAAoAPb/AwABAAEAAAAoAPf/AwABAAEAAAAoAPj/AwABAAEAAAAoAPn/AwABAAIAAAApAPL/AwABAAEAAAApAPP/AwABAAEAAAApAPT/AwABAAEAAAApAPX/AwABAAEAAAApAPb/AwABAAEAAAApAPf/AwABAAEAAAApAPj/AwABAAEAAAApAPn/AwAAABUAAQAqAPL/AwABAAEAAAAqAPP/AwABAAEAAAAqAPT/AwABAAEAAAAqAPX/AwABAAEAAAAqAPb/AwABAAEAAAAqAPf/AwABAAEAAAAqAPj/AwABAAEAAAAqAPn/AwABAAIAAAArAPL/AwABAAEAAAArAPP/AwABAAEAAAArAPT/AwABAAEAAAArAPX/AwABAAEAAAArAPb/AwABAAEAAAArAPf/AwABAAEAAAArAPj/AwAFAAEAAAArAPn/AwACAAIAAAAsAPL/AwABAAEAAAAsAPP/AwABAAEAAAAsAPT/AwABAAEAAAAsAPX/AwABAAEAAAAsAPb/AwABAAEAAAAsAPf/AwABAAEAAAAsAPj/AwABAAIAAAAtAPL/AwABAAEAAAAtAPP/AwABAAEAAAAtAPT/AwABAAEAAAAtAPX/AwABAAEAAAAtAPb/AwABAAEAAAAtAPf/AwABAAEAAAAtAPj/AwABAAIAAAAuAPL/AwABAAEAAAAuAPP/AwABAAEAAAAuAPT/AwABAAEAAAAuAPX/AwABAAEAAAAuAPb/AwABAAEAAAAuAPf/AwAFAAEAAAAuAPj/AwACAAIAAAAvAPL/AwABAAEAAAAvAPP/AwACAAEAAAAvAPT/AwACAAEAAAAvAPX/AwACAAEAAAAvAPb/AwACAAEAAAAvAPf/AwACAAIAAAA=")
 
 [node name="Area2D" type="Area2D" parent="ToggableTileMapLayerForeground3"]
@@ -299,10 +304,10 @@ position = Vector2(7, -10)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ControllerKeys"]
 z_index = 20
-offset_left = 1576.0
-offset_top = 369.0
-offset_right = 1584.0
-offset_bottom = 386.0
+offset_left = 1583.0
+offset_top = 365.0
+offset_right = 1591.0
+offset_bottom = 382.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
 theme_override_font_sizes/normal_font_size = 12
 text = "X"
@@ -325,10 +330,10 @@ autowrap_mode = 0
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="ControllerKeys"]
 z_index = 20
-offset_left = 1607.0
-offset_top = 369.0
-offset_right = 1615.0
-offset_bottom = 386.0
+offset_left = 1599.0
+offset_top = 365.0
+offset_right = 1607.0
+offset_bottom = 382.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
 theme_override_font_sizes/normal_font_size = 12
 text = "B"
@@ -338,62 +343,71 @@ autowrap_mode = 0
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="ControllerKeys"]
 z_index = 20
-offset_left = 1550.0
+offset_left = 1576.0
 offset_top = 349.0
-offset_right = 1583.0
+offset_right = 1609.0
 offset_bottom = 366.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "[u]LB/LT"
+text = "L"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="ControllerKeys"]
-z_index = 11
-offset_left = 1375.0
-offset_top = -259.0
-offset_right = 1410.0
-offset_bottom = -242.0
+[node name="RichTextLabel6" type="RichTextLabel" parent="ControllerKeys"]
+z_index = 20
+offset_left = 1605.0
+offset_top = 349.0
+offset_right = 1638.0
+offset_bottom = 366.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "[u]RB/RT"
+text = "R"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
 [node name="RuneA" parent="ControllerKeys" instance=ExtResource("25_gcsrh")]
-visible = false
 z_index = 20
-position = Vector2(1579, 388)
+position = Vector2(1586, 397)
 
 [node name="ReactiveComponent2" parent="ControllerKeys/RuneA" instance=ExtResource("10_byrkf")]
 
 [node name="RuneB" parent="ControllerKeys" instance=ExtResource("26_gkjqo")]
-visible = false
 z_index = 20
-position = Vector2(1595, 379)
+position = Vector2(1595, 386)
 
 [node name="ReactiveComponent2" parent="ControllerKeys/RuneB" instance=ExtResource("10_byrkf")]
 
 [node name="RuneC" parent="ControllerKeys" instance=ExtResource("27_i82bh")]
-visible = false
 z_index = 20
-position = Vector2(1610, 389)
+position = Vector2(1604, 397)
 
 [node name="ReactiveComponent2" parent="ControllerKeys/RuneC" instance=ExtResource("10_byrkf")]
+
+[node name="Rune_d" parent="ControllerKeys" instance=ExtResource("12_byrkf")]
+z_index = 20
+position = Vector2(1575, 385)
+
+[node name="ReactiveComponent2" parent="ControllerKeys/Rune_d" instance=ExtResource("10_byrkf")]
+
+[node name="Rune_f" parent="ControllerKeys" instance=ExtResource("27_gcsrh")]
+z_index = 20
+position = Vector2(1615, 385)
+
+[node name="ReactiveComponent2" parent="ControllerKeys/Rune_f" instance=ExtResource("10_byrkf")]
 
 [node name="KeyboardKeys" type="Node2D" parent="."]
 position = Vector2(7, 38)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="KeyboardKeys"]
 z_index = 20
-offset_left = 1575.0
-offset_top = 368.0
-offset_right = 1585.0
-offset_bottom = 385.0
+offset_left = 1580.0
+offset_top = 373.0
+offset_right = 1590.0
+offset_bottom = 390.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
 theme_override_font_sizes/normal_font_size = 12
 text = "Q"
@@ -403,23 +417,23 @@ autowrap_mode = 0
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="KeyboardKeys"]
 z_index = 20
-offset_left = 1586.0
-offset_top = 358.0
-offset_right = 1605.0
-offset_bottom = 375.0
+offset_left = 1592.0
+offset_top = 368.0
+offset_right = 1611.0
+offset_bottom = 385.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
 theme_override_font_sizes/normal_font_size = 12
-text = "Z/S"
+text = "S"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="KeyboardKeys"]
 z_index = 20
-offset_left = 1607.0
-offset_top = 368.0
-offset_right = 1616.0
-offset_bottom = 385.0
+offset_left = 1601.0
+offset_top = 374.0
+offset_right = 1610.0
+offset_bottom = 391.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
 theme_override_font_sizes/normal_font_size = 12
 text = "D"
@@ -427,30 +441,28 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="KeyboardKeys"]
+[node name="RichTextLabel6" type="RichTextLabel" parent="KeyboardKeys"]
 z_index = 20
-offset_left = 1543.0
-offset_top = 345.0
-offset_right = 1582.0
-offset_bottom = 362.0
+offset_left = 1579.0
+offset_top = 355.0
+offset_right = 1588.0
+offset_bottom = 372.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
 theme_override_font_sizes/normal_font_size = 12
-bbcode_enabled = true
-text = "[u]LSHIFT"
+text = "A"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="KeyboardKeys"]
-z_index = 11
-offset_left = 1374.0
-offset_top = -294.0
-offset_right = 1413.0
-offset_bottom = -277.0
+[node name="RichTextLabel7" type="RichTextLabel" parent="KeyboardKeys"]
+z_index = 20
+offset_left = 1604.0
+offset_top = 355.0
+offset_right = 1613.0
+offset_bottom = 372.0
 theme_override_colors/default_color = Color(0.32549, 0.262745, 0.643137, 1)
 theme_override_font_sizes/normal_font_size = 12
-bbcode_enabled = true
-text = "[u]SPACE"
+text = "Z"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

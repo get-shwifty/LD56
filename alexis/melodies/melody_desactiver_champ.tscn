@@ -8,11 +8,11 @@
 
 [node name="MelodyDesactiverChamp" type="Node2D"]
 script = ExtResource("1_1h36p")
-song = "dedcab"
+song = "dbdcab"
 
 [node name="MelodyDesactiver" parent="." instance=ExtResource("2_1h36p")]
 
-[node name="Rune_e" parent="MelodyDesactiver" index="1"]
+[node name="Rune_b" parent="MelodyDesactiver" index="1"]
 position = Vector2(0, -16)
 
 [node name="Rune_d2" parent="MelodyDesactiver" index="2"]
