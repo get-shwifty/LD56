@@ -101,11 +101,15 @@ position = Vector2(1424, -256)
 
 [node name="TutoHint" parent="Tutos" instance=ExtResource("8_6nvvv")]
 position = Vector2(1232, 200)
-song = "d"
+song = "c"
+
+[node name="Rune_c" parent="Tutos/TutoHint" instance=ExtResource("27_i82bh")]
 
 [node name="TutoHint2" parent="Tutos" instance=ExtResource("8_6nvvv")]
 position = Vector2(888, 128)
-song = "d"
+song = "a"
+
+[node name="Rune_a" parent="Tutos/TutoHint2" instance=ExtResource("25_gcsrh")]
 
 [node name="TutoTranslate" parent="Tutos" instance=ExtResource("8_r37qr")]
 z_index = 2
