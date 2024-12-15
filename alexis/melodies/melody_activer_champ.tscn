@@ -7,7 +7,7 @@
 
 [node name="MelodyActiverChamp" type="Node2D"]
 script = ExtResource("1_2dohw")
-song = "cabdd"
+song = "cab"
 
 [node name="MelodyChamp" parent="." instance=ExtResource("3_e2vl6")]
 
@@ -19,14 +19,8 @@ position = Vector2(0, -32)
 
 [node name="MelodyActiver" parent="." instance=ExtResource("2_e2vl6")]
 
-[node name="Rune_d" parent="MelodyActiver" index="0"]
-position = Vector2(0, -48)
-
-[node name="Rune_d2" parent="MelodyActiver" index="1"]
-position = Vector2(0, -64)
-
 [node name="Top" type="Node2D" parent="."]
-position = Vector2(0, -85)
+position = Vector2(0, -53)
 
 [node name="IconeChamp" type="Sprite2D" parent="Top"]
 scale = Vector2(0.7, 0.7)
