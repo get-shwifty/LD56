@@ -3,7 +3,7 @@ class_name MusicBox3
 
 signal on_song_played(song: String)
 
-const SYSTEM = 1
+const NB_NOTES = 6
 
 @export var audioA: Resource = null
 @export var audioB: Resource = null
@@ -95,25 +95,14 @@ func _physics_process(delta):
 		
 	var cur_time = Time.get_ticks_msec()
 
-	if SYSTEM <= 2:
-		if buffer.size() > 0:
-			var time_since_last_note = cur_time - last_note_time
-			if time_since_last_note >= NOTE_MAX_DELAY:
-				reset_buffer()
-			elif time_since_last_note >= NOTE_MAX_DELAY - 500:
-				hide_dyn_hint()
-			elif time_since_last_note >= DYN_HINT_DELAY:
-				show_dyn_hint()
-	else:
-		if Input.is_action_just_pressed("alt1"):
+	if buffer.size() > 0:
+		var time_since_last_note = cur_time - last_note_time
+		if time_since_last_note >= NOTE_MAX_DELAY:
 			reset_buffer()
-		elif Input.is_action_just_released("alt1"):
-			reset_buffer()
+		elif time_since_last_note >= NOTE_MAX_DELAY - 500:
 			hide_dyn_hint()
-		elif buffer.size() > 0:
-			var time_since_last_note = cur_time - last_note_time
-			if time_since_last_note >= DYN_HINT_DELAY:
-				show_dyn_hint()
+		elif time_since_last_note >= DYN_HINT_DELAY:
+			show_dyn_hint()
 
 	var cam = get_viewport().get_camera_2d()
 	areaReactives.global_position = cam.global_position
@@ -153,55 +142,32 @@ func _physics_process(delta):
 		elif has_to_release < 0.0:
 			sampler.release()
 
-	if SYSTEM <= 2:
-		if Input.is_action_pressed("alt1") and Input.is_action_pressed("alt2"):
-			if Input.is_action_just_pressed("a"):
-				new_note("j")
-			if Input.is_action_just_pressed("b") or Input.is_action_just_pressed("d"):
-				new_note("k")
-			if Input.is_action_just_pressed("c"):
-				new_note("l")
-		elif Input.is_action_pressed("alt1"):
+	if NB_NOTES == 5:
+		if Input.is_action_just_pressed("a"):
+			new_note("a")
+		if Input.is_action_just_pressed("b"):
+			new_note("b")
+		if Input.is_action_just_pressed("c"):
+			new_note("c")
+		if Input.is_action_just_pressed("d"):
+			new_note("d")
+		if Input.is_action_just_pressed("e"):
+			new_note("f")
+	elif NB_NOTES == 6:
+		if Input.is_action_pressed("alt1"):
 			if Input.is_action_just_pressed("a"):
 				new_note("d")
-			if Input.is_action_just_pressed("b") or Input.is_action_just_pressed("d"):
+			if Input.is_action_just_pressed("b"):
 				new_note("e")
 			if Input.is_action_just_pressed("c"):
 				new_note("f")
-		elif Input.is_action_pressed("alt2"):
-			if Input.is_action_just_pressed("a"):
-				new_note("g")
-			if Input.is_action_just_pressed("b") or Input.is_action_just_pressed("d"):
-				new_note("h")
-			if Input.is_action_just_pressed("c"):
-				new_note("i")
 		else:
 			if Input.is_action_just_pressed("a"):
 				new_note("a")
-			if Input.is_action_just_pressed("b") or Input.is_action_just_pressed("d"):
+			if Input.is_action_just_pressed("b"):
 				new_note("b")
 			if Input.is_action_just_pressed("c"):
 				new_note("c")
-	else:
-		if Input.is_action_pressed("alt1"):
-			if Input.is_action_pressed("alt2"):
-				if Input.is_action_just_pressed("a"):
-					new_note("g")
-				if Input.is_action_just_pressed("b"):
-					new_note("h")
-				if Input.is_action_just_pressed("c"):
-					new_note("i")
-				if SYSTEM == 4 and Input.is_action_just_pressed("d"):
-					new_note("o")
-			else:
-				if Input.is_action_just_pressed("a"):
-					new_note("d")
-				if Input.is_action_just_pressed("b"):
-					new_note("e")
-				if Input.is_action_just_pressed("c"):
-					new_note("f")
-				if SYSTEM == 4 and Input.is_action_just_pressed("d"):
-					new_note("n")
 
 	process_dyn_hint()
 
@@ -261,8 +227,8 @@ func new_note(note):
 				note = "P"
 	
 	last_note_time = cur_time
-	if buffer.size() == 0:
-		can_show_dyn_hint = true
+	#if buffer.size() == 0:
+	can_show_dyn_hint = true
 	buffer.append(note)
 	auto_reset_melody()
 
@@ -273,25 +239,31 @@ func new_note(note):
 func notify_song():
 	var song = "".join(buffer)
 	on_song_played.emit(song)
-	print(song)
 
 	for a: Reactive2 in areaReactives.get_overlapping_areas():
 		if a.get_parent().has_method("on_song"):
-			if a.get_parent().on_song(song) == true and a.trigger_feedback:
+			if a.get_parent().on_song(song) == 2 and a.trigger_feedback:
 				continue
 				#trigger_aura(a.global_position)
 				#unlocked_hints[song] = a.get_parent().name
 				#hide_dyn_hint()
 
-	for l in range(song.length(), 0, -1):
-		var subsong = song.substr(0, l)
-		for hint: Melody in $DynMemo.get_children():
-			if hint.on_song(subsong) == true:
-				can_show_dyn_hint = false
-				unlocked_hints[subsong] = hint.name
-				var melody = hint.name
-				var rest = song.substr(l)
-				notify_melody(melody, rest)
+	#for l in range(song.length(), 0, -1):
+		#var subsong = song.substr(0, l)
+	for hint: Melody in $DynMemo.get_children():
+		if hint.on_song(song) == 2:
+			can_show_dyn_hint = false
+			unlocked_hints[hint.song] = hint.name
+			var melody = hint.name
+			#var rest = song.substr(l)
+			notify_melody(melody, "")
+			
+		elif hint.on_song(song.substr(0, song.length() - 1)) == 2:
+			can_show_dyn_hint = false
+			unlocked_hints[hint.song] = hint.name
+			var melody = hint.name
+			#var rest = song.substr(l)
+			notify_melody(melody, song[-1])
 	if song == "":
 		notify_melody("", "")
 
@@ -324,66 +296,15 @@ func hide_dyn_hint(fast = false):
 		tween_dyn_hint.tween_property($DynMemo, "modulate:a", 0.0, 0.5)
 
 func auto_reset_melody():
-	if SYSTEM > 2:
-		return
-
-	var verb_found_index = -1
-	var middle_b = 0
-	for i in range(buffer.size() - 1, -1, -1):
-		var note = buffer[i]
-		if SYSTEM == 1:
-			if note not in ["a", "b", "c", "B"]:
-				verb_found_index = i
-				break
-		else:
-			if verb_found_index == -1:
-				if note in ["a", "b", "c", "B"]:
-					verb_found_index = i
-					
-			elif note in ["a", "b", "c", "B"]:
-				verb_found_index = i
-
-				if note in ["a", "c", "B"] or (middle_b == 2 and note == "b"):
-					break
-				elif note == "b":
-					middle_b += 1
-			else:
-				break
-
-	if verb_found_index == -1:
-		buffer.clear()
-		can_show_dyn_hint = false
-	elif verb_found_index > 0:
-		if SYSTEM == 2 and \
-		buffer.size() > 0 and \
-		"".join(buffer).begins_with("cb") and \
-		buffer[-1] in ["a", "c"] and \
-		buffer[-2] not in ["a", "b", "c"]:
-			pass # special case move we do nothing
-		else:
-			buffer = buffer.slice(verb_found_index)
-			can_show_dyn_hint = true
-
-func melody_get_verb(melody: String):
-	if SYSTEM > 2:
-		return melody.substr(0, 2)
-	elif SYSTEM == 1:
-		return melody.substr(0, 1)
-	else:
-		var verb = ""
-		for i in range(melody.length()):
-			if melody[i] in ["a", "b", "c"]:
-				verb += melody[i]
-			else:
-				break
-		return verb
+	if buffer.size() > 8:
+		buffer = buffer.slice(-8)
+		can_show_dyn_hint = true
 
 func update_dyn_hint(song: String):
 	visible_hints = []
 
 	for hint: Melody in $DynMemo.get_children():
-		hint.on_song(song)
-		if hint.song in unlocked_hints and song.begins_with(melody_get_verb(hint.song)):
+		if hint.on_song(song) > 0 and hint.song in unlocked_hints:
 			visible_hints.append(hint)
 			hint.show()
 		else:

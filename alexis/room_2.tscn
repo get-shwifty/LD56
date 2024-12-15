@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://dgts66gjf7p1w"]
+[gd_scene load_steps=34 format=4 uid="uid://dgts66gjf7p1w"]
 
 [ext_resource type="TileSet" uid="uid://dkp7os43as5hi" path="res://src/world/background_tileset.tres" id="1_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://c2x87je88h7st" path="res://alexis/room_grid.tscn" id="1_cygu0"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://cyfxw0fgllosq" path="res://alexis/key.tscn" id="10_g53dq"]
 [ext_resource type="Texture2D" uid="uid://dpyq7ydi8p6im" path="res://assets/end.png" id="11_g53dq"]
 [ext_resource type="Texture2D" uid="uid://cnwemxefed4pl" path="res://assets/secret.png" id="12_0yr4i"]
-[ext_resource type="PackedScene" uid="uid://cdk1reut2ql6r" path="res://alexis/melodies/runes/rune_d.tscn" id="12_byrkf"]
 [ext_resource type="Texture2D" uid="uid://bsao843tkpmwt" path="res://assets/text_tuto2.png" id="14_ec5q4"]
 [ext_resource type="PackedScene" uid="uid://bo74cfhrjn5b3" path="res://src/reactives/reactive_mushroom.tscn" id="16_bg0pr"]
 [ext_resource type="PackedScene" uid="uid://blp8807emshje" path="res://src/reactives/reactive_mushroom_opened.tscn" id="17_vcdn3"]
@@ -71,42 +70,40 @@ z_index = 2
 
 [node name="MelodyActiverChamp" parent="Tutos" instance=ExtResource("1_gcsrh")]
 position = Vector2(2264, 400)
-song = "dcab"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyActiverChamp" instance=ExtResource("10_byrkf")]
 
 [node name="MelodyMovePierre2" parent="Tutos" instance=ExtResource("3_gkjqo")]
 position = Vector2(-1504, -56)
-song = "fbcad"
-
-[node name="Rune_d" parent="Tutos/MelodyMovePierre2" instance=ExtResource("12_byrkf")]
-position = Vector2(0, -64)
+song = "feaaba"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyMovePierre2" instance=ExtResource("10_byrkf")]
 
+[node name="Rune_a" parent="Tutos/MelodyMovePierre2" instance=ExtResource("25_gcsrh")]
+position = Vector2(0, -80)
+
 [node name="MelodyActiverPierre" parent="Tutos" instance=ExtResource("5_gcsrh")]
 position = Vector2(304, -64)
-song = "dbca"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyActiverPierre" instance=ExtResource("10_byrkf")]
 
 [node name="MelodyDashPlayer" parent="Tutos" instance=ExtResource("6_60ne7")]
 position = Vector2(2976, -232)
-song = "f"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyDashPlayer" instance=ExtResource("10_byrkf")]
 
 [node name="MelodyDesactiverChamp" parent="Tutos" instance=ExtResource("7_60ne7")]
 position = Vector2(1424, -256)
-song = "gcab"
 
 [node name="ReactiveComponent2" parent="Tutos/MelodyDesactiverChamp" instance=ExtResource("10_byrkf")]
 
 [node name="TutoHint" parent="Tutos" instance=ExtResource("8_6nvvv")]
 position = Vector2(1232, 200)
+song = "d"
 
 [node name="TutoHint2" parent="Tutos" instance=ExtResource("8_6nvvv")]
 position = Vector2(888, 128)
+song = "d"
 
 [node name="TutoTranslate" parent="Tutos" instance=ExtResource("8_r37qr")]
 z_index = 2

@@ -8,23 +8,29 @@
 
 [node name="MelodyDesactiverChamp" type="Node2D"]
 script = ExtResource("1_1h36p")
-song = "gcab"
+song = "dedcab"
 
 [node name="MelodyDesactiver" parent="." instance=ExtResource("2_1h36p")]
+
+[node name="Rune_e" parent="MelodyDesactiver" index="1"]
+position = Vector2(0, -16)
+
+[node name="Rune_d2" parent="MelodyDesactiver" index="2"]
+position = Vector2(0, -32)
 
 [node name="MelodyChamp" parent="." instance=ExtResource("3_qhnql")]
 
 [node name="Rune_c" parent="MelodyChamp" index="0"]
-position = Vector2(0, -16)
-
-[node name="Rune_a" parent="MelodyChamp" index="1"]
-position = Vector2(0, -32)
-
-[node name="Rune_b" parent="MelodyChamp" index="2"]
 position = Vector2(0, -48)
 
+[node name="Rune_a" parent="MelodyChamp" index="1"]
+position = Vector2(0, -64)
+
+[node name="Rune_b" parent="MelodyChamp" index="2"]
+position = Vector2(0, -80)
+
 [node name="Top" type="Node2D" parent="."]
-position = Vector2(0, -69)
+position = Vector2(0, -101)
 
 [node name="IconeChampOnly" type="Sprite2D" parent="Top"]
 texture = ExtResource("4_bomdi")

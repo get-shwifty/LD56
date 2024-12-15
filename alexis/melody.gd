@@ -47,11 +47,16 @@ func compute_runes():
 			$Top.modulate.b = 100.0
 	
 func on_song(played_song: String):
-	for i in range(played_song.length(), -1, -1):
-		if i == 0 or song.substr(0, i) == played_song:
+	for i in range(song.length(), -1, -1):
+		if i == 0 or played_song.ends_with(song.substr(0, i)): # old system was =
 			for j in range(all_runes.size()):
 				if j < i:
 					all_runes[j].activate()
 				else:
 					all_runes[j].deactivate()
-			return played_song == song
+			if i == 0:
+				return 0
+			elif i == song.length():
+				return 2
+			else:
+				return 1

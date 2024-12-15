@@ -8,20 +8,23 @@
 
 [node name="MelodyDashPlayer" type="Node2D"]
 script = ExtResource("1_k8t58")
-song = "fBb"
+song = "feBb"
 
 [node name="MelodyMove" parent="." instance=ExtResource("2_b3q64")]
+
+[node name="Rune_e" parent="MelodyMove" index="1"]
+position = Vector2(0, -16)
 
 [node name="MelodyPlayer" parent="." instance=ExtResource("3_contq")]
 
 [node name="Rune_B" parent="MelodyPlayer" index="0"]
-position = Vector2(0, -16)
-
-[node name="Rune_b" parent="MelodyPlayer" index="1"]
 position = Vector2(0, -32)
 
+[node name="Rune_b" parent="MelodyPlayer" index="1"]
+position = Vector2(0, -48)
+
 [node name="Top" type="Node2D" parent="."]
-position = Vector2(0, -53)
+position = Vector2(0, -69)
 
 [node name="IconPlayer" type="Sprite2D" parent="Top"]
 texture = ExtResource("4_contq")
