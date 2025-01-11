@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cxm2m5ydpas6s" path="res://sounds/Son-gland-chute-sol-4.mp3" id="5_s4pab"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aq7i8"]
-radius = 9.0
+radius = 8.11187
 
 [node name="FallProjectile" type="RigidBody2D"]
 collision_layer = 0
