@@ -124,10 +124,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ovwg"]
 _data = {
-&"RESET": SubResource("Animation_shduq"),
-&"blink": SubResource("Animation_tmqfe"),
-&"die": SubResource("Animation_t867b"),
-&"run": SubResource("Animation_vf5hf")
+"RESET": SubResource("Animation_shduq"),
+"blink": SubResource("Animation_tmqfe"),
+"die": SubResource("Animation_t867b"),
+"run": SubResource("Animation_vf5hf")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knvwl"]
@@ -285,8 +285,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5f201"]
 _data = {
-&"RESET": SubResource("Animation_y24sw"),
-&"play": SubResource("Animation_62mpq")
+"RESET": SubResource("Animation_y24sw"),
+"play": SubResource("Animation_62mpq")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlj80"]
@@ -318,7 +318,7 @@ position = Vector2(0, -16)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_0ovwg")
+"": SubResource("AnimationLibrary_0ovwg")
 }
 
 [node name="Visual" type="Node2D" parent="."]
@@ -398,7 +398,7 @@ shape = SubResource("CircleShape2D_mek6n")
 
 [node name="AnimationPlayerPoison" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_5f201")
+"": SubResource("AnimationLibrary_5f201")
 }
 
 [node name="Poison" type="Sprite2D" parent="."]
@@ -415,6 +415,12 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathDetection"]
 position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_wlj80")
+
+[node name="ShroomRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 70)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
 
 [connection signal="timeout" from="Voices/Timer" to="Voices" method="_on_timer_timeout"]
 [connection signal="area_entered" from="DeathDetection" to="." method="_on_death_detection_area_entered"]

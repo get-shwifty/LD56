@@ -331,6 +331,17 @@ func on_melody(melody: String, rest: String):
 			"": # will dash
 				$AuraLoop.show()
 				return true
+				
+func has_shroom_below():
+	var col = $ShroomRay.is_colliding()
+	return col
+	
+func dist_to_shroom():
+	var col = $ShroomRay.is_colliding()
+	if col:
+		var point = $ShroomRay.get_collision_point()
+		return point.y - $ShroomRay.global_position.y
+	
 
 func _on_death_detection_area_entered(area: Area2D) -> void:
 	teleport(last_gpos)

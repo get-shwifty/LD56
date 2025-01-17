@@ -6,6 +6,7 @@ var map = null
 var projectile_container: Node2D = null
 var grotte_background_container: Node2D
 var last_checkpoint = null
+var camera = null
 
 
 var request_music = null
