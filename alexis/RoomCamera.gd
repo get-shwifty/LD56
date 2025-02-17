@@ -1,13 +1,23 @@
 extends Camera2D
 @export var target: Node2D
-@export var width : float = 768
-@export var height : float = 432
+@export var width : float = 640
+@export var height : float = 360
 
 @export var use_smooth: bool = true
 @export var use_keep_down_speed = true
 
 @export var lock_zone = Vector2(150, 230)
 @export var dead_zone = Vector2(30, 20)
+
+#new
+@export var draw_debug = false
+@export var top_offset = 40
+@export var bottom_offset = 40
+@export var target_offset = Vector2(0, 0)
+
+@export var min_accel = 50
+@export var min_speed = 100 # after accel (speed can be < 0 but should at least accelerate up to min_speed)
+@export var decel_rate = 10
 
 @export var SHOOT_DECAY_RATE:float = 3.0
 @export var SHOOT_STRENGHT:int = 20
@@ -20,13 +30,19 @@ var shake_strength:float = 0.0
 var hit_shake: bool = false
 var shoot_shake: bool = false
 
+
+### new
+var vertical_speed = 0
+var decelerate = false
+var decel_speed = 0
+var dist_to_target = Vector2.ZERO
 var smooth_speed = Vector2(5,3)
 
 var target_y = 0
 var last_floor_y = 0
 var y_offset = -70
 
-var lock_y = false
+var lock_y = true
 var locked_y = 0
 
 var boundaries = Rect2(0,0,0,0)
@@ -47,26 +63,26 @@ func shake_on_hit():
 	hit_shake = true
 	shake_strength += HIT_STRENGTH
 
-func compute_min_move(target, move, delta):
-	var dist = target - global_position
-	var last_move_y = target.y - last_target.y
-	if dist.y > 0:
-		var limit = lock_zone.y + y_offset
-		var dist_to_limit = limit - dist.y
-		var buffer_zone = 70
-		if dist_to_limit > 0 and dist_to_limit < buffer_zone:
-			var ratio = dist_to_limit/buffer_zone
-			var speed = (1-ratio) * last_move_y * 0.4
-			move.y += speed
-			move.y = min(move.y, dist_to_limit)
-		if use_keep_down_speed:
-			if dist.y < 1:
-				min_speed_y = 0
-			min_speed_y = max(min_speed_y, move.y)
-			move.y = min_speed_y
-	else:
-		min_speed_y = 0
-	return move
+#func compute_min_move(target, move, delta):
+	#var dist = target - global_position
+	#var last_move_y = target.y - last_target.y
+	#if dist.y > 0:
+		#var limit = lock_zone.y + y_offset
+		#var dist_to_limit = limit - dist.y
+		#var buffer_zone = 70
+		#if dist_to_limit > 0 and dist_to_limit < buffer_zone:
+			#var ratio = dist_to_limit/buffer_zone
+			#var speed = (1-ratio) * last_move_y * 0.4
+			#move.y += speed
+			#move.y = min(move.y, dist_to_limit)
+		#if use_keep_down_speed:
+			#if dist.y < 1:
+				#min_speed_y = 0
+			#min_speed_y = max(min_speed_y, move.y)
+			#move.y = min_speed_y
+	#else:
+		#min_speed_y = 0
+	#return move
 
 func compute_camera_smooth(target, delta):
 	var dist = target - global_position
@@ -79,83 +95,93 @@ func compute_camera_smooth(target, delta):
 func _ready():
 	Global.camera = self
 	min_y_since_grounded = target.global_position.y
-	#
-#func update_target_y():
-	#var player = Global.player
-	#var player_y = player.global_position.y
-	#if player.is_on_floor():
-		#target_y = player_y + y_offset
-		#last_floor_y = player_y
-	#elif player_y > last_floor_y:
-		#var dist = player_y - last_floor_y
-		#var ratio = 1.0
-		#if dist < abs(y_offset):
-			#ratio = dist / abs(y_offset) 
-		#target_y = player_y + (1- ratio) * y_offset
-	#
+	
+	var bus_idx = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_mute(bus_idx, true)
 
+func _draw():
+	if(draw_debug):
+		draw_bottom_line()
+		draw_top_line()
+		draw_target_y()
+	
+func draw_bottom_line():
+	draw_line(Vector2(-width / 2, height / 2 - bottom_offset), Vector2(width / 2, height / 2 - bottom_offset), Color.RED, 3)
+
+func draw_top_line():
+	draw_line(Vector2(-width / 2, -height / 2 + top_offset), Vector2(width / 2, -height / 2 + top_offset), Color.RED, 3)
+
+func draw_target_y():
+	var y = (dist_to_target - target_offset).y
+	draw_line(Vector2(-width / 2, y), Vector2(width / 2, y), Color.RED, 3)
 
 func _physics_process(delta: float):
 	if not Global.player:
 		return
-	var target = Global.player.global_position + Vector2.DOWN * y_offset
+	#var target = Global.player.global_position + Vector2.DOWN * y_offset
+	var target = Global.player.global_position + target_offset
 	if not last_target:
 		last_target = target
-	#print(target)
-	#var move = calc_movement(global_position, target, dead_zone, lock_zone, delta)
-	#var dist = target - global_position
-	#var move = move_camera(dist, delta)
-	##print(move)
-	#var goal = global_position + move
-	#goal.x = floor(goal.x)
-	#goal.y = floor(goal.y)
-	#if goal.distance_to(target) < 2:
-		#goal = target
-	#
-	#print()
-	
-	#var goal = target
-	#update_target_y()
+
+	if draw_debug:
+		queue_redraw()
 	
 
 	
-	var goal = global_position
-	var move = Vector2.ZERO
-	if use_smooth:
-		move = compute_camera_smooth(target, delta)
-		move = compute_min_move(target, move, delta)
-		#print('move2 y: ', move.y)
-		#goal += move
-	
+	#var goal = global_position
+	#var move = Vector2.ZERO
+	#if use_smooth:
+		#move = compute_camera_smooth(target, delta)
+		#move = compute_min_move(target, move, delta)
+	#
 	var player = Global.player
 	var shake = false
 	var is_grounded = player.is_on_floor()
-	var fall_dist = player.global_position.y - min_y_since_grounded
-	if is_grounded and fall_dist > 200:
-		shake = true
-	if is_grounded:
-		min_y_since_grounded = player.global_position.y
-	if not is_grounded:
-		min_y_since_grounded = min(min_y_since_grounded, player.global_position.y)
+	#var fall_dist = player.global_position.y - min_y_since_grounded
+	#if is_grounded and fall_dist > 200:
+		#shake = true
+	#if is_grounded:
+		#min_y_since_grounded = player.global_position.y
+	#if not is_grounded:
+		#min_y_since_grounded = min(min_y_since_grounded, player.global_position.y)
+	#
+	#var shroom = player.has_shroom_below()
+	#if shroom:
+		#shake = false
+	#if shroom and not lock_y:
+		#var dist = player.dist_to_shroom()
+		#lock_y = true
+		#locked_y = target.y + dist - 50
+	#elif not shroom:
+		#lock_y = false
+	#
+	#if lock_y and goal.y + move.y >= locked_y:
+		#move.y = 0
+	#goal += move
+	#
+	#var min_x = boundaries.position.x + width / 2
+	#var max_x = boundaries.position.x + boundaries.size.x + width / 2
+	#
+	#var min_y = floor(boundaries.position.y + height / 2)
+	#var max_y = floor(boundaries.position.y + boundaries.size.y + height / 2)
+	#
+	#var final = Vector2(clamp(goal.x, min_x, max_x), clamp(goal.y, min_y, max_y))
+	#
+	#global_position = final
+	#
+	if boundaries_changed_flag:
+		boundaries_changed_flag = false
+		use_smooth = false
+	else:
+		use_smooth = true
+	var move = target - global_position
+	if use_smooth:
+		move = calc_movement(global_position, target, delta)
 	
-	var shroom = player.has_shroom_below()
-	if shroom:
-		shake = false
-	if shroom and not lock_y:
-		var dist = player.dist_to_shroom()
-		lock_y = true
-		locked_y = target.y + dist - 50
-	elif not shroom:
-		lock_y = false
-	
-	if lock_y and goal.y + move.y >= locked_y:
-		#pass
-		move.y = 0
-		##print(locked_y)
-	##goal.y = target_y 
-	##goal.y += y_offset
-	
-	goal += move
+	#if lock_y and target.y + move.y >= locked_y:
+		#move.y = 0
+		#
+	var goal = global_position + move
 	
 	var min_x = boundaries.position.x + width / 2
 	var max_x = boundaries.position.x + boundaries.size.x + width / 2
@@ -165,16 +191,12 @@ func _physics_process(delta: float):
 	
 	var final = Vector2(clamp(goal.x, min_x, max_x), clamp(goal.y, min_y, max_y))
 	
+	#var final = Vector2(round(goal.x), round(goal.y))
 	global_position = final
-	
-	if boundaries_changed_flag:
-		boundaries_changed_flag = false
-		use_smooth = false
-	else:
-		use_smooth = true
-
 	last_target = final
 	was_grounded = is_grounded
+	
+	global_position = final
 	
 	if shake:
 		shake_with_delay()
@@ -188,6 +210,76 @@ func _physics_process(delta: float):
 		offset = get_random_offset()
 		if shake_strength == 0:
 			hit_shake = false
+			
+
+var last_move = Vector2.ZERO
+var last_target2 = null
+func calc_movement(position, target, delta):
+	
+	if last_target2 == null:
+		last_target2 = target
+	
+	var dist = target - position
+	dist_to_target = dist
+	var dist_y = dist.y
+	var move = Vector2.ZERO
+	
+	if last_move.y != 0 and sign(last_move.y) != sign(dist_y):
+		vertical_speed = 0
+	
+	var target_move =  target - last_target2
+	var target_speed_y = abs(target_move.y) / delta
+	
+	var dist_to_limit = get_dist_to_limit(dist, target_move)
+	
+	var required_speed = 0
+	if dist_to_limit != null:
+		if dist_to_limit < 0:
+			move.y = -dist_to_limit
+		if dist_to_limit > 0:
+			var time_before_limit = dist_to_limit / target_speed_y
+			required_speed = (target_speed_y - vertical_speed) / 2
+			
+			if sign(target_move.y) != sign(dist.y):
+				required_speed = 0
+			var accel = 0
+			if required_speed > 0:
+				accel = required_speed / time_before_limit * 1
+				accel = max(accel, min_accel) * sign(dist.y)
+				vertical_speed += accel * delta
+		
+	if target_move.y == 0 && dist.y != 0:
+		if abs(vertical_speed) < min_speed:
+			vertical_speed += min_accel * sign(dist.y) * delta
+
+	#var c = abs(vertical_speed / 2) * delta * delta
+	#var my = dist.y * c
+
+	move.y =  vertical_speed * delta
+	#move.y =  my
+	if abs(move.y) > abs(dist.y):
+		move.y = dist.y
+			
+	if abs(dist.y) < 0.1 && target_move.y == 0:
+		move.y = dist.y
+
+	#move.y = dist.y
+	var camera_smooth = compute_camera_smooth(target, delta)
+	move.x = camera_smooth.x
+	last_move = move
+	last_target2 = target
+	return move
+	
+func get_dist_to_limit(dist: Vector2, target_move: Vector2):
+	if target_move.y > 0:
+		var real_limit = height / 2 - bottom_offset + target_offset.y
+		return real_limit - dist.y
+	if target_move.y < 0:
+		var real_limit = height / 2 + top_offset - target_offset.y
+		return real_limit - dist.y
+	return null
+	
+	
 
 func get_random_offset() -> Vector2:
 	return Vector2(

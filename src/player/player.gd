@@ -2,20 +2,20 @@ extends CharacterBody2D
 class_name Player
 
 ### Running
-var RUN_SPEED := 240.0  # px/s
+var RUN_SPEED := 240.0 *0.75 # px/s
 var RUN_ACCELERATION := 50.0 # range(0, 100, 1) 
 var RUN_DECELERATION := 50.0 # range(0, 100, 1) 
 # 0->49 add more force to change direction
 # 50->100 = instantly change direction (from 50 with velocity 0 to 100 with same velocity)
 var RUN_TURN_SPEED := 50.0 # range(0, 100, 1) 
-const RUN_MAX_ACC := 10000.0
+const RUN_MAX_ACC := 10000.0 / 2
 
 ### Fall
 var FALL_MAX_SPEED := 600.0  # px/s
 var FALL_GRAVITY := 50.0  # 0 = same gravity, 100 = double gravity # range(0, 100, 1) 
 
 ### Jumping
-var JUMP_HEIGHT := 70.0  # px
+var JUMP_HEIGHT := 70.0 * 0.75  # px
 var JUMP_TIME := 0.250  # s
 var JUMP_CUTOFF := 0.0  # 0 = keep jumping, 100 = abort jumping # range(0, 100, 1) 
 var REBOUND_COEFF := 1.2  #
@@ -140,7 +140,7 @@ func _physics_process(delta: float) -> void:
 
 		if rebound_vector:
 			jump_buffer = 0
-			velocity = rebound_vector * 2.0 * JUMP_HEIGHT / JUMP_TIME * REBOUND_COEFF
+			velocity = (rebound_vector * 2.0 * JUMP_HEIGHT / JUMP_TIME * REBOUND_COEFF) + Vector2(velocity.x, 0)
 			set_state(JUMP)
 		else:
 			if jump_buffer > 0 and coyote_time > 0:
