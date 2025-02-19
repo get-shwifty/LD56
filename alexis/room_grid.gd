@@ -18,6 +18,11 @@ class Zone:
 var zones = []
 var last_zone = 0
 
+# Pathfinding
+var pos_offset = Vector2.ZERO
+var obstacles = []
+var navigation = []
+
 var layout = [
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -133,7 +138,6 @@ func _physics_process(delta):
 		var w = (zone.w - 1) * W
 		var h = (zone.h - 1) * H
 		Global.camera.set_boundaries(min_x, min_y, w, h)
-	
 
 func _draw():
 	zones = find_zones()

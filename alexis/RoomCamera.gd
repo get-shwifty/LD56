@@ -63,27 +63,6 @@ func shake_on_hit():
 	hit_shake = true
 	shake_strength += HIT_STRENGTH
 
-#func compute_min_move(target, move, delta):
-	#var dist = target - global_position
-	#var last_move_y = target.y - last_target.y
-	#if dist.y > 0:
-		#var limit = lock_zone.y + y_offset
-		#var dist_to_limit = limit - dist.y
-		#var buffer_zone = 70
-		#if dist_to_limit > 0 and dist_to_limit < buffer_zone:
-			#var ratio = dist_to_limit/buffer_zone
-			#var speed = (1-ratio) * last_move_y * 0.4
-			#move.y += speed
-			#move.y = min(move.y, dist_to_limit)
-		#if use_keep_down_speed:
-			#if dist.y < 1:
-				#min_speed_y = 0
-			#min_speed_y = max(min_speed_y, move.y)
-			#move.y = min_speed_y
-	#else:
-		#min_speed_y = 0
-	#return move
-
 func compute_camera_smooth(target, delta):
 	var dist = target - global_position
 	var c = smooth_speed * delta
@@ -116,6 +95,9 @@ func draw_target_y():
 	draw_line(Vector2(-width / 2, y), Vector2(width / 2, y), Color.RED, 3)
 
 func _physics_process(delta: float):
+	
+	Global.mouse_position = get_global_mouse_position()
+	
 	if not Global.player:
 		return
 	#var target = Global.player.global_position + Vector2.DOWN * y_offset
@@ -126,49 +108,10 @@ func _physics_process(delta: float):
 	if draw_debug:
 		queue_redraw()
 	
-
-	
-	#var goal = global_position
-	#var move = Vector2.ZERO
-	#if use_smooth:
-		#move = compute_camera_smooth(target, delta)
-		#move = compute_min_move(target, move, delta)
-	#
 	var player = Global.player
 	var shake = false
 	var is_grounded = player.is_on_floor()
-	#var fall_dist = player.global_position.y - min_y_since_grounded
-	#if is_grounded and fall_dist > 200:
-		#shake = true
-	#if is_grounded:
-		#min_y_since_grounded = player.global_position.y
-	#if not is_grounded:
-		#min_y_since_grounded = min(min_y_since_grounded, player.global_position.y)
-	#
-	#var shroom = player.has_shroom_below()
-	#if shroom:
-		#shake = false
-	#if shroom and not lock_y:
-		#var dist = player.dist_to_shroom()
-		#lock_y = true
-		#locked_y = target.y + dist - 50
-	#elif not shroom:
-		#lock_y = false
-	#
-	#if lock_y and goal.y + move.y >= locked_y:
-		#move.y = 0
-	#goal += move
-	#
-	#var min_x = boundaries.position.x + width / 2
-	#var max_x = boundaries.position.x + boundaries.size.x + width / 2
-	#
-	#var min_y = floor(boundaries.position.y + height / 2)
-	#var max_y = floor(boundaries.position.y + boundaries.size.y + height / 2)
-	#
-	#var final = Vector2(clamp(goal.x, min_x, max_x), clamp(goal.y, min_y, max_y))
-	#
-	#global_position = final
-	#
+	
 	if boundaries_changed_flag:
 		boundaries_changed_flag = false
 		use_smooth = false
@@ -178,9 +121,6 @@ func _physics_process(delta: float):
 	if use_smooth:
 		move = calc_movement(global_position, target, delta)
 	
-	#if lock_y and target.y + move.y >= locked_y:
-		#move.y = 0
-		#
 	var goal = global_position + move
 	
 	var min_x = boundaries.position.x + width / 2
@@ -210,8 +150,7 @@ func _physics_process(delta: float):
 		offset = get_random_offset()
 		if shake_strength == 0:
 			hit_shake = false
-			
-
+	#print(target)
 var last_move = Vector2.ZERO
 var last_target2 = null
 func calc_movement(position, target, delta):
