@@ -28,8 +28,8 @@ var layout = [
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 2, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 2, 0, 0, 0,
-	0, 0, 0, 1, 1, 1, 2, 0, 0, 0,
-	0, 0, 0, 1, 1, 1, 2, 0, 0, 0,
+	0, 0, 0, 1, 2, 3, 4, 0, 0, 0,
+	0, 0, 5, 6, 7, 8, 9, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -42,7 +42,11 @@ var colors = [
 	Color.GREEN,
 	Color.GAINSBORO,
 	Color.YELLOW,
-	Color.VIOLET
+	Color.VIOLET,
+	Color.ALICE_BLUE,
+	Color.BLUE_VIOLET,
+	Color.CORAL,
+	Color.DARK_GOLDENROD
 ]
 
 func detect_zone(i: int, marked):
@@ -149,7 +153,7 @@ func _draw():
 				#draw_rect(Rect2(i*W + 1.0, j*H + 1.0, W - 2.0, H - 2.0), Color.DARK_RED, false, 2.0)
 		#print(zones)
 		for zone in zones:
-			print(zone)
+			#print(zone)
 			var x = zone.x
 			var y = zone.y
 			var w = zone.w
@@ -158,6 +162,6 @@ func _draw():
 			var off = 10 / 2
 			var gx = (x-off) * W
 			var gy = (y-off) * H
-			var gw = w * W - 10
-			var gh = h * H - 10
-			draw_rect(Rect2(gx, gy, gw, gh), colors[id-1], false, 10.0)
+			var gw = w * W
+			var gh = h * H
+			draw_rect(Rect2(gx, gy, gw, gh), colors[id-1], false, 1.0)

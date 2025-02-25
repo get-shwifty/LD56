@@ -13,6 +13,8 @@ var request_music = null
 var started = true
 var memory = null
 
+var graph = null
+
 var speedrun_start_time = -1
 var speedrun_time = -1
 
